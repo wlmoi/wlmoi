@@ -13,6 +13,9 @@
 
 </details>
 
+---
+> Code, Create, Connect
+— STEIK'23
 
 <!--- For Gif Image
 <picture>
@@ -23,7 +26,7 @@
 --->
 
 <picture>
- <img alt="My IG's Profile Picture" src="(https://i.redd.it/jzh3q3g92v921.jpg)">
+ <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg">
 </picture>
 
 <!---
