@@ -13,6 +13,7 @@
 
 </details>
 
+
 ---
 > Code, Create, Connect
 — STEIK'23
@@ -26,7 +27,7 @@
 --->
 
 <picture>
- <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg">
+ <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg" width= 100px length=100px>
 </picture>
 
 <!---
