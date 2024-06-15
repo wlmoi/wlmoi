@@ -1,5 +1,5 @@
-- 👋 Hi, I’m William Anthony / @wlmoi
-- 🌱 I’m currently learning Phyton and C. 📫 @wlmoi on Instagram
+- 👋 Hi, I’m William Anthony. An Electrical Engineering student from Institute Technology of Bandung.
+- 🌱 I’m currently learning Phyton and C. 📫 Reach me at @wlmoi on Instagram
 - STEI-R'23, Galvania⚡!
   
 <details>
