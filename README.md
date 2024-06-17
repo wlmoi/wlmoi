@@ -23,7 +23,7 @@ solid cute_dog
       vertex -0.5 -0.5 0.0
     endloop
   endfacet
-  facet normal 0 0 1
+  facet normal 0 0 -1
     outer loop
       vertex -0.5 -0.5 0.0
       vertex 0.5 -0.5 0.0
