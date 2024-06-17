@@ -15,6 +15,7 @@
 
 ```stl
 solid cute_dog
+  // Body
   facet normal 0 0 1
     outer loop
       vertex 0.5 0.5 0.0
@@ -29,23 +30,26 @@ solid cute_dog
       vertex 0.5 0.5 0.0
     endloop
   endfacet
-  // Ears
-  facet normal -1 1 0
-    outer loop
-      vertex -0.5 0.5 0.1
-      vertex -0.6 0.6 0.2
-      vertex -0.4 0.6 0.2
-    endloop
-  endfacet
-  facet normal -1 -1 1
-    outer loop
-      vertex -0.6 0.6 0.2
-      vertex -0.4 0.6 0.2
-      vertex -0.5 0.5 0.3
-    endloop
-  endfacet
 
-   // Tail 
+   // Head 
+   facet normal -1 -1 -1 
+     outer loop 
+       vertex -1 -1 -1 
+       vertex -1 -1 -2 
+       vertex -2 -2 -2 
+     endloop 
+   endfacet 
+
+   // Ears (more detailed)
+   facet normal -1 1 0
+     outer loop
+       vertex -0.5 0.5 0.1
+       vertex -0.6 0.6 0.2
+       vertex -0.4 0.6 0.2
+     endloop
+   endfacet
+
+   // Tail (more detailed)
    facet normal -1 -1 -1 
      outer loop 
        vertex -1 -1 -1 
