@@ -14,29 +14,50 @@
 </details>
 
 ```stl
-solid cube_corner
-  facet normal 0.0 -1.0 0.0
+solid cute_dog
+  facet normal 0 0 1
     outer loop
-      vertex 0.0 0.0 0.0
-      vertex 1.0 0.0 0.0
-      vertex 1.0 1.0 0.0
+      vertex 0.5 0.5 0.0
+      vertex -0.5 0.5 0.0
+      vertex -0.5 -0.5 0.0
     endloop
   endfacet
-  facet normal -1.0 0.0 0.0
+  facet normal 0 0 1
     outer loop
-      vertex 1.0 1.0 0.0
-      vertex 1.0 1.0 1.0
-      vertex 1.0 0.0 1.0
+      vertex -0.5 -0.5 0.0
+      vertex 0.5 -0.5 0.0
+      vertex 0.5 0.5 0.0
     endloop
   endfacet
-  facet normal -1.0 -1.0 -1.0
+  // Ears
+  facet normal -1 1 0
     outer loop
-      vertex 1.0 1.0 1.0
-      vertex 1.0 1.0 1.5
-      vertex 1.5 1.5 1.5
+      vertex -0.5 0.5 0.1
+      vertex -0.6 0.6 0.2
+      vertex -0.4 0.6 0.2
     endloop
-endsolid cube_corner
+  endfacet
+  facet normal -1 -1 1
+    outer loop
+      vertex -0.6 0.6 0.2
+      vertex -0.4 0.6 0.2
+      vertex -0.5 0.5 0.3
+    endloop
+  endfacet
+
+   // Tail 
+   facet normal -1 -1 -1 
+     outer loop 
+       vertex -1 -1 -1 
+       vertex -1 -1 -2 
+       vertex -2 -2 -2 
+     endloop 
+   endfacet 
+
+endsolid cute_dog
 ```
+
+
 ---
 > Code, Create, Connect
 — STEIK'23
