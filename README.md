@@ -16,8 +16,8 @@
 
 # _Stats_
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wlmoi)
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi)
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wlmoi&theme=dark)
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&theme=dark)
 
 
 ---
