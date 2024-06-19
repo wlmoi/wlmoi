@@ -1,8 +1,8 @@
-- 👋 Hi, I’m William Anthony. An Electrical Engineering student from Institute Technology of Bandung.
-- 🌱 I’m currently learning Phyton and C. 📫 Reach me at @wlmoi on Instagram
+- 👋 Hi, I’m William Anthony.  🐍 An Electrical Engineering student from Institute Technology of Bandung.
+- 🌱 I’m currently learning Phyton and C. 📫 Reach me at !@wlmoi(https://www.instagram.com/wlmoi/)  on Instagram
 - STEI-R'23, Galvania⚡!
 ![](https://komarev.com/ghpvc/?username=wlmoi&color=green)
-  
+  )
 <details>
 <summary>My top languages</summary>
 
