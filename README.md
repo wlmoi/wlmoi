@@ -1,5 +1,5 @@
 - 👋 Hi, I’m William Anthony.  🐍 An Electrical Engineering student from Institute Technology of Bandung.
-- 🌱 I’m currently learning Phyton and C. 📫 Reach me at ![@wlmoi](https://www.instagram.com/wlmoi/)  on Instagram
+- 🌱 I’m currently learning Phyton and C. 📫 Reach me at !<@wlmoi>(https://www.instagram.com/wlmoi/)  on Instagram
 - STEI-R'23, Galvania⚡!
 ![](https://komarev.com/ghpvc/?username=wlmoi&color=green)
   )
@@ -16,9 +16,9 @@
 
 # _Stats_
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wlmoi&theme=dark)
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&theme=dark)
-
+![My GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wlmoi&theme=dark)
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&theme=dark)
+![My Contribution Graph](https://github.com/wlmoi/github-contribution-grid-snake.svg)
 
 ---
 > Code, Create, Connect
