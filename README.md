@@ -16,7 +16,8 @@
 
 # _Stats_
 ![My GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=wlmoi&theme=dracula)
-![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&theme=dracula)
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&layout=compact&theme=dracula)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&layout=compact&theme=dracula)](https://github.com/wlmoi)
 
 ---
 > Code, Create, Connect
