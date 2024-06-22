@@ -1,24 +1,31 @@
+<!--Currently broken as hell, I will fix it tommorow!!!-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="style.css">
-    <title>William Anthony | Electrical Engineering Student</title>
-    <meta name="description" content="William Anthony's personal website. Electrical Engineering student from ITB with a passion for innovation and technology."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="William Anthony's personal website. Electrical Engineering student from ITB with a passion for innovation and technology."/>
+    <title>William Anthony | Electrical Engineering Student</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="any"/>
 </head>
 <body class="flex min-h-screen flex-col bg-gradient-to-b from-primary-2-very-dark-purple via-[#3C1859] via-30% to-[#652D92]">
+
+    <!-- Navigation Bar -->
     <nav class="fixed left-0 right-0 top-0 z-50 flex h-20 w-full flex-none items-center justify-between px-8 sm:px-16 xl:h-[110px] xl:px-20 bg-transparent">
+        <!-- Logo -->
         <a href="/">
             <img alt="William Anthony's Logo" loading="lazy" class="h-[30px] w-[90px] bg-transparent drop-shadow-[0px_2px_6px_rgba(255,255,255,0.65)] xl:h-[40px] xl:w-[120px]" src="logo.png"/>
         </a>
+        <!-- Menu Button for Mobile -->
         <button aria-label="Menu Button" class="h-fit xl:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="fill-white w-7 h-7 drop-shadow-[0px_2px_6px_rgba(255,255,255,0.85)]">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
             </svg>
         </button>
+        <!-- Navigation Links -->
         <div class="fixed left-0 top-0 z-50 flex h-fit w-full flex-col items-center gap-6 bg-gradient-to-bl from-[#A164A9] via-[#4F0069] via-45% to-[#260D3A] p-6 font-poppins text-base font-bold text-white max-xl:transition max-xl:duration-300 xl:static xl:h-auto xl:w-auto xl:bg-none xl:p-0 max-xl:-translate-y-full max-xl:ease-out">
+            <!-- Mobile Logo and Close Button -->
             <div class="flex justify-center w-full items-center xl:hidden relative">
                 <a href="/">
                     <img alt="William Anthony's Logo" loading="lazy" class="h-[30px] mx-auto w-[90px] bg-transparent drop-shadow-[0px 2px 6px rgba(255,255,255,0.65)] xl:h-[40px] xl:w-[120px]" src="logo.png"/>
@@ -29,6 +36,7 @@
                     </svg>
                 </button>
             </div>
+            <!-- Navigation Links -->
             <ul class="flex flex-col items-center gap-4 xl:flex-row xl:gap-9">
                 <li><a class="nav-link" href="#about">About</a></li>
                 <li><a class="nav-link" href="#projects">Projects</a></li>
@@ -37,6 +45,8 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Hero Section -->
     <div class="relative overflow-hidden">
         <main class="hero relative w-full h-[calc(100vw*11*2/16)] sm:h-[calc(100vw*11*1.5/16)] md:h-[calc(100vw*11*1.2/16)] lg:h-[calc(100vw*11/16)] overflow-hidden">
             <div class="hero-slider absolute left-0 top-0 h-full w-full overflow-hidden"></div>
@@ -46,25 +56,37 @@
             </div>
         </main>
     </div>
+
+    <!-- About Section -->
     <section id="about" class="p-8 text-white text-center">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>
         <p>Hello! I am William Anthony, an Electrical Engineering student at ITB. I have a passion for technology and innovation, and I'm dedicated to advancing my knowledge and skills in the field.</p>
     </section>
+
+    <!-- Projects Section -->
     <section id="projects" class="p-8 text-white text-center bg-primary-2-very-dark-purple">
         <h2 class="text-3xl font-bold mb-4">Projects</h2>
         <p>Here are some of the projects I've worked on...</p>
     </section>
+
+    <!-- Skills Section -->
     <section id="skills" class="p-8 text-white text-center">
         <h2 class="text-3xl font-bold mb-4">Skills</h2>
         <p>Here are some of the skills I've acquired...</p>
     </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="p-8 text-white text-center bg-primary-2-very-dark-purple">
         <h2 class="text-3xl font-bold mb-4">Contact</h2>
         <p>Feel free to reach out to me...</p>
     </section>
+
+    <!-- Footer -->
     <footer class="p-4 text-white text-center">
         &copy; 2024 William Anthony. All rights reserved.
     </footer>
+
+    <!-- JavaScript File -->
     <script src="script.js"></script>
 </body>
 </html>
