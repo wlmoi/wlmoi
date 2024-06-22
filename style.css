@@ -1,0 +1,62 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.bg-gradient-to-b {
+    background: linear-gradient(to bottom, #3C1859 0%, #652D92 100%);
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #A164A9;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.text-shadow-primary {
+    text-shadow: 0px 8px 40px rgba(0, 0, 0, 0.75);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-3xl {
+    font-size: 2rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.bg-primary-2-very-dark-purple {
+    background-color: #3C1859;
+}
