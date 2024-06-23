@@ -22,6 +22,9 @@
 ---
 > Code, Create, Connect
 — STEIK'23
+> <picture>
+  <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg" width=150px length=150px>
+  </picture>
 
 <!--- For Gif Image
 <picture>
@@ -31,9 +34,7 @@
 </picture>
 --->
 
-<picture>
- <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg" width= 300px length=300px>
-</picture>
+
 
 <!---
 wlmoi/wlmoi is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
