@@ -32,7 +32,7 @@
 --->
 
 <picture>
- <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg" width= 100px length=100px>
+ <img alt="Cute Doggie" src="https://i.redd.it/jzh3q3g92v921.jpg" width= 300px length=300px>
 </picture>
 
 <!---
