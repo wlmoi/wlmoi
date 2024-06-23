@@ -6,7 +6,7 @@
 <details>
 <summary>Learn more about me!</summary>
 
-| Rank | Favorite things to do!!! |
+| Rank | My Hobbies |
 |-----:|-----------|
 |     1| Sleeping    |
 |     2| Eating         |
