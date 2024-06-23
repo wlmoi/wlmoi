@@ -4,13 +4,13 @@
 ![](https://komarev.com/ghpvc/?username=wlmoi&color=green)
   )
 <details>
-<summary>My top languages</summary>
+<summary>Learn more about me!</summary>
 
-| Rank | Languages |
+| Rank | Favorite things to do!!! |
 |-----:|-----------|
-|     1| Phyton    |
-|     2| C         |
-|     3| Haskell   |
+|     1| Sleeping    |
+|     2| Eating         |
+|     3| Coding   |
 
 </details>
 
