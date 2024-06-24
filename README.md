@@ -17,6 +17,7 @@
 # _Stats_
 [![My GitHub Streak](https://streak-stats.demolab.com/?user=wlmoi&theme=dracula)](https://git.io/streak-stats)
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&layout=compact&theme=dracula)
+[![GitHub Streak](https://streak-stats.demolab.com?user=wlmoi&theme=material-palenight&border_radius=5&locale=id&date_format=j%20M%5B%20Y%5D)](https://git.io/streak-stats)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&layout=compact&theme=dracula)](https://github.com/wlmoi)
 
 ---
