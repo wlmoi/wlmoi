@@ -10,7 +10,7 @@
 |-----:|-----------|
 |     1| Sleeping    |
 |     2| Eating         |
-|     3| Coding   |
+|     3| Coding    |
 
 </details>
 
