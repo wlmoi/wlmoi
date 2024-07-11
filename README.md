@@ -1,6 +1,8 @@
 - 👋 Hi, I’m **William Anthony**.  🐍 An _Electrical Engineering_ student from _**Institute Technology of Bandung**_.
 - 📫 Reach me at [@wlmoi](https://www.instagram.com/wlmoi/)  on Instagram
-- STEI-R'23, Galvania⚡!
+- STEI-R'23, Galvania⚡! =
+> Emm.. What the sigma
+
 ![](https://komarev.com/ghpvc/?username=wlmoi&color=green)
   )
 <details>
