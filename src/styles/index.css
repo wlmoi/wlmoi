@@ -272,6 +272,8 @@ body.lightbox-open {
   padding: 0.18em 0.22em;
   color: rgba(255,255,255,0.56);
   overflow: hidden;
+  cursor: pointer;
+  transition: color 180ms ease, text-shadow 180ms ease;
 }
 
 .fx-negative::after {
@@ -285,6 +287,11 @@ body.lightbox-open {
   mix-blend-mode: difference;
   animation: fx-negative 2.4s ease-in-out infinite alternate;
   pointer-events: none;
+}
+
+.fx-negative:hover {
+  color: white;
+  text-shadow: 0 0 14px rgba(83,240,210,0.5);
 }
 
 @keyframes fx-negative {
