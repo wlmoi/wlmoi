@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, Download, ExternalLink } from 'lucide-react'
 import { credentials, education, languages, person } from '../../data/portfolio'
 
@@ -24,21 +24,11 @@ const photos = [
 ]
 
 export function ProfileSection() {
-  const [activePhoto, setActivePhoto] = useState(0)
-  const photo = photos[activePhoto]
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setActivePhoto((current) => (current + 1) % photos.length), 6500)
-    return () => window.clearInterval(timer)
-  }, [])
-
-  const movePhoto = (direction: -1 | 1) => {
-    setActivePhoto((current) => (current + direction + photos.length) % photos.length)
-  }
-
   return (
     <section id="profile" className="section-pad border-t border-white/[0.1]">
       <div className="section-shell">
+        <FullBleedCarousel />
+
         <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:items-start">
           <div>
             <p className="eyebrow">01 / Profile signal</p>
@@ -62,27 +52,7 @@ export function ProfileSection() {
             </div>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr]">
-            <div className="photo-carousel relative min-w-0 overflow-hidden rounded-[2rem] border border-white/[0.12] bg-[#071b23]">
-              <div className="relative w-full max-h-[560px] overflow-hidden" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
-                <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="absolute inset-0 h-full w-full object-contain transition-opacity duration-500" />
-              </div>
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/75 via-black/15 to-transparent p-5 pt-20">
-                <div>
-                  <p className="eyebrow text-white/[0.65]">{String(activePhoto + 1).padStart(2, '0')} / 03</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{photo.label}</p>
-                </div>
-                <div className="flex gap-2">
-                  <button type="button" onClick={() => movePhoto(-1)} className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-white/[0.2] bg-black/20 text-white hover:border-white/[0.55]" aria-label="Previous profile photo">
-                    <ChevronLeft size={17} aria-hidden="true" />
-                  </button>
-                  <button type="button" onClick={() => movePhoto(1)} className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-white/[0.2] bg-black/20 text-white hover:border-white/[0.55]" aria-label="Next profile photo">
-                    <ChevronRight size={17} aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
+          <div>
             <div className="grid gap-5">
               <div className="liquid-glass rounded-[2rem] p-6">
                 <p className="eyebrow">Education</p>
@@ -121,25 +91,56 @@ export function ProfileSection() {
           <a href={person.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[hsl(var(--accent))]">Connect on LinkedIn <ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
 
-        <div className="mt-16 border-t border-white/[0.1] pt-8">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="eyebrow">Field notes / all frames</p>
-              <h3 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">The work has a life outside the waveform.</h3>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-white/[0.5]">Teaching, community, competition, and the people around the work. Every frame keeps its original proportions.</p>
-          </div>
-          <div className="photo-gallery mt-8">
-            {photos.map((item) => (
-              <figure key={item.src} className="photo-gallery-item overflow-hidden rounded-[1.25rem] border border-white/[0.1] bg-[#071b23]">
-                <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" className="block h-auto w-full" />
-                <figcaption className="border-t border-white/[0.08] px-4 py-3 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-white/[0.42]">{item.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
+  )
+}
+
+function FullBleedCarousel() {
+  const slideRefs = useRef<Array<HTMLDivElement | null>>([])
+  const [activePhoto, setActivePhoto] = useState(0)
+
+  const goTo = (index: number, behavior: ScrollBehavior = 'smooth') => {
+    const next = (index + photos.length) % photos.length
+    setActivePhoto(next)
+    slideRefs.current[next]?.scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
+  }
+
+  useEffect(() => {
+    const timer = window.setInterval(() => goTo(activePhoto + 1), 5600)
+    return () => window.clearInterval(timer)
+  }, [activePhoto])
+
+  return (
+    <div className="photo-carousel photo-carousel--full-bleed" aria-label="William Anthony photo carousel">
+      <div className="photo-carousel-track" role="region" aria-live="polite">
+        {photos.map((item, index) => (
+          <div
+            key={item.src}
+            ref={(element) => { slideRefs.current[index] = element }}
+            className="photo-carousel-slide"
+            style={{ aspectRatio: `${item.width} / ${item.height}` }}
+            aria-label={`${index + 1} of ${photos.length}: ${item.label}`}
+          >
+            <img src={item.src} alt={item.alt} width={item.width} height={item.height} className="photo-carousel-image" />
+          </div>
+        ))}
+      </div>
+      <div className="photo-carousel-overlay">
+        <div>
+          <p className="eyebrow text-white/[0.65]">Field notes / visual index</p>
+          <p className="mt-2 text-sm font-semibold text-white">{photos[activePhoto].label}</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[0.65rem] text-white/[0.55]">{String(activePhoto + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
+          <button type="button" onClick={() => goTo(activePhoto - 1)} className="photo-carousel-button" aria-label="Previous profile photo"><ChevronLeft size={17} aria-hidden="true" /></button>
+          <button type="button" onClick={() => goTo(activePhoto + 1)} className="photo-carousel-button" aria-label="Next profile photo"><ChevronRight size={17} aria-hidden="true" /></button>
+        </div>
+      </div>
+      <div className="photo-carousel-dots" aria-label="Choose a photo">
+        {photos.map((item, index) => <button key={item.src} type="button" onClick={() => goTo(index)} className={index === activePhoto ? 'is-active' : ''} aria-label={`Show ${item.label}`} aria-current={index === activePhoto ? 'true' : undefined} />)}
+      </div>
+    </div>
   )
 }
 
