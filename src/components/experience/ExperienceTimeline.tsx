@@ -57,7 +57,7 @@ export function ExperienceTimeline() {
 
 function getExperienceImage(title: string, organization: string) {
   if (title.includes('Edge AI')) return '/proof-of-work/DSPAudioEngineer.jpeg'
-  if (title.includes('Partial-Discharge')) return '/proof-of-work/WilliamAnthonyCasual.jpg'
+  if (title.includes('Partial-Discharge')) return '/proof-of-work/DSPAudioEngineer.jpeg'
   if (title.includes('Chipathon')) return '/proof-of-work/Chipathon2025.jpeg'
   if (title.includes('Programming Problem Solving')) return '/proof-of-work/ProgrammingProblemSolvingAssistant.jpeg'
   if (title.includes('Digital Systems')) return '/proof-of-work/DigitalSystems.jpeg'
