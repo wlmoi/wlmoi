@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, Download, ExternalLink } from 'lucide-react'
 import { credentials, education, languages, person } from '../../data/portfolio'
 
@@ -21,6 +21,9 @@ const photos = [
   { src: '/photos/PPSNMENGAJAR2023_PANIT.jpeg', alt: 'William Anthony supporting PPSN 2023', label: 'PPSN / 2023', width: 1280, height: 720 },
   { src: '/photos/PPSNMENGAJAR2024.jpeg', alt: 'William Anthony teaching during PPSN 2024', label: 'Teaching / 2024', width: 1600, height: 1200 },
   { src: '/photos/SOTONG.jpeg', alt: 'William Anthony at a student activity', label: 'Student life', width: 960, height: 1280 },
+  { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
+  { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
+  { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
 ]
 
 export function ProfileSection() {
@@ -97,6 +100,7 @@ export function ProfileSection() {
 }
 
 function FullBleedCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null)
   const slideRefs = useRef<Array<HTMLDivElement | null>>([])
   const [activePhoto, setActivePhoto] = useState(0)
 
@@ -106,14 +110,27 @@ function FullBleedCarousel() {
     slideRefs.current[next]?.scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
   }
 
-  useEffect(() => {
-    const timer = window.setInterval(() => goTo(activePhoto + 1), 5600)
-    return () => window.clearInterval(timer)
-  }, [activePhoto])
+  const updateActiveFromScroll = () => {
+    const track = trackRef.current
+    if (!track) return
+    const center = track.getBoundingClientRect().left + track.clientWidth / 2
+    let closestIndex = activePhoto
+    let closestDistance = Number.POSITIVE_INFINITY
+    slideRefs.current.forEach((slide, index) => {
+      if (!slide) return
+      const slideCenter = slide.getBoundingClientRect().left + slide.offsetWidth / 2
+      const distance = Math.abs(center - slideCenter)
+      if (distance < closestDistance) {
+        closestDistance = distance
+        closestIndex = index
+      }
+    })
+    if (closestIndex !== activePhoto) setActivePhoto(closestIndex)
+  }
 
   return (
     <div className="photo-carousel photo-carousel--full-bleed" aria-label="William Anthony photo carousel">
-      <div className="photo-carousel-track" role="region" aria-live="polite">
+      <div ref={trackRef} className="photo-carousel-track" onScroll={updateActiveFromScroll} role="region" aria-live="polite">
         {photos.map((item, index) => (
           <div
             key={item.src}

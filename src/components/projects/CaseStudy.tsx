@@ -43,7 +43,8 @@ export function CaseStudy() {
           <div className="order-2 lg:order-1">
             <div className="space-y-28">
               {featuredCaseStudy.stages.map((item, index) => (
-                <article key={item.label} data-case-step className="min-h-[42vh] max-w-xl">
+                <article key={item.label} data-case-step className={`case-step relative min-h-[42vh] max-w-xl ${active === index ? 'case-step--active' : ''}`}>
+                  <span className="case-step-indicator" aria-hidden="true"><span /></span>
                   <p className="eyebrow">{String(index + 1).padStart(2, '0')} / {item.label}</p>
                   <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{item.kicker}</h3>
                   <p className="mt-4 text-sm leading-7 text-white/[0.62] md:text-base">{item.body}</p>
