@@ -27,6 +27,7 @@ export function EngineeringVisual() {
           <SiliconVisual />
         </Suspense>
       ) : <StaticDieFallback />}
+      <img src="/GDSLayouting.png" alt="GF180MCU GDS layout and signal route" className="engineering-layout-image" />
       <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.38]">
         <span>RTL / FLOORPLAN / SIGNAL ROUTE</span>
         <span>WebGL</span>

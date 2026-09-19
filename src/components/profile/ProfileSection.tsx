@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, Download, ExternalLink } from 'lucide-react'
 import { credentials, education, languages, person } from '../../data/portfolio'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 const photos = [
   { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
@@ -21,6 +22,9 @@ const photos = [
   { src: '/photos/PPSNMENGAJAR2023_PANIT.jpeg', alt: 'William Anthony supporting PPSN 2023', label: 'PPSN / 2023', width: 1280, height: 720 },
   { src: '/photos/PPSNMENGAJAR2024.jpeg', alt: 'William Anthony teaching during PPSN 2024', label: 'Teaching / 2024', width: 1600, height: 1200 },
   { src: '/photos/SOTONG.jpeg', alt: 'William Anthony at a student activity', label: 'Student life', width: 960, height: 1280 },
+  { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
+  { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
+  { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
   { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
   { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
   { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
@@ -103,6 +107,7 @@ function FullBleedCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
   const slideRefs = useRef<Array<HTMLDivElement | null>>([])
   const [activePhoto, setActivePhoto] = useState(0)
+  const reducedMotion = useReducedMotion()
 
   const goTo = (index: number, behavior: ScrollBehavior = 'smooth') => {
     const next = (index + photos.length) % photos.length
@@ -127,6 +132,17 @@ function FullBleedCarousel() {
     })
     if (closestIndex !== activePhoto) setActivePhoto(closestIndex)
   }
+
+  useEffect(() => {
+    if (reducedMotion) return
+    const timer = window.setInterval(() => {
+      const track = trackRef.current
+      const slide = slideRefs.current[(activePhoto + 1) % photos.length]
+      if (!track || !slide) return
+      track.scrollTo({ left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2, behavior: 'smooth' })
+    }, 6500)
+    return () => window.clearInterval(timer)
+  }, [activePhoto, reducedMotion])
 
   return (
     <div className="photo-carousel photo-carousel--full-bleed" aria-label="William Anthony photo carousel">

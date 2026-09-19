@@ -11,6 +11,7 @@ import { SiteFooter } from './components/layout/SiteFooter'
 import { ProfileSection } from './components/profile/ProfileSection'
 import { capabilities, person, recognitions, skillGroups } from './data/portfolio'
 import { ResumePage } from './pages/ResumePage'
+import { gsap } from './lib/gsap'
 
 const sections = ['home', 'profile', 'expertise', 'experience', 'work', 'recognition', 'contact']
 
@@ -29,6 +30,28 @@ function PortfolioPage() {
     })
 
     return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const context = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>('[data-spectrum-copy], [data-skill-group], [data-capability-row]').forEach((element) => {
+        gsap.fromTo(element, { opacity: 0, y: 24 }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: element, start: 'top 86%', once: true },
+        })
+      })
+
+      gsap.utils.toArray<HTMLElement>('[data-skill-chip]').forEach((chip) => {
+        const lift = () => gsap.to(chip, { y: -5, scale: 1.04, color: '#ffffff', duration: 0.25, ease: 'power2.out' })
+        const settle = () => gsap.to(chip, { y: 0, scale: 1, color: 'rgba(255,255,255,0.52)', duration: 0.35, ease: 'power2.out' })
+        chip.addEventListener('mouseenter', lift)
+        chip.addEventListener('mouseleave', settle)
+      })
+    })
+    return () => context.revert()
   }, [])
 
   useEffect(() => {
@@ -82,7 +105,7 @@ function PortfolioPage() {
         <section id="expertise" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <div>
+              <div data-spectrum-copy>
                 <p className="eyebrow">02 / Engineering spectrum</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A connected system of engineering capabilities.</h2>
               </div>
@@ -102,9 +125,9 @@ function PortfolioPage() {
 
             <div className="mt-14 grid gap-8 border-t border-white/[0.1] pt-8 md:grid-cols-4">
               {Object.entries(skillGroups).map(([group, skills]) => (
-                <div key={group}>
+                <div key={group} data-skill-group>
                   <p className="eyebrow">{group}</p>
-                  <p className="mt-3 text-sm leading-6 text-white/[0.52]">{skills.join(' · ')}</p>
+                  <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm leading-6 text-white/[0.52]">{skills.map((skill) => <span key={skill} data-skill-chip className="inline-block cursor-default transition-colors">{skill}</span>)}</p>
                 </div>
               ))}
             </div>
@@ -193,7 +216,7 @@ function PortfolioPage() {
 
 function CapabilityAccordion({ capability }: { capability: (typeof capabilities)[number] }) {
   return (
-    <details className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
+    <details data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
       <summary className="flex cursor-pointer list-none items-start gap-5 py-2">
         <span className="font-mono text-[0.65rem] text-white/[0.32]">{capability.number}</span>
         <span className="flex-1">

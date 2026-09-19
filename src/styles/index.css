@@ -209,6 +209,79 @@ body.menu-open {
   transform: scaleY(1);
 }
 
+.experience-row {
+  opacity: 0.58;
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.experience-row:hover,
+.experience-row--active {
+  opacity: 1;
+  transform: translateX(0.35rem);
+}
+
+.experience-row--active > span {
+  box-shadow: 0 0 0 5px rgba(83,240,210,0.12), 0 0 18px rgba(83,240,210,0.55);
+}
+
+.experience-chevron {
+  color: rgba(255,255,255,0.4);
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.experience-row:hover .experience-chevron,
+.experience-row--active .experience-chevron {
+  color: hsl(var(--accent));
+  transform: rotate(-90deg);
+}
+
+.experience-detail-image-wrap {
+  position: relative;
+  min-height: 12rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #071b23;
+}
+
+.experience-detail-image-wrap::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(120deg, transparent 35%, rgba(83,240,210,0.22), transparent 65%);
+  transform: translateX(-120%);
+  animation: detail-scan 5s ease-in-out infinite;
+}
+
+.experience-detail-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  object-fit: cover;
+}
+
+.engineering-layout-image {
+  position: absolute;
+  inset: 12% 8% 13%;
+  width: 84%;
+  height: 75%;
+  object-fit: contain;
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  filter: saturate(0.7) contrast(1.15);
+  transition: opacity 500ms ease, transform 700ms ease;
+}
+
+.engineering-layout-image:hover {
+  opacity: 0.55;
+  transform: scale(1.04);
+}
+
+@keyframes detail-scan {
+  0%, 45% { transform: translateX(-120%); }
+  65%, 100% { transform: translateX(120%); }
+}
+
 .photo-carousel--full-bleed {
   width: 100vw;
   margin: 0 calc(50% - 50vw) 4.5rem;
