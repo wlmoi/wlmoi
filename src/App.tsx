@@ -35,7 +35,7 @@ function PortfolioPage() {
 
   useEffect(() => {
     const context = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('[data-spectrum-copy], [data-skill-group], [data-capability-row]').forEach((element) => {
+      gsap.utils.toArray<HTMLElement>('[data-spectrum-copy], [data-skill-group], [data-capability-row], [data-motion-copy], [data-motion-list], [data-motion-card]').forEach((element) => {
         gsap.fromTo(element, { opacity: 0, y: 24 }, {
           opacity: 1,
           y: 0,
@@ -100,7 +100,7 @@ function PortfolioPage() {
     <div className="min-h-screen bg-[hsl(var(--background))] text-white">
       <Navigation activeId={activeId} />
       <main id="main-content">
-        <Hero />
+        <Hero activeId={activeId} />
         <ProfileSection />
 
         <section id="expertise" className="section-pad border-t border-white/[0.1]">
@@ -110,7 +110,7 @@ function PortfolioPage() {
                 <p className="eyebrow">02 / Engineering spectrum</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A connected system of engineering capabilities.</h2>
               </div>
-              <div>
+              <div data-motion-copy>
                 <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Not a stack of badges. A progression from architecture and RTL, through verification and physical implementation, into embedded intelligence and engineering software.</p>
               </div>
             </div>
@@ -141,7 +141,7 @@ function PortfolioPage() {
         <section id="work" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
             <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-              <div>
+              <div data-motion-copy>
                 <p className="eyebrow">02 / Additional selected work</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Projects with an engineering through-line.</h2>
               </div>
@@ -156,7 +156,7 @@ function PortfolioPage() {
         <section id="experience" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
-              <div>
+              <div data-motion-copy>
                 <p className="eyebrow">04 / Experience timeline</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Hands-on work across teaching, research, silicon, and production.</h2>
                 <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.52]">Dates are shown where publicly documented and verified for this implementation.</p>
@@ -173,7 +173,7 @@ function PortfolioPage() {
                 <p className="eyebrow">05 / Education & recognition</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A technical foundation with external signals of trust.</h2>
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-3" data-motion-list>
                 {recognitions.map((item) => (
                   <details key={`${item.title}-${item.year}`} className="group rounded-2xl border border-white/[0.1] bg-white/[0.015] px-5 py-4">
                     <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold">
@@ -194,7 +194,7 @@ function PortfolioPage() {
         <section id="contact" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
             <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-              <div>
+              <div data-motion-copy>
                 <p className="eyebrow">05 / Contact</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Let’s build systems that hold up under verification.</h2>
                 <p className="mt-5 max-w-md text-base leading-7 text-white/[0.58]">Open to conversations about ASIC, FPGA, design verification, Edge AI, embedded systems, research collaboration, and engineering internships.</p>
@@ -203,7 +203,7 @@ function PortfolioPage() {
                   <a href={person.linkedin} target="_blank" rel="noreferrer" className="text-sm text-white/[0.72] hover:text-white">linkedin.com/in/wlmoi</a>
                 </div>
               </div>
-              <div className="liquid-glass rounded-[2rem] p-5 md:p-8">
+              <div className="liquid-glass contact-panel rounded-[2rem] p-5 md:p-8" data-motion-card>
                 <ContactForm />
               </div>
             </div>

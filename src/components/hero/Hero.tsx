@@ -6,7 +6,7 @@ import { gsap } from '../../lib/gsap'
 
 const videoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4'
 
-export function Hero() {
+export function Hero({ activeId }: { activeId: string }) {
   const root = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const reducedMotion = useReducedMotion()
@@ -86,13 +86,10 @@ export function Hero() {
             </a>
 
             <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
-              <a href="#home" className="text-sm text-white transition-colors">Home</a>
-              <a href="#profile" className="text-sm text-white/[0.65] transition-colors hover:text-white">Profile</a>
-              <a href="#expertise" className="text-sm text-white/[0.65] transition-colors hover:text-white">Expertise</a>
-              <a href="#experience" className="text-sm text-white/[0.65] transition-colors hover:text-white">Experience</a>
-              <a href="#work" className="text-sm text-white/[0.65] transition-colors hover:text-white">Selected Work</a>
-              <a href="#recognition" className="text-sm text-white/[0.65] transition-colors hover:text-white">Recognition</a>
-              <a href="#contact" className="text-sm text-white/[0.65] transition-colors hover:text-white">Contact</a>
+              {[
+                ['Home', 'home'], ['Profile', 'profile'], ['Expertise', 'expertise'], ['Experience', 'experience'],
+                ['Selected Work', 'work'], ['Recognition', 'recognition'], ['Contact', 'contact'],
+              ].map(([label, id]) => <a key={id} href={`#${id}`} className={`hero-nav-link text-sm transition-colors ${activeId === id ? 'is-active text-white' : 'text-white/[0.65] hover:text-white'}`}>{label}</a>)}
               <a href="#contact" className="liquid-glass rounded-full px-5 py-2.5 text-sm text-white transition-transform hover:scale-[1.03]">Discuss an Opportunity</a>
             </nav>
 
@@ -101,8 +98,8 @@ export function Hero() {
 
         <div className="flex flex-1 items-center justify-center py-20 sm:py-24 lg:py-28">
           <div className="w-full max-w-6xl text-center">
-            <p data-hero-eyebrow className="eyebrow animate-fade-rise text-white/[0.7]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
-            <p className="mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.45]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
+            <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
+            <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
 
             <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-7 max-w-6xl text-[clamp(3.5rem,9vw,8.6rem)] leading-[0.9] tracking-[-0.045em] text-white">
               <span data-hero-line className="block">Engineering intelligence</span>

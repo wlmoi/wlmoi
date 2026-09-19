@@ -10,7 +10,7 @@ export function ProjectList() {
       {projects.map((project) => {
         const isOpen = open === project.id
         return (
-          <article key={project.id} className="project-card">
+          <article key={project.id} className="project-card project-card-interactive">
             <button
               type="button"
               className="grid w-full gap-6 text-left md:grid-cols-[100px_1fr_auto] md:items-start"
