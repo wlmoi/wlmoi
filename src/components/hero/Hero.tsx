@@ -119,8 +119,8 @@ export function Hero({ activeId }: { activeId: string }) {
               </a>
             </div>
 
-            <p className="hero-hover-highlight mx-auto mt-6 max-w-xl text-sm leading-6 text-white/[0.48]">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
-            <div data-hero-meta className="animate-fade-rise-delay-2 mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/[0.52]">
+            <p className="hero-hover-highlight mx-auto mt-6 max-w-xl text-sm leading-6 text-white/[0.88]">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
+            <div data-hero-meta className="animate-fade-rise-delay-2 mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/[0.72]">
               <a href={person.linkedin} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">LinkedIn</a>
               <span aria-hidden="true">/</span>
               <a href={person.github} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">GitHub</a>
@@ -134,12 +134,7 @@ export function Hero({ activeId }: { activeId: string }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-5 pb-2">
-          <div className="hero-location-strip" aria-label="William Anthony location and education">
-            <span className="hero-location-chip"><i aria-hidden="true" />Bandung</span>
-            <span className="hero-location-chip"><i aria-hidden="true" />Institut Teknologi Bandung</span>
-            <span className="hero-location-chip"><i aria-hidden="true" />Class of 2027</span>
-          </div>
+        <div className="flex items-center justify-end gap-5 pb-2">
           <button
             type="button"
             onClick={toggleVideo}

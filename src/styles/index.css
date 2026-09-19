@@ -88,13 +88,28 @@ body.lightbox-open {
 }
 
 .boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
   display: grid;
   min-height: 100vh;
   place-items: center;
-  align-content: center;
-  gap: 1.5rem;
   background: hsl(var(--background));
   color: white;
+  opacity: 1;
+  transition: opacity 550ms ease, visibility 550ms ease;
+}
+
+.boot-screen--exiting {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.boot-screen-content {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1.5rem;
 }
 
 .boot-loader {
@@ -166,6 +181,41 @@ body.lightbox-open {
   color: hsl(var(--accent));
   letter-spacing: 0.24em;
   text-shadow: 0 0 18px rgba(83,240,210,0.48);
+}
+
+.section-status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.section-status-strip span {
+  border: 1px solid rgba(83,240,210,0.32);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.section-status-strip span:hover {
+  border-color: hsl(var(--accent));
+  color: white;
+  background: rgba(83,240,210,0.12);
+  transform: translateY(-3px);
+}
+
+.skill-chip {
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+}
+
+.skill-chip:hover {
+  border-bottom-color: hsl(var(--accent));
 }
 
 @keyframes boot-load {
@@ -746,12 +796,8 @@ body.lightbox-open {
     bottom: 0.75rem;
   }
 
-  .hero-location-strip {
-    max-width: 70%;
-  }
-
-  .hero-location-chip {
-    font-size: 0.52rem;
+  .section-status-strip {
+    justify-content: flex-start;
   }
 
 }

@@ -110,8 +110,11 @@ function PortfolioPage() {
                 <p className="eyebrow">02 / Engineering spectrum</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A connected system of engineering capabilities.</h2>
               </div>
-              <div data-motion-copy>
+              <div data-motion-copy className="flex flex-col gap-6 lg:items-end">
                 <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Not a stack of badges. A progression from architecture and RTL, through verification and physical implementation, into embedded intelligence and engineering software.</p>
+                <div className="section-status-strip" aria-label="William Anthony academic status">
+                  <span>Bandung</span><span>Institut Teknologi Bandung</span><span>Class of 2027</span>
+                </div>
               </div>
             </div>
 
@@ -128,7 +131,7 @@ function PortfolioPage() {
               {Object.entries(skillGroups).map(([group, skills]) => (
                 <div key={group} data-skill-group>
                   <p className="eyebrow">{group}</p>
-                  <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm leading-6 text-white/[0.52]">{skills.map((skill) => <span key={skill} data-skill-chip className="inline-block cursor-default transition-colors">{skill}</span>)}</p>
+                  <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm leading-6 text-white/[0.52]">{skills.map((skill) => <a key={skill} data-skill-chip href={`https://www.google.com/search?client=opera&q=${encodeURIComponent(skill)}&sourceid=opera&ie=UTF-8&oe=UTF-8`} target="_blank" rel="noreferrer" className="skill-chip inline-block cursor-pointer transition-colors">{skill}</a>)}</p>
                 </div>
               ))}
             </div>
@@ -172,6 +175,8 @@ function PortfolioPage() {
               <div>
                 <p className="eyebrow">05 / Education & recognition</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A technical foundation with external signals of trust.</h2>
+                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.62]">William is an ambitious, award-winning Electrical and Electronics Engineering student at ITB, specializing in integrated-circuit design and hardware-software integration. His work bridges VLSI, FPGA, verification, embedded intelligence, and applied AI into solutions that are precise, scalable, and built with teams.</p>
+                <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.48]">From an 8,192-point FFT and a 16-bit peak detector to a programmable GAN and a three-qubit Quantum Fourier Transform tapeout contribution, the thread is consistent: translate difficult technical requirements into working systems.</p>
               </div>
               <div className="grid gap-3" data-motion-list>
                 {recognitions.map((item) => (
@@ -197,7 +202,8 @@ function PortfolioPage() {
               <div data-motion-copy>
                 <p className="eyebrow">05 / Contact</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Let’s build systems that hold up under verification.</h2>
-                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.58]">Open to conversations about ASIC, FPGA, design verification, Edge AI, embedded systems, research collaboration, and engineering internships.</p>
+                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.72]">William brings the curiosity of a researcher, the discipline of a verification engineer, and the team instinct of a mentor. He is open to conversations about ASIC, FPGA, design verification, Edge AI, embedded systems, research collaboration, and engineering internships.</p>
+                <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.5]">Whether the brief begins as a waveform, a production dataset, or a half-formed systems idea, the goal is the same: make it clear, measurable, and ready for the real world.</p>
                 <div className="mt-8 grid gap-2">
                   <a href={`mailto:${person.email}`} className="text-sm text-white/[0.72] hover:text-white">{person.email}</a>
                   <a href={person.linkedin} target="_blank" rel="noreferrer" className="text-sm text-white/[0.72] hover:text-white">linkedin.com/in/wlmoi</a>
