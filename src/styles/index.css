@@ -153,6 +153,21 @@ body.lightbox-open {
   padding-block: 0.35rem;
 }
 
+.hero-desktop-nav {
+  position: fixed;
+  top: 1rem;
+  right: max(1rem, calc((100vw - 1200px) / 2));
+  left: max(1rem, calc((100vw - 1200px) / 2));
+  z-index: 40;
+}
+
+.hero-desktop-nav > div {
+  background: rgba(4, 30, 40, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.16), inset 0 1px rgba(255,255,255,0.12);
+}
+
 .hero-content {
   transform: translateY(clamp(-7rem, -8vh, -2.25rem));
 }
@@ -220,6 +235,61 @@ body.lightbox-open {
 
 .skill-chip:hover {
   border-bottom-color: hsl(var(--accent));
+}
+
+.info-chip {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.45rem;
+  padding: 0.38rem 0.55rem;
+  color: rgba(255,255,255,0.58);
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  line-height: 1.2;
+  cursor: default;
+  transition: border-color 220ms ease, background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.info-chip:hover {
+  border-color: rgba(83,240,210,0.68);
+  background: rgba(83,240,210,0.1);
+  color: white;
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.profile-tagline {
+  color: hsl(var(--accent));
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  text-shadow: 0 0 18px rgba(83,240,210,0.15);
+}
+
+.fx-negative {
+  position: relative;
+  display: inline-block;
+  padding: 0.18em 0.22em;
+  color: rgba(255,255,255,0.56);
+  overflow: hidden;
+}
+
+.fx-negative::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 34%;
+  content: '';
+  background: hsl(var(--accent));
+  mix-blend-mode: difference;
+  animation: fx-negative 2.4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes fx-negative {
+  0% { left: 0; transform: translateX(0); }
+  100% { left: 100%; transform: translateX(-100%); }
 }
 
 @keyframes boot-load {
@@ -786,6 +856,10 @@ body.lightbox-open {
 }
 
 @media (max-width: 767px) {
+  .hero-desktop-nav {
+    display: none;
+  }
+
   .section-shell {
     width: min(100% - 1.5rem, 1200px);
   }

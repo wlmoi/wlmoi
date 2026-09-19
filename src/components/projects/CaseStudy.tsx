@@ -45,7 +45,7 @@ export function CaseStudy() {
             <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">{featuredCaseStudy.title}</h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/[0.62]">{featuredCaseStudy.intro}</p>
           </div>
-          <div className="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">GF180MCU · 180 nm · SIGNED INT8</div>
+          <div className="case-study-kicker fx-negative" data-text="GF180MCU · 180 nm · SIGNED INT8">GF180MCU · 180 nm · SIGNED INT8</div>
         </div>
 
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">

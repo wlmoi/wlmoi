@@ -26,7 +26,7 @@ const photos = [
   { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
   { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
   { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
-  { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
+  { src: '/photos/SignalSystems.jpeg', alt: 'William Anthony during the Signal and Systems course', label: 'ITB / Signal and Systems', width: 1280, height: 720 },
   { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
 ]
 
@@ -81,6 +81,7 @@ export function ProfileSection() {
           <div>
             <p className="eyebrow">Credentials & recognition</p>
             <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.55]">A record of technical learning, academic standing, and the work behind the portfolio.</p>
+            <p className="profile-tagline mt-5 max-w-md">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {credentials.map((credential) => (
@@ -198,7 +199,9 @@ function InfoList({ title, items }: { title: string; items: readonly string[] })
   return (
     <div className="rounded-[1.5rem] border border-white/[0.1] p-5">
       <p className="eyebrow">{title}</p>
-      <p className="mt-3 text-sm leading-6 text-white/[0.55]">{items.join(' · ')}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {items.map((item) => <span key={item} data-info-chip className="info-chip">{item}</span>)}
+      </div>
     </div>
   )
 }

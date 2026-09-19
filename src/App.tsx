@@ -45,7 +45,7 @@ function PortfolioPage() {
         })
       })
 
-      gsap.utils.toArray<HTMLElement>('[data-skill-chip]').forEach((chip) => {
+      gsap.utils.toArray<HTMLElement>('[data-skill-chip], [data-info-chip]').forEach((chip) => {
         const lift = () => gsap.to(chip, { y: -5, scale: 1.04, color: '#ffffff', duration: 0.25, ease: 'power2.out' })
         const settle = () => gsap.to(chip, { y: 0, scale: 1, color: 'rgba(255,255,255,0.52)', duration: 0.35, ease: 'power2.out' })
         chip.addEventListener('mouseenter', lift)
@@ -236,11 +236,11 @@ function CapabilityAccordion({ capability }: { capability: (typeof capabilities)
       <div className="ml-10 grid gap-6 pb-3 pt-4 md:grid-cols-2">
         <div>
           <p className="eyebrow">Tools</p>
-          <p className="mt-3 text-sm leading-6 text-white/[0.58]">{capability.tools.join(' · ')}</p>
+          <div className="mt-3 flex flex-wrap gap-2">{capability.tools.map((tool) => <span key={tool} data-info-chip className="info-chip">{tool}</span>)}</div>
         </div>
         <div>
           <p className="eyebrow">Methods</p>
-          <p className="mt-3 text-sm leading-6 text-white/[0.58]">{capability.methods.join(' · ')}</p>
+          <div className="mt-3 flex flex-wrap gap-2">{capability.methods.map((method) => <span key={method} data-info-chip className="info-chip">{method}</span>)}</div>
         </div>
       </div>
     </details>

@@ -79,7 +79,7 @@ export function Hero({ activeId }: { activeId: string }) {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 lg:px-8">
-        <div data-hero-nav className="animate-fade-rise">
+        <div data-hero-nav className="hero-desktop-nav animate-fade-rise">
           <div className="liquid-glass flex items-center justify-between rounded-full px-4 py-3 md:px-5">
             <a href="#home" className="font-display text-xl tracking-tight text-white sm:text-2xl" aria-label="William Anthony home">
               William Anthony<span className="align-super ml-0.5 text-[0.55em] text-white/[0.65]">®</span>
