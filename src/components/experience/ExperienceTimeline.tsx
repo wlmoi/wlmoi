@@ -4,7 +4,7 @@ import { experiences } from '../../data/portfolio'
 
 const experienceImages: Record<string, string> = {
   Alcon: '/photos/AlconFinalInternshipPresentation.jpeg',
-  'Institut Teknologi Bandung': '/photos/ASISTENPRAKTIKUM.jpeg',
+  'Institut Teknologi Bandung': '/proof-of-work/LabCoordinator.png',
   'Microelectronics Center of Institut Teknologi Bandung': '/GDSLayouting.png',
 }
 
@@ -17,7 +17,7 @@ export function ExperienceTimeline() {
       <div className="experience-detail liquid-glass mb-8 overflow-hidden rounded-[1.5rem] p-4 md:p-5">
         <div className="grid gap-5 md:grid-cols-[0.72fr_1.28fr] md:items-center">
           <div className="experience-detail-image-wrap">
-            <img src={experienceImages[active.organization] ?? '/photos/WilliamAnthonyCasual.jpg'} alt={`${active.title} visual`} className="experience-detail-image" />
+            <img src={getExperienceImage(active.title, active.organization)} alt={`${active.title} visual`} data-zoom-src={getExperienceImage(active.title, active.organization)} className="experience-detail-image" />
           </div>
           <div>
             <p className="eyebrow">Active experience / {String(activeIndex + 1).padStart(2, '0')}</p>
@@ -53,4 +53,13 @@ export function ExperienceTimeline() {
       </div>
     </div>
   )
+}
+
+function getExperienceImage(title: string, organization: string) {
+  if (title.includes('Edge AI')) return '/proof-of-work/AudioDSP.jpeg'
+  if (title.includes('Partial-Discharge')) return '/proof-of-work/AudioDSP.jpeg'
+  if (title.includes('Chipathon')) return '/proof-of-work/Chipathon2025.jpeg'
+  if (title.includes('Digital Systems')) return '/proof-of-work/LabAssistant.png'
+  if (title.includes('Electric Circuits')) return '/proof-of-work/LabAssistant.png'
+  return experienceImages[organization] ?? '/photos/WilliamAnthonyCasual.jpg'
 }

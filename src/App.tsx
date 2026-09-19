@@ -12,6 +12,7 @@ import { ProfileSection } from './components/profile/ProfileSection'
 import { capabilities, person, recognitions, skillGroups } from './data/portfolio'
 import { ResumePage } from './pages/ResumePage'
 import { gsap } from './lib/gsap'
+import { ImageLightbox } from './components/ui/ImageLightbox'
 
 const sections = ['home', 'profile', 'expertise', 'experience', 'work', 'recognition', 'contact']
 
@@ -210,6 +211,7 @@ function PortfolioPage() {
         </section>
       </main>
       <SiteFooter />
+      <ImageLightbox />
     </div>
   )
 }

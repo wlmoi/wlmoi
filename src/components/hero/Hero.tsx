@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowDown, ArrowUpRight, Pause, Play } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { gsap } from '../../lib/gsap'
 
 const videoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4'
 
@@ -28,6 +29,23 @@ export function Hero() {
     }
   }, [reducedMotion, videoError])
 
+  useEffect(() => {
+    if (reducedMotion) return
+    const context = gsap.context(() => {
+      gsap.fromTo('[data-hero-line]', { yPercent: 115, opacity: 0, rotateX: 18 }, {
+        yPercent: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 1.25,
+        stagger: 0.16,
+        delay: 0.35,
+        ease: 'power4.out',
+      })
+      gsap.to('[data-hero-line-accent]', { backgroundPositionX: '200%', duration: 4, repeat: -1, ease: 'none' })
+    }, root)
+    return () => context.revert()
+  }, [reducedMotion])
+
   const toggleVideo = () => {
     const video = videoRef.current
     if (!video) return
@@ -48,7 +66,6 @@ export function Hero() {
             ref={videoRef}
             className="absolute inset-0 z-0 h-full w-full object-cover"
             src={videoUrl}
-            poster="/poster.png"
             autoPlay
             loop
             muted
@@ -57,7 +74,7 @@ export function Hero() {
             onError={() => setVideoError(true)}
           />
         ) : (
-          <div className="absolute inset-0 bg-[hsl(var(--background))] bg-cover bg-center" style={{ backgroundImage: "url('/poster.png')" }} />
+          <div className="absolute inset-0 bg-[hsl(var(--background))] bg-cover bg-center" style={{ backgroundImage: "url('/photos/Foto%20DiBraga%20Blurred.png')" }} />
         )}
       </div>
 
@@ -89,7 +106,7 @@ export function Hero() {
 
             <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="animate-fade-rise mx-auto mt-7 max-w-6xl text-[clamp(3.5rem,9vw,8.6rem)] leading-[0.9] tracking-[-0.045em] text-white">
               <span data-hero-line className="block">Engineering intelligence</span>
-              <span data-hero-line className="block text-white/[0.68] italic not-italic md:italic">from RTL to real-world systems.</span>
+              <span data-hero-line data-hero-line-accent className="hero-line-accent block text-white/[0.78] italic not-italic md:italic">from RTL to real-world systems.</span>
             </h1>
 
             <p data-hero-copy className="animate-fade-rise-delay mx-auto mt-8 max-w-2xl text-base leading-7 text-white/[0.67] sm:text-lg sm:leading-8">

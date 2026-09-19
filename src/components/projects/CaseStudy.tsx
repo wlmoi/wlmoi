@@ -27,6 +27,15 @@ export function CaseStudy() {
 
   const stage = featuredCaseStudy.stages[active]
 
+  useEffect(() => {
+    if (reducedMotion) return
+    const context = gsap.context(() => {
+      gsap.to('.case-node', { scale: 1.12, transformOrigin: 'center', duration: 1.1, repeat: -1, yoyo: true, stagger: 0.08, ease: 'sine.inOut' })
+      gsap.to('.case-trace', { strokeDashoffset: -36, duration: 2.4, repeat: -1, ease: 'none' })
+    })
+    return () => context.revert()
+  }, [reducedMotion])
+
   return (
     <section id="case-study" className="section-pad border-t border-white/[0.1]">
       <div className="section-shell">
@@ -92,13 +101,13 @@ function Schematic({ active }: { active: number }) {
       <rect x="42" y="42" width="416" height="416" rx="10" fill="none" stroke="rgba(255,255,255,0.12)" />
       <rect x="76" y="112" width="348" height="276" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.09)" />
       {[0,1,2,3].map((row) => [0,1,2,3].map((col) => (
-        <rect key={`${row}-${col}`} x={100 + col * 72} y={145 + row * 52} width="42" height="28" rx="5" fill={`rgba(83,240,210,${0.08 + fill * 0.06})`} stroke={`rgba(83,240,210,${0.25 + fill * 0.25})`} />
+        <rect className="case-node" key={`${row}-${col}`} x={100 + col * 72} y={145 + row * 52} width="42" height="28" rx="5" fill={`rgba(83,240,210,${0.08 + fill * 0.06})`} stroke={`rgba(83,240,210,${0.25 + fill * 0.25})`} />
       )))}
       <rect x="76" y="72" width="105" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
       <text x="92" y="88" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="IBM Plex Mono">SERIAL HOST</text>
       <rect x="319" y="72" width="105" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" />
       <text x="345" y="88" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="IBM Plex Mono">SRAM</text>
-      <path d="M128 100V138M371 100V138M53 250H95M405 250H447" stroke={`rgba(83,240,210,${0.35 + fill * 0.55})`} strokeWidth="2" />
+      <path className="case-trace" strokeDasharray="8 10" d="M128 100V138M371 100V138M53 250H95M405 250H447" stroke={`rgba(83,240,210,${0.35 + fill * 0.55})`} strokeWidth="2" />
       <path d="M95 250H405M250 138V388" stroke="rgba(255,255,255,0.1)" strokeDasharray="6 7" />
       <rect x="184" y="407" width="132" height="28" rx="5" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
       <text x="208" y="425" fill="rgba(255,255,255,0.54)" fontSize="10" fontFamily="IBM Plex Mono">CONTROLLER</text>

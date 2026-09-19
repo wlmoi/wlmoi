@@ -155,7 +155,7 @@ function FullBleedCarousel() {
             style={{ aspectRatio: `${item.width} / ${item.height}` }}
             aria-label={`${index + 1} of ${photos.length}: ${item.label}`}
           >
-            <img src={item.src} alt={item.alt} width={item.width} height={item.height} className="photo-carousel-image" />
+            <img src={item.src} alt={item.alt} width={item.width} height={item.height} data-zoom-src={item.src} className="photo-carousel-image" />
           </div>
         ))}
       </div>
