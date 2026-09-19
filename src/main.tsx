@@ -17,7 +17,7 @@ function Boot() {
   const [ready, setReady] = React.useState(false)
 
   React.useEffect(() => {
-    const timer = window.setTimeout(() => setReady(true), 3900)
+    const timer = window.setTimeout(() => setReady(true), 2900)
     return () => window.clearTimeout(timer)
   }, [])
 

@@ -5,7 +5,7 @@ import { experiences } from '../../data/portfolio'
 const experienceImages: Record<string, string> = {
   Alcon: '/photos/AlconFinalInternshipPresentation.jpeg',
   'Institut Teknologi Bandung': '/proof-of-work/LabCoordinator.png',
-  'Microelectronics Center of Institut Teknologi Bandung': '/GDSLayouting.png',
+  'Microelectronics Center of Institut Teknologi Bandung': '/proof-of-work/MicroelectronicsFPGAEngineer.jpeg',
 }
 
 export function ExperienceTimeline() {
@@ -56,10 +56,10 @@ export function ExperienceTimeline() {
 }
 
 function getExperienceImage(title: string, organization: string) {
-  if (title.includes('Edge AI')) return '/proof-of-work/AudioDSP.jpeg'
-  if (title.includes('Partial-Discharge')) return '/proof-of-work/AudioDSP.jpeg'
+  if (title.includes('Edge AI')) return '/proof-of-work/DSPAudioEngineer.jpeg'
+  if (title.includes('Partial-Discharge')) return '/proof-of-work/DSPAudioEngineer.jpeg'
   if (title.includes('Chipathon')) return '/proof-of-work/Chipathon2025.jpeg'
   if (title.includes('Digital Systems')) return '/proof-of-work/LabAssistant.png'
-  if (title.includes('Electric Circuits')) return '/proof-of-work/LabAssistant.png'
+  if (title.includes('Electric Circuits')) return '/proof-of-work/ElectricCircuits.jpeg'
   return experienceImages[organization] ?? '/photos/WilliamAnthonyCasual.jpg'
 }

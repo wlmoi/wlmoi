@@ -135,7 +135,11 @@ export function Hero({ activeId }: { activeId: string }) {
         </div>
 
         <div className="flex items-center justify-between gap-5 pb-2">
-          <p className="font-mono text-[0.64rem] uppercase tracking-[0.12em] text-white/[0.4]">Bandung · Institut Teknologi Bandung · 2027</p>
+          <div className="hero-location-strip" aria-label="William Anthony location and education">
+            <span className="hero-location-chip"><i aria-hidden="true" />Bandung</span>
+            <span className="hero-location-chip"><i aria-hidden="true" />Institut Teknologi Bandung</span>
+            <span className="hero-location-chip"><i aria-hidden="true" />Class of 2027</span>
+          </div>
           <button
             type="button"
             onClick={toggleVideo}

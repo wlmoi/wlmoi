@@ -497,13 +497,56 @@ body.lightbox-open {
   inset: -0.35em -0.55em;
   z-index: -1;
   content: '';
-  border: 1px solid transparent;
+  border: 1px solid rgba(83,240,210,0.48);
   border-radius: 999px;
   background: radial-gradient(ellipse at center, rgba(83,240,210,0.2), rgba(83,240,210,0) 68%);
   opacity: 0;
   transform: scale(0.88);
   transition: opacity 260ms ease, transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
+}
+
+.hero-location-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-location-chip {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  color: rgba(255,255,255,0.58);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 220ms ease, color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+
+.hero-location-chip i {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.32);
+  transition: background 220ms ease, box-shadow 220ms ease;
+}
+
+.hero-location-chip:hover {
+  border-color: rgba(83,240,210,0.68);
+  color: white;
+  background: rgba(83,240,210,0.1);
+  transform: translateY(-3px);
+}
+
+.hero-location-chip:hover i {
+  background: hsl(var(--accent));
+  box-shadow: 0 0 10px hsl(var(--accent));
 }
 
 .hero-hover-highlight:hover {
@@ -701,6 +744,14 @@ body.lightbox-open {
 
   .photo-carousel-overlay {
     bottom: 0.75rem;
+  }
+
+  .hero-location-strip {
+    max-width: 70%;
+  }
+
+  .hero-location-chip {
+    font-size: 0.52rem;
   }
 
 }
