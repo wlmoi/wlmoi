@@ -1,0 +1,254 @@
+import type { Capability, Experience, Project, Recognition } from '../types/portfolio'
+
+export const person = {
+  name: 'William Anthony',
+  role: 'Electrical and Electronics Engineering Student',
+  location: 'Bandung, Indonesia',
+  institution: 'Institut Teknologi Bandung',
+  graduation: '2027',
+  gpa: '3.70 / 4.00',
+  headline: 'Engineering intelligence from RTL to real-world systems.',
+  alternateHeadline: 'From silicon logic to intelligent systems.',
+  supporting:
+    'William Anthony designs and verifies digital systems across ASIC, FPGA, embedded platforms, signal processing, and Edge AI. His work connects low-level hardware architecture with practical, measurable engineering outcomes.',
+  email: 'willomooi@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/wlmoi/',
+  github: 'https://github.com/wlmoi',
+  githubRepository: 'https://github.com/wlmoi/wlmoi',
+  instagram: 'https://www.instagram.com/wlmoi/',
+} as const
+
+export const capabilities: Capability[] = [
+  {
+    id: 'asic',
+    number: '01',
+    title: 'ASIC Architecture & RTL-to-GDSII',
+    summary: 'Architecture, RTL implementation, verification, physical implementation, and sign-off thinking.',
+    tools: ['Verilog', 'SystemVerilog', 'LibreLane', 'OpenROAD', 'GF180MCU', 'Cadence Virtuoso'],
+    methods: ['RTL design', 'Testbenches', 'STA', 'DRC', 'LVS', 'Antenna closure', 'SRAM macros'],
+  },
+  {
+    id: 'fpga',
+    number: '02',
+    title: 'FPGA Design & Verification',
+    summary: 'Synchronous datapaths and control logic developed with simulation-led verification and hardware validation.',
+    tools: ['VHDL', 'Quartus', 'ModelSim', 'FPGA', 'ESP32'],
+    methods: ['Waveform analysis', 'FSM design', 'UART', 'Timing analysis', 'Resource utilization'],
+  },
+  {
+    id: 'edge-ai',
+    number: '03',
+    title: 'Edge AI & Embedded Systems',
+    summary: 'On-device intelligence and embedded data paths that connect computation to physical systems.',
+    tools: ['Python', 'C', 'C++', 'ESP32', 'Arduino', 'MQTT'],
+    methods: ['Neural inference', 'Microcontroller integration', 'Low-latency pipelines', 'Data collection'],
+  },
+  {
+    id: 'dsp',
+    number: '04',
+    title: 'Digital Signal Processing',
+    summary: 'Hardware-oriented signal processing for frequency analysis, peak detection, and coordinate transforms.',
+    tools: ['MATLAB', 'Verilog', 'VHDL', 'FFT', 'CORDIC'],
+    methods: ['DIT FFT', 'Peak detection', 'Fixed-point datapaths', 'Pipeline architecture'],
+  },
+  {
+    id: 'software',
+    number: '05',
+    title: 'Software, Data & Automation',
+    summary: 'Engineering tools and production workflows that make technical data easier to operate and inspect.',
+    tools: ['JavaScript', 'SQL', 'Power Apps', 'Power Automate', 'InfluxDB', 'Grafana'],
+    methods: ['Data automation', 'Dashboard flows', 'Engineering scripting', 'Workflow integration'],
+  },
+]
+
+export const featuredCaseStudy = {
+  title: 'Signed INT8 GAN Accelerator, from RTL to GDSII',
+  intro:
+    'A hardware-first GAN acceleration study implemented as a structural INT8 datapath on GF180MCU 180 nm, carried through implementation and bit-exact post-route verification.',
+  stages: [
+    {
+      label: 'Problem',
+      kicker: 'Constrain the datapath',
+      body: 'The design needed a compact, verifiable accelerator architecture that could process a complete 784-pixel image while remaining tractable for open-source physical implementation.',
+    },
+    {
+      label: 'Architecture',
+      kicker: 'Build the compute fabric',
+      body: 'A structural 4 × 4 processing-element array is paired with SRAM buffers, a controller, and a serial host interface to keep computation and movement explicit.',
+    },
+    {
+      label: 'Optimization',
+      kicker: 'Reduce memory and area pressure',
+      body: 'The implementation reduces the result-buffer area and SRAM macro count while preserving the accelerator’s signed INT8 behavior.',
+    },
+    {
+      label: 'Verification',
+      kicker: 'Check the silicon intent',
+      body: 'RTL and post-route behavior are verified bit-for-bit across a complete 784-pixel image, alongside physical sign-off checks and nine STA corners.',
+    },
+    {
+      label: 'Measured result',
+      kicker: 'Make the outcome legible',
+      body: 'The reported implementation reaches 0.8 GOPS peak throughput at 25 MHz with zero DRC, LVS, XOR, and antenna violations.',
+    },
+  ],
+  metrics: [
+    ['Result-buffer area', '−77%'],
+    ['Die area', '−24%'],
+    ['Estimated power', '−18%'],
+    ['SRAM macros', '11 → 9'],
+    ['DRC / LVS / XOR / antenna', '0'],
+    ['STA corners', '9'],
+    ['Clock period', '40 ns'],
+    ['Peak throughput', '0.8 GOPS @ 25 MHz'],
+  ],
+}
+
+export const projects: Project[] = [
+  {
+    id: 'fpga-gan',
+    eyebrow: 'FPGA / ACCELERATION',
+    title: 'FPGA-Based Programmable GAN',
+    context: 'Reconfigurable hardware exploration for generative-model computation.',
+    role: 'FPGA design and hardware acceleration work.',
+    stack: ['FPGA', 'Verilog', 'Digital design'],
+    challenge: 'Translate algorithmic computation into a hardware-oriented datapath and control structure.',
+    outcome: 'Selected engineering work. Detailed public metrics were not supplied for this portfolio entry.',
+  },
+  {
+    id: 'iot-noise',
+    eyebrow: 'EMBEDDED / DATA',
+    title: 'Outdoor IoT Noise Monitoring and Calibration',
+    context: 'Outdoor acoustic monitoring pipeline for field data collection, visualization, and characterization.',
+    role: 'Embedded and data-flow integration across sensing, transport, storage, and monitoring.',
+    stack: ['ESP32-S3', 'Raspberry Pi 4', 'MQTT', 'Telegraf', 'InfluxDB', 'Grafana'],
+    challenge: 'Create a traceable measurement pipeline and calibrate field readings against a reference sound-level meter.',
+    outcome: 'Ongoing target: LAeq error within ±3 dBA versus a reference sound-level meter. This is a target, not a claimed achieved result.',
+    status: 'ongoing',
+  },
+  {
+    id: 'fft',
+    eyebrow: 'DSP / RTL',
+    title: '8,192-Point FFT and Peak Detection',
+    context: 'High-resolution frequency-domain analysis within partial-discharge detection research.',
+    role: 'Research assistant developing MATLAB models and Verilog signal-processing hardware.',
+    stack: ['Verilog', 'MATLAB', 'CSV → MEM', 'DIT FFT'],
+    challenge: 'Move a research signal-processing flow into a synchronous RTL architecture suitable for FPGA simulation and validation.',
+    outcome: 'Implemented an 8,192-point DIT FFT module and a Verilog peak-detection path for simulation and validation.',
+  },
+  {
+    id: 'qft',
+    eyebrow: 'OPEN SILICON / QUANTUM',
+    title: 'Three-Qubit Quantum Fourier Transform Tapeout Contribution',
+    context: 'Open-source silicon contribution translating a quantum transform concept into a physical design flow.',
+    role: 'Digital IC design and physical implementation contribution.',
+    stack: ['RTL', 'ASIC flow', 'Open-source silicon'],
+    challenge: 'Connect a compact computational primitive to a manufacturable digital implementation flow.',
+    outcome: 'Tapeout contribution documented in the supplied professional portfolio data.',
+  },
+  {
+    id: 'alcon',
+    eyebrow: 'AUTOMATION / DATA',
+    title: 'Production Data Automation at Alcon',
+    context: 'Manufacturing data workflow connecting many production sheets to a standardized operational view.',
+    role: 'Product consumables intern focused on production-data automation.',
+    stack: ['Power Apps', 'Power Automate', 'Excel'],
+    challenge: 'Standardize fragmented production data and automate real-time notification flows around operational information.',
+    outcome: 'Created dashboard data flows across 40+ sheets into a standardized sheet and built automatic notification flows for production use.',
+  },
+  {
+    id: 'hme-election',
+    eyebrow: 'SOFTWARE / WEB',
+    title: 'Mobile-Friendly Election Platform',
+    context: 'Private voting website for the HME ITB President 2025/2026 election.',
+    role: 'Front-end developer.',
+    stack: ['Web development', 'MEAN framework', 'Mobile UI'],
+    challenge: 'Deliver a usable private voting experience across mobile and desktop contexts.',
+    outcome: 'Developed the mobile-friendly private election website for HME ITB.',
+  },
+]
+
+export const experiences: Experience[] = [
+  {
+    title: 'Junior Edge AI Engineer in Computer Vision and Audio',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Sep 2026 – Present',
+    location: 'Bandung, Indonesia',
+    summary: 'Junior engineering role focused on Edge AI work across computer vision and audio.',
+  },
+  {
+    title: 'Research Assistant',
+    organization: 'Microelectronics Center of Institut Teknologi Bandung',
+    dates: 'Sep 2026 – Present',
+    location: 'Bandung, Indonesia',
+    summary: 'Research contribution within the microelectronics center.',
+  },
+  {
+    title: 'Electronics II Laboratory Coordinator',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Sep 2026 – Present',
+    location: 'Bandung, Indonesia',
+    summary: 'Coordinates the Electronics II laboratory experience and its technical delivery.',
+  },
+  {
+    title: 'Electric Circuits Laboratory Assistant',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Sep 2025 – Present',
+    location: 'Bandung, Indonesia',
+    summary: 'Guides students through circuit theory, LTspice simulation, oscilloscope operation, filter analysis, and op-amp implementation.',
+  },
+  {
+    title: 'Product Consumables Intern',
+    organization: 'Alcon',
+    dates: 'Jul 2026 – Aug 2026',
+    location: 'Batam, Indonesia',
+    summary: 'Automated production-data flows across 40+ sheets and built notification workflows using Power Apps, Power Automate, and Excel.',
+  },
+  {
+    title: 'Programming Problem Solving Course Assistant',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Feb 2026 – Jun 2026',
+    location: 'Bandung, Indonesia',
+    summary: 'Supported C programming and Arduino integration through lectures, exercises, projects, debugging, and assessment support.',
+  },
+  {
+    title: 'Research Assistant in Partial-Discharge Detection',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Feb 2025 – Feb 2026',
+    location: 'Bandung, Indonesia',
+    summary: 'Worked on MATLAB modeling and Verilog signal processing, including CSV-to-MEM conversion, peak detection, and an 8,192-point DIT FFT.',
+  },
+  {
+    title: 'Digital Systems Assistant Lecturer and Laboratory Assistant',
+    organization: 'Institut Teknologi Bandung',
+    dates: 'Sep 2025 – Jan 2026',
+    location: 'Bandung, Indonesia',
+    summary: 'Taught VHDL, RTL methodology, FSM design, ModelSim testbenches, waveform verification, Quartus deployment, and FPGA DSP projects.',
+  },
+  {
+    title: 'Chipathon 2025 Tapeout Participant',
+    organization: 'IEEE Solid-State Circuits Society Central Illinois Section Chapter',
+    dates: 'Jul 2025 – Dec 2025',
+    summary: 'Participated in an open-source silicon tapeout program.',
+  },
+  {
+    title: 'Front-End Developer',
+    organization: 'HME ITB and OSKM ITB',
+    dates: 'Jul 2024 – Feb 2025',
+    summary: 'Built mobile-friendly web experiences for student organizations, including the HME election platform and OSKM ITB web work.',
+  },
+]
+
+export const recognitions: Recognition[] = [
+  { title: 'Most Outstanding Electrical and Electronics Engineering Student 2026', issuer: 'Institut Teknologi Bandung', year: '2026' },
+  { title: 'Ganesha Awardee', issuer: 'Institut Teknologi Bandung', year: '2024 & 2025', detail: 'Two-time recipient.' },
+  { title: 'Bachelor of Engineering, Electrical and Electronics Engineering', issuer: 'Institut Teknologi Bandung', year: '2023 – 2027' },
+  { title: 'Gold Medal, National Science Olympiad', issuer: 'OPSI', year: '2023', detail: 'Informatics, English, and Mathematics.' },
+]
+
+export const skillGroups = {
+  hardware: ['Verilog', 'VHDL', 'SystemVerilog', 'RTL design', 'Testbenches', 'Quartus', 'ModelSim', 'Cadence Virtuoso', 'LibreLane', 'OpenROAD', 'GF180MCU', 'STA', 'DRC', 'LVS', 'Antenna closure', 'SRAM macros'],
+  embedded: ['ESP32', 'Arduino', 'Python', 'C', 'C++', 'MQTT'],
+  software: ['JavaScript', 'SQL', 'MATLAB', 'InfluxDB', 'Grafana', 'Power Apps', 'Power Automate'],
+  dsp: ['FFT', 'CORDIC', 'Waveform analysis', 'Fixed-point datapaths'],
+} as const

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#00131b"/>
+  <g stroke="#24424e" opacity=".65">
+    <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200"/>
+    <path d="M120 0V630M240 0V630M360 0V630M480 0V630M600 0V630M720 0V630M840 0V630M960 0V630M1080 0V630"/>
+  </g>
+  <rect x="84" y="82" width="1032" height="466" rx="18" fill="none" stroke="#3b5964"/>
+  <path d="M122 416H255l32-90 38 38 42-126 46 202 45-72 50 48h125l36-64 51 34 55-122 44 144h250" fill="none" stroke="#53f0d2" stroke-width="3"/>
+  <text x="96" y="160" fill="#fff" font-family="Georgia, serif" font-size="68">William Anthony</text>
+  <text x="100" y="212" fill="#8ca0aa" font-family="monospace" font-size="22">ASIC · FPGA · VERIFICATION · EDGE AI</text>
+</svg>
