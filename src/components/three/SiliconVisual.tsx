@@ -1,6 +1,6 @@
 import { useMemo, useRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { PerspectiveCamera } from '@react-three/drei'
+import { Line, PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 
 function DieModel() {
@@ -44,23 +44,28 @@ function DieModel() {
       {Array.from({ length: 5 }, (_, index) => {
         const offset = -1.55 + index * 0.78
         return (
-          <line key={`x-${index}`} position={[0, 0.17, offset]}>
-            <bufferGeometry attach="geometry" onUpdate={(geometry) => {
-              geometry.setFromPoints([new THREE.Vector3(-2.35, 0, 0), new THREE.Vector3(2.35, 0, 0)])
-            }} />
-            <lineBasicMaterial color="#53f0d2" transparent opacity={0.55 - index * 0.06} />
-          </line>
+          <Line
+            key={`x-${index}`}
+            points={[[-2.35, 0, 0], [2.35, 0, 0]]}
+            position={[0, 0.17, offset]}
+            color="#53f0d2"
+            transparent
+            opacity={0.55 - index * 0.06}
+          />
         )
       })}
       {Array.from({ length: 5 }, (_, index) => {
         const offset = -1.55 + index * 0.78
         return (
-          <line key={`z-${index}`} rotation={[0, Math.PI / 2, 0]} position={[offset, 0.18, 0]}>
-            <bufferGeometry attach="geometry" onUpdate={(geometry) => {
-              geometry.setFromPoints([new THREE.Vector3(-2.35, 0, 0), new THREE.Vector3(2.35, 0, 0)])
-            }} />
-            <lineBasicMaterial color="#53f0d2" transparent opacity={0.5 - index * 0.055} />
-          </line>
+          <Line
+            key={`z-${index}`}
+            points={[[-2.35, 0, 0], [2.35, 0, 0]]}
+            rotation={[0, Math.PI / 2, 0]}
+            position={[offset, 0.18, 0]}
+            color="#53f0d2"
+            transparent
+            opacity={0.5 - index * 0.055}
+          />
         )
       })}
       <mesh position={[0, 0.26, 0]}>

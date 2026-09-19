@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Instagram, Linkedin, Mail } from 'lucide-react'
+import { ArrowUp, BriefcaseBusiness, Camera, Code, Mail } from 'lucide-react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { person } from '../../data/portfolio'
 
@@ -14,13 +14,13 @@ export function SiteFooter() {
         </div>
         <div className="flex items-center gap-5">
           <a className="inline-flex min-h-11 items-center gap-2 text-sm text-white/[0.7] hover:text-white" href={person.linkedin} target="_blank" rel="noreferrer">
-            <Linkedin size={15} aria-hidden="true" /> LinkedIn
+            <BriefcaseBusiness size={15} aria-hidden="true" /> LinkedIn
           </a>
           <a className="inline-flex min-h-11 items-center gap-2 text-sm text-white/[0.7] hover:text-white" href={person.github} target="_blank" rel="noreferrer">
-            <Github size={15} aria-hidden="true" /> GitHub
+            <Code size={15} aria-hidden="true" /> GitHub
           </a>
           <a className="inline-flex min-h-11 items-center gap-2 text-sm text-white/[0.7] hover:text-white" href={person.instagram} target="_blank" rel="noreferrer">
-            <Instagram size={15} aria-hidden="true" /> Instagram
+            <Camera size={15} aria-hidden="true" /> Instagram
           </a>
           <a className="inline-flex min-h-11 items-center gap-2 text-sm text-white/[0.7] hover:text-white" href={person.githubRepository} target="_blank" rel="noreferrer">
             Source
