@@ -11,7 +11,7 @@
   --primary-foreground: 0 0% 4%;
   --secondary: 0 0% 10%;
   --muted: 0 0% 10%;
-  --accent: 0 0% 10%;
+  --accent: 173 78% 63%;
   --border: 0 0% 18%;
   --input: 0 0% 18%;
   --destructive: 0 72% 51%;
@@ -225,6 +225,65 @@ body.menu-open {
   text-shadow: 0 1px 12px rgba(0,0,0,0.8);
 }
 
+.outstanding-card {
+  position: absolute;
+  top: 1.25rem;
+  right: max(1rem, calc((100vw - 1200px) / 2));
+  display: flex;
+  width: min(22rem, calc(100vw - 2rem));
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 1.25rem;
+  background: rgba(3, 20, 27, 0.74);
+  box-shadow: 0 0 32px rgba(83, 240, 210, 0.16), inset 0 1px rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  animation: outstanding-float 4.5s ease-in-out infinite;
+}
+
+.outstanding-card::after {
+  position: absolute;
+  inset: -40% auto -40% -30%;
+  width: 20%;
+  content: '';
+  background: rgba(255,255,255,0.5);
+  filter: blur(18px);
+  transform: rotate(18deg);
+  animation: outstanding-flash 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.outstanding-card img {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: 0 0 auto;
+  border-radius: 0.85rem;
+  object-fit: cover;
+}
+
+.outstanding-card-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.outstanding-card-copy p {
+  color: rgba(255,255,255,0.88);
+}
+
+@keyframes outstanding-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(-0.5deg); }
+}
+
+@keyframes outstanding-flash {
+  0%, 58%, 100% { left: -30%; opacity: 0; }
+  66% { left: 125%; opacity: 0.75; }
+  72% { left: 155%; opacity: 0; }
+}
+
 .photo-carousel-button {
   pointer-events: auto;
   display: inline-flex;
@@ -297,6 +356,16 @@ body.menu-open {
 @media (max-width: 767px) {
   .section-shell {
     width: min(100% - 1.5rem, 1200px);
+  }
+
+  .outstanding-card {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+
+  .photo-carousel-overlay {
+    bottom: 0.75rem;
   }
 
 }

@@ -132,11 +132,19 @@ function FullBleedCarousel() {
           <p className="mt-2 text-sm font-semibold text-white">{photos[activePhoto].label}</p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[0.65rem] text-white/[0.55]">{String(activePhoto + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
+          <span className="font-mono text-[0.65rem] text-white/[0.7]">{String(activePhoto + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
           <button type="button" onClick={() => goTo(activePhoto - 1)} className="photo-carousel-button" aria-label="Previous profile photo"><ChevronLeft size={17} aria-hidden="true" /></button>
           <button type="button" onClick={() => goTo(activePhoto + 1)} className="photo-carousel-button" aria-label="Next profile photo"><ChevronRight size={17} aria-hidden="true" /></button>
         </div>
       </div>
+      <article className="outstanding-card" aria-label="William Anthony recognition">
+        <img src="/OUTSTANDING.jpg" alt="William Anthony receiving an outstanding student recognition" width="225" height="225" />
+        <div className="outstanding-card-copy">
+          <p className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-[hsl(var(--accent))]">Recognition / 2026</p>
+          <p className="mt-1 text-sm font-semibold leading-5">William Anthony, an outstanding engineer in the making.</p>
+          <p className="mt-1 text-[0.68rem] leading-4 text-white/[0.58]">Curious, precise, and always building the next layer.</p>
+        </div>
+      </article>
       <div className="photo-carousel-dots" aria-label="Choose a photo">
         {photos.map((item, index) => <button key={item.src} type="button" onClick={() => goTo(index)} className={index === activePhoto ? 'is-active' : ''} aria-label={`Show ${item.label}`} aria-current={index === activePhoto ? 'true' : undefined} />)}
       </div>
