@@ -430,6 +430,63 @@ body.lightbox-open {
   color: transparent;
 }
 
+.hero-hover-highlight {
+  position: relative;
+  isolation: isolate;
+  transition: color 220ms ease, text-shadow 220ms ease;
+}
+
+.hero-hover-highlight::before {
+  position: absolute;
+  inset: -0.35em -0.55em;
+  z-index: -1;
+  content: '';
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(83,240,210,0.2), rgba(83,240,210,0) 68%);
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 260ms ease, transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.hero-hover-highlight:hover {
+  text-shadow: 0 0 24px rgba(83,240,210,0.28);
+}
+
+.hero-hover-highlight:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-hover-link {
+  position: relative;
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.hero-hover-link::after {
+  position: absolute;
+  right: -0.35rem;
+  bottom: -0.35rem;
+  left: -0.35rem;
+  height: 1px;
+  content: '';
+  background: hsl(var(--accent));
+  box-shadow: 0 0 10px hsl(var(--accent));
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 180ms ease, transform 240ms ease;
+}
+
+.hero-hover-link:hover {
+  text-shadow: 0 0 14px rgba(83,240,210,0.55);
+}
+
+.hero-hover-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .case-node,
 .case-trace {
   transform-box: fill-box;

@@ -104,12 +104,12 @@ export function Hero() {
             <p data-hero-eyebrow className="eyebrow animate-fade-rise text-white/[0.7]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.45]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
 
-            <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="animate-fade-rise mx-auto mt-7 max-w-6xl text-[clamp(3.5rem,9vw,8.6rem)] leading-[0.9] tracking-[-0.045em] text-white">
+            <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-7 max-w-6xl text-[clamp(3.5rem,9vw,8.6rem)] leading-[0.9] tracking-[-0.045em] text-white">
               <span data-hero-line className="block">Engineering intelligence</span>
               <span data-hero-line data-hero-line-accent className="hero-line-accent block text-white/[0.78] italic not-italic md:italic">from RTL to real-world systems.</span>
             </h1>
 
-            <p data-hero-copy className="animate-fade-rise-delay mx-auto mt-8 max-w-2xl text-base leading-7 text-white/[0.67] sm:text-lg sm:leading-8">
+            <p data-hero-copy className="hero-hover-highlight animate-fade-rise-delay mx-auto mt-8 max-w-2xl text-base leading-7 text-white/[0.67] sm:text-lg sm:leading-8">
               William Anthony is an Electrical and Electronics Engineering student at Institut Teknologi Bandung, designing verified digital hardware, intelligent embedded systems, and data-driven engineering tools.
             </p>
 
@@ -122,17 +122,17 @@ export function Hero() {
               </a>
             </div>
 
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-white/[0.48]">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
+            <p className="hero-hover-highlight mx-auto mt-6 max-w-xl text-sm leading-6 text-white/[0.48]">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
             <div data-hero-meta className="animate-fade-rise-delay-2 mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/[0.52]">
-              <a href={person.linkedin} target="_blank" rel="noreferrer" className="transition-colors hover:text-white">LinkedIn</a>
+              <a href={person.linkedin} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">LinkedIn</a>
               <span aria-hidden="true">/</span>
-              <a href={person.github} target="_blank" rel="noreferrer" className="transition-colors hover:text-white">GitHub</a>
+              <a href={person.github} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">GitHub</a>
               <span aria-hidden="true">/</span>
-              <a href={person.githubRepository} target="_blank" rel="noreferrer" className="transition-colors hover:text-white">Source</a>
+              <a href={person.githubRepository} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">Source</a>
               <span aria-hidden="true">/</span>
-              <a href={person.instagram} target="_blank" rel="noreferrer" className="transition-colors hover:text-white">Instagram</a>
+              <a href={person.instagram} target="_blank" rel="noreferrer" className="hero-hover-link transition-colors hover:text-white">Instagram</a>
               <span aria-hidden="true">/</span>
-              <a href={`mailto:${person.email}`} className="transition-colors hover:text-white">{person.email}</a>
+              <a href={`mailto:${person.email}`} className="hero-hover-link transition-colors hover:text-white">{person.email}</a>
             </div>
           </div>
         </div>
