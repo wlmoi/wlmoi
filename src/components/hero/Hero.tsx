@@ -96,12 +96,12 @@ export function Hero({ activeId }: { activeId: string }) {
           </div>
         </div>
 
-        <div className="flex flex-1 items-center justify-center py-20 sm:py-24 lg:py-28">
+        <div className="hero-content flex flex-1 items-center justify-center py-12 sm:py-16 lg:py-20">
           <div className="w-full max-w-6xl text-center">
             <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
             <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
 
-            <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-7 max-w-6xl text-[clamp(3.5rem,9vw,8.6rem)] leading-[0.9] tracking-[-0.045em] text-white">
+            <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-5 max-w-6xl text-[clamp(3.1rem,7.5vw,7.5rem)] leading-[0.91] tracking-[-0.045em] text-white">
               <span data-hero-line className="block">Engineering intelligence</span>
               <span data-hero-line data-hero-line-accent className="hero-line-accent block text-white/[0.78] italic not-italic md:italic">from RTL to real-world systems.</span>
             </h1>

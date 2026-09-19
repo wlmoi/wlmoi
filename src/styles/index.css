@@ -153,6 +153,10 @@ body.lightbox-open {
   padding-block: 0.35rem;
 }
 
+.hero-content {
+  transform: translateY(clamp(-7rem, -8vh, -2.25rem));
+}
+
 .hero-nav-link::after {
   position: absolute;
   right: 0;
@@ -784,6 +788,10 @@ body.lightbox-open {
 @media (max-width: 767px) {
   .section-shell {
     width: min(100% - 1.5rem, 1200px);
+  }
+
+  .hero-content {
+    transform: translateY(-1.5rem);
   }
 
   .outstanding-card {
