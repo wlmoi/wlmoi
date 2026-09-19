@@ -170,6 +170,28 @@ body.menu-open {
   padding-left: 1rem;
 }
 
+.photo-gallery {
+  columns: 1;
+  column-gap: 1rem;
+}
+
+.photo-gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .photo-gallery {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .photo-gallery {
+    columns: 3;
+  }
+}
+
 .form-control {
   width: 100%;
   border: 1px solid hsl(var(--border));

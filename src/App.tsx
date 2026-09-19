@@ -43,6 +43,7 @@ function PortfolioPage() {
 
     setMeta('meta[name="description"]', 'content', 'Portfolio of William Anthony, an Electrical and Electronics Engineering student working across ASIC design, FPGA systems, RTL verification, Edge AI, embedded systems, and digital signal processing.')
     setMeta('meta[property="og:url"]', 'content', siteUrl)
+    setMeta('meta[property="og:image"]', 'content', `${siteUrl.replace(/\/$/, '')}/og-placeholder.svg`)
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (canonical) canonical.href = siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`
 

@@ -3,9 +3,24 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, Download, ExternalLink } from 
 import { credentials, education, languages, person } from '../../data/portfolio'
 
 const photos = [
-  { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung' },
-  { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes' },
-  { src: '/photos/Foto-Foto%20untuk%20dishare.jpeg', alt: 'William Anthony teaching and serving with a community', label: 'Teaching / service' },
+  { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
+  { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes', width: 1200, height: 1600 },
+  { src: '/photos/Foto-Foto%20untuk%20dishare.jpeg', alt: 'William Anthony teaching and serving with a community', label: 'Teaching / service', width: 1000, height: 1250 },
+  { src: '/photos/ANUGERAHCITRAGANESHA_William_Achievement.png', alt: 'William Anthony receiving an academic achievement award', label: 'Achievement', width: 881, height: 885 },
+  { src: '/photos/ASISTENPRAKTIKUM.jpeg', alt: 'William Anthony during laboratory instruction', label: 'Laboratory instruction', width: 1254, height: 836 },
+  { src: '/photos/Foto%20DiBraga%20Blurred.png', alt: 'William Anthony at Braga, Bandung', label: 'Braga / portrait study', width: 1152, height: 2048 },
+  { src: '/photos/GANESHAAWARD2024.jpeg', alt: 'William Anthony at the Ganesha Award ceremony', label: 'Ganesha Award', width: 1080, height: 1078 },
+  { src: '/photos/ISPACS2025.jpeg', alt: 'William Anthony at ISPACS 2025', label: 'ISPACS 2025', width: 720, height: 1280 },
+  { src: '/photos/ITB86.jpeg', alt: 'William Anthony at an Institut Teknologi Bandung activity', label: 'ITB community', width: 1280, height: 960 },
+  { src: '/photos/KADERBELANEGARA.jpeg', alt: 'William Anthony at a civic leadership activity', label: 'Civic leadership', width: 1280, height: 960 },
+  { src: '/photos/MENEMBAK.JPG', alt: 'William Anthony at a field activity', label: 'Field activity', width: 2592, height: 1728 },
+  { src: '/photos/MENWAITB.jpeg', alt: 'William Anthony with the ITB community', label: 'ITB community', width: 1280, height: 960 },
+  { src: '/photos/PEMATERI_ITB_JTR2024.jpeg', alt: 'William Anthony presenting at ITB JTR 2024', label: 'Presenter / 2024', width: 800, height: 599 },
+  { src: '/photos/PENGABDIANKEAGAMAAN.jpeg', alt: 'William Anthony during a community service activity', label: 'Community service', width: 1280, height: 720 },
+  { src: '/photos/PPSNMENGAJAR2023_KETUA.jpeg', alt: 'William Anthony teaching during PPSN 2023', label: 'Teaching / 2023', width: 960, height: 1280 },
+  { src: '/photos/PPSNMENGAJAR2023_PANIT.jpeg', alt: 'William Anthony supporting PPSN 2023', label: 'PPSN / 2023', width: 1280, height: 720 },
+  { src: '/photos/PPSNMENGAJAR2024.jpeg', alt: 'William Anthony teaching during PPSN 2024', label: 'Teaching / 2024', width: 1600, height: 1200 },
+  { src: '/photos/SOTONG.jpeg', alt: 'William Anthony at a student activity', label: 'Student life', width: 960, height: 1280 },
 ]
 
 export function ProfileSection() {
@@ -48,9 +63,9 @@ export function ProfileSection() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr]">
-            <div className="photo-carousel relative overflow-hidden rounded-[2rem] border border-white/[0.12] bg-[#071b23]">
-              <div className="aspect-[4/5] min-h-[360px] w-full">
-                <img src={photo.src} alt={photo.alt} className="h-full w-full object-cover object-[center_28%] transition-opacity duration-500" />
+            <div className="photo-carousel relative min-w-0 overflow-hidden rounded-[2rem] border border-white/[0.12] bg-[#071b23]">
+              <div className="relative w-full max-h-[560px] overflow-hidden" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
+                <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="absolute inset-0 h-full w-full object-contain transition-opacity duration-500" />
               </div>
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/75 via-black/15 to-transparent p-5 pt-20">
                 <div>
@@ -104,6 +119,24 @@ export function ProfileSection() {
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.1] pt-6">
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.38]">Most Outstanding E&E Engineering Student · 2026</p>
           <a href={person.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[hsl(var(--accent))]">Connect on LinkedIn <ArrowUpRight size={15} aria-hidden="true" /></a>
+        </div>
+
+        <div className="mt-16 border-t border-white/[0.1] pt-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow">Field notes / all frames</p>
+              <h3 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">The work has a life outside the waveform.</h3>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-white/[0.5]">Teaching, community, competition, and the people around the work. Every frame keeps its original proportions.</p>
+          </div>
+          <div className="photo-gallery mt-8">
+            {photos.map((item) => (
+              <figure key={item.src} className="photo-gallery-item overflow-hidden rounded-[1.25rem] border border-white/[0.1] bg-[#071b23]">
+                <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" className="block h-auto w-full" />
+                <figcaption className="border-t border-white/[0.08] px-4 py-3 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-white/[0.42]">{item.label}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
     </section>
