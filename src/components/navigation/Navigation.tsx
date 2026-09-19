@@ -4,6 +4,7 @@ import { person } from '../../data/portfolio'
 
 const links = [
   ['Home', 'home'],
+  ['Profile', 'profile'],
   ['Expertise', 'expertise'],
   ['Experience', 'experience'],
   ['Selected Work', 'work'],

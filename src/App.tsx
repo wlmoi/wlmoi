@@ -8,10 +8,11 @@ import { CaseStudy } from './components/projects/CaseStudy'
 import { EngineeringVisual } from './components/three/EngineeringVisual'
 import { ContactForm } from './components/contact/ContactForm'
 import { SiteFooter } from './components/layout/SiteFooter'
+import { ProfileSection } from './components/profile/ProfileSection'
 import { capabilities, person, recognitions, skillGroups } from './data/portfolio'
 import { ResumePage } from './pages/ResumePage'
 
-const sections = ['home', 'expertise', 'experience', 'work', 'recognition', 'contact']
+const sections = ['home', 'profile', 'expertise', 'experience', 'work', 'recognition', 'contact']
 
 function PortfolioPage() {
   const [activeId, setActiveId] = useState('home')
@@ -75,12 +76,13 @@ function PortfolioPage() {
       <Navigation activeId={activeId} />
       <main id="main-content">
         <Hero />
+        <ProfileSection />
 
         <section id="expertise" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div>
-                <p className="eyebrow">01 / Engineering spectrum</p>
+                <p className="eyebrow">02 / Engineering spectrum</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A connected system of engineering capabilities.</h2>
               </div>
               <div>
@@ -130,7 +132,7 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
               <div>
-                <p className="eyebrow">03 / Experience timeline</p>
+                <p className="eyebrow">04 / Experience timeline</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Hands-on work across teaching, research, silicon, and production.</h2>
                 <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.52]">Dates are shown where publicly documented and verified for this implementation.</p>
               </div>
@@ -143,7 +145,7 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               <div>
-                <p className="eyebrow">04 / Education & recognition</p>
+                <p className="eyebrow">05 / Education & recognition</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">A technical foundation with external signals of trust.</h2>
               </div>
               <div className="grid gap-3">

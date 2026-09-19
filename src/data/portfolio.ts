@@ -1,4 +1,4 @@
-import type { Capability, Experience, Project, Recognition } from '../types/portfolio'
+import type { Capability, Credential, Experience, Project, Recognition } from '../types/portfolio'
 
 export const person = {
   name: 'William Anthony',
@@ -7,6 +7,7 @@ export const person = {
   institution: 'Institut Teknologi Bandung',
   graduation: '2027',
   gpa: '3.70 / 4.00',
+  graduationDate: 'July 2027 (expected)',
   headline: 'Engineering intelligence from RTL to real-world systems.',
   alternateHeadline: 'From silicon logic to intelligent systems.',
   supporting:
@@ -16,7 +17,35 @@ export const person = {
   github: 'https://github.com/wlmoi',
   githubRepository: 'https://github.com/wlmoi/wlmoi',
   instagram: 'https://www.instagram.com/wlmoi/',
+  portfolio: 'https://wlmoi.vercel.app/',
+  resumeUrl: '/resume?print=1',
+  paperUrl: '/1571326725_An%20Area-Optimized%208-bit%20Deep%20Learning%20Accelerator%20for%20GAN%20Image%20Generation%20on%20GF180MCU.pdf.pdf',
 } as const
+
+export const education = {
+  degree: 'Bachelor of Engineering in Electrical and Electronics Engineering',
+  institution: 'Institut Teknologi Bandung',
+  dates: 'July 2023 – July 2027 (expected)',
+  location: 'Bandung, Indonesia',
+  gpa: '3.70 / 4.00',
+  coursework: ['VLSI System Design', 'VLSI Digital Systems', 'Computer Architecture', 'Digital Systems', 'Digital IC Analysis and Design', 'Analog Mixed-Signal Electronic Design', 'Communication Systems', 'Electronics'],
+  focus: ['Design Validation and Verification', 'FPGA and ASIC Architecture', 'Information Technology', 'Software Development', 'Artificial Intelligence and Machine Learning', 'Data Engineering', 'Data Analysis'],
+} as const
+
+export const credentials: Credential[] = [
+  { title: 'IEEE Innovation at Work (PDH)', issuer: 'IEEE', date: 'April 2026', credentialId: '180904172' },
+  { title: 'Self Sensing Processor Systems', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '175679272' },
+  { title: 'How to Design an LC Oscillator', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '173374336' },
+  { title: 'Industrial Instrumentation, Level I', issuer: 'Toyota Indonesia (TMMIN)', date: '2025' },
+  { title: 'Winter School: Current Trends in Advanced Electronics', issuer: 'Tomsk State University of Control Systems and Radioelectronics', date: 'April 2025' },
+  { title: 'JavaScript (Intermediate)', issuer: 'HackerRank', date: 'January 2025', credentialId: '1442edef9152' },
+]
+
+export const languages = [
+  ['Indonesian', 'Native / bilingual'],
+  ['English', 'Full professional'],
+  ['Chinese', 'Elementary'],
+] as const
 
 export const capabilities: Capability[] = [
   {
@@ -114,6 +143,7 @@ export const projects: Project[] = [
     stack: ['FPGA', 'Verilog', 'Digital design'],
     challenge: 'Translate algorithmic computation into a hardware-oriented datapath and control structure.',
     outcome: 'Selected engineering work. Detailed public metrics were not supplied for this portfolio entry.',
+    href: person.paperUrl,
   },
   {
     id: 'iot-noise',
@@ -172,78 +202,85 @@ export const experiences: Experience[] = [
   {
     title: 'Junior Edge AI Engineer in Computer Vision and Audio',
     organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
+    dates: 'Sep 2026 – Mar 2027',
     location: 'Bandung, Indonesia',
-    summary: 'Junior engineering role focused on Edge AI work across computer vision and audio.',
+    summary: 'Develop edge AI prototypes for computer vision and audio applications by integrating embedded hardware, signal processing, and machine learning models.',
+    bullets: ['Develop edge AI prototypes for computer vision and audio applications by integrating embedded hardware, signal processing, and machine learning models.'],
   },
   {
     title: 'Research Assistant',
     organization: 'Microelectronics Center of Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
+    dates: 'Sep 2026 – Mar 2027',
     location: 'Bandung, Indonesia',
-    summary: 'Research contribution within the microelectronics center.',
+    summary: 'Design and verify digital hardware for microelectronics research for POLYTRON audio projects, with emphasis on ASIC implementation and validation workflows.',
+    bullets: ['Design and verify digital hardware for POLYTRON audio projects, with emphasis on ASIC implementation and validation workflows.'],
   },
   {
     title: 'Electronics II Laboratory Coordinator',
     organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
+    dates: 'Sep 2025 – Jan 2027',
     location: 'Bandung, Indonesia',
-    summary: 'Coordinates the Electronics II laboratory experience and its technical delivery.',
+    summary: 'Lead laboratory instruction in circuit analysis, LTspice, oscilloscopes, filters, and operational amplifiers. Mentor more than 60 students in simulation and hardware debugging.',
+    bullets: ['Lead laboratory instruction in circuit analysis, LTspice, oscilloscopes, filters, and operational amplifiers.', 'Mentor more than 60 students in simulation and hardware debugging.', 'Selected as the youngest and only third-year assistant on a 17-member team and voted Favorite Assistant for technical excellence and teaching impact.'],
   },
   {
     title: 'Electric Circuits Laboratory Assistant',
     organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2025 – Present',
+    dates: 'Sep 2025 – Jan 2027',
     location: 'Bandung, Indonesia',
-    summary: 'Guides students through circuit theory, LTspice simulation, oscilloscope operation, filter analysis, and op-amp implementation.',
+    summary: 'Guide students through circuit theory, LTspice simulation, oscilloscope operation, filter analysis, and op-amp implementation.',
   },
   {
     title: 'Product Consumables Intern',
     organization: 'Alcon',
     dates: 'Jul 2026 – Aug 2026',
     location: 'Batam, Indonesia',
-    summary: 'Automated production-data flows across 40+ sheets and built notification workflows using Power Apps, Power Automate, and Excel.',
+    summary: 'Consolidated more than 40 Excel sheets into a standardized real-time dataset using Power Apps, Power Automate, and Excel.',
+    bullets: ['Consolidated more than 40 Excel sheets into a standardized real-time dataset.', 'Owned the dashboard workflow against user requirements and implemented automated notification flows for production operations.'],
   },
   {
     title: 'Programming Problem Solving Course Assistant',
     organization: 'Institut Teknologi Bandung',
     dates: 'Feb 2026 – Jun 2026',
     location: 'Bandung, Indonesia',
-    summary: 'Supported C programming and Arduino integration through lectures, exercises, projects, debugging, and assessment support.',
+    summary: 'Taught C programming and Arduino integration to more than 40 students, with emphasis on problem decomposition, testing, debugging, and engineering tradeoffs.',
   },
   {
     title: 'Research Assistant in Partial-Discharge Detection',
     organization: 'Institut Teknologi Bandung',
     dates: 'Feb 2025 – Feb 2026',
     location: 'Bandung, Indonesia',
-    summary: 'Worked on MATLAB modeling and Verilog signal processing, including CSV-to-MEM conversion, peak detection, and an 8,192-point DIT FFT.',
+    summary: 'Supported partial-discharge detection research through MATLAB modeling and Verilog signal-processing implementation.',
+    bullets: ['Built and validated a 16-bit peak-detection system using CSV-to-MEM data conversion.', 'Designed an 8,192-point FFT in Verilog using a decimation-in-time butterfly architecture.'],
   },
   {
     title: 'Digital Systems Assistant Lecturer and Laboratory Assistant',
     organization: 'Institut Teknologi Bandung',
     dates: 'Sep 2025 – Jan 2026',
     location: 'Bandung, Indonesia',
-    summary: 'Taught VHDL, RTL methodology, FSM design, ModelSim testbenches, waveform verification, Quartus deployment, and FPGA DSP projects.',
+    summary: 'Instructed more than 50 students in VHDL, RTL methodology, finite-state machines, testbenches, waveform verification, synthesis, timing analysis, and FPGA deployment.',
+    bullets: ['Instructed more than 50 students in VHDL, RTL methodology, finite-state machines, testbenches, waveform verification, synthesis, timing analysis, and FPGA deployment.', 'Supervised DSP projects including CORDIC and a 64-point FFT on Cyclone IV and DE10-Lite FPGA platforms using ModelSim and Intel Quartus Prime.'],
   },
   {
     title: 'Chipathon 2025 Tapeout Participant',
     organization: 'IEEE Solid-State Circuits Society Central Illinois Section Chapter',
     dates: 'Jul 2025 – Dec 2025',
-    summary: 'Participated in an open-source silicon tapeout program.',
+    summary: 'Contributed digital signal-processing control for a three-qubit Quantum Fourier Transform chip in an international tapeout program.',
   },
   {
     title: 'Front-End Developer',
     organization: 'HME ITB and OSKM ITB',
     dates: 'Jul 2024 – Feb 2025',
-    summary: 'Built mobile-friendly web experiences for student organizations, including the HME election platform and OSKM ITB web work.',
+    summary: 'Developed mobile-friendly web applications, including a private election platform built with the MEAN framework.',
   },
 ]
 
 export const recognitions: Recognition[] = [
   { title: 'Most Outstanding Electrical and Electronics Engineering Student 2026', issuer: 'Institut Teknologi Bandung', year: '2026' },
   { title: 'Ganesha Awardee', issuer: 'Institut Teknologi Bandung', year: '2024 & 2025', detail: 'Two-time recipient.' },
-  { title: 'Bachelor of Engineering, Electrical and Electronics Engineering', issuer: 'Institut Teknologi Bandung', year: '2023 – 2027' },
-  { title: 'Gold Medal, National Science Olympiad', issuer: 'OPSI', year: '2023', detail: 'Informatics, English, and Mathematics.' },
+  { title: '3rd Place, Team Category · USU International Chess Championship', issuer: 'USU', year: '2024' },
+  { title: 'Gold Medal · KTO Mathematics', issuer: 'KTO', year: 'June 2023' },
+  { title: 'Silver Medal · KTO Mathematics', issuer: 'KTO', year: 'January 2025' },
 ]
 
 export const skillGroups = {

@@ -26,6 +26,7 @@ export type Experience = {
   dates: string
   location?: string
   summary: string
+  bullets?: string[]
 }
 
 export type Recognition = {
@@ -33,4 +34,11 @@ export type Recognition = {
   issuer?: string
   year?: string
   detail?: string
+}
+
+export type Credential = {
+  title: string
+  issuer: string
+  date?: string
+  credentialId?: string
 }

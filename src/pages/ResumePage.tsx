@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { ArrowLeft, Download } from 'lucide-react'
-import { person, projects, recognitions, experiences } from '../data/portfolio'
+import { credentials, education, person, projects, recognitions, experiences, skillGroups } from '../data/portfolio'
 
 export function ResumePage() {
   useEffect(() => {
@@ -23,7 +23,7 @@ export function ResumePage() {
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <h1 className="font-display text-5xl leading-none tracking-tight md:text-6xl">{person.name}</h1>
-              <p className="mt-3 text-sm font-semibold text-slate-600">{person.role} · {person.institution} · Expected graduation {person.graduation}</p>
+              <p className="mt-3 text-sm font-semibold text-slate-600">{person.role} · ASIC and FPGA Design · Design Verification · Edge AI</p>
               <p className="mt-2 text-sm text-slate-500">{person.location} · GPA {person.gpa}</p>
             </div>
             <div className="text-sm leading-6 text-slate-600 md:text-right">
@@ -32,8 +32,26 @@ export function ResumePage() {
               <p>{person.github.replace('https://', '')}</p>
             </div>
           </div>
-          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700">{person.supporting}</p>
+          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700">{person.supporting} GPA {person.gpa}, expected graduation {person.graduationDate}. Declared Most Outstanding Electrical and Electronics Engineering Student 2026.</p>
         </header>
+
+        <ResumeSection title="Technical skills">
+          <div className="grid gap-4 md:grid-cols-2">
+            {Object.entries(skillGroups).map(([group, skills]) => (
+              <div key={group}>
+                <h3 className="font-semibold capitalize">{group}</h3>
+                <p className="mt-1 text-sm leading-6 text-slate-600">{skills.join(' · ')}</p>
+              </div>
+            ))}
+          </div>
+        </ResumeSection>
+
+        <ResumeSection title="Education">
+          <h3 className="font-semibold">{education.degree}</h3>
+          <p className="text-sm text-slate-500">{education.institution} · {education.dates} · {education.location}</p>
+          <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Relevant coursework:</strong> {education.coursework.join(', ')}.</p>
+          <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Focus areas:</strong> {education.focus.join(', ')}.</p>
+        </ResumeSection>
 
         <ResumeSection title="Selected experience">
           {experiences.slice(0, 9).map((item) => (
@@ -67,6 +85,18 @@ export function ResumePage() {
                 <h3 className="font-semibold">{item.title}</h3>
                 <p className="text-sm text-slate-500">{[item.issuer, item.year].filter(Boolean).join(' · ')}</p>
                 {item.detail ? <p className="mt-1 text-sm text-slate-600">{item.detail}</p> : null}
+              </div>
+            ))}
+          </div>
+        </ResumeSection>
+
+        <ResumeSection title="Licenses & certifications">
+          <div className="grid gap-3 md:grid-cols-2">
+            {credentials.map((credential) => (
+              <div key={`${credential.title}-${credential.issuer}`} className="resume-section">
+                <h3 className="font-semibold">{credential.title}</h3>
+                <p className="text-sm text-slate-500">{credential.issuer}{credential.date ? ` · ${credential.date}` : ''}</p>
+                {credential.credentialId ? <p className="mt-1 font-mono text-xs text-slate-400">Credential ID: {credential.credentialId}</p> : null}
               </div>
             ))}
           </div>

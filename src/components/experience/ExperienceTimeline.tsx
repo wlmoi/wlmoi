@@ -15,6 +15,11 @@ export function ExperienceTimeline() {
               <h3 className="text-xl font-semibold tracking-tight md:text-2xl">{item.title}</h3>
               <p className="mt-1 text-sm text-white/[0.58]">{item.organization}{item.location ? ` · ${item.location}` : ''}</p>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/[0.67]">{item.summary}</p>
+              {item.bullets && item.bullets.length > 1 ? (
+                <ul className="mt-4 grid gap-2 text-sm leading-6 text-white/[0.5]">
+                  {item.bullets.slice(1).map((bullet) => <li key={bullet} className="pl-4 before:mr-2 before:text-[hsl(var(--accent))] before:content-['/']">{bullet}</li>)}
+                </ul>
+              ) : null}
             </div>
           </div>
         </article>

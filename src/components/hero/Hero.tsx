@@ -70,6 +70,7 @@ export function Hero() {
 
             <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
               <a href="#home" className="text-sm text-white transition-colors">Home</a>
+              <a href="#profile" className="text-sm text-white/[0.65] transition-colors hover:text-white">Profile</a>
               <a href="#expertise" className="text-sm text-white/[0.65] transition-colors hover:text-white">Expertise</a>
               <a href="#experience" className="text-sm text-white/[0.65] transition-colors hover:text-white">Experience</a>
               <a href="#work" className="text-sm text-white/[0.65] transition-colors hover:text-white">Selected Work</a>
