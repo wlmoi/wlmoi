@@ -46,6 +46,14 @@ An RTL-to-GDSII accelerator built around a 4x4 processing-element array, SRAM bu
   </a>
 </p>
 
+
+
+##  _Stats_
+[![My GitHub Streak](https://streak-stats.demolab.com/?user=wlmoi&theme=dracula)](https://git.io/streak-stats)
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&layout=compact&theme=dracula) <!--Add Indonesian version-->
+[![GitHub Streak](https://streak-stats.demolab.com?user=wlmoi&theme=material-palenight&border_radius=5&locale=id&date_format=j%20M%5B%20Y%5D&card_width=250&card_height=100)](https://git.io/streak-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&layout=compact&theme=dracula)](https://github.com/wlmoi)
+
 ## About this repository
 
 This repository contains the source for my portfolio website and print-friendly resume. The website details, local setup, Supabase configuration, deployment notes, and accessibility decisions live in the [website guide](docs/website.md).
