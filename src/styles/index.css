@@ -921,18 +921,10 @@ body.lightbox-open {
 }
 
 .fx-voltage {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.01em;
+  display: block;
   color: rgba(255,255,255,0.9);
-}
-
-.fx-voltage b {
-  display: inline-block;
-  font: inherit;
-  font-weight: inherit;
   animation: fx-voltage 3s steps(1) infinite;
-  animation-delay: calc(var(--i) * 0.08s);
+  will-change: transform, color, text-shadow, filter;
 }
 
 @keyframes fx-voltage {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import type { CSSProperties } from 'react'
 import { featuredCaseStudy } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap, ScrollTrigger } from '../../lib/gsap'
@@ -95,11 +94,7 @@ export function CaseStudy() {
 }
 
 function VoltageHeading({ text, className }: { text: string; className: string }) {
-  return (
-    <h2 className={`fx-voltage ${className}`} role="img" aria-label={text}>
-      {[...text].map((letter, index) => <b key={`${letter}-${index}`} aria-hidden="true" style={{ '--i': index } as CSSProperties}>{letter === ' ' ? '\u00a0' : letter}</b>)}
-    </h2>
-  )
+  return <h2 className={`fx-voltage ${className}`} data-text={text}>{text}</h2>
 }
 
 function Schematic({ active }: { active: number }) {
