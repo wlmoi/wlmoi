@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { featuredCaseStudy } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap, ScrollTrigger } from '../../lib/gsap'
@@ -42,7 +43,7 @@ export function CaseStudy() {
         <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="eyebrow">Featured case study</p>
-            <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text={featuredCaseStudy.title}>{featuredCaseStudy.title}</h2>
+            <VoltageHeading text={featuredCaseStudy.title} className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/[0.62]">{featuredCaseStudy.intro}</p>
           </div>
           <div className="case-study-kicker fx-negative" data-text="GF180MCU · 180 nm · SIGNED INT8">GF180MCU · 180 nm · SIGNED INT8</div>
@@ -55,7 +56,7 @@ export function CaseStudy() {
                 <article key={item.label} data-case-step className={`case-step relative w-full max-w-xl ${active === index ? 'case-step--active' : ''}`}>
                   <span className="case-step-indicator" aria-hidden="true"><span /></span>
                   <p className="eyebrow">{String(index + 1).padStart(2, '0')} / {item.label}</p>
-                  <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{item.kicker}</h3>
+                  <h3 className="fx-lens fx-lens-delayed mt-4 text-2xl font-semibold md:text-3xl" data-text={item.kicker}>{item.kicker}</h3>
                   <p className="mt-4 text-sm leading-7 text-white/[0.62] md:text-base">{item.body}</p>
                 </article>
               ))}
@@ -90,6 +91,14 @@ export function CaseStudy() {
         </div>
       </div>
     </section>
+  )
+}
+
+function VoltageHeading({ text, className }: { text: string; className: string }) {
+  return (
+    <h2 className={`fx-voltage ${className}`} role="img" aria-label={text}>
+      {[...text].map((letter, index) => <b key={`${letter}-${index}`} aria-hidden="true" style={{ '--i': index } as CSSProperties}>{letter === ' ' ? '\u00a0' : letter}</b>)}
+    </h2>
   )
 }
 

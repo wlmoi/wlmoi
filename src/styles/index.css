@@ -920,6 +920,35 @@ body.lightbox-open {
   color: rgba(255,255,255,0.48);
 }
 
+.fx-voltage {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.01em;
+  color: rgba(255,255,255,0.9);
+}
+
+.fx-voltage b {
+  display: inline-block;
+  font: inherit;
+  font-weight: inherit;
+  animation: fx-voltage 3s steps(1) infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes fx-voltage {
+  0%, 100% { transform: none; color: inherit; text-shadow: none; filter: brightness(1); }
+  7% { transform: translate(1px, -1px) skewX(-10deg); color: #fff; text-shadow: 0 0 4px #fff, 0 0 14px #4ff8ff, 2px 0 #ff4fd8, -2px 0 #4ff8ff; filter: brightness(1.85); }
+  9% { transform: translate(-1px, 1px) skewX(8deg); color: #4ff8ff; text-shadow: 0 0 10px #4ff8ff, 0 0 22px rgba(79,248,255,0.7); }
+  11%, 48% { transform: none; color: inherit; text-shadow: none; filter: brightness(1); }
+  61% { transform: translate(0, -1px) skewX(4deg); color: #fff; text-shadow: 0 0 6px #ff4fd8, 0 0 18px #ff4fd8, -1px 0 #4ff8ff; filter: brightness(1.6); }
+  63% { transform: none; color: inherit; text-shadow: none; filter: brightness(1); }
+}
+
+.fx-lens-delayed::before,
+.fx-lens-delayed::after {
+  animation-delay: 5s;
+}
+
 .fx-pendulum b {
   display: inline-block;
   font-weight: inherit;

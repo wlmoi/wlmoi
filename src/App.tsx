@@ -109,7 +109,7 @@ function PortfolioPage() {
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div data-spectrum-copy>
                 <p className="eyebrow">02 / Engineering spectrum</p>
-                <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text="A connected system of engineering capabilities.">A connected system of engineering capabilities.</h2>
+                <VoltageHeading text="A connected system of engineering capabilities." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
               <div data-motion-copy className="flex flex-col gap-6 lg:items-end">
                 <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Not a stack of badges. A progression from architecture and RTL, through verification and physical implementation, into embedded intelligence and engineering software.</p>
@@ -147,7 +147,7 @@ function PortfolioPage() {
             <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div data-motion-copy>
                 <p className="eyebrow">02 / Additional selected work</p>
-                <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text="Projects with an engineering through-line.">Projects with an engineering through-line.</h2>
+                <VoltageHeading text="Projects with an engineering through-line." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
               <p className="max-w-md text-sm leading-6 text-white/[0.48]">Every entry stays scoped to the evidence available. Ongoing targets are labeled as targets, not outcomes.</p>
             </div>
@@ -162,7 +162,7 @@ function PortfolioPage() {
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
               <div data-motion-copy>
                 <p className="eyebrow">04 / Experience timeline</p>
-                <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text="Hands-on work across teaching, research, silicon, and production.">Hands-on work across teaching, research, silicon, and production.</h2>
+                <VoltageHeading text="Hands-on work across teaching, research, silicon, and production." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
                 <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.52]">Dates are shown where publicly documented and verified for this implementation.</p>
               </div>
               <ExperienceTimeline />
@@ -175,7 +175,7 @@ function PortfolioPage() {
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               <div>
                 <p className="eyebrow">05 / Education & recognition</p>
-                <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text="A technical foundation with external signals of trust.">A technical foundation with external signals of trust.</h2>
+                <VoltageHeading text="A technical foundation with external signals of trust." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
                 <p className="mt-5 max-w-md text-base leading-7 text-white/[0.62]">William is an ambitious, award-winning Electrical and Electronics Engineering student at ITB, specializing in integrated-circuit design and hardware-software integration. His work bridges VLSI, FPGA, verification, embedded intelligence, and applied AI into solutions that are precise, scalable, and built with teams.</p>
                 <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.48]">From an 8,192-point FFT and a 16-bit peak detector to a programmable GAN and a three-qubit Quantum Fourier Transform tapeout contribution, the thread is consistent: translate difficult technical requirements into working systems.</p>
               </div>
@@ -202,7 +202,7 @@ function PortfolioPage() {
             <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
               <div data-motion-copy>
                 <p className="eyebrow">05 / Contact</p>
-                <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text="Let’s build systems that hold up under verification.">Let’s build systems that hold up under verification.</h2>
+                <VoltageHeading text="Let’s build systems that hold up under verification." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
                 <p className="mt-5 max-w-md text-base leading-7 text-white/[0.72]">William brings the curiosity of a researcher, the discipline of a verification engineer, and the team instinct of a mentor. He is open to conversations about ASIC, FPGA, design verification, Edge AI, embedded systems, research collaboration, and engineering internships.</p>
                 <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.5]">Whether the brief begins as a waveform, a production dataset, or a half-formed systems idea, the goal is the same: make it clear, measurable, and ready for the real world.</p>
                 <div className="mt-8 grid gap-2">
@@ -250,6 +250,14 @@ function CapabilityAccordion({ capability }: { capability: (typeof capabilities)
 
 function PendulumLabel({ text }: { text: string }) {
   return <p className="fx-pendulum eyebrow" role="img" aria-label={text}>{[...text].map((letter, index) => <b key={`${letter}-${index}`} aria-hidden="true" style={{ '--i': index } as CSSProperties}>{letter}</b>)}</p>
+}
+
+function VoltageHeading({ text, className }: { text: string; className: string }) {
+  return (
+    <h2 className={`fx-voltage ${className}`} role="img" aria-label={text}>
+      {[...text].map((letter, index) => <b key={`${letter}-${index}`} aria-hidden="true" style={{ '--i': index } as CSSProperties}>{letter === ' ' ? '\u00a0' : letter}</b>)}
+    </h2>
+  )
 }
 
 export default function App() {
