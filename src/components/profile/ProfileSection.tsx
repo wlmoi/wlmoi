@@ -4,6 +4,7 @@ import { credentials, education, languages, person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 const photos = [
+  { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics / field work', width: 1280, height: 720 },
   { src: '/photos/RunningWithMrNanaSutisnaPHD.jpeg', alt: 'William Anthony with Mr Nana Sutisna, PhD', label: 'Field study / collaboration', width: 900, height: 1600 },
   { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
   { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes', width: 1200, height: 1600 },
@@ -28,6 +29,11 @@ const photos = [
   { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
   { src: '/photos/SignalSystems.jpeg', alt: 'William Anthony during the Signal and Systems course', label: 'ITB / Signal and Systems', width: 1280, height: 720 },
   { src: '/proof-of-work/PPSNMENGAJAR.jpeg', alt: 'William Anthony teaching during PPSN', label: 'PPSN / teaching', width: 1280, height: 720 },
+  { src: '/photos/CalledForAnugerahCitraGanesha2025ITB.jpeg', alt: 'William Anthony called for the Citra Ganesha Award at ITB', label: 'Citra Ganesha / 2025', width: 900, height: 1600 },
+  { src: '/photos/MakingDSPKitsforPracticum.jpeg', alt: 'William Anthony making DSP kits for practicum', label: 'DSP kits / practicum', width: 900, height: 1600 },
+  { src: '/photos/OceanographyClass_Electro.jpeg', alt: 'William Anthony during an oceanography electronics class', label: 'Oceanography / electronics', width: 900, height: 1600 },
+  { src: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William Anthony testing FPGA hardware on PYNQ', label: 'PYNQ / FPGA testing', width: 900, height: 1600 },
+  { src: '/photos/STEI_Lab.jpeg', alt: 'William Anthony in the STEI laboratory', label: 'STEI / laboratory', width: 1280, height: 720 },
 ]
 
 export function ProfileSection() {
@@ -156,7 +162,11 @@ function FullBleedCarousel() {
             style={{ aspectRatio: `${item.width} / ${item.height}` }}
             aria-label={`${index + 1} of ${photos.length}: ${item.label}`}
           >
-            <img src={item.src} alt={item.alt} width={item.width} height={item.height} data-zoom-src={item.src} className="photo-carousel-image" />
+            {'type' in item && item.type === 'video' ? (
+              <video src={item.src} aria-label={item.alt} className="photo-carousel-image" autoPlay loop muted playsInline preload="metadata" />
+            ) : (
+              <img src={item.src} alt={item.alt} width={item.width} height={item.height} data-zoom-src={item.src} className="photo-carousel-image" />
+            )}
           </div>
         ))}
       </div>
