@@ -148,11 +148,24 @@ body.lightbox-open {
 }
 
 .boot-label-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
   font-size: clamp(0.62rem, 1.4vw, 0.78rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: hsl(var(--accent));
+}
+
+.boot-spinner {
+  display: inline-block;
+  width: 1ch;
+  color: #4ff8ff;
+  font-size: 1.35em;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 6px #4ff8ff, 0 0 16px rgba(79,248,255,0.7);
 }
 
 .fx-pop {
@@ -173,7 +186,7 @@ body.lightbox-open {
 
 @keyframes fx-pop {
   0%, 55%, 100% { transform: translateY(0); text-shadow: 0 0 0 transparent; }
-  25% { transform: translateY(-12px) rotate(-4deg); text-shadow: 0 12px 0 #ff4fd8, 0 0 18px rgba(79,248,255,0.55); }
+  25% { transform: translateY(-12px) rotate(-4deg); text-shadow: 0 12px 0 #4ff8ff, 0 0 18px rgba(79,248,255,0.72); }
 }
 
 .hero-nav-link {
