@@ -172,6 +172,10 @@ body.lightbox-open {
   transform: translateY(0);
 }
 
+.hero-home {
+  min-height: 1500px;
+}
+
 .hero-nav-link::after {
   position: absolute;
   right: 0;
@@ -869,6 +873,10 @@ body.lightbox-open {
 
   .section-shell {
     width: min(100% - 1.5rem, 1200px);
+  }
+
+  .hero-home {
+    min-height: 1100px;
   }
 
   .hero-content {

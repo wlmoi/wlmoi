@@ -59,7 +59,7 @@ export function Hero({ activeId }: { activeId: string }) {
   }
 
   return (
-    <section ref={root} id="home" className="relative min-h-[125vh] overflow-hidden" aria-label="William Anthony introduction">
+    <section ref={root} id="home" className="hero-home relative overflow-hidden" aria-label="William Anthony introduction">
       <div className="absolute inset-0 z-0 bg-[hsl(var(--background))]" aria-hidden="true">
         {!videoError ? (
           <video
