@@ -42,7 +42,7 @@ export function CaseStudy() {
         <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <p className="eyebrow">Featured case study</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">{featuredCaseStudy.title}</h2>
+            <h2 className="fx-lens mt-4 text-4xl font-semibold tracking-tight md:text-6xl" data-text={featuredCaseStudy.title}>{featuredCaseStudy.title}</h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/[0.62]">{featuredCaseStudy.intro}</p>
           </div>
           <div className="case-study-kicker fx-negative" data-text="GF180MCU · 180 nm · SIGNED INT8">GF180MCU · 180 nm · SIGNED INT8</div>
@@ -52,7 +52,7 @@ export function CaseStudy() {
           <div className="order-2 lg:order-1">
             <div className="space-y-28">
               {featuredCaseStudy.stages.map((item, index) => (
-                <article key={item.label} data-case-step className={`case-step relative min-h-[42vh] max-w-xl ${active === index ? 'case-step--active' : ''}`}>
+                <article key={item.label} data-case-step className={`case-step relative w-full max-w-xl ${active === index ? 'case-step--active' : ''}`}>
                   <span className="case-step-indicator" aria-hidden="true"><span /></span>
                   <p className="eyebrow">{String(index + 1).padStart(2, '0')} / {item.label}</p>
                   <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{item.kicker}</h3>

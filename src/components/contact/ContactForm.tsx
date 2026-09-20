@@ -100,8 +100,8 @@ export function ContactForm() {
           <input id="subject" name="subject" className="form-control" aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? 'subject-error' : undefined} value={form.subject} onChange={(e) => setField('subject', e.target.value)} />
         </Field>
         <Field label="Category" htmlFor="category" error={errors.category}>
-          <select id="category" name="category" className="form-control" aria-invalid={Boolean(errors.category)} aria-describedby={errors.category ? 'category-error' : undefined} value={form.category} onChange={(e) => setField('category', e.target.value as ContactInput['category'])}>
-            {['Internship', 'Research collaboration', 'Engineering opportunity', 'General', 'Other'].map((option) => <option key={option}>{option}</option>)}
+          <select id="category" name="category" className="form-control category-select" aria-invalid={Boolean(errors.category)} aria-describedby={errors.category ? 'category-error' : undefined} value={form.category} onChange={(e) => setField('category', e.target.value as ContactInput['category'])}>
+            {['Internship', 'Research collaboration', 'Engineering opportunity', 'General', 'Other'].map((option) => <option key={option} value={option}>{option}</option>)}
           </select>
         </Field>
       </div>

@@ -878,6 +878,26 @@ body.lightbox-open {
   font: inherit;
 }
 
+.category-select {
+  color-scheme: dark;
+  appearance: auto;
+  cursor: pointer;
+}
+
+.category-select option {
+  background: #072f3f;
+  color: white;
+}
+
+.category-select:hover {
+  border-color: rgba(83,240,210,0.68);
+  background: rgba(83,240,210,0.08);
+}
+
+.category-select:focus {
+  background: #072f3f;
+}
+
 .form-control::placeholder {
   color: rgba(255,255,255,0.35);
 }
@@ -892,6 +912,74 @@ body.lightbox-open {
   margin-top: 0.45rem;
   color: #ffb4b4;
   font-size: 0.78rem;
+}
+
+.fx-pendulum {
+  display: inline-flex;
+  gap: 0.02em;
+  color: rgba(255,255,255,0.48);
+}
+
+.fx-pendulum b {
+  display: inline-block;
+  font-weight: inherit;
+  transform-origin: 50% -80%;
+  animation: fx-pendulum 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.12s);
+}
+
+.fx-pendulum b:nth-child(even) {
+  color: hsl(var(--accent));
+}
+
+@keyframes fx-pendulum {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+.fx-lens {
+  position: relative;
+  isolation: isolate;
+  color: rgba(255,255,255,0.9);
+}
+
+.fx-lens::before {
+  position: absolute;
+  inset: -0.1em 0;
+  z-index: -1;
+  display: grid;
+  place-items: center;
+  content: attr(data-text);
+  color: white;
+  font: inherit;
+  letter-spacing: inherit;
+  text-shadow: -2px 0 rgba(255,79,216,0.7), 2px 0 rgba(79,248,255,0.7);
+  clip-path: ellipse(42px 30px at -44px 50%);
+  animation: fx-lens-refract 4.6s cubic-bezier(.6, 0, .4, 1) infinite;
+  pointer-events: none;
+}
+
+.fx-lens::after {
+  position: absolute;
+  inset: -0.1em 0;
+  z-index: 1;
+  content: '';
+  border-radius: 50%;
+  background: radial-gradient(ellipse 40px 30px at -44px 50%, transparent 0 65%, rgba(255,255,255,0.55) 76% 84%, transparent 96%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: fx-lens-glass 4.6s cubic-bezier(.6, 0, .4, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes fx-lens-refract {
+  0%, 6% { clip-path: ellipse(42px 30px at -44px 50%); }
+  94%, 100% { clip-path: ellipse(42px 30px at calc(100% + 44px) 50%); }
+}
+
+@keyframes fx-lens-glass {
+  0%, 6% { background-position: -86px 0; }
+  94%, 100% { background-position: 86px 0; }
 }
 
 @media (max-width: 767px) {
