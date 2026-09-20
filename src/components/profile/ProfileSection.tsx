@@ -103,7 +103,7 @@ export function ProfileSection() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.1] pt-6">
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.38]">Most Outstanding E&E Engineering Student · 2026</p>
+          <p className="fx-magnetic max-w-3xl" role="img" aria-label="Awarded the Most Outstanding Student in Electronics and Electrical Engineering at the Bandung Institute of Technology for 2026">Awarded the "Most Outstanding Student" in Electronics and Electrical Engineering at the Bandung Institute of Technology for 2026</p>
           <a href={person.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[hsl(var(--accent))]">Connect on LinkedIn <ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
 

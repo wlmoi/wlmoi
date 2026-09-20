@@ -936,9 +936,39 @@ body.lightbox-open {
   63% { transform: none; color: inherit; text-shadow: none; filter: brightness(1); }
 }
 
-.fx-lens-delayed::before,
-.fx-lens-delayed::after {
-  animation-delay: 5s;
+.fx-magnetic {
+  position: relative;
+  display: inline-block;
+  color: rgba(255,255,255,0.78);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.6vw, 2.2rem);
+  line-height: 1.08;
+  text-wrap: balance;
+  animation: fx-magnetic 2.7s ease-in-out infinite;
+}
+
+.fx-magnetic::after {
+  position: absolute;
+  inset: -0.35rem -0.6rem;
+  z-index: -1;
+  content: '';
+  border: 1px solid rgba(83,240,210,0.18);
+  border-radius: 1rem;
+  box-shadow: 0 0 24px rgba(83,240,210,0.12);
+  opacity: 0.75;
+  animation: magnetic-field 2.7s ease-in-out infinite;
+}
+
+@keyframes fx-magnetic {
+  0%, 100% { transform: translateX(0) scale(1); color: rgba(255,255,255,0.78); text-shadow: 0 0 0 transparent; }
+  42% { transform: translateX(2px) scale(1.025); color: white; text-shadow: 0 0 18px rgba(255,79,216,0.7); }
+  62% { transform: translateX(-1px) scale(0.99); color: hsl(var(--accent)); text-shadow: 0 0 16px rgba(79,248,255,0.7); }
+}
+
+@keyframes magnetic-field {
+  0%, 100% { transform: scale(0.98); opacity: 0.35; }
+  42% { transform: scale(1.02); opacity: 0.9; }
+  62% { transform: scale(1); opacity: 0.55; }
 }
 
 .fx-pendulum b {
