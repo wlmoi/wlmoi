@@ -137,15 +137,43 @@ body.lightbox-open {
 }
 
 .boot-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.55rem;
+  max-width: min(92vw, 42rem);
+  margin: 0;
   color: rgba(255,255,255,0.72);
 }
 
-.boot-label span {
+.boot-label-status {
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: hsl(var(--accent));
+}
+
+.fx-pop {
+  display: inline-flex;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 0.015em;
+  color: white;
+}
+
+.fx-pop b {
+  display: inline-block;
+  font-weight: 400;
+  animation: fx-pop 1.5s cubic-bezier(.3, 1.6, .4, 1) infinite;
+  animation-delay: calc(var(--i) * 0.055s);
+}
+
+@keyframes fx-pop {
+  0%, 55%, 100% { transform: translateY(0); text-shadow: 0 0 0 transparent; }
+  25% { transform: translateY(-12px) rotate(-4deg); text-shadow: 0 12px 0 #ff4fd8, 0 0 18px rgba(79,248,255,0.55); }
 }
 
 .hero-nav-link {

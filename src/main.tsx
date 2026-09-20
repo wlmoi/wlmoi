@@ -5,10 +5,15 @@ import App from './App'
 import './styles/index.css'
 
 function LoadingScreen() {
+  const loaderText = 'Loading William Anthony'
+
   return (
     <div className="boot-screen-content" role="status" aria-live="polite">
       <div className="boot-loader" aria-hidden="true" />
-      <p className="boot-label">Loading William Anthony<span> / systems online</span></p>
+      <p className="boot-label" aria-label="Loading William Anthony / systems online">
+        <span className="fx-pop" aria-hidden="true">{[...loaderText].map((letter, index) => <b key={`${letter}-${index}`} style={{ '--i': index } as React.CSSProperties}>{letter === ' ' ? '\u00a0' : letter}</b>)}</span>
+        <span className="boot-label-status"> / systems online</span>
+      </p>
     </div>
   )
 }
