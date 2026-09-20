@@ -59,7 +59,7 @@ export function Hero({ activeId }: { activeId: string }) {
   }
 
   return (
-    <section ref={root} id="home" className="relative min-h-screen overflow-hidden" aria-label="William Anthony introduction">
+    <section ref={root} id="home" className="relative min-h-[125vh] overflow-hidden" aria-label="William Anthony introduction">
       <div className="absolute inset-0 z-0 bg-[hsl(var(--background))]" aria-hidden="true">
         {!videoError ? (
           <video
@@ -96,7 +96,7 @@ export function Hero({ activeId }: { activeId: string }) {
           </div>
         </div>
 
-        <div className="hero-content flex flex-1 items-center justify-center py-12 sm:py-16 lg:py-20">
+        <div className="hero-content flex flex-1 items-center justify-center py-20 sm:py-28 lg:py-36">
           <div className="w-full max-w-6xl text-center">
             <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
             <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>

@@ -169,7 +169,7 @@ body.lightbox-open {
 }
 
 .hero-content {
-  transform: translateY(clamp(-7rem, -8vh, -2.25rem));
+  transform: translateY(0);
 }
 
 .hero-nav-link::after {
@@ -872,7 +872,7 @@ body.lightbox-open {
   }
 
   .hero-content {
-    transform: translateY(-1.5rem);
+    transform: translateY(0);
   }
 
   .outstanding-card {

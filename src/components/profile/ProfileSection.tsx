@@ -4,6 +4,7 @@ import { credentials, education, languages, person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 const photos = [
+  { src: '/photos/RunningWithMrNanaSutisnaPHD.jpeg', alt: 'William Anthony with Mr Nana Sutisna, PhD', label: 'Field study / collaboration', width: 900, height: 1600 },
   { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
   { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes', width: 1200, height: 1600 },
   { src: '/photos/Foto-Foto%20untuk%20dishare.jpeg', alt: 'William Anthony teaching and serving with a community', label: 'Teaching / service', width: 1000, height: 1250 },
@@ -25,9 +26,8 @@ const photos = [
   { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
   { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
   { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
-  { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
   { src: '/photos/SignalSystems.jpeg', alt: 'William Anthony during the Signal and Systems course', label: 'ITB / Signal and Systems', width: 1280, height: 720 },
-  { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
+  { src: '/proof-of-work/PPSNMENGAJAR.jpeg', alt: 'William Anthony teaching during PPSN', label: 'PPSN / teaching', width: 1280, height: 720 },
 ]
 
 export function ProfileSection() {
