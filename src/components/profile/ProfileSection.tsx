@@ -4,7 +4,7 @@ import { credentials, education, languages, person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 const photos = [
-  { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics / field work', width: 1280, height: 720 },
+  { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics / field work', width: 1280, height: 960 },
   { src: '/photos/RunningWithMrNanaSutisnaPHD.jpeg', alt: 'William Anthony with Mr Nana Sutisna, PhD', label: 'Field study / collaboration', width: 900, height: 1600 },
   { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
   { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes', width: 1200, height: 1600 },
@@ -57,11 +57,13 @@ export function ProfileSection() {
               </a>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-              <ProfileStat value={person.gpa} label="GPA" />
-              <ProfileStat value="2027" label="Expected graduation" />
-              <ProfileStat value="4 × 4" label="PE array" />
-              <ProfileStat value="24%" label="Die area reduction" />
+            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {['FPGA Engineer', 'Design Verification Engineer', 'Web Developer', 'Digital Signal Processing Engineer', 'Process Engineer', 'Automation Engineer', 'Analog/Digital IC Design'].map((role) => (
+                <div key={role} className="role-card" data-info-chip>
+                  <p>{role}</p>
+                  <span>Target role</span>
+                </div>
+              ))}
             </div>
           </div>
 

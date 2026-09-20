@@ -261,6 +261,34 @@ body.lightbox-open {
   transform: translateY(-3px) rotate(-1deg);
 }
 
+.role-card {
+  min-height: 5.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.9rem;
+  padding: 0.8rem;
+  color: white;
+  background: rgba(255,255,255,0.02);
+  cursor: default;
+}
+
+.role-card p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.05;
+}
+
+.role-card span {
+  margin-top: 0.7rem;
+  color: hsl(var(--accent));
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .profile-tagline {
   color: hsl(var(--accent));
   font-family: var(--font-display);
