@@ -10,8 +10,8 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export function Button({ tone = 'solid', icon = false, className = '', children, ...props }: ButtonProps) {
   const base = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
   const variants = tone === 'solid'
-    ? 'bg-white text-[hsl(var(--background))] hover:bg-white/[0.9] hover:scale-[1.02]'
-    : 'border border-white/[.15] bg-white/[.02] text-white hover:border-white/[.3] hover:bg-white/[.06]'
+    ? 'bg-white text-[hsl(var(--background))] shadow-[0_8px_28px_rgba(255,255,255,0.14)] hover:-translate-y-0.5 hover:bg-[hsl(var(--accent))] hover:text-[#04222b] hover:shadow-[0_12px_36px_rgba(83,240,210,0.3)]'
+    : 'border border-white/[.15] bg-white/[.03] text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-[rgba(83,240,210,0.55)] hover:bg-white/[.07] hover:text-white'
 
   return (
     <button {...props} className={`${base} ${variants} ${className}`}>

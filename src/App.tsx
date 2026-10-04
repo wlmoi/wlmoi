@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { Plus } from 'lucide-react'
 import { Hero } from './components/hero/Hero'
 import { Navigation } from './components/navigation/Navigation'
 import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
@@ -181,10 +182,13 @@ function PortfolioPage() {
               </div>
               <div className="grid gap-3" data-motion-list>
                 {recognitions.map((item) => (
-                  <details key={`${item.title}-${item.year}`} className="group rounded-2xl border border-white/[0.1] bg-white/[0.015] px-5 py-4">
+                  <details key={`${item.title}-${item.year}`} className="group rounded-2xl border border-white/[0.1] bg-white/[0.025] px-5 py-4 backdrop-blur-sm transition-all duration-200 hover:border-[rgba(83,240,210,0.4)] hover:bg-white/[0.045] open:border-[rgba(83,240,210,0.35)]">
                     <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold">
                       <span>{item.title}</span>
-                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.38]">{item.year}</span>
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.38] group-open:text-[hsl(var(--accent))]">{item.year}</span>
+                        <Plus size={16} aria-hidden="true" className="text-white/[0.4] transition-transform duration-300 group-open:rotate-45 group-open:text-[hsl(var(--accent))]" />
+                      </span>
                     </summary>
                     <div className="pb-2 pt-4 text-sm leading-6 text-white/[0.55]">
                       {item.issuer ? <p>{item.issuer}</p> : null}
@@ -225,9 +229,9 @@ function PortfolioPage() {
 
 function CapabilityAccordion({ capability }: { capability: (typeof capabilities)[number] }) {
   return (
-    <details data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
+    <details data-capability-row className="group rounded-xl border-t border-white/[0.1] px-2 py-4 transition-colors last:border-b hover:bg-white/[0.025] group-open:bg-white/[0.02]" open={capability.id === 'asic'}>
       <summary className="flex cursor-pointer list-none items-start gap-5 py-2">
-        <span className="font-mono text-[0.65rem] text-white/[0.32]">{capability.number}</span>
+        <span className="pt-1 font-mono text-[0.65rem] text-white/[0.32] transition-colors group-hover:text-[hsl(var(--accent))] group-open:text-[hsl(var(--accent))]">{capability.number}</span>
         <span className="flex-1">
           <span className="block text-xl font-semibold tracking-tight md:text-2xl">{capability.title}</span>
           <span className="mt-2 block max-w-xl text-sm leading-6 text-white/[0.53]">{capability.summary}</span>
