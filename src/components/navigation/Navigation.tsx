@@ -63,14 +63,14 @@ export function Navigation({ activeId }: { activeId: string }) {
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:hidden" aria-label="Mobile site navigation">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between rounded-full px-2 py-2">
+        <div className="liquid-glass flex items-center justify-between rounded-full px-2 py-2">
           <a href="#home" className="font-display px-3 text-lg tracking-tight text-white" aria-label="William Anthony home">
             William Anthony<span className="align-super ml-0.5 text-[0.5em] text-white/[0.65]">®</span>
           </a>
           <button
             ref={triggerRef}
             type="button"
-            className="liquid-glass inline-flex min-h-11 min-w-11 items-center justify-center rounded-full"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/[0.14] bg-black/20 text-white transition-colors hover:border-[rgba(83,240,210,0.5)] hover:text-[hsl(var(--accent))]"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
@@ -81,17 +81,17 @@ export function Navigation({ activeId }: { activeId: string }) {
         </div>
 
         {menuOpen ? (
-          <div id="mobile-navigation" ref={menuRef} className="liquid-glass mt-3 rounded-[1.75rem] p-5" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+          <div id="mobile-navigation" ref={menuRef} className="liquid-glass mt-3 animate-fade-rise rounded-[1.75rem] p-5" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
             <p className="eyebrow mb-5">Navigation</p>
             <div className="grid gap-1">
               {links.map(([label, id]) => (
-                <a key={id} href={`#${id}`} onClick={closeMenu} className={`flex min-h-12 items-center justify-between border-b border-white/[0.1] py-2 text-lg ${activeId === id ? 'text-white' : 'text-white/[0.7] hover:text-white'}`}>
+                <a key={id} href={`#${id}`} onClick={closeMenu} className={`flex min-h-12 items-center justify-between rounded-xl border-b border-white/[0.08] px-3 text-lg transition-colors ${activeId === id ? 'bg-white/[0.06] text-white' : 'text-white/[0.7] hover:bg-white/[0.04] hover:text-white'}`}>
                   <span>{label}</span>
-                  <span className="font-mono text-[0.65rem] text-white/[0.35]">{id.toUpperCase()}</span>
+                  <span className={`font-mono text-[0.65rem] uppercase tracking-[0.1em] ${activeId === id ? 'text-[hsl(var(--accent))]' : 'text-white/[0.35]'}`}>{id.toUpperCase()}</span>
                 </a>
               ))}
             </div>
-            <a href={`mailto:${person.email}`} onClick={closeMenu} className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[hsl(var(--background))]">Discuss an Opportunity</a>
+            <a href={`mailto:${person.email}`} onClick={closeMenu} className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[hsl(var(--background))] transition-colors hover:bg-[hsl(var(--accent))] hover:text-[#04222b]">Discuss an Opportunity</a>
           </div>
         ) : null}
       </div>

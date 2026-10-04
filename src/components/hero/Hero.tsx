@@ -76,6 +76,8 @@ export function Hero({ activeId }: { activeId: string }) {
         ) : (
           <div className="absolute inset-0 bg-[hsl(var(--background))] bg-cover bg-center" style={{ backgroundImage: "url('/photos/Foto%20DiBraga%20Blurred.png')" }} />
         )}
+        {/* readability scrim over the moving visual */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(3,20,29,0.42)_78%,rgba(3,20,29,0.72)_100%)]" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 lg:px-8">
@@ -85,12 +87,21 @@ export function Hero({ activeId }: { activeId: string }) {
               William Anthony<span className="align-super ml-0.5 text-[0.55em] text-white/[0.65]">®</span>
             </a>
 
-            <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+            <nav className="hidden items-center gap-1.5 md:flex" aria-label="Primary navigation">
               {[
                 ['Home', 'home'], ['Profile', 'profile'], ['Expertise', 'expertise'], ['Experience', 'experience'],
                 ['Selected Work', 'work'], ['Recognition', 'recognition'], ['Contact', 'contact'],
-              ].map(([label, id]) => <a key={id} href={`#${id}`} className={`hero-nav-link text-sm transition-colors ${activeId === id ? 'is-active text-white' : 'text-white/[0.65] hover:text-white'}`}>{label}</a>)}
-              <a href="#contact" className="liquid-glass rounded-full px-5 py-2.5 text-sm text-white transition-transform hover:scale-[1.03]">Discuss an Opportunity</a>
+              ].map(([label, id]) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  aria-current={activeId === id ? 'true' : undefined}
+                  className={`hero-nav-link rounded-full px-3 text-sm transition-colors ${activeId === id ? 'is-active bg-white/[0.08] text-white' : 'text-white/[0.62] hover:bg-white/[0.05] hover:text-white'}`}
+                >
+                  {label}
+                </a>
+              ))}
+              <a href="#contact" className="hero-nav-cta liquid-glass ml-3 rounded-full px-5 py-2.5 text-sm font-medium text-white">Discuss an Opportunity</a>
             </nav>
 
           </div>
@@ -98,8 +109,14 @@ export function Hero({ activeId }: { activeId: string }) {
 
         <div className="hero-content flex flex-1 items-center justify-center py-20 sm:py-28 lg:py-36">
           <div className="w-full max-w-6xl text-center">
-            <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
-            <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
+            <p data-hero-eyebrow className="animate-fade-rise mx-auto flex w-fit items-center gap-2 rounded-full border border-white/[0.12] bg-black/20 px-4 py-1.5 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[hsl(var(--accent))] opacity-60"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[hsl(var(--accent))]" style={{ boxShadow: '0 0 10px hsl(173 78% 63%)' }}></span>
+              </span>
+              <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/[0.85]">ASIC · FPGA · Verification · Edge AI</span>
+            </p>
+            <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.6]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
 
             <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-5 max-w-6xl text-[clamp(3.1rem,7.5vw,7.5rem)] leading-[0.91] tracking-[-0.045em] text-white">
               <span data-hero-line className="block">Engineering intelligence</span>
@@ -111,10 +128,10 @@ export function Hero({ activeId }: { activeId: string }) {
             </p>
 
             <div data-hero-cta className="animate-fade-rise-delay-2 mt-10 flex flex-wrap items-center justify-center gap-3">
-              <a href="#work" className="liquid-glass inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.03] sm:px-10">
-                Explore Selected Work <ArrowDown size={15} aria-hidden="true" />
+              <a href="#work" className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-[hsl(var(--background))] shadow-[0_10px_36px_rgba(255,255,255,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[hsl(var(--accent))] hover:text-[#04222b] hover:shadow-[0_14px_44px_rgba(83,240,210,0.35)] sm:px-10">
+                Explore Selected Work <ArrowDown size={15} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-y-0.5" />
               </a>
-              <a href="/resume?print=1" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.2] px-7 py-4 text-sm font-semibold text-white/[0.9] transition-colors hover:border-white/[0.45] hover:text-white">
+              <a href="/resume?print=1" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.22] bg-black/15 px-7 py-4 text-sm font-semibold text-white/[0.92] backdrop-blur-sm transition-colors hover:border-[rgba(83,240,210,0.6)] hover:text-white">
                 Download Résumé <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
