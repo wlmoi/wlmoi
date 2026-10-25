@@ -39,7 +39,7 @@ export const credentials: Credential[] = [
   { title: 'Self Sensing Processor Systems', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '175679272' },
   { title: 'How to Design an LC Oscillator', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '173374336' },
   { title: 'Industrial Instrumentation, Level I', issuer: 'Toyota Indonesia (TMMIN)', category: 'Engineering' },
-  { title: 'Winter School: Current Trends in Advanced Electronics', issuer: 'Tomsk State University of Control Systems and Radioelectronics', date: 'April 2025' },
+  { title: 'Winter School: Current Trends in Advanced Electronics', issuer: 'Tomsk State University of Control Systems and Radioelectronics', date: 'March 17-28, 2025', href: '/evidence/winter-school-2025.pdf' },
   { title: 'JavaScript (Intermediate)', issuer: 'HackerRank', date: 'January 2025', credentialId: '1442edef', category: 'Software & data' },
   { title: 'Quant Insider Market Making Challenge — Participation', issuer: 'Unstop', date: 'January 2026', credentialId: 'ce702129-3cab-4936-ab0a-3c66081b434b', category: 'Competitions' },
   { title: 'Weekly Coding Challenge 27 — Participation', issuer: 'Unstop', credentialId: 'c0466719-83b3-4191-bfa7-9ad308aad1da', category: 'Competitions' },
@@ -326,81 +326,150 @@ export const projects: Project[] = [
 
 export const experiences: Experience[] = [
   {
-    title: 'RTL Functional Verification Engineer (Freelance)',
-    organization: 'Tiny Tapeout',
-    dates: 'Oct 2026',
-    location: 'Remote',
-    summary: 'Developed a requirements-traceable verification flow for an APB-controlled SPI Master IP using SystemVerilog, assertions, functional coverage, and Python regressions.',
-    bullets: ['Built stimulus, monitors, an independent reference model, and a self-checking scoreboard for APB transactions and SPI operating modes.', 'Documented regression results, coverage observations, issues, and remaining verification gaps.'],
+    "id": "edge-ai",
+    "title": "Junior Edge AI Engineer, Computer Vision & Audio",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Sep 2026 - Present",
+    "location": "Bandung, Indonesia \u00b7 Hybrid",
+    "employmentType": "Part-time",
+    "summary": "Build Python and embedded proof-of-concept systems for real-world audio and visual sensing, from acquisition and preprocessing to model deployment, evaluation, and result analysis.",
+    "bullets": [
+      "Develop microphone-based sensing pipelines with INMP441, I2S, ESP32-S3, USB CDC, and Raspberry Pi.",
+      "Integrate YAMNet and TensorFlow models for environmental sound classification and evaluate model behavior using recorded WAV datasets and synthetic signals.",
+      "Design modular, testable components for acquisition, preprocessing, inference, and analysis; validate behavior across the end-to-end sensing pipeline.",
+      "Evaluate deployment latency, memory use, model caching, and real-time performance on embedded platforms."
+    ]
   },
   {
-    title: 'Junior Edge AI Engineer in Computer Vision and Audio',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
-    location: 'Bandung, Indonesia',
-    summary: 'Develop edge AI prototypes for computer vision and audio, integrating Python signal-processing pipelines with YAMNet and TensorFlow on Raspberry Pi. Evaluate latency, memory use, model caching, and real-time behavior.',
-    bullets: ['Develop edge AI prototypes for computer vision and audio applications by integrating embedded hardware, signal processing, and machine learning models.'],
+    "id": "microelectronics",
+    "title": "Research Assistant - Digital Hardware & Signal Processing",
+    "organization": "Microelectronics Center of Institut Teknologi Bandung",
+    "dates": "Sep 2026 - Present",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Full-time",
+    "summary": "Engineer and verify synthesizable SystemVerilog hardware for embedded signal-processing applications, translating algorithm requirements into implementation-ready RTL.",
+    "bullets": [
+      "Develop RTL microarchitecture, datapaths, and controllers for synchronous digital signal-processing systems.",
+      "Apply pipelining and resource optimization to balance implementation cost and throughput requirements.",
+      "Build self-checking verification flows and analyze functional behavior and performance before FPGA validation.",
+      "Prepare synthesizable designs for practical embedded-system integration and FPGA implementation workflows."
+    ]
   },
   {
-    title: 'Research Assistant',
-    organization: 'Microelectronics Center of Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
-    location: 'Bandung, Indonesia',
-    summary: 'Engineer synthesizable SystemVerilog for embedded signal processing, spanning RTL microarchitecture, pipelined datapaths, controllers, resource optimization, and self-checking verification.',
-    bullets: ['Design and verify digital hardware for POLYTRON audio projects, with emphasis on ASIC implementation and validation workflows.'],
+    "id": "alcon",
+    "title": "Product Consumables Intern",
+    "organization": "Alcon",
+    "dates": "Jul 2026 - Aug 2026",
+    "location": "Batam, Indonesia",
+    "employmentType": "Internship",
+    "summary": "Delivered production-data automation during a manufacturing internship, consolidating more than 40 Excel sheets into a standardized operational dataset.",
+    "bullets": [
+      "Consolidated 40+ production Excel sheets into a standardized dataset using Power Apps, Power Automate, and Excel.",
+      "Developed dashboard data flows against user requirements to make production information easier to review and maintain.",
+      "Implemented automated notification flows for production operations and communicated the completed workflow in the final internship presentation."
+    ]
   },
   {
-    title: 'Electronics II Laboratory Coordinator',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2026 – Present',
-    location: 'Bandung, Indonesia',
-    summary: 'Coordinate the Electronics II Laboratory for 111 students and lead 12 assistants across project specifications, instruction, assessment, and troubleshooting.',
-    bullets: ['Lead and train 12 assistants to deliver consistent technical instruction and assessment.', 'Oversee more than 10 analog-electronics areas, from op-amps and active filters to converters and multistage amplifiers.'],
+    "id": "electronics-coordinator",
+    "title": "Electronics II Laboratory Coordinator",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Sep 2026 - Present",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Part-time",
+    "summary": "Coordinate end-to-end laboratory delivery for 111 students and train and supervise 12 assistants, maintaining approximately one assistant for every nine students.",
+    "bullets": [
+      "Translate learning outcomes into project requirements, functional and performance specifications, circuit constraints, instrumentation needs, deliverables, and assessment criteria.",
+      "Train assistants in consistent technical instruction, laboratory equipment operation, circuit evaluation, fault diagnosis, and structured troubleshooting.",
+      "Oversee 10+ analog-electronics areas, including feedback, active filters, oscillators, waveform generators, buck/boost converters, current mirrors, differential and multistage amplifiers, and cascode circuits.",
+      "Guide project delivery from theoretical analysis and simulation through hardware implementation, measurement, validation, and technical reporting."
+    ]
   },
   {
-    title: 'Electric Circuits Laboratory Assistant',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2025 – Present',
-    location: 'Bandung, Indonesia',
-    summary: 'Mentored 60+ students in circuit theory, LTspice, measurement, and debugging. Selected as the youngest and only third-year assistant on a 17-member team and voted Favorite Assistant.',
+    "id": "circuits-assistant",
+    "title": "Electric Circuits Laboratory Assistant",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Sep 2025 - Present",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Part-time",
+    "summary": "Mentor 60+ students in circuit theory, LTspice simulation, oscilloscope operation, filter analysis, op-amp implementation, and practical debugging.",
+    "bullets": [
+      "Selected as the youngest and only third-year assistant on a 17-member team; voted Favorite Assistant for technical guidance and teaching impact.",
+      "Help students compare theoretical, simulated, and measured results, diagnose circuit faults, and validate hardware behavior."
+    ]
   },
   {
-    title: 'Product Consumables Intern',
-    organization: 'Alcon',
-    dates: 'Jul 2026 – Aug 2026',
-    location: 'Batam, Indonesia',
-    summary: 'Consolidated more than 40 Excel sheets into a standardized real-time dataset using Power Apps, Power Automate, and Excel.',
-    bullets: ['Consolidated more than 40 Excel sheets into a standardized real-time dataset.', 'Owned the dashboard workflow against user requirements and implemented automated notification flows for production operations.'],
+    "id": "programming-assistant",
+    "title": "Programming Problem Solving Course Assistant",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Feb 2026 - Jun 2026",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Full-time",
+    "summary": "Taught and supported 40+ students in C programming and Arduino integration through lectures, case studies, practical exercises, and team projects.",
+    "bullets": [
+      "Guided students in decomposing engineering problems, evaluating technical constraints and tradeoffs, and writing, testing, and debugging C programs and Arduino systems.",
+      "Supported quizzes, assignments, examinations, and projects with constructive feedback, clear technical communication, and responsible programming practices."
+    ]
   },
   {
-    title: 'Programming Problem Solving Course Assistant',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Feb 2026 – Jun 2026',
-    location: 'Bandung, Indonesia',
-    summary: 'Taught C programming and Arduino integration to more than 40 students, with emphasis on problem decomposition, testing, debugging, and engineering tradeoffs.',
+    "id": "partial-discharge",
+    "title": "Research Assistant in Partial-Discharge Detection",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Feb 2025 - Feb 2026",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Part-time",
+    "summary": "Contributed to partial-discharge detection research under Prof. Nana Sutisna through MATLAB modeling and Verilog signal-processing implementation.",
+    "bullets": [
+      "Built and validated a 16-bit Verilog peak-detection path, using CSV-to-MEM data conversion for FPGA simulation and validation.",
+      "Designed an 8,192-point FFT module in Verilog using a decimation-in-time butterfly architecture for high-resolution frequency-domain analysis."
+    ]
   },
   {
-    title: 'Research Assistant in Partial-Discharge Detection',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Feb 2025 – Feb 2026',
-    location: 'Bandung, Indonesia',
-    summary: 'Supported partial-discharge detection research through MATLAB modeling and Verilog signal-processing implementation.',
-    bullets: ['Built and validated a 16-bit peak-detection system using CSV-to-MEM data conversion.', 'Designed an 8,192-point FFT in Verilog using a decimation-in-time butterfly architecture.'],
+    "id": "digital-lecturer",
+    "title": "Digital Systems Assistant Lecturer",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Sep 2025 - Jan 2026",
+    "location": "Bandung, Indonesia \u00b7 On-site",
+    "employmentType": "Part-time",
+    "summary": "Instructed 50+ students in VHDL, RTL methodology, finite-state machines, signal assignment, process blocks, and entity-architecture structure.",
+    "bullets": [
+      "Trained students to build ModelSim testbenches, inspect waveforms and state transitions, and debug timing and logic errors.",
+      "Supervised CORDIC and 64-point FFT projects in VHDL; guided synthesis, pin assignment, compilation, and Cyclone IV deployment in Intel Quartus Prime Standard 24.1.",
+      "Evaluated coursework and laboratory reports for correctness, timing analysis, logic synthesis, and resource utilization."
+    ]
   },
   {
-    title: 'Digital Systems Assistant Lecturer and Laboratory Assistant',
-    organization: 'Institut Teknologi Bandung',
-    dates: 'Sep 2025 – Jan 2026',
-    location: 'Bandung, Indonesia',
-    summary: 'Instructed more than 50 students in VHDL, RTL methodology, finite-state machines, testbenches, waveform verification, synthesis, timing analysis, and FPGA deployment.',
-    bullets: ['Instructed more than 50 students in VHDL, RTL methodology, finite-state machines, testbenches, waveform verification, synthesis, timing analysis, and FPGA deployment.', 'Supervised DSP projects including CORDIC and a 64-point FFT on Cyclone IV and DE10-Lite FPGA platforms using ModelSim and Intel Quartus Prime.'],
+    "id": "digital-lab",
+    "title": "Digital Systems Laboratory Assistant",
+    "organization": "Institut Teknologi Bandung",
+    "dates": "Sep 2025 - Jan 2026",
+    "location": "Bandung, Indonesia \u00b7 Remote",
+    "employmentType": "Part-time",
+    "summary": "Led hands-on laboratory sessions for 40+ students, connecting discrete logic with FPGA implementation in Intel Quartus Prime and the Terasic DE10-Lite platform.",
+    "bullets": [
+      "Selected as the youngest and only third-year assistant on a 15-member team.",
+      "Guided frequency-divider, finite-state-machine, and UART designs while resolving live hardware and code issues and teaching practical debugging."
+    ]
   },
   {
-    title: 'Chipathon 2025 Tapeout Participant',
-    organization: 'IEEE Solid-State Circuits Society Central Illinois Section Chapter',
-    dates: 'Jul 2025 – Dec 2025',
-    summary: 'Contributed digital signal-processing control for a three-qubit Quantum Fourier Transform chip in an international tapeout program.',
+    "id": "ieee-chipathon",
+    "title": "Chipathon 2025 Tapeout Contributor",
+    "organization": "IEEE Solid-State Circuits Society Central Illinois Section Chapter",
+    "dates": "Jul 2025 - Dec 2025",
+    "employmentType": "International program",
+    "summary": "Contributed digital signal-processing control and digital-track integration for a three-qubit Quantum Fourier Transform chip in an international tapeout program."
   },
+  {
+    "id": "tiny-tapeout",
+    "title": "RTL Functional Verification Engineer",
+    "organization": "Tiny Tapeout",
+    "dates": "Oct 2026",
+    "location": "Remote",
+    "employmentType": "Freelance",
+    "summary": "Completed a focused APB-controlled SPI Master verification engagement using SystemVerilog, SVA, functional coverage, and Python regressions.",
+    "bullets": [
+      "Built stimulus, monitors, an independent reference model, and a self-checking scoreboard; documented regression results, coverage observations, issues, and remaining gaps."
+    ]
+  }
 ]
 
 export const recognitions: Recognition[] = [

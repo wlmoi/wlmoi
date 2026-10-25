@@ -1,3 +1,5 @@
+import { EvidenceLibrary } from './components/profile/EvidenceLibrary'
+import { CareerHighlights } from './components/experience/CareerHighlights'
 import { CircuitExplorer } from './components/three/CircuitExplorer'
 import { useEffect, useMemo, useState } from 'react'
 import type { CSSProperties } from 'react'
@@ -20,7 +22,7 @@ import { ResumePage } from './pages/ResumePage'
 import { gsap } from './lib/gsap'
 import { ImageLightbox } from './components/ui/ImageLightbox'
 
-const sections = ['home', 'profile', 'expertise', 'schematics', 'case-study', 'experience', 'organizations', 'work', 'recognition', 'contact']
+const sections = ['home', 'profile', 'expertise', 'schematics', 'case-study', 'experience', 'organizations', 'evidence', 'work', 'recognition', 'contact']
 
 function PortfolioPage() {
   const [activeId, setActiveId] = useState('home')
@@ -72,7 +74,7 @@ function PortfolioPage() {
 
   useEffect(() => {
     const siteUrl = import.meta.env.VITE_SITE_URL?.trim() || 'https://wlmoi.vercel.app'
-    document.title = 'William Anthony | ASIC, FPGA, Verification & Edge AI'
+    document.title = 'William Anthony | Edge AI, Microelectronics & Digital Hardware'
     document.documentElement.lang = 'en'
 
     const setMeta = (selector: string, attribute: string, content: string) => {
@@ -80,9 +82,9 @@ function PortfolioPage() {
       if (node) node.setAttribute(attribute, content)
     }
 
-    setMeta('meta[name="description"]', 'content', 'Portfolio of William Anthony, an Electrical and Electronics Engineering student working across ASIC design, FPGA systems, RTL verification, Edge AI, embedded systems, and digital signal processing.')
+    setMeta('meta[name="description"]', 'content', 'William Anthony: Junior Edge AI Engineer and Microelectronics Research Assistant at ITB, with Alcon internship experience. Explore embedded AI, digital hardware, RTL verification, DSP, and production automation.')
     setMeta('meta[property="og:url"]', 'content', siteUrl)
-    setMeta('meta[property="og:image"]', 'content', `${siteUrl.replace(/\/$/, '')}/og-placeholder.svg`)
+    setMeta('meta[property="og:image"]', 'content', `${siteUrl.replace(/\/$/, '')}/og-engineering.png`)
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (canonical) canonical.href = siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`
 
@@ -95,7 +97,7 @@ function PortfolioPage() {
           name: person.name,
           url: siteUrl,
           email: `mailto:${person.email}`,
-          jobTitle: person.role,
+          jobTitle: ['Junior Edge AI Engineer', 'Microelectronics Research Assistant', person.role],
           alumniOf: { '@type': 'CollegeOrUniversity', name: person.institution },
           sameAs: [person.linkedin, person.github, person.instagram],
         },
@@ -117,6 +119,7 @@ function PortfolioPage() {
       <Navigation activeId={activeId} />
       <main id="main-content">
         <Hero activeId={activeId} />
+        <CareerHighlights />
         <ProfileSection />
 
         <section id="expertise" className="section-pad border-t border-white/[0.1]">
@@ -189,6 +192,7 @@ function PortfolioPage() {
         </section>
 
         <OrganizationExperience />
+        <EvidenceLibrary />
 
         <section id="recognition" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">

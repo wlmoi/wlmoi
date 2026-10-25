@@ -10,6 +10,7 @@ const links = [
   ['Experience', 'experience'],
   ['Selected Work', 'work'],
   ['Community', 'organizations'],
+  ['Evidence archive', 'evidence'],
   ['Recognition', 'recognition'],
   ['Contact', 'contact'],
 ] as const

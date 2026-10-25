@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { ArrowUpRight, Search } from 'lucide-react'
 import { credentials, person } from '../../data/portfolio'
 
@@ -31,6 +31,7 @@ export function CredentialsList() {
           <p className="credential-issuer">{item.issuer}{item.date ? ` · ${item.date}` : ''}</p>
           {item.credentialId ? <p className="credential-id">ID: {item.credentialId}</p> : null}
           {item.expiry ? <p className="credential-expiry">{item.expiry}</p> : null}
+          {item.href?<a className="credential-document" href={item.href} target="_blank" rel="noreferrer">View certificate <ArrowUpRight size={13} aria-hidden="true"/></a>:null}
         </article>
       ))}</div> : <p className="credential-empty">No certificates match. Try another title or issuer.</p>}
       <div className="credentials-actions">

@@ -1673,3 +1673,74 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .hero-desktop-nav nav{gap:16px}
 .photo-zoom-button{display:block;width:100%;height:100%;cursor:zoom-in}.experience-photo-button{display:block;width:100%;cursor:zoom-in}
+/* Career emphasis and a roomier award row. */
+.hero-awards{display:flex;flex-wrap:wrap;align-items:stretch;gap:14px;margin-top:25px}
+.hero-cosmic .hero-awards .hero-award{margin:0;flex:0 1 auto;min-height:48px;padding:11px 14px;gap:11px}
+.hero-cosmic .hero-awards .hero-agentic{margin:0}
+.career-highlights{padding-top:64px;padding-bottom:76px}
+.career-highlights-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:30px}
+.career-highlights-intro h2{font-size:clamp(30px,3.4vw,46px);line-height:1.12;letter-spacing:-.03em;margin-top:15px}
+.career-highlights-intro em{color:#b8a4f6}
+.career-highlights-intro>a{display:flex;align-items:center;gap:10px;font-size:12px;color:#bdc8d8;min-height:44px}
+.career-highlight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.career-highlight-card{display:flex;flex-direction:column;min-width:0;padding:25px;border:1px solid #9cabe32b;border-radius:18px;background:linear-gradient(140deg,#19263b85,#0a102149);transition:transform .25s,border-color .25s}
+.career-highlight-card:hover{transform:translateY(-5px);border-color:#8ee2d080}
+.career-highlight-top{display:flex;align-items:center;gap:10px;color:#aee3d8}.career-highlight-top>span{font:8px var(--font-mono);letter-spacing:.07em;flex:1}.career-highlight-top>svg:last-child{opacity:.6}
+.career-highlight-card h3{font:500 22px/1.25 var(--font-body);letter-spacing:-.03em;margin-top:28px;color:#f0f1f8}
+.career-highlight-card .career-highlight-employer{font-size:10px;color:#9cabc1;margin-top:10px;min-height:30px}
+.career-highlight-card>p:not(.career-highlight-employer){font-size:12px;line-height:1.9;color:#aab5c8;margin:14px 0 22px}
+.career-highlight-card>strong{margin-top:auto;border-top:1px solid #ffffff15;padding-top:18px;font-size:11px;font-weight:500;color:#c4b5f5}
+.career-highlight-date{display:block;margin-top:10px;color:#7d91a6;font-size:10px}
+.experience-row{scroll-margin-top:115px}.experience-freelance{margin-top:30px;border-top:1px solid #ffffff20;padding:20px 0;color:#a9b6c7;font-size:12px}.experience-freelance summary{cursor:pointer;display:flex;gap:14px;justify-content:space-between;align-items:center;min-height:44px}.experience-freelance summary span{font-size:10px;color:#788b9f}.experience-freelance p{margin-top:15px;line-height:1.9;max-width:650px}
+@media(max-width:767px){.hero-awards{gap:14px;margin-top:24px;flex-direction:column;align-items:flex-start}.hero-cosmic .hero-awards .hero-award{min-height:46px;padding:11px 13px}.career-highlights{padding-top:35px;padding-bottom:45px}.career-highlights-intro{align-items:flex-start;flex-direction:column;gap:15px}.career-highlight-grid{grid-template-columns:1fr;gap:14px}.career-highlight-card{padding:22px}.career-highlight-card h3{margin-top:22px}.career-highlight-card .career-highlight-employer{min-height:0}.career-highlights-intro h2{font-size:34px}.experience-freelance summary{align-items:flex-start;flex-direction:column;gap:7px}}
+@media(prefers-reduced-motion:reduce){.career-highlight-card:hover{transform:none}}
+/* Detailed résumé: a calm reading surface with a single-column print document. */
+.resume-detailed{background:radial-gradient(ellipse at 0 0,#202340,#0a1221 65%);padding-bottom:70px}
+.resume-detailed .resume-toolbar{max-width:1320px}.resume-export-actions{display:flex;gap:9px;align-items:center}.resume-export-actions .resume-download{background:#bdeee0;color:#0d2632;border-color:#bdeee0}
+.resume-detailed .resume-layout{max-width:1320px;grid-template-columns:260px minmax(0,1fr);gap:55px;margin-top:25px}
+.resume-detailed .resume-sidebar{top:30px}.resume-detailed .resume-sidebar h2{font-size:39px}.resume-detailed .resume-sidebar nav{margin:25px 0}.resume-detailed .resume-sidebar nav a{font-size:11px;gap:14px}
+.resume-focus-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}.resume-focus-tags span{border:1px solid #b5a3ef38;padding:6px 8px;border-radius:5px;font-size:9px;color:#c9bdf2}
+.resume-detailed .resume-paper{padding:0;background:transparent;box-shadow:none;animation:none;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;min-width:0}
+.resume-sheet{background:white;color:#1b2835;padding:45px 48px;box-shadow:0 12px 35px #00000020;border-radius:4px}.resume-sheet+.resume-sheet{margin-top:24px}
+.resume-detailed .resume-header{text-align:left}.resume-document-label{font-size:9px;letter-spacing:.18em;color:#6a7885!important;margin-bottom:14px}.resume-detailed .resume-header h1{font:700 36px/1.15 Arial,Helvetica,sans-serif;letter-spacing:-.03em;font-variant:normal}.resume-detailed .resume-specialties{font-size:12px;font-weight:600;color:#234c5c}.resume-detailed .resume-header>p:not(.resume-specialties):not(.resume-document-label){font-size:10px;color:#526270}.resume-detailed .resume-contacts{justify-content:flex-start;font-size:10px;gap:5px 12px;line-height:1.7}.resume-detailed .resume-contacts a{text-decoration:underline}
+.resume-detailed .resume-section{padding-top:24px;scroll-margin-top:22px}.resume-detailed .resume-section h2{font:700 12px/1.35 Arial,Helvetica,sans-serif;font-variant:normal;text-transform:uppercase;letter-spacing:.1em;border-color:#cad3d9;color:#213f50;padding-bottom:7px;margin-bottom:12px}.resume-detailed .resume-section h3{font-size:13px;line-height:1.45}.resume-detailed .resume-entry-heading{gap:18px;align-items:baseline}.resume-detailed .resume-entry-heading span{font-size:10px;white-space:nowrap;color:#4b5d6d}.resume-detailed .resume-entry+.resume-entry{margin-top:23px}.resume-detailed .resume-employer{font-size:10px;color:#405366;margin:4px 0 8px}.resume-detailed .resume-section ul{margin-top:8px;padding-left:17px}.resume-detailed .resume-section li+li{margin-top:5px}.resume-detailed .resume-stack{font-size:10px;margin-top:7px;color:#586977}.resume-continuation{display:flex;justify-content:space-between;align-items:baseline;gap:15px;padding-bottom:16px;border-bottom:2px solid #213f50;font-size:12px}.resume-continuation span{font-size:9px;color:#627382}.resume-detailed #resume-additional{font-size:12px}.resume-detailed #resume-recognition{font-size:12px}
+@media(max-width:1100px){.resume-detailed .resume-layout{grid-template-columns:minmax(0,1fr);max-width:850px;gap:25px}.resume-detailed .resume-sidebar{position:static}.resume-detailed .resume-sidebar h2{font-size:36px}.resume-detailed .resume-sidebar>p:not(.eyebrow){max-width:560px}.resume-detailed .resume-sidebar nav{display:flex;flex-wrap:wrap;gap:7px;border:0;margin:20px 0 0}.resume-detailed .resume-sidebar nav a{padding:8px 10px;border:1px solid #ffffff20;border-radius:5px;min-height:38px}.resume-detailed .resume-sidebar nav span{display:none}}
+@media(max-width:600px){.resume-detailed{padding:0 12px 35px}.resume-sheet{padding:28px 20px}.resume-detailed .resume-toolbar{gap:8px;min-height:82px}.resume-detailed .resume-toolbar a,.resume-detailed .resume-toolbar button{font-size:10px;padding:9px 11px;gap:6px}.resume-detailed .resume-sidebar h2{font-size:34px}.resume-detailed .resume-header h1{font-size:31px}.resume-detailed .resume-entry-heading{display:block}.resume-detailed .resume-entry-heading span{display:block;margin-top:3px}.resume-continuation{display:block}.resume-continuation span{display:block;margin-top:5px}.resume-detailed .resume-paper{font-size:12px;line-height:1.65}.resume-detailed .resume-section h3{font-size:12px}}
+@media print{
+ @page{size:A4;margin:14mm 15mm}
+ .resume-detailed{padding:0!important;background:white!important}
+ .resume-detailed .resume-layout{display:block;margin:0;max-width:none}
+ .resume-detailed .resume-paper{font-family:Arial,Helvetica,sans-serif;font-size:10pt;line-height:1.32;padding:0;background:white;color:#111}
+ .resume-sheet{padding:0;box-shadow:none;border-radius:0;margin:0}
+ .resume-sheet+.resume-sheet{break-before:page;margin:0}
+ .resume-detailed .resume-header h1{font-size:25pt}
+ .resume-detailed .resume-document-label{font-size:7pt;margin-bottom:7px}
+ .resume-detailed .resume-specialties{font-size:9pt}
+ .resume-detailed .resume-header>p:not(.resume-specialties):not(.resume-document-label),.resume-detailed .resume-contacts{font-size:8pt}
+ .resume-detailed .resume-section{padding-top:13px;break-inside:auto}
+ .resume-detailed .resume-section h2{font-size:10pt;margin-bottom:7px;padding-bottom:4px;break-after:avoid}
+ .resume-detailed .resume-section h3{font-size:9.5pt}
+ .resume-detailed .resume-entry-heading{display:flex;gap:12px}
+ .resume-detailed .resume-entry-heading span{font-size:8pt;color:#222}
+ .resume-detailed .resume-employer{font-size:8pt;margin:2px 0 5px}
+ .resume-detailed .resume-entry+.resume-entry{margin-top:12px}
+ .resume-detailed .resume-section ul{margin-top:5px;padding-left:15px}
+ .resume-detailed .resume-section li+li{margin-top:3px}
+ .resume-detailed .resume-stack{font-size:7.8pt;margin-top:4px}
+ .resume-detailed .resume-continuation{font-size:9pt;padding-bottom:9px}.resume-detailed .resume-continuation span{font-size:7.5pt}
+ .resume-detailed #resume-additional,.resume-detailed #resume-recognition{font-size:9pt}
+ .resume-detailed p{orphans:3;widows:3}.resume-detailed .resume-entry{break-inside:avoid}
+ .resume-detailed #resume-2{break-before:auto}
+}
+
+.resume-detailed .resume-sidebar{color:#edf1fb}.resume-detailed .resume-sidebar .eyebrow{color:#a6b5ca}
+.evidence-section{background:radial-gradient(ellipse at 100% 10%,#18243670,transparent 65%)}
+.evidence-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:45px;margin-bottom:42px}.evidence-heading h2{font-size:clamp(40px,5vw,68px);line-height:1.06;letter-spacing:-.035em;margin-top:20px}.evidence-heading em{color:#b5a0f3}.evidence-heading>p{max-width:430px;font-size:14px;line-height:1.9;color:#9cacc2}
+.evidence-layout-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);border:1px solid #a1b1cf2b;border-radius:22px;overflow:hidden;background:#101a2b80;margin-bottom:42px}
+.evidence-layout-image{position:relative;padding:22px;cursor:zoom-in;background:#09111f;overflow:hidden}.evidence-layout-image>img{width:100%;height:420px;object-fit:contain;transition:transform .4s}.evidence-layout-image:hover>img{transform:scale(1.035)}.evidence-layout-image>span{position:absolute;bottom:18px;left:22px;display:flex;gap:8px;align-items:center;padding:9px 12px;border-radius:6px;background:#142338e8;color:#c5dedb;font-size:10px}
+.evidence-layout-copy{padding:42px;display:flex;flex-direction:column;justify-content:center}.evidence-layout-copy h3{font-size:36px;line-height:1.12;margin:20px 0;letter-spacing:-.03em}.evidence-layout-copy>p:not(.eyebrow){color:#9fadc0;font-size:13px;line-height:1.9}.evidence-layout-copy dl{margin:25px 0}.evidence-layout-copy dl>div{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #ffffff15;padding:12px 0;font-size:10px}.evidence-layout-copy dt{color:#7f94ab}.evidence-layout-copy dd{color:#c9d9e6;text-align:right;overflow-wrap:anywhere}.evidence-layout-copy>a{display:flex;align-items:center;gap:10px;color:#8ee4d0;font-size:12px;min-height:44px}.evidence-layout-copy>a>span{margin-left:auto;color:#7f94ab;font-size:10px}
+.evidence-filter{display:flex;flex-wrap:wrap;gap:8px}.evidence-filter button{border:1px solid #ffffff25;border-radius:7px;padding:10px 15px;font-size:11px;min-height:44px;color:#9fadc0}.evidence-filter button[aria-pressed=true]{color:#aff0de;border-color:#8ee4d065;background:#8ee4d010}.evidence-count{font-size:10px;color:#7d91a8;margin:17px 0 25px}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.evidence-card{border:1px solid #ffffff20;border-radius:15px;overflow:hidden;background:#0d1726;display:flex;flex-direction:column;min-width:0}.evidence-preview{position:relative;background:#d7dfe5;display:block;width:100%;height:220px;overflow:hidden;cursor:zoom-in}.evidence-preview img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}.evidence-preview:hover img{transform:scale(1.04)}.evidence-preview span{position:absolute;bottom:12px;right:12px;display:flex;align-items:center;gap:6px;color:#e5f2fa;background:#152435e8;padding:8px 10px;border-radius:5px;font-size:9px}.evidence-card-copy{padding:24px;display:flex;flex-direction:column;flex:1}.evidence-type{font:8px/1.7 var(--font-mono);letter-spacing:.08em;color:#a692db}.evidence-card-copy h3{font:500 21px/1.3 var(--font-body);margin-top:14px;letter-spacing:-.02em}.evidence-card-copy .evidence-context{font-size:9px;color:#8198b0;margin-top:10px;line-height:1.8}.evidence-card-copy>p:last-of-type{font-size:12px;line-height:1.9;color:#9faec1;margin:16px 0 25px}.evidence-card-copy>a{display:flex;align-items:center;gap:7px;border-top:1px solid #ffffff17;padding-top:18px;margin-top:auto;color:#a2e5d7;font-size:10px;min-height:44px}.evidence-card-copy a small{color:#788da4;font-size:8px;margin-left:auto}.credential-document{display:inline-flex;align-items:center;gap:6px;margin-top:12px;min-height:36px;color:#9de7d2;font-size:11px}
+@media(max-width:1100px){.evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.evidence-layout-copy{padding:28px}.evidence-layout-copy h3{font-size:30px}}
+@media(max-width:767px){.evidence-heading{flex-direction:column;align-items:flex-start;gap:25px}.evidence-layout-feature{grid-template-columns:1fr}.evidence-layout-image>img{height:310px}.evidence-layout-copy{padding:24px}.evidence-grid{grid-template-columns:1fr}.evidence-preview{height:260px}.evidence-card-copy{padding:22px}.evidence-layout-copy dl>div{font-size:9px}.evidence-layout-copy dd{max-width:65%}.evidence-filter button{padding:9px 12px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.evidence-preview img,.evidence-layout-image>img{transition:none}}

@@ -103,3 +103,7 @@ All direct runtime and development packages used by this repository are listed b
 - [ladunjexa/reactjs18-3d-portfolio](https://github.com/ladunjexa/reactjs18-3d-portfolio): inspiration for the spatial portfolio presentation.
 - EL5013 circuit atlas: William Anthony's supplied LTspice schematics; original wire coordinates, illustrative component blocks.
 - [IEEE Chipathon 2025 announcement](https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/): linked from the front-page winner badge; Agentic AI theme supplied by William.
+
+### Asset preparation tools
+
+These tools were used in an isolated local cache for asset verification, not shipped in the website runtime: [gdstk 1.0.2](https://heitzmann.github.io/gdstk/) for GDS parsing and SVG geometry export, [PyMuPDF 2.0](https://pymupdf.readthedocs.io/) for source-document previews and PDF rendering, and [pypdf 6.21.2](https://pypdf.readthedocs.io/) for PDF text/structure checks. The browser export uses Chromium through Playwright for print-layout and interaction QA. See the [evidence archive notes](docs/evidence.md).

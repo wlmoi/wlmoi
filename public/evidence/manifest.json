@@ -1,0 +1,32 @@
+[
+  {
+    "file": "D5_Gelochip_IRIS.gds",
+    "bytes": 5252368,
+    "sha256": "24df54cb846136a7f150e63a82556c511cb6c4d0bee5833daaf4d08841116b91"
+  },
+  {
+    "file": "energy-conversion-report.pdf",
+    "bytes": 811344,
+    "sha256": "6310d7a6757cae6e26f4f1644b8d61eca3c2c77b4ebdf57cf89be7c0124986d7"
+  },
+  {
+    "file": "itb-apsipa-recommendation.pdf",
+    "bytes": 474064,
+    "sha256": "c2cef965ea6010a3f3101b2fcac7334348d86ed5778d2e2844ebbe4d1cfb34f6"
+  },
+  {
+    "file": "python-covid-data-report.pdf",
+    "bytes": 871178,
+    "sha256": "2c0dd44cd4a6238d73d3c1e956c0cf8a47c62bd53cac7aa7a0edd58c2972729e"
+  },
+  {
+    "file": "supervisor-apsipa-recommendation.pdf",
+    "bytes": 176885,
+    "sha256": "e8174c24b58bf1632015aa8af3f0a6ef0949094cde78a8c5710e8ace761d714e"
+  },
+  {
+    "file": "winter-school-2025.pdf",
+    "bytes": 8807727,
+    "sha256": "4ad7c287f4e7a421b708f47619903001e51eda63273f536ae863a3ab34974f3f"
+  }
+]

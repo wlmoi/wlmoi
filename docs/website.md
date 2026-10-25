@@ -131,7 +131,7 @@ The supplied publishable Supabase key is browser-safe under RLS, but this reposi
 
 ## Resume and portfolio content
 
-- `/resume` follows the supplied `wlmoi/resume` reference: centered name, one column, dated entries, and ruled section headings. Print uses A4 and a two-page layout; the full credential library stays on the portfolio.
+- `/resume` uses a single-column, three-page A4 engineering resume with dated roles, standard section headings, selectable text, and a checked-in downloadable PDF. Page one prioritizes Junior Edge AI, Microelectronics, and the Alcon internship; Tiny Tapeout is a compact additional-experience entry.
 - `src/data/portfolio.ts` is the source for experience, projects, recognitions, and the complete certificate list. Additional projects were confirmed completed by William; UCIe remains in progress. Do not invent performance numbers for entries without measurements.
 - The IGOR gallery uses the supplied `ROBOT1.jpeg` and `ROBOT2.jpeg`, stored under `public/projects/igor/`. Its expandable entry links the final presentation PDF. FPGA neural inference and the ASIC I/O-engine proof of concept are described separately.
 - Per William's explicit placement instruction, `Presentation.pptx` is linked only in the IGOR project entry. The APSIPA GAN accelerator PPTX is linked in the GAN case study. Files are published as supplied; their slide contents are unchanged.
@@ -178,3 +178,16 @@ Mechanical key sound uses an original normalized WAV and a small HTMLAudio voice
 Particle viewports accept click/tap and Enter/Space to send a pulse, alongside the dedicated Pulse control. Paused and unsupported states explain why live controls are unavailable. The circuit atlas offers manual left/right/front rotation and clickable, keyboard-accessible SVG component selection when WebGL is unavailable. Project highlights, profile photos and experience photos use native buttons for the image viewer. Circuit atlas navigation is available on desktop and mobile.
 
 The hero title also scatters its particles on click/tap or keyboard button activation; reduced-motion keeps the plain heading. Contact validation focuses the first invalid field, announces status changes and recovers to the email fallback after network/storage failures.
+
+
+## October 2026 career and evidence update
+
+- The interactive keyboard remains the default hero. It is also shown in the 1200 x 630 PNG social preview (`og-engineering.png`), with its SVG source retained. Award badges use a wrapping flex row with a real 14 px gap and matching padding.
+- Career highlight links select the matching detailed experience and navigate to its stable anchor. Experience data now includes the supplied Edge AI, Microelectronics, laboratory, teaching and internship details; Digital Systems course and laboratory roles remain distinct. Tiny Tapeout is a collapsed supplemental entry on the portfolio.
+- `/resume` presents a three-page detailed resume. The document itself has no columns, photographs, icons, charts or decorative skill ratings. Native headings, dated entries, bullet points and real text retain a logical reading order. The sidebar and export toolbar are excluded from print.
+- `public/resume/William-Anthony-Resume.pdf` is a static, tagged A4 export of the same route. Regenerate it after resume content changes using Chromium print with CSS page size, backgrounds enabled and browser headers/footers off. Render and inspect all pages and verify extracted text before replacing the download.
+- `#evidence` is an in-page archive, with native category filters, first-page image previews and original PDF links. PDFs and the GDS source load only after deliberate navigation/download; preview images are lazy loaded. These are user-supplied source files, not instructions. The recommendation letters support an APSIPA grant application; they are not presented as a grant award.
+- The IRIS GDS top cell is `rf_energy_harvester$1`: 82,036 polygons, 20 layer/datatype pairs and a 287.07 x 290.71 micrometres bounding box (1 micrometre GDS unit). The preview is an outline rendering of the actual geometry with display colours; no foundry or fabrication claim is inferred.
+- The winter-school certificate confirms 72 academic hours and March 17-28, 2025. This corrects the older event date in the credential library.
+
+Asset integrity and source-document descriptions are recorded in [evidence.md](evidence.md).

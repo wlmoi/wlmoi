@@ -1,102 +1,55 @@
-﻿import { useEffect } from 'react'
+import { useEffect } from 'react'
 import type { ReactNode } from 'react'
-import { ArrowLeft, ArrowUpRight, Download } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Download, Printer } from 'lucide-react'
 import { education, experiences, languages, person, projects, recognitions } from '../data/portfolio'
-
-const sections = ['Summary', 'Experience', 'Selected projects', 'Education', 'Technical skills', 'Recognition', 'Selected certifications']
-const selectedExperience = experiences.filter((item) => [
-  'Tiny Tapeout', 'Microelectronics Center of Institut Teknologi Bandung', 'Alcon',
-].includes(item.organization) || ['Junior Edge AI Engineer in Computer Vision and Audio', 'Electronics II Laboratory Coordinator', 'Research Assistant in Partial-Discharge Detection'].includes(item.title))
-const selectedProjects = projects.filter((item) => ['igor', 'fpga-gan', 'qft', 'hme-election'].includes(item.id))
-
-export function ResumePage() {
-  useEffect(() => {
-    const previousTitle = document.title
-    document.title = 'William Anthony — Resume'
-    if (new URLSearchParams(window.location.search).has('print')) {
-      let cancelled = false
-      void document.fonts.ready.then(() => { if (!cancelled) window.print() })
-      return () => { cancelled = true; document.title = previousTitle }
-    }
-    return () => { document.title = previousTitle }
-  }, [])
-
-  return (
-    <main id="main-content" className="resume-page">
-      <div className="resume-toolbar no-print">
-        <a href="/#home"><ArrowLeft size={16} aria-hidden="true" /> Portfolio</a>
-        <span className="resume-toolbar-label">William Anthony / Résumé</span>
-        <button type="button" onClick={() => window.print()}><Download size={16} aria-hidden="true" /> Save PDF</button>
-      </div>
-      <div className="resume-layout">
-        <aside className="resume-sidebar no-print">
-          <p className="eyebrow">The résumé</p>
-          <h2>Built to make<br /><em>things work.</em></h2>
-          <p>Hardware, software, and AI.<br />One connected engineering practice.</p>
-          <nav aria-label="Resume sections">
-            {sections.map((section, index) => <a key={section} href={`#resume-${index}`}><span>0{index + 1}</span>{section}</a>)}
-          </nav>
-          <a className="resume-sidebar-link" href={person.github} target="_blank" rel="noreferrer">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></a>
-          <p className="resume-print-hint">A4 · Selectable text · Print-ready<br />Use Save PDF to export this résumé.</p>
-        </aside>
-        <article className="resume-paper" aria-label="William Anthony resume">
-          <header className="resume-header">
-            <h1>{person.name}</h1>
-            <p className="resume-specialties">Digital Design & Verification · Edge AI · Software & Automation</p>
-            <p>{person.location} · {person.institution}</p>
-            <div className="resume-contacts">
-              <a href={`mailto:${person.email}`}>{person.email}</a>
-              <a href={person.linkedin}>linkedin.com/in/wlmoi</a>
-              <a href={person.github}>github.com/wlmoi</a>
-              <a href={person.portfolio}>wlmoi.vercel.app</a>
-            </div>
-          </header>
-          <ResumeSection index={0} title="Summary">
-            <p>Electrical and Electronics Engineering student at ITB (GPA {person.gpa}; expected graduation July 2027), ranked first of 118 students and selected as the 2026 Most Outstanding Electrical Engineering Student. Connects digital design and verification with applied AI, Python tooling, and production automation. <strong>2nd Place — PERURI Chip Hackathon 2026</strong> with IGOR, an AI accelerator for mobile robotics.</p>
-          </ResumeSection>
-          <ResumeSection index={1} title="Experience">
-            {selectedExperience.map((item) => (
-              <div key={`${item.organization}-${item.title}`} className="resume-entry">
-                <div className="resume-entry-heading"><h3>{item.organization}</h3><span>{item.dates}</span></div>
-                <p className="resume-role">{item.title}{item.location ? ` · ${item.location}` : ''}</p>
-                <ul><li>{item.summary}</li></ul>
-              </div>
-            ))}
-          </ResumeSection>
-          <ResumeSection index={2} title="Selected projects">
-            {selectedProjects.map((project) => (
-              <div key={project.id} className="resume-entry">
-                <h3>{project.href ? <a href={project.href}>{project.title}</a> : project.title}</h3>
-                <p>{project.id === 'igor' ? 'Designed an eight-lane FPGA neural accelerator: 138.32 µs inference at 50 MHz, 256 reference vectors with zero mismatches, and 98/98 successful Jetson–FPGA UART requests. IHP ASIC work covers an I/O-engine proof of concept; the neural core remains on FPGA.' : project.outcome}</p>
-                <p className="resume-stack">{project.stack.join(' · ')}</p>
-              </div>
-            ))}
-          </ResumeSection>
-          <ResumeSection index={3} title="Education">
-            <div className="resume-entry-heading"><h3>{education.institution}</h3><span>{education.dates}</span></div>
-            <p>{education.degree} · GPA {person.gpa}</p>
-            <p>Relevant coursework: VLSI System Design, Computer Architecture, Digital Systems, Digital Signal Processing, Electronics, and Programming.</p>
-            <p>Additional teaching: mentored 60+ Electric Circuits students; instructed 50+ students in VHDL, RTL, testbenches, and FPGA deployment; supported 40+ students in C programming and Arduino.</p>
-          </ResumeSection>
-          <ResumeSection index={4} title="Technical skills">
-            <p><strong>Digital design & verification:</strong> Verilog, SystemVerilog, VHDL, SVA, functional coverage, self-checking testbenches, Quartus, ModelSim, OpenLane / LibreLane, OpenROAD, STA, DRC, LVS.</p>
-            <p><strong>AI & signal processing:</strong> Python, PyTorch, TensorFlow, YAMNet, LangChain, ChromaDB, MATLAB, fixed-point inference, FFT, CORDIC.</p>
-            <p><strong>Software & automation:</strong> C, C++, JavaScript, SQL, FastAPI, Pydantic, Power Apps, Power Automate, Excel, MQTT, InfluxDB, Grafana.</p>
-          </ResumeSection>
-          <ResumeSection index={5} title="Recognition">
-            <ul>{recognitions.slice(0, 4).map((item) => <li key={item.title}><strong>{item.title}</strong> · {item.year}{item.title === 'Ganesha Awardee' ? ' · Two-time recipient' : ''}</li>)}</ul>
-            <p className="resume-languages"><strong>Languages:</strong> {languages.map(([language, level]) => `${language} (${level.toLowerCase()})`).join(' · ')}</p>
-          </ResumeSection>
-          <ResumeSection index={6} title="Selected certifications">
-            <p>SoC Verification using SystemVerilog · IEEE Self Sensing Processor Systems · Toyota Industrial Instrumentation, Level I · HackerRank JavaScript (Intermediate) · EFSET English 81/100 (Proficient).</p>
-            <p>Full credential library: <a href={`${person.portfolio}#certifications`}>wlmoi.vercel.app/#certifications</a></p>
-          </ResumeSection>
-        </article>
-      </div>
-    </main>
-  )
+import type { Experience } from '../types/portfolio'
+const sections=[['summary','Profile'],['professional','Professional experience'],['research','Research & teaching'],['projects','Engineering projects'],['skills','Technical skills'],['additional','Additional experience'],['recognition','Awards & credentials']] as const
+const professionalIds=['edge-ai','microelectronics','alcon']
+const academicIds=['electronics-coordinator','circuits-assistant','partial-discharge','digital-lecturer','digital-lab','programming-assistant']
+const selectExperiences=(ids:string[])=>ids.map(id=>experiences.find(e=>e.id===id)!).filter(Boolean)
+const professional=selectExperiences(professionalIds),academic=selectExperiences(academicIds)
+const selectedProjects=projects.filter(p=>['igor','fpga-gan','qft'].includes(p.id))
+const academicBullets:Record<string,string[]>={
+ 'electronics-coordinator':['Coordinate Electronics II laboratory delivery for 111 students and train and supervise 12 assistants, approximately one assistant per nine students.','Translate learning outcomes into requirements, circuit constraints, instrumentation, deliverables, troubleshooting procedures, and assessment criteria.','Oversee 10+ analog-electronics areas, including feedback, filters, oscillators, converters, current mirrors, differential amplifiers, and cascode circuits; guide simulation through measurement and reporting.'],
+ 'circuits-assistant':['Mentor 60+ students in circuit theory, LTspice, oscilloscope operation, filters, op-amps, and debugging; validate theoretical, simulated, and measured behavior.','Selected as the youngest and only third-year assistant on a 17-member team; voted Favorite Assistant.'],
+ 'partial-discharge':['Conducted MATLAB modeling and Verilog signal-processing research under Prof. Nana Sutisna.','Built a 16-bit peak detector with CSV-to-MEM conversion for FPGA simulation; designed an 8,192-point decimation-in-time FFT for high-resolution frequency analysis.'],
+ 'digital-lecturer':['Instructed 50+ students in VHDL, RTL methodology, FSMs, processes, and entity-architecture structure; taught ModelSim testbenches, waveform inspection, and timing/logic debugging.','Supervised CORDIC and 64-point FFT projects, including synthesis, pin assignment, timing/resource analysis, and Cyclone IV deployment in Quartus Prime Standard 24.1.'],
+ 'digital-lab':['Led FPGA laboratory sessions for 40+ students using Intel Quartus Prime and Terasic DE10-Lite; guided frequency dividers, FSMs, UART, and live hardware/code debugging.','Selected as the youngest and only third-year assistant on a 15-member team.'],
+ 'programming-assistant':['Taught 40+ students C programming and Arduino integration through lectures, case studies, practical exercises, and team projects.','Guided problem decomposition, technical tradeoffs, testing, and debugging; supported assignments and examinations with constructive feedback and responsible programming practices.'],
 }
+const clean=(text:string)=>text.replace(/[–—]/g,'-').replace(/\s+/g,' ').trim()
 
-function ResumeSection({ title, index, children }: { title: string; index: number; children: ReactNode }) {
-  return <section id={`resume-${index}`} className="resume-section"><h2>{title}</h2>{children}</section>
+export function ResumePage(){
+ useEffect(()=>{
+  const previousTitle=document.title
+  document.title='William Anthony | Edge AI, Microelectronics & Engineering Résumé'
+  if(new URLSearchParams(location.search).has('print')){let cancelled=false;void document.fonts.ready.then(()=>{if(!cancelled)window.print()});return()=>{cancelled=true;document.title=previousTitle}}
+  return()=>{document.title=previousTitle}
+ },[])
+ return <main id="main-content" className="resume-page resume-detailed">
+  <div className="resume-toolbar no-print"><a href="/#home"><ArrowLeft size={16} aria-hidden="true"/> Portfolio</a><span className="resume-toolbar-label">WILLIAM ANTHONY / ENGINEERING RÉSUMÉ</span><div className="resume-export-actions"><button type="button" onClick={()=>window.print()}><Printer size={15} aria-hidden="true"/> Print</button><a href="/resume/William-Anthony-Resume.pdf" download className="resume-download"><Download size={15} aria-hidden="true"/> Download PDF</a></div></div>
+  <div className="resume-layout">
+   <aside className="resume-sidebar no-print"><p className="eyebrow">EXPERIENCE, WITH EVIDENCE</p><h2>Built in the lab.<br/><em>Applied in industry.</em></h2><p>Current work in Edge AI and digital hardware. A completed manufacturing internship. Research, teaching, and systems built with teams.</p><div className="resume-focus-tags"><span>Edge AI</span><span>Microelectronics</span><span>Industry internship</span></div><nav aria-label="Resume sections">{sections.map(([id,label],i)=><a key={id} href={`#resume-${id}`}><span>0{i+1}</span>{label}</a>)}</nav><a className="resume-sidebar-link" href="/#experience">Explore the experience timeline <ArrowUpRight size={15} aria-hidden="true"/></a><p className="resume-print-hint">Detailed engineering résumé<br/>Single column · Selectable text · A4<br/>Updated October 2026</p></aside>
+   <article className="resume-paper" aria-label="William Anthony detailed resume">
+    <div className="resume-sheet" data-resume-sheet="1">
+     <header className="resume-header"><p className="resume-document-label">ENGINEERING RÉSUMÉ</p><h1>{person.name}</h1><p className="resume-specialties">Junior Edge AI Engineer | Microelectronics Research | Digital Design & Verification</p><p>{person.location} | {person.institution} | Expected graduation: July 2027</p><div className="resume-contacts"><a href={`mailto:${person.email}`}>{person.email}</a><a href={person.linkedin}>linkedin.com/in/wlmoi</a><a href={person.github}>github.com/wlmoi</a><a href={person.portfolio}>wlmoi.vercel.app</a></div></header>
+     <ResumeSection id="summary" title="Professional Summary"><p>Electrical and Electronics Engineering student at ITB with current experience as a Junior Edge AI Engineer and a Research Assistant at the Microelectronics Center, plus a completed Product Consumables internship at Alcon. Develops Python-based sensing and AI prototypes, synthesizable SystemVerilog hardware, and production-data automation. Ranked first of 118 students with a GPA of {person.gpa}; named ITB’s 2026 Most Outstanding Electrical and Electronics Engineering Student. Combines implementation, verification, measurement, and technical communication across hardware and software.</p></ResumeSection>
+     <ResumeSection id="education" title="Education"><div className="resume-entry-heading"><h3>{education.institution}</h3><span>Jul 2023 - Jul 2027 (expected)</span></div><p>{education.degree} | GPA: {person.gpa} | Academic rank: 1 of 118</p><p><strong>Relevant coursework:</strong> VLSI System Design, Digital IC Analysis and Design, Computer Architecture, Digital Signal Processing, Analog Mixed-Signal Electronic Design, Electronics, and Programming.</p></ResumeSection>
+     <ResumeSection id="professional" title="Professional Experience">{professional.map(item=><ExperienceEntry key={item.id} item={item}/>)}</ResumeSection>
+    </div>
+    <div className="resume-sheet" data-resume-sheet="2"><Continuation subtitle="Research, laboratory leadership & teaching"/>
+     <ResumeSection id="research" title="Research & Teaching Experience">{academic.map(item=><ExperienceEntry key={item.id} item={item} compact/>)}</ResumeSection>
+    </div>
+    <div className="resume-sheet" data-resume-sheet="3"><Continuation subtitle="Engineering projects, technical skills & recognition"/>
+     <ResumeSection id="projects" title="Selected Engineering Projects"><div className="resume-entry resume-project"><h3><a href={person.paperUrl}>Signed INT8 GAN Accelerator - RTL to GDSII</a></h3><p>Implemented a structural 4-by-4 processing-element array with SRAM buffers and a serial host interface on GF180MCU. Verified RTL and post-route behavior bit-for-bit across a 784-pixel image; reported 0.8 GOPS at 25 MHz and zero DRC, LVS, XOR, and antenna violations. Accepted paper at APSIPA ASC 2026, Paper ID 1571326725.</p><p className="resume-stack"><strong>Technologies:</strong> SystemVerilog, GF180MCU, SRAM, physical implementation, static timing analysis.</p></div>{selectedProjects.map(project=><div className="resume-entry resume-project" key={project.id}><h3>{project.href?<a href={project.href}>{clean(project.title)}</a>:clean(project.title)}</h3><p>{project.id==='igor'?'Designed an eight-lane FPGA neural accelerator for mobile robotics: 138.32 microseconds inference at 50 MHz, 256 reference vectors with zero mismatches, and 98/98 successful Jetson-FPGA UART requests. The IHP ASIC contribution is an I/O-engine proof of concept; the neural core remains on FPGA.':project.id==='qft'?'Contributed DSP control and digital-track integration with Team D22: Chipster in IEEE SSCS Chipathon 2025. Supported a three-qubit QFT design and completed GF180 tapeout through an agentic workflow spanning reference retrieval, RTL generation, validation, and physical-design feedback.':`${clean(project.role)} ${clean(project.outcome)}`}</p><p className="resume-stack"><strong>Technologies:</strong> {project.stack.map(clean).join(', ')}</p></div>)}</ResumeSection>
+     <ResumeSection id="skills" title="Technical Skills"><p><strong>Digital design and verification:</strong> SystemVerilog, Verilog, VHDL, RTL microarchitecture, pipelining, FSMs, self-checking testbenches, SVA, functional coverage, ModelSim, Quartus, FPGA validation.</p><p><strong>IC implementation:</strong> LibreLane, OpenLane, OpenROAD, GF180MCU, static timing analysis, DRC, LVS, antenna closure, Cadence Virtuoso.</p><p><strong>Edge AI, embedded and DSP:</strong> Python, TensorFlow, YAMNet, PyTorch, Raspberry Pi, ESP32-S3, INMP441, I2S, USB CDC, UART, MATLAB, fixed-point arithmetic, FFT, CORDIC.</p><p><strong>Software and automation:</strong> C, C++, JavaScript, SQL, FastAPI, Pydantic, LangChain, ChromaDB, Power Apps, Power Automate, Excel, MQTT, InfluxDB, Grafana.</p></ResumeSection>
+     <ResumeSection id="additional" title="Additional Experience"><p><strong>Tiny Tapeout | RTL Functional Verification Engineer | Freelance, Remote | Oct 2026.</strong> Completed a focused APB-controlled SPI Master verification engagement using SystemVerilog, SVA, functional coverage, and Python regressions; documented results and remaining verification gaps.</p><p><strong>Leadership and community:</strong> HME ITB web developer (Nov 2024 - Feb 2025); PPSN local coordinator (Oct 2023 - Jan 2024) and teaching officer (Jul - Aug 2024); KMB Dhammanano ITB spiritual division and tutoring (Jul 2024 - Apr 2025). Full organization history: <a href={`${person.portfolio}#organizations`}>wlmoi.vercel.app/#organizations</a>.</p></ResumeSection>
+     <ResumeSection id="recognition" title="Awards & Selected Certifications"><p>{recognitions.filter(r=>/PERURI|IEEE Chipathon|Most Outstanding|Ganesha/.test(r.title)).map(r=>`${clean(r.title)} (${r.year})`).join('; ')}.</p><p><strong>Selected certifications:</strong> SoC Verification using SystemVerilog; IEEE Self Sensing Processor Systems; Toyota Industrial Instrumentation, Level I; 72-hour Winter School in Advanced Electronics (TUSUR/ITB, 2025); HackerRank JavaScript (Intermediate); EFSET English, 81/100 (Proficient). Full credential library: <a href={`${person.portfolio}#certifications`}>wlmoi.vercel.app/#certifications</a>.</p><p><strong>Languages:</strong> {languages.map(([name,level])=>`${name} (${level.toLowerCase()})`).join('; ')}.</p></ResumeSection>
+    </div>
+   </article>
+  </div>
+ </main>
 }
+function ResumeSection({id,title,children}:{id:string;title:string;children:ReactNode}){return <section id={`resume-${id}`} className="resume-section"><h2>{title}</h2>{children}</section>}
+function Continuation({subtitle}:{subtitle:string}){return <header className="resume-continuation"><strong>William Anthony</strong><span>{subtitle}</span></header>}
+function ExperienceEntry({item,compact=false}:{item:Experience;compact?:boolean}){return <section className={`resume-entry ${compact?'resume-entry-compact':''}`} aria-label={`${item.title} at ${item.organization}`}><div className="resume-entry-heading"><h3>{clean(item.title)}</h3><span>{clean(item.dates)}</span></div><p className="resume-employer"><strong>{item.organization}</strong>{item.employmentType?` | ${item.employmentType}`:''}{item.location?` | ${clean(item.location).replaceAll(' · ',' / ')}`:''}</p>{!compact?<p>{clean(item.summary)}</p>:null}{(compact?academicBullets[item.id]:item.bullets)?.length?<ul>{(compact?academicBullets[item.id]:item.bullets)!.map(bullet=><li key={bullet}>{clean(bullet)}</li>)}</ul>:null}</section>}

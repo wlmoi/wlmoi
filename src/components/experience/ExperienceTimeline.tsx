@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { experiences } from '../../data/portfolio'
 
@@ -11,6 +11,7 @@ const experienceImages: Record<string, string> = {
 export function ExperienceTimeline() {
   const [activeIndex, setActiveIndex] = useState(0)
   const active = experiences[activeIndex]
+  useEffect(()=>{const select=(event:Event)=>{const id=(event as CustomEvent<string>).detail;const index=experiences.findIndex(e=>e.id===id);if(index>=0)setActiveIndex(index)};window.addEventListener('select-experience',select);return()=>window.removeEventListener('select-experience',select)},[])
 
   return (
     <div className="experience-timeline-wrap">
@@ -28,8 +29,8 @@ export function ExperienceTimeline() {
         </div>
       </div>
       <div className="relative ml-1 border-l border-white/[0.12] pl-6 md:pl-10">
-      {experiences.map((item, index) => (
-        <article key={`${item.organization}-${item.title}`} className={`experience-row relative py-6 md:py-8 ${activeIndex === index ? 'experience-row--active' : ''}`}>
+      {experiences.filter(item=>item.id!=='tiny-tapeout').map((item) => {const index=experiences.indexOf(item);return (
+        <article id={`experience-${item.id}`} key={`${item.organization}-${item.title}`} className={`experience-row relative py-6 md:py-8 ${activeIndex === index ? 'experience-row--active' : ''}`}>
           <span className="absolute -left-[1.73rem] top-10 h-2.5 w-2.5 rounded-full border border-[hsl(var(--accent))] bg-[hsl(var(--background))] md:-left-[2.57rem]" aria-hidden="true" />
           <button type="button" className="grid w-full gap-4 text-left md:grid-cols-[180px_1fr_auto] md:gap-10" onClick={() => setActiveIndex(index)} aria-expanded={activeIndex === index}>
             <div>
@@ -38,19 +39,20 @@ export function ExperienceTimeline() {
             </div>
             <div>
               <h3 className="text-xl font-semibold tracking-tight md:text-2xl">{item.title}</h3>
-              <p className="mt-1 text-sm text-white/[0.58]">{item.organization}{item.location ? ` · ${item.location}` : ''}</p>
+              <p className="mt-1 text-sm text-white/[0.58]">{item.organization}{item.employmentType ? ` · ${item.employmentType}` : ''}{item.location ? ` · ${item.location}` : ''}</p>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/[0.67]">{item.summary}</p>
-              {item.bullets && item.bullets.length > 1 ? (
+              {activeIndex === index && item.bullets?.length ? (
                 <ul className="mt-4 grid gap-2 text-sm leading-6 text-white/[0.5]">
-                  {item.bullets.slice(1).map((bullet) => <li key={bullet} className="pl-4 before:mr-2 before:text-[hsl(var(--accent))] before:content-['/']">{bullet}</li>)}
+                  {item.bullets.map((bullet) => <li key={bullet} className="pl-4 before:mr-2 before:text-[hsl(var(--accent))] before:content-['/']">{bullet}</li>)}
                 </ul>
               ) : null}
             </div>
             <ChevronDown className="experience-chevron mt-1" size={18} aria-hidden="true" />
           </button>
         </article>
-      ))}
+      )})}
       </div>
+      <details className="experience-freelance"><summary>Additional freelance engagement <span>Tiny Tapeout · Oct 2026</span></summary><p><strong>RTL Functional Verification Engineer.</strong> {experiences.find(item=>item.id==='tiny-tapeout')?.summary}</p></details>
     </div>
   )
 }

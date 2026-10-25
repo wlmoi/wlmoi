@@ -25,7 +25,7 @@ export function Hero({ activeId }: { activeId: string }) {
           <a href="#home" className="hero-wordmark" aria-label="William Anthony home"><span>WA<span className="wordmark-dot">.</span></span>William Anthony</a>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
             {[
-              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Circuits','schematics'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Recognition','recognition'],['Contact','contact'],
+              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Circuits','schematics'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Evidence','evidence'],['Recognition','recognition'],['Contact','contact'],
             ].map(([label,id])=><a key={id} href={`#${id}`} className={`hero-nav-link text-xs transition-colors ${activeId===id ? 'is-active text-white' : 'text-white/60 hover:text-white'}`}>{label}</a>)}
             <a href="#contact" className="nav-contact">Let’s talk <ArrowUpRight size={13} aria-hidden="true" /></a>
           </nav>
@@ -38,13 +38,15 @@ export function Hero({ activeId }: { activeId: string }) {
             <p className="hero-kicker" data-hero-reveal>HARDWARE · SOFTWARE · APPLIED AI</p>
             <ParticleTitle />
             <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
-            <p className="hero-description" data-hero-reveal>Digital design and verification, embedded AI, and the software that connects them. Electrical & Electronics Engineering at ITB, class of 2027.</p>
+            <p className="hero-description" data-hero-reveal>Junior Edge AI Engineer and Microelectronics Research Assistant at ITB. Manufacturing internship experience at Alcon. I connect digital hardware, embedded intelligence, and practical automation.</p>
             <div className="hero-actions" data-hero-reveal>
               <a className="hero-primary-action" href="#work">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></a>
               <a className="hero-secondary-action" href={person.resumeUrl}>View résumé <ArrowUpRight size={14} aria-hidden="true" /></a>
             </div>
+            <div className="hero-awards" aria-label="Selected awards">
             <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={13} aria-hidden="true" /></a>
             <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI · Chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
+            </div>
           </div>
         </div>
         <div className="hero-scene-column" data-hero-reveal><HeroStage /></div>

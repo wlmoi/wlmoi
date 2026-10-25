@@ -25,6 +25,8 @@ export type Project = {
 }
 
 export type Experience = {
+  id: string
+  employmentType?: string
   title: string
   organization: string
   dates: string
@@ -41,6 +43,7 @@ export type Recognition = {
 }
 
 export type Credential = {
+  href?: string
   title: string
   issuer: string
   date?: string
