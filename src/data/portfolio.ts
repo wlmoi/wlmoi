@@ -168,6 +168,7 @@ export const projects: Project[] = [
     outcome: 'Deterministic 138.32 µs FPGA inference at 50 MHz; 256 reference vectors with zero output mismatches. The later final presentation reports 98/98 successful physical Jetson–FPGA UART requests. The IHP ASIC is an I/O-engine proof of concept; the neural core remains on FPGA.',
     href: 'https://igor-rtl-explorer.vercel.app/',
     resources: [
+      { title: 'Presentation.pptx', href: '/presentations/Presentation.pptx', format: 'PPTX · Download presentation' },
       { title: 'IGOR — final presentation', href: '/presentations/IGOR-Final-Presentation.pdf', format: 'PDF · 40 slides' },
       { title: 'IGOR — PowerPoint presentation', href: 'https://drive.google.com/file/d/1Jh77bJqxKFW4QGphayTaAheFd9hZmQhw/view', format: 'PPTX · Google Drive' },
       { title: 'IGOR — project archive', href: 'https://drive.google.com/drive/folders/1OJZmk0_sK4DnrdGx4UgBH6NT0lN_wUky', format: 'Google Drive · Project files and supporting material' },

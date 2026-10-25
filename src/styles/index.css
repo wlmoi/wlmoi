@@ -1272,7 +1272,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .project-resources a { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; padding: 16px 20px; border: 1px solid #ffffff24; border-radius: 12px; font-size: 13px; transition: background .25s, border-color .25s; }
 .project-resources a:hover { border-color: hsl(var(--accent) / .6); background: hsl(var(--accent) / .04); }
 .project-resources small { display: block; margin-top: 6px; color: #a6bdc4; font-size: 11px; line-height: 1.5; }
-.case-study-resources { grid-template-columns: repeat(3,minmax(0,1fr)); margin: -10px 0 56px; }
+.case-study-resources { grid-template-columns: repeat(2,minmax(0,1fr)); margin: -10px 0 56px; }
 .credentials-library { min-width: 0; scroll-margin-top: 100px; }
 .credentials-search { display: flex; align-items: center; gap: 12px; border: 1px solid #ffffff38; border-radius: 12px; padding: 0 16px; color: #b8d4da; }
 .credentials-search input { width: 100%; min-width: 0; min-height: 48px; background: transparent; outline-offset: 2px; color: white; font-size: 12px; }

@@ -51,7 +51,6 @@ export function CaseStudy() {
 
         <div className="case-study-resources project-resources">
           <a href="/presentations/APSIPA-2026-GAN-Accelerator.pptx" download><span>GAN accelerator — complete presentation<small>PPTX · 38 slides · 4.3 MB</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
-          <a href="/presentations/GAN-Accelerator-Original.pptx" download><span>Original architecture slides<small>PPTX · 13 slides · 1.8 MB</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
           <a href={person.paperUrl} target="_blank" rel="noreferrer"><span>Read the research paper<small>PDF · Architecture, results, and verification</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
 
