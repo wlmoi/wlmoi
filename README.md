@@ -107,3 +107,7 @@ All direct runtime and development packages used by this repository are listed b
 ### Asset preparation tools
 
 These tools were used in an isolated local cache for asset verification, not shipped in the website runtime: [gdstk 1.0.2](https://heitzmann.github.io/gdstk/) for GDS parsing and SVG geometry export, [PyMuPDF 2.0](https://pymupdf.readthedocs.io/) for source-document previews and PDF rendering, and [pypdf 6.21.2](https://pypdf.readthedocs.io/) for PDF text/structure checks. The browser export uses Chromium through Playwright for print-layout and interaction QA. See the [evidence archive notes](docs/evidence.md).
+
+### Planar CMOS model
+
+The original procedural NMOS/PMOS model takes visual inspiration from [planar_Invertor on Sketchfab](https://sketchfab.com/3d-models/planar-invertor-5f8dbf311b194676b35cff3b8817c13d). No Sketchfab model, texture or thumbnail is distributed. Structure and ideal inverter logic follow [Johannes Kepler University CMOS teaching material](https://iic-jku.github.io/design-complex-ic/slides/mosfet.html), [MIT OpenCourseWare 3D cross-section notes](https://www.ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-spring-2006/175ea2da2a74523af3f3837a5c39b13c_l15_vlsi_print.pdf) and the [UBC CMOS layout tutorial](https://people.ece.ubc.ca/soc/cadence/html/Layout.html). Geometry, colours, labels and interaction code are local, using the existing Three.js, React Three Fiber and Drei dependencies.

@@ -191,3 +191,15 @@ The hero title also scatters its particles on click/tap or keyboard button activ
 - The winter-school certificate confirms 72 academic hours and March 17-28, 2025. This corrects the older event date in the credential library.
 
 Asset integrity and source-document descriptions are recorded in [evidence.md](evidence.md).
+
+
+## Planar CMOS device study
+
+`#planar-inverter`, within the circuit atlas, is an original procedural teaching model. NMOS n+ source/drain regions sit in a p-type body; PMOS p+ source/drain regions sit in an n-well. Separate p+ body and n+ well taps connect to GND and VDD. The poly gate input is common, while metal joins the two drains at Y. Oxide, poly, contacts and metal have separate layer offsets for the exploded view. Dimensions are conceptual, not a process layout or transistor simulation. The associated LTspice example records Wp=5 um, Wn=2 um, L=0.18 um.
+
+Native controls set input LOW/HIGH, select six structure groups, change separation, hide metal, choose isometric/top/front cross-section views, reset the scene and opt into auto rotation. Input LOW enables PMOS and yields HIGH; input HIGH enables NMOS and yields LOW. Highlighting denotes the available pull-up/down connection; no continuous static supply-to-ground current is animated.
+
+The scene is lazy-loaded near the viewport, unmounted offscreen/in hidden tabs, and normally renders on demand. Auto rotation is opt-in and respects reduced motion. A clickable and keyboard-accessible SVG cross-section preserves input logic, layer selection and separation when WebGL is unavailable. Local CanvasTexture labels require no remote fonts or assets. The source-schematic action selects Cell_INV in the retained 15-schematic atlas. The keyboard hero, resume and evidence archive remain intact.
+
+
+The original schematic atlas is retained in `#schematic-library`. Every `nmos*` and `pmos*` symbol now renders as an illustrative layered transistor (body or well, diffusion regions, oxide, gate, contacts, and terminal leads), with its original 2D symbol position and wire endpoints preserved. Other symbols retain their existing block representation. SVG fallback symbols expose the same NMOS/PMOS colours. Detail zoom and a context panel link the selected source device into the larger device study. The schematic library has its own visibility boundary and scroll trigger, independent of the added model. The original schematic canvas remains first in the circuit atlas; the larger transistor study sits below it. A native NMOS / PMOS example action selects Cell_INV without removing any catalog entry. Initial URL hashes also navigate after React mounts.

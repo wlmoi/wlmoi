@@ -27,6 +27,8 @@ const sections = ['home', 'profile', 'expertise', 'schematics', 'case-study', 'e
 function PortfolioPage() {
   const [activeId, setActiveId] = useState('home')
 
+  useEffect(()=>{const hash=window.location.hash.slice(1);if(!hash)return;const frame=requestAnimationFrame(()=>{try{document.getElementById(decodeURIComponent(hash))?.scrollIntoView({behavior:'instant',block:'start'})}catch{/* Ignore malformed anchor URLs. */}});return()=>cancelAnimationFrame(frame)},[])
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]

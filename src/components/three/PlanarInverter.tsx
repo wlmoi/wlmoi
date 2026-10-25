@@ -1,0 +1,49 @@
+import { Component, lazy, Suspense, useCallback, useEffect, useId, useState } from 'react'
+import type { KeyboardEvent, ReactNode } from 'react'
+import { ArrowUpRight, Eye, EyeOff, RotateCcw } from 'lucide-react'
+import { inverterLogic, inverterParts } from '../../data/inverter'
+import type { InverterPart, InverterView, LogicInput } from '../../data/inverter'
+import { useIntersection } from '../../hooks/useIntersection'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+const PlanarInverterScene=lazy(()=>import('./PlanarInverterScene'))
+function hasWebGL(){try{const gl=document.createElement('canvas').getContext('webgl2');const works=Boolean(gl);gl?.getExtension('WEBGL_lose_context')?.loseContext();return works}catch{return false}}
+class InverterBoundary extends Component<{children:ReactNode;fallback:ReactNode;onFailure:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return{failed:true}};componentDidCatch(){this.props.onFailure()};render(){return this.state.failed?this.props.fallback:this.props.children}}
+type DiagramProps={input:LogicInput;selected:InverterPart;onSelect:(part:InverterPart)=>void;explode:number;metal:boolean}
+function PlanarDiagram({input,selected,onSelect,explode,metal}:DiagramProps){
+ const logic=inverterLogic(input)
+ const part=(id:InverterPart)=>({role:'button',tabIndex:0,'aria-label':`Inspect ${id}`,'aria-pressed':selected===id,onClick:()=>onSelect(id),onKeyDown:(event:KeyboardEvent<SVGGElement>)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onSelect(id)}}})
+ const gap=explode*35
+ return <svg className="planar-fallback" viewBox="0 -65 760 505" aria-label="Interactive planar CMOS inverter cross-section">
+  <g {...part('body')}><rect x="65" y="273" width="630" height="100" rx="8" fill="#52496e"/><rect x="400" y="273" width="295" height="60" fill="#627ba7"/><text x="100" y="349">p-substrate</text><text x="525" y="318">n-well</text><rect x="87" y="268" width="29" height="28" fill="#d99afb"/><rect x="647" y="268" width="29" height="28" fill="#63e7c3"/></g>
+  <g {...part('nmos')}><rect x="128" y="268" width="70" height="28" fill="#63e7c3"/><rect x="267" y="268" width="70" height="28" fill="#63e7c3"/><rect x="198" y="274" width="69" height="7" fill={logic.nmosOn?'#c7fff0':'#766ca0'}/><text x="146" y="290" className="planar-dark-text">n+</text><text x="286" y="290" className="planar-dark-text">n+</text><text x="164" y="412" fill="#63e7c3">NMOS {logic.nmosOn?'ON':'OFF'}</text></g>
+  <g {...part('pmos')}><rect x="425" y="268" width="70" height="28" fill="#d99afb"/><rect x="565" y="268" width="70" height="28" fill="#d99afb"/><rect x="495" y="274" width="70" height="7" fill={logic.pmosOn?'#f4dcff':'#766ca0'}/><text x="443" y="290" className="planar-dark-text">p+</text><text x="583" y="290" className="planar-dark-text">p+</text><text x="459" y="412" fill="#d99afb">PMOS {logic.pmosOn?'ON':'OFF'}</text></g>
+  <g {...part('oxide')} transform={`translate(0 ${-gap*.6})`}><rect x="190" y="254" width="86" height="10" fill="#b7e6ff"/><rect x="487" y="254" width="86" height="10" fill="#b7e6ff"/><text x="311" y="257" fontSize="11">Gate oxide</text></g>
+  <g {...part('gate')} transform={`translate(0 ${-gap})`}><rect x="205" y="224" width="55" height="24" rx="3" fill="#f5bc76"/><rect x="503" y="224" width="55" height="24" rx="3" fill="#f5bc76"/><path d="M232 224V194H531V224M382 194V160" fill="none" stroke="#f5bc76" strokeWidth="7"/><text x="331" y="143" fill="#f5bc76">A = {input}</text></g>
+  {metal?<g {...part('metal')} transform={`translate(0 ${-gap*1.8})`}><path d="M102 268V120H163V268M302 268V88H460V268M600 268V120H662V268M382 88V53" fill="none" stroke="#83b9f2" strokeWidth="9"/><text x="67" y="104">GND</text><text x="631" y="104">VDD</text><text x="328" y="39" fill="#b7e6ff">Y = {logic.output}</text></g>:null}
+ </svg>
+}
+export function PlanarInverter(){
+ const {ref,visible}=useIntersection<HTMLDivElement>({rootMargin:'150px'})
+ const reduced=useReducedMotion(),rangeId=useId()
+ const [input,setInput]=useState<LogicInput>(0),[selected,setSelected]=useState<InverterPart>('nmos'),[explode,setExplode]=useState(.25),[metal,setMetal]=useState(true),[view,setView]=useState<InverterView>('isometric'),[spin,setSpin]=useState(false),[reset,setReset]=useState(0)
+ const [support,setSupport]=useState<'pending'|'yes'|'no'>('pending')
+ const [tabVisible,setTabVisible]=useState(()=>!document.hidden)
+ const fail=useCallback(()=>setSupport('no'),[])
+ useEffect(()=>{if(!visible||support!=='pending')return;const frame=requestAnimationFrame(()=>setSupport(hasWebGL()?'yes':'no'));return()=>cancelAnimationFrame(frame)},[visible,support])
+ useEffect(()=>{const update=()=>setTabVisible(!document.hidden);document.addEventListener('visibilitychange',update);return()=>document.removeEventListener('visibilitychange',update)},[])
+ useEffect(()=>{const inspect=(event:Event)=>{const kind=(event as CustomEvent<string>).detail;if(kind==='nmos'||kind==='pmos'){setSelected(kind);setInput(kind==='nmos'?1:0)}};window.addEventListener('inspect-transistor',inspect);return()=>window.removeEventListener('inspect-transistor',inspect)},[])
+ const logic=inverterLogic(input),part=inverterParts.find(p=>p.id===selected)!
+ const active=visible&&tabVisible&&support==='yes'
+ const fallback=<PlanarDiagram input={input} selected={selected} onSelect={setSelected} explode={explode} metal={metal}/>
+ const resetScene=()=>{setInput(0);setSelected('nmos');setExplode(.25);setMetal(true);setView('isometric');setSpin(false);setReset(v=>v+1)}
+ return <div ref={ref} id="planar-inverter" className="planar-inverter" data-input={input} data-output={logic.output} data-selected-part={selected} data-inverter-mode={active?'3d':'2d'}>
+  <div className="planar-topline"><div><span className="eyebrow">DEVICE STUDY / PLANAR CMOS</span><h3>One input. Two complementary transistors.</h3></div><span>{active?'INTERACTIVE 3D':'INTERACTIVE CROSS-SECTION'}</span></div>
+  <div className="planar-main"><div className="planar-visual-column"><div className="planar-camera-controls" role="group" aria-label="Inverter camera view">{(['isometric','top','section'] as const).map(id=><button type="button" key={id} aria-pressed={view===id} disabled={support==='no'} onClick={()=>{setView(id);setSpin(false)}}>{id==='isometric'?'Isometric':id==='top'?'Top view':'Cross-section'}</button>)}</div>
+   <div className="planar-viewport" role="group" aria-label="Planar CMOS transistor model">{active?<InverterBoundary fallback={fallback} onFailure={fail}><Suspense fallback={fallback}><PlanarInverterScene input={input} selected={selected} onSelect={setSelected} explode={explode} metal={metal} view={view} spin={spin&&!reduced} reset={reset}/></Suspense></InverterBoundary>:fallback}<div className="planar-gesture-hint">{active?'Drag to orbit · Select a layer or terminal':'Select a coloured region to inspect it'}</div></div>
+   <div className="planar-layer-controls"><label htmlFor={rangeId}>Layer separation <input id={rangeId} aria-label="Inverter layer separation" type="range" min="0" max="1" step=".05" value={explode} onChange={e=>setExplode(Number(e.target.value))}/><output>{Math.round(explode*100)}%</output></label><div><button type="button" onClick={()=>setMetal(v=>!v)} aria-pressed={metal}>{metal?<Eye size={13} aria-hidden="true"/>:<EyeOff size={13} aria-hidden="true"/>}{metal?'Hide metal':'Show metal'}</button><button type="button" disabled={!active||reduced} aria-pressed={spin&&!reduced} onClick={()=>setSpin(v=>!v)}>{spin&&!reduced?'Stop rotation':'Auto rotate'}</button><button type="button" onClick={resetScene} aria-label="Reset inverter model"><RotateCcw size={13} aria-hidden="true"/> Reset</button></div></div>
+  </div><aside className="planar-inspector"><p className="eyebrow">TRY THE INPUT</p><div className="planar-input-buttons" role="group" aria-label="Inverter logic input">{([0,1] as const).map(value=><button type="button" key={value} aria-pressed={input===value} onClick={()=>setInput(value)}>A = {value}<span>{value===0?'LOW':'HIGH'}</span></button>)}</div><div className="planar-output" aria-live="polite"><span>OUTPUT / Y</span><strong>{logic.output}<small>{logic.output?'HIGH':'LOW'}</small></strong><p>{logic.path}</p></div><div className="planar-device-states"><span data-on={logic.nmosOn}>NMOS <strong>{logic.nmosOn?'ON':'OFF'}</strong></span><span data-on={logic.pmosOn}>PMOS <strong>{logic.pmosOn?'ON':'OFF'}</strong></span></div><div className="planar-part-info" aria-live="polite"><p>{part.tag}</p><h4 style={{color:part.color}}>{part.title}</h4><p>{part.description}</p><ul>{part.details.map(detail=><li key={detail}>{detail}</li>)}</ul></div></aside></div>
+  <div className="planar-part-picker" role="group" aria-label="Inspect inverter structure">{inverterParts.map(part=><button type="button" key={part.id} aria-pressed={selected===part.id} onClick={()=>setSelected(part.id)}><i style={{background:part.color}}/>{part.id==='body'?'Body & well':part.id==='metal'?'Metal & contacts':part.id==='oxide'?'Gate oxide':part.id==='gate'?'Gate / input':part.id.toUpperCase()}</button>)}</div>
+  <div className="planar-footnote"><p>Conceptual n-well CMOS · Not to scale · Ideal static logic.<br/>LTspice example: Wp = 5 µm, Wn = 2 µm, L = 0.18 µm.</p><a href="#schematic-library" onClick={()=>window.dispatchEvent(new CustomEvent('select-schematic',{detail:'Cell_INV'}))}>Inspect the source inverter schematic <ArrowUpRight size={14} aria-hidden="true"/></a></div>
+  <div className="planar-reference-links"><a href="https://iic-jku.github.io/design-complex-ic/slides/mosfet.html" target="_blank" rel="noreferrer">CMOS structure & logic reference</a><a href="https://sketchfab.com/3d-models/planar-invertor-5f8dbf311b194676b35cff3b8817c13d" target="_blank" rel="noreferrer">Visual inspiration: planar_Invertor</a></div>
+ </div>
+}
