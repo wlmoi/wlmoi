@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Hero } from './components/hero/Hero'
 import { Navigation } from './components/navigation/Navigation'
 import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
+import { OrganizationExperience } from './components/experience/OrganizationExperience'
 import { ProjectList } from './components/projects/ProjectList'
 import { CaseStudy } from './components/projects/CaseStudy'
 import { EngineeringVisual } from './components/three/EngineeringVisual'
@@ -15,7 +16,7 @@ import { ResumePage } from './pages/ResumePage'
 import { gsap } from './lib/gsap'
 import { ImageLightbox } from './components/ui/ImageLightbox'
 
-const sections = ['home', 'profile', 'expertise', 'experience', 'work', 'recognition', 'contact']
+const sections = ['home', 'profile', 'expertise', 'experience', 'organizations', 'work', 'recognition', 'contact']
 
 function PortfolioPage() {
   const [activeId, setActiveId] = useState('home')
@@ -35,7 +36,10 @@ function PortfolioPage() {
   }, [])
 
   useEffect(() => {
+    const motion = gsap.matchMedia()
+    const cleanups: Array<() => void> = []
     const context = gsap.context(() => {
+      motion.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.utils.toArray<HTMLElement>('[data-spectrum-copy], [data-skill-group], [data-capability-row], [data-motion-copy], [data-motion-list], [data-motion-card]').forEach((element) => {
         gsap.fromTo(element, { opacity: 0, y: 24 }, {
           opacity: 1,
@@ -51,9 +55,15 @@ function PortfolioPage() {
         const settle = () => gsap.to(chip, { y: 0, scale: 1, color: 'rgba(255,255,255,0.52)', duration: 0.35, ease: 'power2.out' })
         chip.addEventListener('mouseenter', lift)
         chip.addEventListener('mouseleave', settle)
+        cleanups.push(() => {
+          chip.removeEventListener('mouseenter', lift)
+          chip.removeEventListener('mouseleave', settle)
+        })
+      })
+      return () => cleanups.splice(0).forEach((cleanup) => cleanup())
       })
     })
-    return () => context.revert()
+    return () => { motion.revert(); context.revert() }
   }, [])
 
   useEffect(() => {
@@ -112,7 +122,7 @@ function PortfolioPage() {
                 <VoltageHeading text="A connected system of engineering capabilities." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
               <div data-motion-copy className="flex flex-col gap-6 lg:items-end">
-                <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Not a stack of badges. A progression from architecture and RTL, through verification and physical implementation, into embedded intelligence and engineering software.</p>
+                <p className="max-w-2xl text-base leading-7 text-white/[0.62]">I connect digital design and verification with applied AI, software, and automation. Each discipline helps me turn technical requirements into systems that can be tested, measured, and used.</p>
                 <div className="section-status-strip" aria-label="William Anthony academic status">
                   <span>Bandung</span><span>Institut Teknologi Bandung</span><span>Class of 2027</span>
                 </div>
@@ -147,9 +157,9 @@ function PortfolioPage() {
             <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div data-motion-copy>
                 <p className="eyebrow">02 / Additional selected work</p>
-                <VoltageHeading text="Projects with an engineering through-line." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
+                <VoltageHeading text="Ideas built. Results measured." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
-              <p className="max-w-md text-sm leading-6 text-white/[0.48]">Every entry stays scoped to the evidence available. Ongoing targets are labeled as targets, not outcomes.</p>
+              <p className="max-w-md text-sm leading-6 text-white/[0.62]">Explore the architecture, my contribution, and the outcome—from robotics and generative AI to production data and web applications.</p>
             </div>
             <div className="mt-14">
               <ProjectList />
@@ -163,12 +173,14 @@ function PortfolioPage() {
               <div data-motion-copy>
                 <p className="eyebrow">04 / Experience timeline</p>
                 <VoltageHeading text="Hands-on work across teaching, research, silicon, and production." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
-                <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.52]">Dates are shown where publicly documented and verified for this implementation.</p>
+                <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.62]">Building dependable systems, helping students become better engineers, and turning production data into practical tools.</p>
               </div>
               <ExperienceTimeline />
             </div>
           </div>
         </section>
+
+        <OrganizationExperience />
 
         <section id="recognition" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">

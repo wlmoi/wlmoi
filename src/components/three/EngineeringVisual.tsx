@@ -8,12 +8,14 @@ const SiliconVisual = lazy(() => import('./SiliconVisual'))
 export function EngineeringVisual() {
   const { ref, visible } = useIntersection<HTMLDivElement>({ rootMargin: '250px 0px' })
   const reducedMotion = useReducedMotion()
-  const [lowPower, setLowPower] = useState(false)
+  const [lowPower, setLowPower] = useState(() => window.matchMedia('(max-width: 767px)').matches || (navigator.hardwareConcurrency || 8) <= 4)
 
   useEffect(() => {
-    const mobile = window.matchMedia('(max-width: 767px)').matches
+    const mobile = window.matchMedia('(max-width: 767px)')
     const fewCores = (navigator.hardwareConcurrency || 8) <= 4
-    setLowPower(mobile || fewCores)
+    const update = () => setLowPower(mobile.matches || fewCores)
+    mobile.addEventListener('change', update)
+    return () => mobile.removeEventListener('change', update)
   }, [])
 
   const renderWebGL = visible && !reducedMotion && !lowPower

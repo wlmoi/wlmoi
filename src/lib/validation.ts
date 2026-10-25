@@ -14,6 +14,8 @@ export type ContactInput = z.infer<typeof contactSchema>
 export function sanitizeText(value: string) {
   return value
     .replace(/<[^>]*>/g, ' ')
+    // Strip non-printing control characters while preserving whitespace for normalization.
+    // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
     .replace(/\s+/g, ' ')
     .trim()

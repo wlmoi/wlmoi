@@ -4,10 +4,13 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles/index.css'
 
+const spinnerFrames = ['/','—','\\','|']
+
+// Entry-point components are mounted here, outside Fast Refresh boundaries.
+// eslint-disable-next-line react-refresh/only-export-components
 function LoadingScreen() {
   const loaderText = 'Loading William Anthony'
   const [spinnerIndex, setSpinnerIndex] = React.useState(0)
-  const spinnerFrames = ['/','—','\\','|']
 
   React.useEffect(() => {
     const timer = window.setInterval(() => setSpinnerIndex((index) => (index + 1) % spinnerFrames.length), 180)
@@ -25,13 +28,14 @@ function LoadingScreen() {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Boot() {
   const [ready, setReady] = React.useState(false)
   const [exiting, setExiting] = React.useState(false)
 
   React.useEffect(() => {
-    const exitTimer = window.setTimeout(() => setExiting(true), 2500)
-    const readyTimer = window.setTimeout(() => setReady(true), 3050)
+    const exitTimer = window.setTimeout(() => setExiting(true), 300)
+    const readyTimer = window.setTimeout(() => setReady(true), 850)
     return () => {
       window.clearTimeout(exitTimer)
       window.clearTimeout(readyTimer)

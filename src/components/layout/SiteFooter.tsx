@@ -12,7 +12,7 @@ export function SiteFooter() {
           <p className="text-sm font-semibold">{person.name}</p>
           <p className="mt-1 text-xs text-white/[0.5]">{person.location} · Designed around precision, verification, and measurable engineering. Code, create, connect.</p>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <a className="inline-flex min-h-11 items-center gap-2 text-sm text-white/[0.7] hover:text-white" href={person.linkedin} target="_blank" rel="noreferrer">
             <BriefcaseBusiness size={15} aria-hidden="true" /> LinkedIn
           </a>

@@ -1,116 +1,102 @@
-import { useEffect } from 'react'
+﻿import { useEffect } from 'react'
 import type { ReactNode } from 'react'
-import { ArrowLeft, Download } from 'lucide-react'
-import { credentials, education, person, projects, recognitions, experiences, skillGroups } from '../data/portfolio'
+import { ArrowLeft, ArrowUpRight, Download } from 'lucide-react'
+import { education, experiences, languages, person, projects, recognitions } from '../data/portfolio'
+
+const sections = ['Summary', 'Experience', 'Selected projects', 'Education', 'Technical skills', 'Recognition', 'Selected certifications']
+const selectedExperience = experiences.filter((item) => [
+  'Tiny Tapeout', 'Microelectronics Center of Institut Teknologi Bandung', 'Alcon',
+].includes(item.organization) || ['Junior Edge AI Engineer in Computer Vision and Audio', 'Electronics II Laboratory Coordinator', 'Research Assistant in Partial-Discharge Detection'].includes(item.title))
+const selectedProjects = projects.filter((item) => ['igor', 'fpga-gan', 'qft', 'hme-election'].includes(item.id))
 
 export function ResumePage() {
   useEffect(() => {
+    const previousTitle = document.title
+    document.title = 'William Anthony — Resume'
     if (new URLSearchParams(window.location.search).has('print')) {
-      const timer = window.setTimeout(() => window.print(), 450)
-      return () => window.clearTimeout(timer)
+      let cancelled = false
+      void document.fonts.ready.then(() => { if (!cancelled) window.print() })
+      return () => { cancelled = true; document.title = previousTitle }
     }
+    return () => { document.title = previousTitle }
   }, [])
 
   return (
-    <main className="resume-page min-h-screen bg-[#f7f8f8] px-6 py-10 text-slate-900 md:px-10">
-      <div className="no-print mx-auto mb-8 flex max-w-4xl items-center justify-between">
-        <a href="/#home" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-300 px-4 text-sm font-semibold"><ArrowLeft size={15} aria-hidden="true" /> Back to portfolio</a>
-        <button type="button" onClick={() => window.print()} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-slate-900 px-4 text-sm font-semibold text-white"><Download size={15} aria-hidden="true" /> Save / print PDF</button>
+    <main id="main-content" className="resume-page">
+      <div className="resume-toolbar no-print">
+        <a href="/#home"><ArrowLeft size={16} aria-hidden="true" /> Portfolio</a>
+        <span className="resume-toolbar-label">William Anthony / Résumé</span>
+        <button type="button" onClick={() => window.print()}><Download size={16} aria-hidden="true" /> Save PDF</button>
       </div>
-
-      <article className="mx-auto max-w-4xl bg-white p-8 shadow-sm md:p-12">
-        <header className="border-b border-slate-200 pb-7">
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div>
-              <h1 className="font-display text-5xl leading-none tracking-tight md:text-6xl">{person.name}</h1>
-              <p className="mt-3 text-sm font-semibold text-slate-600">{person.role} · ASIC and FPGA Design · Design Verification · Edge AI</p>
-              <p className="mt-2 text-sm text-slate-500">{person.location} · GPA {person.gpa}</p>
+      <div className="resume-layout">
+        <aside className="resume-sidebar no-print">
+          <p className="eyebrow">The résumé</p>
+          <h2>Built to make<br /><em>things work.</em></h2>
+          <p>Hardware, software, and AI.<br />One connected engineering practice.</p>
+          <nav aria-label="Resume sections">
+            {sections.map((section, index) => <a key={section} href={`#resume-${index}`}><span>0{index + 1}</span>{section}</a>)}
+          </nav>
+          <a className="resume-sidebar-link" href={person.github} target="_blank" rel="noreferrer">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <p className="resume-print-hint">A4 · Selectable text · Print-ready<br />Use Save PDF to export this résumé.</p>
+        </aside>
+        <article className="resume-paper" aria-label="William Anthony resume">
+          <header className="resume-header">
+            <h1>{person.name}</h1>
+            <p className="resume-specialties">Digital Design & Verification · Edge AI · Software & Automation</p>
+            <p>{person.location} · {person.institution}</p>
+            <div className="resume-contacts">
+              <a href={`mailto:${person.email}`}>{person.email}</a>
+              <a href={person.linkedin}>linkedin.com/in/wlmoi</a>
+              <a href={person.github}>github.com/wlmoi</a>
+              <a href={person.portfolio}>wlmoi.vercel.app</a>
             </div>
-            <div className="text-sm leading-6 text-slate-600 md:text-right">
-              <p>{person.email}</p>
-              <p>{person.linkedin.replace('https://www.', '')}</p>
-              <p>{person.github.replace('https://', '')}</p>
-            </div>
-          </div>
-          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700">{person.supporting} GPA {person.gpa}, expected graduation {person.graduationDate}. Declared Most Outstanding Electrical and Electronics Engineering Student 2026.</p>
-        </header>
-
-        <ResumeSection title="Technical skills">
-          <div className="grid gap-4 md:grid-cols-2">
-            {Object.entries(skillGroups).map(([group, skills]) => (
-              <div key={group}>
-                <h3 className="font-semibold capitalize">{group}</h3>
-                <p className="mt-1 text-sm leading-6 text-slate-600">{skills.join(' · ')}</p>
+          </header>
+          <ResumeSection index={0} title="Summary">
+            <p>Electrical and Electronics Engineering student at ITB (GPA {person.gpa}; expected graduation July 2027), ranked first of 118 students and selected as the 2026 Most Outstanding Electrical Engineering Student. Connects digital design and verification with applied AI, Python tooling, and production automation. <strong>2nd Place — PERURI Chip Hackathon 2026</strong> with IGOR, an AI accelerator for mobile robotics.</p>
+          </ResumeSection>
+          <ResumeSection index={1} title="Experience">
+            {selectedExperience.map((item) => (
+              <div key={`${item.organization}-${item.title}`} className="resume-entry">
+                <div className="resume-entry-heading"><h3>{item.organization}</h3><span>{item.dates}</span></div>
+                <p className="resume-role">{item.title}{item.location ? ` · ${item.location}` : ''}</p>
+                <ul><li>{item.summary}</li></ul>
               </div>
             ))}
-          </div>
-        </ResumeSection>
-
-        <ResumeSection title="Education">
-          <h3 className="font-semibold">{education.degree}</h3>
-          <p className="text-sm text-slate-500">{education.institution} · {education.dates} · {education.location}</p>
-          <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Relevant coursework:</strong> {education.coursework.join(', ')}.</p>
-          <p className="mt-2 text-sm leading-6 text-slate-600"><strong>Focus areas:</strong> {education.focus.join(', ')}.</p>
-        </ResumeSection>
-
-        <ResumeSection title="Selected experience">
-          {experiences.slice(0, 9).map((item) => (
-            <div key={`${item.organization}-${item.title}`} className="resume-section border-b border-slate-100 py-4 last:border-0">
-              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="font-semibold text-slate-900">{item.title}</h3>
-                <p className="font-mono text-xs text-slate-500">{item.dates}</p>
-              </div>
-              <p className="text-sm text-slate-500">{item.organization}</p>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{item.summary}</p>
-            </div>
-          ))}
-        </ResumeSection>
-
-        <ResumeSection title="Selected work">
-          <div className="grid gap-4 md:grid-cols-2">
-            {projects.map((project) => (
-              <div key={project.id} className="resume-section rounded-xl border border-slate-200 p-4">
-                <p className="font-mono text-[0.62rem] uppercase tracking-[0.1em] text-slate-400">{project.eyebrow}</p>
-                <h3 className="mt-1 font-semibold">{project.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{project.outcome}</p>
+          </ResumeSection>
+          <ResumeSection index={2} title="Selected projects">
+            {selectedProjects.map((project) => (
+              <div key={project.id} className="resume-entry">
+                <h3>{project.href ? <a href={project.href}>{project.title}</a> : project.title}</h3>
+                <p>{project.id === 'igor' ? 'Designed an eight-lane FPGA neural accelerator: 138.32 µs inference at 50 MHz, 256 reference vectors with zero mismatches, and 98/98 successful Jetson–FPGA UART requests. IHP ASIC work covers an I/O-engine proof of concept; the neural core remains on FPGA.' : project.outcome}</p>
+                <p className="resume-stack">{project.stack.join(' · ')}</p>
               </div>
             ))}
-          </div>
-        </ResumeSection>
-
-        <ResumeSection title="Education & recognition">
-          <div className="grid gap-4 md:grid-cols-2">
-            {recognitions.map((item) => (
-              <div key={`${item.title}-${item.year}`} className="resume-section">
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="text-sm text-slate-500">{[item.issuer, item.year].filter(Boolean).join(' · ')}</p>
-                {item.detail ? <p className="mt-1 text-sm text-slate-600">{item.detail}</p> : null}
-              </div>
-            ))}
-          </div>
-        </ResumeSection>
-
-        <ResumeSection title="Licenses & certifications">
-          <div className="grid gap-3 md:grid-cols-2">
-            {credentials.map((credential) => (
-              <div key={`${credential.title}-${credential.issuer}`} className="resume-section">
-                <h3 className="font-semibold">{credential.title}</h3>
-                <p className="text-sm text-slate-500">{credential.issuer}{credential.date ? ` · ${credential.date}` : ''}</p>
-                {credential.credentialId ? <p className="mt-1 font-mono text-xs text-slate-400">Credential ID: {credential.credentialId}</p> : null}
-              </div>
-            ))}
-          </div>
-        </ResumeSection>
-      </article>
+          </ResumeSection>
+          <ResumeSection index={3} title="Education">
+            <div className="resume-entry-heading"><h3>{education.institution}</h3><span>{education.dates}</span></div>
+            <p>{education.degree} · GPA {person.gpa}</p>
+            <p>Relevant coursework: VLSI System Design, Computer Architecture, Digital Systems, Digital Signal Processing, Electronics, and Programming.</p>
+            <p>Additional teaching: mentored 60+ Electric Circuits students; instructed 50+ students in VHDL, RTL, testbenches, and FPGA deployment; supported 40+ students in C programming and Arduino.</p>
+          </ResumeSection>
+          <ResumeSection index={4} title="Technical skills">
+            <p><strong>Digital design & verification:</strong> Verilog, SystemVerilog, VHDL, SVA, functional coverage, self-checking testbenches, Quartus, ModelSim, OpenLane / LibreLane, OpenROAD, STA, DRC, LVS.</p>
+            <p><strong>AI & signal processing:</strong> Python, PyTorch, TensorFlow, YAMNet, LangChain, ChromaDB, MATLAB, fixed-point inference, FFT, CORDIC.</p>
+            <p><strong>Software & automation:</strong> C, C++, JavaScript, SQL, FastAPI, Pydantic, Power Apps, Power Automate, Excel, MQTT, InfluxDB, Grafana.</p>
+          </ResumeSection>
+          <ResumeSection index={5} title="Recognition">
+            <ul>{recognitions.slice(0, 4).map((item) => <li key={item.title}><strong>{item.title}</strong> · {item.year}{item.title === 'Ganesha Awardee' ? ' · Two-time recipient' : ''}</li>)}</ul>
+            <p className="resume-languages"><strong>Languages:</strong> {languages.map(([language, level]) => `${language} (${level.toLowerCase()})`).join(' · ')}</p>
+          </ResumeSection>
+          <ResumeSection index={6} title="Selected certifications">
+            <p>SoC Verification using SystemVerilog · IEEE Self Sensing Processor Systems · Toyota Industrial Instrumentation, Level I · HackerRank JavaScript (Intermediate) · EFSET English 81/100 (Proficient).</p>
+            <p>Full credential library: <a href={`${person.portfolio}#certifications`}>wlmoi.vercel.app/#certifications</a></p>
+          </ResumeSection>
+        </article>
+      </div>
     </main>
   )
 }
 
-function ResumeSection({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="resume-section pt-8">
-      <h2 className="mb-3 border-b border-slate-200 pb-2 font-mono text-xs uppercase tracking-[0.15em] text-slate-500">{title}</h2>
-      {children}
-    </section>
-  )
+function ResumeSection({ title, index, children }: { title: string; index: number; children: ReactNode }) {
+  return <section id={`resume-${index}`} className="resume-section"><h2>{title}</h2>{children}</section>
 }

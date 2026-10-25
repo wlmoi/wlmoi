@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, Download, ExternalLink } from 'lucide-react'
-import { credentials, education, languages, person } from '../../data/portfolio'
+import { education, languages, person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { CredentialsList } from './CredentialsList'
 
 const photos = [
   { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics / field work', width: 1280, height: 960 },
@@ -91,15 +92,7 @@ export function ProfileSection() {
             <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.55]">A record of technical learning, academic standing, and the work behind the portfolio.</p>
             <p className="profile-tagline mt-5 max-w-md">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {credentials.map((credential) => (
-              <div key={`${credential.title}-${credential.issuer}`} className="border-b border-white/[0.1] pb-4">
-                <p className="text-sm font-semibold text-white/[0.86]">{credential.title}</p>
-                <p className="mt-1 text-xs leading-5 text-white/[0.47]">{credential.issuer}{credential.date ? ` · ${credential.date}` : ''}</p>
-                {credential.credentialId ? <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.08em] text-white/[0.32]">ID {credential.credentialId}</p> : null}
-              </div>
-            ))}
-          </div>
+          <CredentialsList />
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.1] pt-6">
@@ -165,7 +158,7 @@ function FullBleedCarousel() {
             aria-label={`${index + 1} of ${photos.length}: ${item.label}`}
           >
             {'type' in item && item.type === 'video' ? (
-              <video src={item.src} aria-label={item.alt} className="photo-carousel-image" autoPlay loop muted playsInline preload="metadata" />
+              <video src={item.src} aria-label={item.alt} className="photo-carousel-image" autoPlay={!reducedMotion} controls loop muted playsInline preload="metadata" />
             ) : (
               <img src={item.src} alt={item.alt} width={item.width} height={item.height} data-zoom-src={item.src} className="photo-carousel-image" />
             )}
@@ -194,15 +187,6 @@ function FullBleedCarousel() {
       <div className="photo-carousel-dots" aria-label="Choose a photo">
         {photos.map((item, index) => <button key={item.src} type="button" onClick={() => goTo(index)} className={index === activePhoto ? 'is-active' : ''} aria-label={`Show ${item.label}`} aria-current={index === activePhoto ? 'true' : undefined} />)}
       </div>
-    </div>
-  )
-}
-
-function ProfileStat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="border-l border-white/[0.14] pl-3">
-      <p className="font-display text-3xl text-[hsl(var(--accent))]">{value}</p>
-      <p className="mt-1 font-mono text-[0.6rem] uppercase leading-4 tracking-[0.08em] text-white/[0.42]">{label}</p>
     </div>
   )
 }

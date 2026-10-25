@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
 import { Mail, Send } from 'lucide-react'
 import { buildMailto, contactSchema, sanitizeText, type ContactInput } from '../../lib/validation'
@@ -18,12 +18,12 @@ export function ContactForm() {
   const [form, setForm] = useState(initialState)
   const [errors, setErrors] = useState<Partial<Record<keyof ContactInput, string>>>({})
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'fallback'>('idle')
-  const [submittedAt, setSubmittedAt] = useState<number | null>(null)
-
-  useEffect(() => {
-    const stored = Number(window.localStorage.getItem('wa_contact_last_submit'))
-    if (Number.isFinite(stored) && stored > 0) setSubmittedAt(stored)
-  }, [])
+  const [submittedAt, setSubmittedAt] = useState<number | null>(() => {
+    try {
+      const stored = Number(window.localStorage.getItem('wa_contact_last_submit'))
+      return Number.isFinite(stored) && stored > 0 ? stored : null
+    } catch { return null }
+  })
 
   const setField = <K extends keyof ContactInput>(key: K, value: ContactInput[K]) => {
     setForm((current) => ({ ...current, [key]: value }))

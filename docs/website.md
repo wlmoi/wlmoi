@@ -128,3 +128,14 @@ The main featured case study is the **Signed INT8 GAN Accelerator, from RTL to G
 ## Security note
 
 The supplied publishable Supabase key is browser-safe under RLS, but this repository intentionally does not contain the database password or any secret/service-role credential. Never add a Postgres connection string to a frontend environment variable. Keep direct database credentials on trusted servers and tools only.
+
+## Resume and portfolio content
+
+- `/resume` follows the supplied `wlmoi/resume` reference: centered name, one column, dated entries, and ruled section headings. Print uses A4 and a two-page layout; the full credential library stays on the portfolio.
+- `src/data/portfolio.ts` is the source for experience, projects, recognitions, and the complete certificate list. Additional projects were confirmed completed by William; UCIe remains in progress. Do not invent performance numbers for entries without measurements.
+- The IGOR gallery uses the supplied `ROBOT1.jpeg` and `ROBOT2.jpeg`, stored under `public/projects/igor/`. Its expandable entry links the final presentation PDF. FPGA neural inference and the ASIC I/O-engine proof of concept are described separately.
+- Both supplied PPTX files describe the GAN accelerator. The complete APSIPA deck and the original architecture deck are downloadable in the GAN case study. `Presentation.pptx` was not labeled as IGOR because its contents concern GAN acceleration.
+- The certificate library supports search, categories, and expanding the full list. Expiry labels reproduce the supplied dates; historical certificates are retained.
+- Scroll reveals, project transitions, and hover motion respect reduced-motion preferences. Gallery images support keyboard activation, Escape, focus containment, and focus return.
+- Community experience is stored in `organizationGroups`: 18 roles and activities across 12 organizations, including the 16 newly supplied entries and two earlier volunteering entries. Tutor roles in October 2024 and January 2025 remain separate; TPB is labeled as study. HME and OSKM dates are kept separately instead of one merged employment entry. The section links the supplied Investment Festival certificate and the LinkedIn experience record.
+- The IGOR project entry also links William's supplied Google Drive archive. The site does not change its access permissions or mirror the archive.

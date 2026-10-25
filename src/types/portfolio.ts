@@ -18,6 +18,10 @@ export type Project = {
   outcome: string
   status?: 'ongoing' | 'selected'
   href?: string
+  discipline?: 'Hardware & AI' | 'Software & automation' | 'Design verification' | 'DSP' | 'IoT & embedded' | 'Data analytics'
+  metrics?: [string, string][]
+  resources?: { title: string; href: string; format: string }[]
+  images?: { src: string; alt: string; caption: string }[]
 }
 
 export type Experience = {
@@ -41,4 +45,6 @@ export type Credential = {
   issuer: string
   date?: string
   credentialId?: string
+  expiry?: string
+  category?: 'Engineering' | 'Software & data' | 'Communication & leadership' | 'Competitions'
 }

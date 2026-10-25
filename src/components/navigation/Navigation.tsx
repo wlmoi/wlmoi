@@ -8,6 +8,7 @@ const links = [
   ['Expertise', 'expertise'],
   ['Experience', 'experience'],
   ['Selected Work', 'work'],
+  ['Community', 'organizations'],
   ['Recognition', 'recognition'],
   ['Contact', 'contact'],
 ] as const
@@ -61,7 +62,7 @@ export function Navigation({ activeId }: { activeId: string }) {
   const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:hidden" aria-label="Mobile site navigation">
+    <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 xl:hidden" aria-label="Mobile site navigation">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-between rounded-full px-2 py-2">
           <a href="#home" className="font-display px-3 text-lg tracking-tight text-white" aria-label="William Anthony home">
@@ -81,7 +82,7 @@ export function Navigation({ activeId }: { activeId: string }) {
         </div>
 
         {menuOpen ? (
-          <div id="mobile-navigation" ref={menuRef} className="liquid-glass mt-3 rounded-[1.75rem] p-5" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+          <div id="mobile-navigation" ref={menuRef} className="liquid-glass mt-3 max-h-[calc(100dvh-100px)] overflow-y-auto rounded-[1.75rem] p-5" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
             <p className="eyebrow mb-5">Navigation</p>
             <div className="grid gap-1">
               {links.map(([label, id]) => (

@@ -7,9 +7,11 @@ export function ImageLightbox() {
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      const imageElement = target.closest<HTMLImageElement>('img[data-zoom-src]')
+      const imageElement = target.closest<HTMLElement>('[data-zoom-src]')
       if (!imageElement) return
-      setImage({ src: imageElement.dataset.zoomSrc || imageElement.currentSrc, alt: imageElement.alt })
+      const src = imageElement.dataset.zoomSrc || (imageElement instanceof HTMLImageElement ? imageElement.currentSrc : '')
+      const alt = imageElement.dataset.zoomAlt || (imageElement instanceof HTMLImageElement ? imageElement.alt : imageElement.getAttribute('aria-label') || '')
+      if (src) setImage({ src, alt })
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -26,7 +28,19 @@ export function ImageLightbox() {
 
   useEffect(() => {
     document.body.classList.toggle('lightbox-open', Boolean(image))
-    return () => document.body.classList.remove('lightbox-open')
+    if (!image) return
+    const previous = document.activeElement as HTMLElement | null
+    const close = document.querySelector<HTMLButtonElement>('.image-lightbox-close')
+    close?.focus()
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key === 'Tab') { event.preventDefault(); close?.focus() }
+    }
+    document.addEventListener('keydown', trapFocus)
+    return () => {
+      document.body.classList.remove('lightbox-open')
+      document.removeEventListener('keydown', trapFocus)
+      previous?.focus({ preventScroll: true })
+    }
   }, [image])
 
   if (!image) return null

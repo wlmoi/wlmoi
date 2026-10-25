@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowUpRight, Pause, Play } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Pause, Play, Trophy } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from '../../lib/gsap'
@@ -20,7 +20,6 @@ export function Hero({ activeId }: { activeId: string }) {
 
     if (reducedMotion) {
       video.pause()
-      setVideoPlaying(false)
       return
     }
 
@@ -66,17 +65,21 @@ export function Hero({ activeId }: { activeId: string }) {
             ref={videoRef}
             className="absolute inset-0 z-0 h-full w-full object-cover"
             src={videoUrl}
-            autoPlay
+            autoPlay={!reducedMotion}
             loop
             muted
             playsInline
             preload="metadata"
             onError={() => setVideoError(true)}
+            onPause={() => setVideoPlaying(false)}
+            onPlay={() => setVideoPlaying(true)}
           />
         ) : (
           <div className="absolute inset-0 bg-[hsl(var(--background))] bg-cover bg-center" style={{ backgroundImage: "url('/photos/Foto%20DiBraga%20Blurred.png')" }} />
         )}
       </div>
+
+      <div className="hero-scrim absolute inset-0 z-0" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 lg:px-8">
         <div data-hero-nav className="hero-desktop-nav animate-fade-rise">
@@ -85,12 +88,12 @@ export function Hero({ activeId }: { activeId: string }) {
               William Anthony<span className="align-super ml-0.5 text-[0.55em] text-white/[0.65]">®</span>
             </a>
 
-            <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+            <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
               {[
                 ['Home', 'home'], ['Profile', 'profile'], ['Expertise', 'expertise'], ['Experience', 'experience'],
-                ['Selected Work', 'work'], ['Recognition', 'recognition'], ['Contact', 'contact'],
+                ['Selected Work', 'work'], ['Community', 'organizations'], ['Recognition', 'recognition'], ['Contact', 'contact'],
               ].map(([label, id]) => <a key={id} href={`#${id}`} className={`hero-nav-link text-sm transition-colors ${activeId === id ? 'is-active text-white' : 'text-white/[0.65] hover:text-white'}`}>{label}</a>)}
-              <a href="#contact" className="liquid-glass rounded-full px-5 py-2.5 text-sm text-white transition-transform hover:scale-[1.03]">Discuss an Opportunity</a>
+              <a href="#contact" className="liquid-glass rounded-full px-5 py-2.5 text-sm text-white transition-transform hover:scale-[1.03]">Let’s talk</a>
             </nav>
 
           </div>
@@ -99,6 +102,7 @@ export function Hero({ activeId }: { activeId: string }) {
         <div className="hero-content flex flex-1 items-center justify-center py-20 sm:py-28 lg:py-36">
           <div className="w-full max-w-6xl text-center">
             <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
+            <a href="#work" className="hero-award animate-fade-rise"><Trophy size={15} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={14} aria-hidden="true" /></a>
             <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
 
             <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-5 max-w-6xl text-[clamp(3.1rem,7.5vw,7.5rem)] leading-[0.91] tracking-[-0.045em] text-white">
@@ -107,15 +111,15 @@ export function Hero({ activeId }: { activeId: string }) {
             </h1>
 
             <p data-hero-copy className="hero-hover-highlight animate-fade-rise-delay mx-auto mt-8 max-w-2xl text-base leading-7 text-white/[0.67] sm:text-lg sm:leading-8">
-              William Anthony is an Electrical and Electronics Engineering student at Institut Teknologi Bandung, designing verified digital hardware, intelligent embedded systems, and data-driven engineering tools.
+              I’m William Anthony. I connect digital hardware, applied AI, and software to build systems that work beyond the simulation. Electrical and Electronics Engineering at ITB, graduating in 2027.
             </p>
 
             <div data-hero-cta className="animate-fade-rise-delay-2 mt-10 flex flex-wrap items-center justify-center gap-3">
               <a href="#work" className="liquid-glass inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.03] sm:px-10">
                 Explore Selected Work <ArrowDown size={15} aria-hidden="true" />
               </a>
-              <a href="/resume?print=1" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.2] px-7 py-4 text-sm font-semibold text-white/[0.9] transition-colors hover:border-white/[0.45] hover:text-white">
-                Download Résumé <ArrowUpRight size={15} aria-hidden="true" />
+              <a href={person.resumeUrl} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.2] px-7 py-4 text-sm font-semibold text-white/[0.9] transition-colors hover:border-white/[0.45] hover:text-white">
+                View Résumé <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
 
@@ -133,7 +137,8 @@ export function Hero({ activeId }: { activeId: string }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-end gap-5 pb-2">
+        <div className="hero-bottom flex flex-wrap items-center justify-between gap-5 pb-2">
+          <div className="hero-proof"><span><strong>1 / 118</strong> EE academic rank</span><span><strong>3.70 / 4.00</strong> GPA at ITB</span><span><strong>138.32 µs</strong> IGOR inference</span></div>
           <button
             type="button"
             onClick={toggleVideo}
