@@ -2,6 +2,8 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
+import { SkillsKeyboard } from './SkillsKeyboard'
+import type { HeroSceneMode } from '../../data/keyboard'
 
 function ComputeBoard({ paused }: { paused: boolean }) {
   const group = useRef<THREE.Group>(null)
@@ -34,15 +36,16 @@ function ComputeBoard({ paused }: { paused: boolean }) {
   )
 }
 
-export default function HeroScene({ paused }: { paused: boolean }) {
+export default function HeroScene({ paused, mode, selectedId, pressCount, onSelect }: { paused: boolean; mode: HeroSceneMode; selectedId: string; pressCount: number; onSelect: (id: string) => void }) {
+  const camera = useMemo(() => ({ position: (mode === 'keyboard' ? [.65,4.8,6.7] : [5.4,5.7,6.9]) as [number,number,number], fov: 36 }),[mode])
   return (
-    <Canvas dpr={[1,1.5]} frameloop={paused ? 'demand' : 'always'} camera={{position:[5.4,5.7,6.9],fov:36}} gl={{antialias:true,alpha:true,powerPreference:'low-power'}}>
+    <Canvas dpr={[1,1.5]} frameloop={paused ? 'demand' : 'always'} camera={camera} gl={{antialias:true,alpha:true,powerPreference:'low-power'}}>
       <ambientLight intensity={1.7} />
       <directionalLight position={[3,7,4]} intensity={3} color="#c6e9ff" />
-      <pointLight position={[-4,2,-2]} intensity={14} color="#9872ff" />
-      <pointLight position={[4,1,3]} intensity={12} color="#53f0d2" />
-      <ComputeBoard paused={paused} />
-      <OrbitControls enablePan={false} enableZoom={false} enableDamping autoRotate={!paused} autoRotateSpeed={.55} minPolarAngle={.5} maxPolarAngle={1.35} />
+      <pointLight position={[-4,2,-2]} intensity={mode === 'keyboard' ? 3 : 14} color="#9872ff" />
+      <pointLight position={[4,1,3]} intensity={mode === 'keyboard' ? 3 : 12} color="#53f0d2" />
+      {mode === 'keyboard' ? <SkillsKeyboard paused={paused} selectedId={selectedId} pressCount={pressCount} onSelect={onSelect} /> : <ComputeBoard paused={paused} />}
+      <OrbitControls enablePan={false} enableZoom={false} enableDamping autoRotate={!paused && mode === 'silicon'} autoRotateSpeed={.55} minPolarAngle={.5} maxPolarAngle={1.35} />
     </Canvas>
   )
 }

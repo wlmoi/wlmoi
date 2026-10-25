@@ -148,3 +148,11 @@ Visual direction references [ladunjexa/reactjs18-3d-portfolio](https://github.co
 - Mobile, coarse pointers, low-core devices, reduced motion, and render failures use a CSS chip illustration. Offscreen hero rendering pauses; reduced motion disables the decorative floating and tilt effects.
 - Expertise cards open their corresponding capability entry. Project highlights reveal the matching complete project entry and return filters to All work. All 15 project records, 29 certificates, 18 organization activities, resume, and the requested PPTX placements are retained.
 - Scroll progress indicates position, and the navigation observer uses a zero intersection threshold so long sections can become active.
+
+## Interactive skills keyboard
+
+The supplied [Txemalon/3d-portfolio](https://github.com/Txemalon/3d-portfolio) and screenshot inform the white mechanical keycaps and blue case. The model, skill legends, key interaction, and CSS counterpart are implemented locally without copying reference code, models, sounds, or logo assets.
+
+- The hero defaults to a five-column, three-row keyboard. All 15 keys represent William's skills; clicking a 3D key, choosing its dropdown option, or using its displayed shortcut updates the skill explanation and expertise link.
+- Shortcuts work only inside the focused hero stage and do not intercept form fields or modified key combinations. The native dropdown supplies an accessible alternative to raycast selection. Mobile and reduced-motion views use actual HTML key buttons.
+- Keys depress and return using frame-rate-independent damping. Textures use local canvas legends with no font or texture downloads. The existing silicon scene remains selectable, with its pause, offscreen suspension, and WebGL fallback behavior preserved.

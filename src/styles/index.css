@@ -1516,3 +1516,48 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
   .hero-cosmic .hero-award { font-size: 9px; }
   .hero-primary-action, .hero-secondary-action { font-size: 11px; }
 }
+
+/* Mechanical skills keyboard: a local geometric model and accessible CSS counterpart. */
+.keyboard-stage { height: 560px; }
+.stage-mode-switch { position: absolute; z-index: 3; left: 26px; right: 26px; top: 45px; display: flex; gap: 7px; }
+.stage-mode-switch button { min-height: 36px; padding: 7px 12px; border: 1px solid #ffffff1c; border-radius: 7px; color: #93a5bd; font-size: 9px; background: #0a1221aa; transition: background .2s, color .2s; }
+.stage-mode-switch button[aria-pressed="true"] { color: #d5f0ff; background: #547fa52b; border-color: #85b4d655; }
+.keyboard-stage.is-keyboard .hero-stage-canvas { top: 78px; bottom: 130px; }
+.keyboard-stage.is-silicon .hero-stage-canvas { top: 45px; }
+.hero-stage-canvas:focus-visible { outline: 1px solid #9acde755; outline-offset: -6px; border-radius: 14px; }
+.keyboard-inspector { position: absolute; z-index: 3; bottom: 58px; left: 26px; right: 26px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 18px; border: 1px solid #a1c6e22b; border-radius: 12px; padding: 16px; background: #111d30cf; backdrop-filter: blur(12px); }
+.keyboard-selection { min-width: 0; }
+.keyboard-selection label { display: block; font: 7px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: #89a4bb; }
+.keyboard-selection select { display: block; width: 100%; margin-top: 9px; min-height: 30px; border: 0; background: transparent; color: #e7f2fc; font-size: 13px; color-scheme: dark; cursor: pointer; }
+.keyboard-selection select option { background: #132035; color: white; }
+.keyboard-skill-copy p { font-size: 9px; line-height: 1.8; color: #a6b8ce; }
+.keyboard-skill-copy a { display: inline-flex; align-items: center; gap: 7px; min-height: 30px; margin-top: 3px; color: #a6dcdf; font-size: 9px; }
+.keyboard-fallback { position: absolute; inset: 0; display: grid; place-items: center; perspective: 900px; }
+.keyboard-case { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px 9px; width: 360px; padding: 18px; border-radius: 17px; border: 2px solid #7bb4d5; background: #79b4d2; box-shadow: 0 8px #25557a,0 21px #163b5d,0 38px 45px #0005; transform: rotateX(26deg) rotateZ(-8deg); }
+.keyboard-key { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 0; height: 61px; border: 1px solid #eeeff3; border-radius: 8px; background: linear-gradient(#fbfbf5,#eceeea); box-shadow: 0 7px #b6bdc5,0 11px #959fae,1px 12px 3px #193b5166; transition: transform .13s, box-shadow .13s, background .13s; }
+.keyboard-key strong { font: 700 19px Arial,sans-serif; color: var(--key-color); letter-spacing: -.07em; }
+.keyboard-key small { color: #8a96a2; margin-top: 4px; font: 6px var(--font-mono); }
+.keyboard-key:hover, .keyboard-key:active { transform: translateY(5px); box-shadow: 0 3px #a7b2bf,0 6px #8a99ab; }
+.keyboard-key[aria-pressed="true"] { background: #e0fff5; border-color: #7ae9cb; }
+.keyboard-fallback.is-paused .keyboard-case, .hero-stage.is-still .keyboard-case { animation-play-state: paused; }
+@media (max-width: 1023px) {
+  .keyboard-stage { height: 510px; }
+  .keyboard-inspector { left: 15px; right: 15px; gap: 10px; padding: 12px; }
+  .keyboard-selection select { font-size: 11px; }
+  .keyboard-skill-copy p { font-size: 8px; }
+}
+@media (max-width: 767px) {
+  .keyboard-stage { height: 480px; }
+  .stage-mode-switch { left: 17px; right: 17px; top: 39px; }
+  .stage-mode-switch button { font-size: 8px; min-height: 36px; }
+  .keyboard-stage.is-keyboard .hero-stage-canvas { top: 80px; bottom: 145px; }
+  .keyboard-case { width: min(300px,90%); padding: 12px; gap: 9px 6px; border-radius: 13px; }
+  .keyboard-key { height: 48px; min-height: 44px; border-radius: 6px; }
+  .keyboard-key strong { font-size: 16px; }
+  .keyboard-inspector { left: 8px; right: 8px; bottom: 53px; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); padding: 12px; }
+  .keyboard-selection label { font-size: 6px; }
+  .keyboard-selection select { font-size: 10px; min-height: 36px; }
+  .keyboard-skill-copy p, .keyboard-skill-copy a { font-size: 8px; }
+  .keyboard-stage .stage-bottomline { left: 17px; right: 17px; font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) { .keyboard-case { animation: none; } .keyboard-key { transition: none; } }
