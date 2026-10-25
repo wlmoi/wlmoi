@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { ArrowUpRight, ChevronDown, MoveUpRight } from 'lucide-react'
 import { projects } from '../../data/portfolio'
 import { TiltSurface } from '../ui/TiltSurface'
@@ -27,7 +27,7 @@ export function ProjectList() {
   return (
     <div>
       <div className="project-highlights">{highlights.map((item) => <TiltSurface key={item.id} className="project-highlight">
-        <div className="highlight-image"><img src={item.image} alt={item.alt} loading="lazy" width="640" height="420" /><span>{item.label}</span></div>
+        <button type="button" className="highlight-image" data-zoom-src={item.image} data-zoom-alt={item.alt} aria-label={`Enlarge ${item.title} photo`}><img src={item.image} alt={item.alt} loading="lazy" width="640" height="420" /><span>{item.label}</span></button>
         <div className="highlight-copy"><h3>{item.title}</h3><p>{item.subtitle}</p><div className="highlight-tags">{item.tags.map(tag => <span key={tag}>#{tag}</span>)}</div><button type="button" onClick={() => exploreProject(item.id)}>Explore project <MoveUpRight size={16} aria-hidden="true" /></button></div>
       </TiltSurface>)}</div>
       <div className="project-filters" role="group" aria-label="Filter projects">

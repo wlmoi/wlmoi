@@ -160,7 +160,7 @@ function FullBleedCarousel() {
             {'type' in item && item.type === 'video' ? (
               <video src={item.src} aria-label={item.alt} className="photo-carousel-image" autoPlay={!reducedMotion} controls loop muted playsInline preload="metadata" />
             ) : (
-              <img src={item.src} alt={item.alt} width={item.width} height={item.height} data-zoom-src={item.src} className="photo-carousel-image" />
+              <button type="button" className="photo-zoom-button" data-zoom-src={item.src} data-zoom-alt={item.alt} aria-label={`Enlarge profile photo: ${item.label}`}><img src={item.src} alt={item.alt} width={item.width} height={item.height} className="photo-carousel-image" /></button>
             )}
           </div>
         ))}

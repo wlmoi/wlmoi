@@ -40,12 +40,14 @@ export function ParticleTitle() {
     }
     const move=(event:PointerEvent)=>{const r=node.getBoundingClientRect();pointer.x=event.clientX-r.left;pointer.y=event.clientY-r.top}
     const leave=()=>{pointer.x=-999;pointer.y=-999}
+    const scatter=()=>{leave();for(const p of particles){p.x=p.ox+(Math.random()-.5)*170;p.y=p.oy+(Math.random()-.5)*130}}
     const observer=new IntersectionObserver(([e])=>{visible=e.isIntersecting});observer.observe(node)
     const resize=new ResizeObserver(build);resize.observe(node)
     void document.fonts.ready.then(build)
     const tween=gsap.to(reveal,{value:1,duration:1.8,ease:'power2.out'})
-    gsap.ticker.add(draw);node.addEventListener('pointermove',move);node.addEventListener('pointerleave',leave)
-    return ()=>{disposed=true;delete node.dataset.particles;gsap.ticker.remove(draw);tween.kill();observer.disconnect();resize.disconnect();node.removeEventListener('pointermove',move);node.removeEventListener('pointerleave',leave)}
+    gsap.ticker.add(draw);node.addEventListener('pointermove',move);node.addEventListener('pointerleave',leave);node.addEventListener('click',scatter)
+    return ()=>{disposed=true;delete node.dataset.particles;gsap.ticker.remove(draw);tween.kill();observer.disconnect();resize.disconnect();node.removeEventListener('pointermove',move);node.removeEventListener('pointerleave',leave);node.removeEventListener('click',scatter)}
   },[reduced])
-  return <h1 ref={heading} className="particle-title" data-hero-reveal><span className="particle-title-copy">Hi, I’m<br /><span>William<span className="hero-name-dot">.</span></span></span><canvas ref={canvas} aria-hidden="true" /></h1>
+  const copy=<>Hi, I’m<br /><span>William<span className="hero-name-dot">.</span></span></>
+  return <h1 ref={heading} className="particle-title" aria-label="Hi, I’m William." data-hero-reveal>{reduced?<span className="particle-title-copy">{copy}</span>:<button type="button" className="particle-title-copy" aria-label="Scatter title particles" title="Click or tap to scatter the particles">{copy}</button>}<canvas ref={canvas} aria-hidden="true" /></h1>
 }

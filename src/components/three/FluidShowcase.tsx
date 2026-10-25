@@ -74,24 +74,26 @@ export function FluidShowcase({title,initialEffect='combined',compact=false,stag
   const stopped=paused||reducedMotion||!tabVisible
   const description=fluidEffects.find(item=>item.id===effect)?.description
   const fallback=<StaticParticles effect={effect} />
+  const canPulse=active&&ready&&!paused
+  const sendPulse=()=>{if(canPulse)setPulse(value=>value+1)}
 
   return <figure ref={ref} className={`fluid-showcase ${compact?'fluid-showcase-compact':''} ${className}`} data-fluid-effect={effect} data-fluid-state={active ? !ready?'loading':paused?'paused':'live':'still'} aria-label={title}>
     <div className="fluid-heading"><div><p>PARTICLE STUDY / 0{stage+1}</p><h3>{title}</h3></div><span className="fluid-state"><i />{active ? !ready?'Loading':paused?'Paused':'Live flow':reducedMotion?'Still view':support==='unavailable'?'Still view':'Particle study'}</span></div>
     <div className="fluid-effect-tabs" role="group" aria-label={`${title} particle effects`}>
       {fluidEffects.map(item=><button type="button" key={item.id} aria-pressed={effect===item.id} onClick={()=>setEffect(item.id)}>{item.label}</button>)}
     </div>
-    <div className="fluid-viewport" role="img" aria-label={`${title}: ${effect} particle visualization, move the pointer to bend the flow`}>
+    <div className="fluid-viewport" role="button" tabIndex={canPulse?0:-1} aria-disabled={!canPulse} aria-label={`${title}: ${effect} particles. Tap or press Enter to send a pulse`} onClick={sendPulse} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();sendPulse()}}}>
       <div className="fluid-halo" aria-hidden="true" />
       {active ? <FluidBoundary fallback={fallback} onFailure={fail}><Suspense fallback={fallback}><FluidScene effect={effect} paused={stopped} strength={strength} pulse={pulse} stage={stage} compact={compact||narrow} onReady={markReady} onFailure={fail} /></Suspense></FluidBoundary>:fallback}
       {(effect==='lattice'||effect==='combined')?<div className="fluid-ports" aria-hidden="true"><span>Serial host</span><span>SRAM</span><span>Controller</span></div>:null}
-      <div className="fluid-viewport-hint" aria-hidden="true">{active&&!paused?'Move to shape the flow':'Form, connection, computation'}</div>
+      <div className="fluid-viewport-hint" aria-hidden="true">{canPulse?'Move to bend · Tap to pulse':'Form, connection, computation'}</div>
     </div>
     <figcaption className="fluid-description" aria-live="polite">{description}</figcaption>
     <div className="fluid-controls">
       <label htmlFor={rangeId}>Flow <input id={rangeId} aria-label={`${title} flow strength`} type="range" min=".2" max="1.4" step=".1" value={strength} onChange={event=>setStrength(Number(event.target.value))} disabled={!active||!ready||paused} /></label>
-      <div><button type="button" disabled={!active||!ready||paused} onClick={()=>setPulse(value=>value+1)} aria-label={`${title} send pulse`}><Sparkles size={13} aria-hidden="true" /> Pulse</button>{!reducedMotion?<button type="button" onClick={()=>setPaused(value=>!value)} aria-label={`${paused?'Resume':'Pause'} ${title} particles`}>{paused?<Play size={13} aria-hidden="true" />:<Pause size={13} aria-hidden="true" />}{paused?'Resume':'Pause'}</button>:null}</div>
+      <div><button type="button" disabled={!active||!ready||paused} onClick={sendPulse} aria-label={`${title} send pulse`}><Sparkles size={13} aria-hidden="true" /> Pulse</button>{!reducedMotion?<button type="button" onClick={()=>setPaused(value=>!value)} aria-label={`${paused?'Resume':'Pause'} ${title} particles`}>{paused?<Play size={13} aria-hidden="true" />:<Pause size={13} aria-hidden="true" />}{paused?'Resume':'Pause'}</button>:null}</div>
     </div>
     {layoutLink?<button type="button" className="fluid-layout-link" data-zoom-src="/GDSLayouting.png" data-zoom-alt="Actual GF180MCU GAN accelerator GDS layout">View actual GDS layout <MoveUpRight size={13} aria-hidden="true" /></button>:null}
-    <p className="fluid-footnote">Illustrative motion · Engineering results are reported separately.</p>
+    <p className="fluid-footnote">{reducedMotion?'Reduced motion: choose an effect to explore its still form. ':support==='unavailable'?'Still view on this device: effect selection remains available. ':paused?'Paused: resume to interact with the flow. ':''}Illustrative motion · Engineering results are reported separately.</p>
   </figure>
 }

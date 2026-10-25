@@ -10,7 +10,7 @@ class CircuitBoundary extends Component<{children:ReactNode;fallback:ReactNode},
  state={failed:false};static getDerivedStateFromError(){return{failed:true}};render(){return this.state.failed?this.props.fallback:this.props.children}
 }
 export function CircuitExplorer(){
- const [id,setId]=useState('Q4_carry'),[selected,setSelected]=useState(''),[supported,setSupported]=useState(false),[paused,setPaused]=useState(false)
+ const [id,setId]=useState('Q4_carry'),[selected,setSelected]=useState(''),[supported,setSupported]=useState(false),[paused,setPaused]=useState(false),[manualAngle,setManualAngle]=useState<number|null>(null)
  const reduced=useReducedMotion(),progress=useRef(0)
  const {ref,visible}=useIntersection<HTMLElement>({rootMargin:'100px'})
  const data=schematics.find(s=>s.id===id)!,bounds=circuitBounds(data)
@@ -18,15 +18,16 @@ export function CircuitExplorer(){
  useEffect(()=>{if(reduced||!ref.current)return;const trigger=ScrollTrigger.create({trigger:ref.current,start:'top bottom',end:'bottom top',onUpdate:self=>{progress.current=self.progress}});return()=>trigger.kill()},[ref,reduced])
  const fallback=<svg viewBox={`${bounds.x} ${bounds.y} ${bounds.w} ${bounds.h}`} className="circuit-static" aria-label="Original LTspice wire coordinates">
   {data.wires.map((w,i)=><line key={i} x1={w[0]} y1={w[1]} x2={w[2]} y2={w[3]} stroke="#65e8ca" strokeWidth="4" />)}
-  {data.symbols.map(s=><g key={s.name}><rect x={s.x} y={s.y} width={s.width} height={s.height} rx="8" fill="#1d324c" stroke="#b7a2ff" strokeWidth="3"/><text x={s.x+8} y={s.y+s.height/2} fill="white" fontSize="23">{s.name}</text></g>)}
+  {data.symbols.map(s=><g key={s.name} role="button" tabIndex={0} aria-label={`Inspect ${s.name} ${s.kind}`} aria-pressed={selected===s.name} onClick={()=>setSelected(s.name)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setSelected(s.name)}}}><rect x={s.x} y={s.y} width={s.width} height={s.height} rx="8" fill={selected===s.name?'#226252':'#1d324c'} stroke="#b7a2ff" strokeWidth="3"/><text x={s.x+8} y={s.y+s.height/2} fill="white" fontSize="23">{s.name}</text></g>)}
  </svg>
  return <section id="schematics" ref={ref} className="section-pad border-t border-white/[0.1]">
   <div className="section-shell"><p className="eyebrow">CIRCUIT ATLAS / EL5013</p><div className="circuit-intro"><h2>From a transistor<br />to a carry chain.</h2><p>Explore 15 of my IC-design schematics. Scroll to turn the circuit in space, then select a component to inspect it. Traces follow the original LTspice coordinates; component blocks are illustrative.</p></div>
-   <div className="circuit-card" data-circuit={id}><div className="circuit-toolbar"><label htmlFor="schematic-select">Choose a schematic<select id="schematic-select" value={id} onChange={e=>{setId(e.target.value);setSelected('')}}>{schematics.map(s=><option key={s.id} value={s.id}>{s.id.replaceAll('_',' ')}</option>)}</select></label><button type="button" onClick={()=>setPaused(p=>!p)} aria-pressed={paused}>{paused?'Resume scroll rotation':'Pause scroll rotation'}</button></div>
+   <div className="circuit-card" data-circuit={id}><div className="circuit-toolbar"><label htmlFor="schematic-select">Choose a schematic<select id="schematic-select" value={id} onChange={e=>{setId(e.target.value);setSelected('')}}>{schematics.map(s=><option key={s.id} value={s.id}>{s.id.replaceAll('_',' ')}</option>)}</select></label><button type="button" disabled={!supported||reduced} onClick={()=>{setPaused(p=>!p);setManualAngle(null)}} aria-pressed={paused}>{paused?'Resume scroll rotation':'Pause scroll rotation'}</button></div>
     <div className="circuit-viewport" role="group" aria-label="Interactive 3D schematic">
-     {supported&&!reduced&&visible?<CircuitBoundary fallback={fallback}><Suspense fallback={fallback}><CircuitScene data={data} progress={progress} paused={paused} selected={selected} onSelect={setSelected}/></Suspense></CircuitBoundary>:fallback}
+     {supported&&!reduced&&visible?<CircuitBoundary fallback={fallback}><Suspense fallback={fallback}><CircuitScene data={data} progress={progress} paused={paused} manualAngle={manualAngle} selected={selected} onSelect={setSelected}/></Suspense></CircuitBoundary>:fallback}
      <span className="circuit-view-label">{supported&&!reduced?'THREE.JS / SCROLL TO ROTATE':'2D SCHEMATIC / STILL VIEW'}</span>
     </div>
+    {supported&&!reduced?<div className="circuit-turn-controls" role="group" aria-label="Rotate schematic"><button type="button" onClick={()=>{setPaused(true);setManualAngle(value=>(value??progress.current*Math.PI*1.6-Math.PI*.8)-Math.PI/6)}}>Rotate left</button><button type="button" onClick={()=>{setPaused(true);setManualAngle(0)}}>Front view</button><button type="button" onClick={()=>{setPaused(true);setManualAngle(value=>(value??progress.current*Math.PI*1.6-Math.PI*.8)+Math.PI/6)}}>Rotate right</button></div>:null}
     <div className="circuit-info"><div><h3>{data.title}</h3><p>{data.wires.length} wire segments · {data.symbols.length} components · {data.labels.length} net labels</p></div><a href={`/schematics/${id}.asc`} download>Download LTspice source ↗</a></div>
     <div className="circuit-components" role="group" aria-label="Schematic components">{data.symbols.map(s=><button key={s.name} type="button" aria-pressed={selected===s.name} onClick={()=>setSelected(s.name)}>{s.name} <span>{s.kind}</span></button>)}</div>
     <a className="circuit-archive" href="/schematics/EL5013-LTspice-schematics.zip" download>Download complete schematics, symbols and simulation sources (.zip) ↗</a>

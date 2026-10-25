@@ -1630,7 +1630,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 }
 /* Particle typography and circuit atlas */
 .hero-cosmic h1.particle-title{position:relative;max-width:100%;width:450px}
-.hero-cosmic h1>.particle-title-copy{color:#edf7ff;display:block}
+.hero-cosmic h1>.particle-title-copy{font:inherit;letter-spacing:inherit;text-align:left;color:#edf7ff;display:block}
 .particle-title-copy>span{color:#b7a2ff}
 .particle-title canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .particle-title[data-particles=ready]>.particle-title-copy{opacity:.8}
@@ -1662,3 +1662,14 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .circuit-inspector{padding:10px 22px 22px;min-height:52px}
 @media(max-width:767px){.keyboard-stage{height:540px}.keyboard-stage.is-keyboard .hero-stage-canvas{bottom:185px}.circuit-intro{grid-template-columns:1fr;gap:20px}.circuit-toolbar{align-items:stretch;flex-direction:column;padding:16px}.circuit-toolbar label{flex-wrap:wrap}.circuit-toolbar button{text-align:left;min-height:32px}.circuit-viewport{height:340px}.circuit-info{align-items:flex-start;flex-direction:column;padding:16px}.circuit-components{padding:0 16px}.circuit-toolbar select{width:100%}.hero-cosmic .hero-agentic{margin-top:8px}}
 .circuit-archive{display:block;padding:18px 22px 0;color:#8ce7d2;font-size:11px;line-height:1.7}
+.fluid-viewport[aria-disabled=false]{cursor:crosshair}
+.fluid-viewport:focus-visible{outline:2px solid #65e8ca;outline-offset:-3px;border-radius:12px}
+.circuit-static [role=button]{cursor:pointer;outline:none}
+.circuit-static [role=button]:focus-visible rect{stroke:#ffffff;stroke-width:7}
+.circuit-turn-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:0 16px 18px}
+.circuit-turn-controls button{min-height:44px;padding:8px 16px;border:1px solid #8ce7d240;border-radius:7px;color:#a5e6d9;font-size:11px;transition:background .2s}
+.circuit-turn-controls button:hover{background:#8ce7d21a}
+.circuit-toolbar button:disabled{opacity:.45;cursor:default}
+button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
+.hero-desktop-nav nav{gap:16px}
+.photo-zoom-button{display:block;width:100%;height:100%;cursor:zoom-in}.experience-photo-button{display:block;width:100%;cursor:zoom-in}

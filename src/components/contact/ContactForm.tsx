@@ -40,6 +40,8 @@ export function ContactForm() {
         if (!nextErrors[key]) nextErrors[key] = issue.message
       })
       setErrors(nextErrors)
+      const firstInvalid=Object.keys(nextErrors)[0]
+      document.getElementById(firstInvalid)?.focus()
       return
     }
 
@@ -63,17 +65,19 @@ export function ContactForm() {
     }
 
     if (supabase) {
-      const { error } = await supabase.from('contact_messages').insert(payload)
-      if (!error) {
-        window.localStorage.setItem('wa_contact_last_submit', String(now))
-        setSubmittedAt(now)
-        setStatus('success')
-        setForm(initialState)
-        return
-      }
+      try {
+        const { error } = await supabase.from('contact_messages').insert(payload)
+        if (!error) {
+          try { window.localStorage.setItem('wa_contact_last_submit', String(now)) } catch { /* Session cooldown remains active. */ }
+          setSubmittedAt(now)
+          setStatus('success')
+          setForm(initialState)
+          return
+        }
+      } catch { /* Offer the email fallback after network failures too. */ }
     }
 
-    window.localStorage.setItem('wa_contact_last_submit', String(now))
+    try { window.localStorage.setItem('wa_contact_last_submit', String(now)) } catch { /* Session cooldown remains active. */ }
     setSubmittedAt(now)
     setStatus('fallback')
     window.location.href = buildMailto(payload)
@@ -111,10 +115,10 @@ export function ContactForm() {
       </Field>
 
       <div className="flex flex-col gap-4 border-t border-white/[0.1] pt-5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="max-w-md">
+        <div className="max-w-md" role="status" aria-live="polite">
           {status === 'success' ? <p className="text-sm text-[hsl(var(--accent))]">Message submitted successfully. Thank you for reaching out.</p> : null}
-          {status === 'fallback' ? <p className="text-sm text-white/[0.55]">Supabase was unavailable, so your mail client has been opened instead.</p> : null}
-          {status === 'idle' ? <p className="text-xs leading-5 text-white/[0.38]">Messages use a public-safe insert path. Do not send credentials or confidential design files.</p> : null}
+          {status === 'fallback' ? <p className="text-sm text-white/[0.55]">Your message is ready for your email app. Review it and press Send there.</p> : null}
+          {status === 'idle' ? <p className="text-xs leading-5 text-white/[0.38]">Have a project or opportunity in mind? Share a few details to start the conversation.</p> : null}
         </div>
         <Button type="submit" icon={false} disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : 'Send Message'} <Send size={15} aria-hidden="true" />

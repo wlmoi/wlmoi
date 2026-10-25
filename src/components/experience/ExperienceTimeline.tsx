@@ -17,7 +17,7 @@ export function ExperienceTimeline() {
       <div className="experience-detail liquid-glass mb-8 overflow-hidden rounded-[1.5rem] p-4 md:p-5">
         <div className="grid gap-5 md:grid-cols-[0.72fr_1.28fr] md:items-center">
           <div className="experience-detail-image-wrap">
-            <img src={getExperienceImage(active.title, active.organization)} alt={`${active.title} visual`} data-zoom-src={getExperienceImage(active.title, active.organization)} className="experience-detail-image" />
+            <button type="button" className="experience-photo-button" data-zoom-src={getExperienceImage(active.title, active.organization)} data-zoom-alt={`${active.title} visual`} aria-label={`Enlarge ${active.title} photo`}><img src={getExperienceImage(active.title, active.organization)} alt={`${active.title} visual`} className="experience-detail-image" /></button>
           </div>
           <div>
             <p className="eyebrow">Active experience / {String(activeIndex + 1).padStart(2, '0')}</p>

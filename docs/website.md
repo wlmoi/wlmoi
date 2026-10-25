@@ -171,3 +171,10 @@ Engineering, GAN, recognition and contact share `FluidShowcase`. Real `three-flu
 The circuit atlas contains 15 supplied EL5013 LTspice ASC files and parsed wire, symbol and net-label metadata. Wire coordinates are preserved; raised component blocks are illustrative and do not represent silicon layout or a simulation. ScrollTrigger drives Three.js rotation. Native component buttons provide inspection on mobile and keyboard, and pause/reduced motion retain a stable view. Original ASC files are downloadable.
 
 Mechanical key sound uses an original normalized WAV and a small HTMLAudio voice pool initiated by click or physical key gesture. A WebAudio fallback handles playback rejection. Volume and mute persist locally; Test sound explicitly enables and previews a key. No sound starts on page load or hover.
+
+
+### Interaction follow-up
+
+Particle viewports accept click/tap and Enter/Space to send a pulse, alongside the dedicated Pulse control. Paused and unsupported states explain why live controls are unavailable. The circuit atlas offers manual left/right/front rotation and clickable, keyboard-accessible SVG component selection when WebGL is unavailable. Project highlights, profile photos and experience photos use native buttons for the image viewer. Circuit atlas navigation is available on desktop and mobile.
+
+The hero title also scatters its particles on click/tap or keyboard button activation; reduced-motion keeps the plain heading. Contact validation focuses the first invalid field, announces status changes and recovers to the email fallback after network/storage failures.

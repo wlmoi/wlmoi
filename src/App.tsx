@@ -20,7 +20,7 @@ import { ResumePage } from './pages/ResumePage'
 import { gsap } from './lib/gsap'
 import { ImageLightbox } from './components/ui/ImageLightbox'
 
-const sections = ['home', 'profile', 'expertise', 'experience', 'organizations', 'work', 'recognition', 'contact']
+const sections = ['home', 'profile', 'expertise', 'schematics', 'case-study', 'experience', 'organizations', 'work', 'recognition', 'contact']
 
 function PortfolioPage() {
   const [activeId, setActiveId] = useState('home')

@@ -25,7 +25,7 @@ export function Hero({ activeId }: { activeId: string }) {
           <a href="#home" className="hero-wordmark" aria-label="William Anthony home"><span>WA<span className="wordmark-dot">.</span></span>William Anthony</a>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
             {[
-              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Recognition','recognition'],['Contact','contact'],
+              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Circuits','schematics'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Recognition','recognition'],['Contact','contact'],
             ].map(([label,id])=><a key={id} href={`#${id}`} className={`hero-nav-link text-xs transition-colors ${activeId===id ? 'is-active text-white' : 'text-white/60 hover:text-white'}`}>{label}</a>)}
             <a href="#contact" className="nav-contact">Let’s talk <ArrowUpRight size={13} aria-hidden="true" /></a>
           </nav>
