@@ -1,153 +1,54 @@
-import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowUpRight, Pause, Play, Trophy } from 'lucide-react'
+﻿import { useEffect, useRef } from 'react'
+import { ArrowDown, ArrowUpRight, Code, BriefcaseBusiness, Trophy } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from '../../lib/gsap'
-
-const videoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4'
+import { HeroStage } from '../three/HeroStage'
 
 export function Hero({ activeId }: { activeId: string }) {
   const root = useRef<HTMLElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
   const reducedMotion = useReducedMotion()
-  const [videoPlaying, setVideoPlaying] = useState(!reducedMotion)
-  const [videoError, setVideoError] = useState(false)
-
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (reducedMotion) {
-      video.pause()
-      return
-    }
-
-    if (!videoError) {
-      void video.play().then(() => setVideoPlaying(true)).catch(() => setVideoPlaying(false))
-    }
-  }, [reducedMotion, videoError])
-
   useEffect(() => {
     if (reducedMotion) return
     const context = gsap.context(() => {
-      gsap.fromTo('[data-hero-line]', { yPercent: 115, opacity: 0, rotateX: 18 }, {
-        yPercent: 0,
-        opacity: 1,
-        rotateX: 0,
-        duration: 1.25,
-        stagger: 0.16,
-        delay: 0.35,
-        ease: 'power4.out',
-      })
-      gsap.to('[data-hero-line-accent]', { backgroundPositionX: '200%', duration: 4, repeat: -1, ease: 'none' })
+      gsap.fromTo('[data-hero-reveal]', {y:28,opacity:0}, {y:0,opacity:1,duration:.8,stagger:.07,ease:'power3.out',delay:.1})
     }, root)
     return () => context.revert()
   }, [reducedMotion])
 
-  const toggleVideo = () => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (video.paused) {
-      void video.play().then(() => setVideoPlaying(true)).catch(() => setVideoPlaying(false))
-    } else {
-      video.pause()
-      setVideoPlaying(false)
-    }
-  }
-
   return (
-    <section ref={root} id="home" className="hero-home relative overflow-hidden" aria-label="William Anthony introduction">
-      <div className="absolute inset-0 z-0 bg-[hsl(var(--background))]" aria-hidden="true">
-        {!videoError ? (
-          <video
-            ref={videoRef}
-            className="absolute inset-0 z-0 h-full w-full object-cover"
-            src={videoUrl}
-            autoPlay={!reducedMotion}
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            onError={() => setVideoError(true)}
-            onPause={() => setVideoPlaying(false)}
-            onPlay={() => setVideoPlaying(true)}
-          />
-        ) : (
-          <div className="absolute inset-0 bg-[hsl(var(--background))] bg-cover bg-center" style={{ backgroundImage: "url('/photos/Foto%20DiBraga%20Blurred.png')" }} />
-        )}
+    <section ref={root} id="home" className="hero-home hero-cosmic" aria-label="William Anthony introduction">
+      <div className="cosmic-stars" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-one" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-two" aria-hidden="true" />
+      <div className="hero-desktop-nav">
+        <div className="liquid-glass flex items-center justify-between rounded-full px-5 py-3">
+          <a href="#home" className="hero-wordmark" aria-label="William Anthony home"><span>WA<span className="wordmark-dot">.</span></span>William Anthony</a>
+          <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
+            {[
+              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Recognition','recognition'],['Contact','contact'],
+            ].map(([label,id])=><a key={id} href={`#${id}`} className={`hero-nav-link text-xs transition-colors ${activeId===id ? 'is-active text-white' : 'text-white/60 hover:text-white'}`}>{label}</a>)}
+            <a href="#contact" className="nav-contact">Let’s talk <ArrowUpRight size={13} aria-hidden="true" /></a>
+          </nav>
+        </div>
       </div>
-
-      <div className="hero-scrim absolute inset-0 z-0" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 lg:px-8">
-        <div data-hero-nav className="hero-desktop-nav animate-fade-rise">
-          <div className="liquid-glass flex items-center justify-between rounded-full px-4 py-3 md:px-5">
-            <a href="#home" className="font-display text-xl tracking-tight text-white sm:text-2xl" aria-label="William Anthony home">
-              William Anthony<span className="align-super ml-0.5 text-[0.55em] text-white/[0.65]">®</span>
-            </a>
-
-            <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
-              {[
-                ['Home', 'home'], ['Profile', 'profile'], ['Expertise', 'expertise'], ['Experience', 'experience'],
-                ['Selected Work', 'work'], ['Community', 'organizations'], ['Recognition', 'recognition'], ['Contact', 'contact'],
-              ].map(([label, id]) => <a key={id} href={`#${id}`} className={`hero-nav-link text-sm transition-colors ${activeId === id ? 'is-active text-white' : 'text-white/[0.65] hover:text-white'}`}>{label}</a>)}
-              <a href="#contact" className="liquid-glass rounded-full px-5 py-2.5 text-sm text-white transition-transform hover:scale-[1.03]">Let’s talk</a>
-            </nav>
-
+      <div className="hero-cosmic-shell">
+        <div className="hero-introduction">
+          <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>
+          <div className="hero-intro-copy">
+            <p className="hero-kicker" data-hero-reveal>HARDWARE · SOFTWARE · APPLIED AI</p>
+            <h1 data-hero-reveal>Hi, I’m<br /><span>William<span className="hero-name-dot">.</span></span></h1>
+            <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
+            <p className="hero-description" data-hero-reveal>Digital design and verification, embedded AI, and the software that connects them. Electrical & Electronics Engineering at ITB, class of 2027.</p>
+            <div className="hero-actions" data-hero-reveal>
+              <a className="hero-primary-action" href="#work">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="hero-secondary-action" href={person.resumeUrl}>View résumé <ArrowUpRight size={14} aria-hidden="true" /></a>
+            </div>
+            <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={13} aria-hidden="true" /></a>
           </div>
         </div>
-
-        <div className="hero-content flex flex-1 items-center justify-center py-20 sm:py-28 lg:py-36">
-          <div className="w-full max-w-6xl text-center">
-            <p data-hero-eyebrow className="hero-eyebrow eyebrow animate-fade-rise text-white/[0.85]">ASIC · FPGA · VERIFICATION · EDGE AI</p>
-            <a href="#work" className="hero-award animate-fade-rise"><Trophy size={15} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={14} aria-hidden="true" /></a>
-            <p className="hero-eyebrow mt-4 text-xs font-medium uppercase tracking-[0.18em] text-white/[0.68]">Electrical & Electronics Engineering · ITB · STEI-R&apos;23</p>
-
-            <h1 data-hero-heading style={{ fontFamily: "'Instrument Serif', serif" }} className="hero-hover-highlight animate-fade-rise mx-auto mt-5 max-w-6xl text-[clamp(3.1rem,7.5vw,7.5rem)] leading-[0.91] tracking-[-0.045em] text-white">
-              <span data-hero-line className="block">Engineering intelligence</span>
-              <span data-hero-line data-hero-line-accent className="hero-line-accent block text-white/[0.78] italic not-italic md:italic">from RTL to real-world systems.</span>
-            </h1>
-
-            <p data-hero-copy className="hero-hover-highlight animate-fade-rise-delay mx-auto mt-8 max-w-2xl text-base leading-7 text-white/[0.67] sm:text-lg sm:leading-8">
-              I’m William Anthony. I connect digital hardware, applied AI, and software to build systems that work beyond the simulation. Electrical and Electronics Engineering at ITB, graduating in 2027.
-            </p>
-
-            <div data-hero-cta className="animate-fade-rise-delay-2 mt-10 flex flex-wrap items-center justify-center gap-3">
-              <a href="#work" className="liquid-glass inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.03] sm:px-10">
-                Explore Selected Work <ArrowDown size={15} aria-hidden="true" />
-              </a>
-              <a href={person.resumeUrl} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.2] px-7 py-4 text-sm font-semibold text-white/[0.9] transition-colors hover:border-white/[0.45] hover:text-white">
-                View Résumé <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </div>
-
-            <div data-hero-meta className="animate-fade-rise-delay-2 mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/[0.72]">
-              <a href={person.linkedin} target="_blank" rel="noreferrer" data-text="LinkedIn" className="hero-hover-link fx-negative transition-colors hover:text-white">LinkedIn</a>
-              <span aria-hidden="true">/</span>
-              <a href={person.github} target="_blank" rel="noreferrer" data-text="GitHub" className="hero-hover-link fx-negative transition-colors hover:text-white">GitHub</a>
-              <span aria-hidden="true">/</span>
-              <a href={person.githubRepository} target="_blank" rel="noreferrer" data-text="Source" className="hero-hover-link fx-negative transition-colors hover:text-white">Source</a>
-              <span aria-hidden="true">/</span>
-              <a href={person.instagram} target="_blank" rel="noreferrer" data-text="Instagram" className="hero-hover-link fx-negative transition-colors hover:text-white">Instagram</a>
-              <span aria-hidden="true">/</span>
-              <a href={`mailto:${person.email}`} data-text={person.email} className="hero-hover-link fx-negative transition-colors hover:text-white">{person.email}</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="hero-bottom flex flex-wrap items-center justify-between gap-5 pb-2">
+        <div className="hero-scene-column" data-hero-reveal><HeroStage /></div>
+        <div className="hero-cosmic-footer">
           <div className="hero-proof"><span><strong>1 / 118</strong> EE academic rank</span><span><strong>3.70 / 4.00</strong> GPA at ITB</span><span><strong>138.32 µs</strong> IGOR inference</span></div>
-          <button
-            type="button"
-            onClick={toggleVideo}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/[0.15] bg-black/10 px-4 text-xs font-medium text-white/[0.75] backdrop-blur-sm transition-colors hover:border-white/[0.3] hover:text-white"
-            aria-label={videoPlaying ? 'Pause hero video' : 'Resume hero video'}
-          >
-            {videoPlaying ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
-            <span>{videoError ? 'Static visual' : videoPlaying ? 'Pause visual' : 'Resume visual'}</span>
-          </button>
+          <div className="hero-footer-links"><a href={person.github} target="_blank" rel="noreferrer"><Code size={15} aria-hidden="true" /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={15} aria-hidden="true" /> LinkedIn</a><a href="#profile" className="hero-scroll-cue" aria-label="Scroll to profile"><span /><ArrowDown size={15} aria-hidden="true" /></a></div>
         </div>
       </div>
     </section>

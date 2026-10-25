@@ -64,7 +64,7 @@ export function Navigation({ activeId }: { activeId: string }) {
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 xl:hidden" aria-label="Mobile site navigation">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between rounded-full px-2 py-2">
+        <div className="mobile-nav-shell flex items-center justify-between rounded-full px-2 py-2">
           <a href="#home" className="font-display px-3 text-lg tracking-tight text-white" aria-label="William Anthony home">
             William Anthony<span className="align-super ml-0.5 text-[0.5em] text-white/[0.65]">®</span>
           </a>

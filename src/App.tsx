@@ -3,6 +3,8 @@ import type { CSSProperties } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Hero } from './components/hero/Hero'
 import { Navigation } from './components/navigation/Navigation'
+import { ScrollProgress } from './components/navigation/ScrollProgress'
+import { FocusCards } from './components/profile/FocusCards'
 import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
 import { OrganizationExperience } from './components/experience/OrganizationExperience'
 import { ProjectList } from './components/projects/ProjectList'
@@ -25,7 +27,7 @@ function PortfolioPage() {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
       if (visible) setActiveId(visible.target.id)
-    }, { rootMargin: '-32% 0px -52% 0px', threshold: [0.1, 0.3, 0.6] })
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 })
 
     sections.forEach((id) => {
       const el = document.getElementById(id)
@@ -109,6 +111,7 @@ function PortfolioPage() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] text-white">
+      <ScrollProgress />
       <Navigation activeId={activeId} />
       <main id="main-content">
         <Hero activeId={activeId} />
@@ -128,6 +131,8 @@ function PortfolioPage() {
                 </div>
               </div>
             </div>
+
+            <FocusCards />
 
             <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-center">
               <div className="grid gap-2">
@@ -209,8 +214,9 @@ function PortfolioPage() {
           </div>
         </section>
 
-        <section id="contact" className="section-pad border-t border-white/[0.1]">
-          <div className="section-shell">
+        <section id="contact" className="contact-cosmic section-pad border-t border-white/[0.1]">
+          <div className="contact-orbit" aria-hidden="true" />
+          <div className="section-shell relative">
             <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
               <div data-motion-copy>
                 <p className="eyebrow">05 / Contact</p>
@@ -237,7 +243,7 @@ function PortfolioPage() {
 
 function CapabilityAccordion({ capability }: { capability: (typeof capabilities)[number] }) {
   return (
-    <details data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
+    <details id={`capability-${capability.id}`} data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
       <summary className="flex cursor-pointer list-none items-start gap-5 py-2">
         <span className="font-mono text-[0.65rem] text-white/[0.32]">{capability.number}</span>
         <span className="flex-1">

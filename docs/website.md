@@ -139,3 +139,12 @@ The supplied publishable Supabase key is browser-safe under RLS, but this reposi
 - Scroll reveals, project transitions, and hover motion respect reduced-motion preferences. Gallery images support keyboard activation, Escape, focus containment, and focus return.
 - Community experience is stored in `organizationGroups`: 18 roles and activities across 12 organizations, including the 16 newly supplied entries and two earlier volunteering entries. Tutor roles in October 2024 and January 2025 remain separate; TPB is labeled as study. HME and OSKM dates are kept separately instead of one merged employment entry. The section links the supplied Investment Festival certificate and the LinkedIn experience record.
 - The IGOR project entry also links William's supplied Google Drive archive. The site does not change its access permissions or mirror the archive.
+
+## Spatial visual refresh
+
+Visual direction references [ladunjexa/reactjs18-3d-portfolio](https://github.com/ladunjexa/reactjs18-3d-portfolio): a spatial hero, dark star field, pointer-responsive cards, and image-led work highlights. The compute-board model, CSS fallback, layout, and pointer interactions are original implementations; no reference-repository models, textures, dependencies, or personal content were copied.
+
+- The hero's 4 × 4 compute-board sculpture is illustrative, not an actual project layout or hardware measurement. Three.js loads lazily on capable devices with a fine pointer. Orbit controls support dragging and a visible button pauses animation.
+- Mobile, coarse pointers, low-core devices, reduced motion, and render failures use a CSS chip illustration. Offscreen hero rendering pauses; reduced motion disables the decorative floating and tilt effects.
+- Expertise cards open their corresponding capability entry. Project highlights reveal the matching complete project entry and return filters to All work. All 15 project records, 29 certificates, 18 organization activities, resume, and the requested PPTX placements are retained.
+- Scroll progress indicates position, and the navigation observer uses a zero intersection threshold so long sections can become active.
