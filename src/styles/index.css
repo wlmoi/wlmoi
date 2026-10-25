@@ -1561,3 +1561,11 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
   .keyboard-stage .stage-bottomline { left: 17px; right: 17px; font-size: 7px; }
 }
 @media (prefers-reduced-motion: reduce) { .keyboard-case { animation: none; } .keyboard-key { transition: none; } }
+.stage-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.stage-controls > span { font-size: 8px; }
+.keyboard-stage .stage-bottomline { gap: 8px; }
+@media (max-width: 767px) {
+  .keyboard-stage .stage-bottomline { left: 10px; right: 10px; }
+  .stage-controls { gap: 2px; }
+  .stage-controls button { gap: 5px; padding: 6px; font-size: 8px; }
+}

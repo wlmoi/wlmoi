@@ -156,3 +156,7 @@ The supplied [Txemalon/3d-portfolio](https://github.com/Txemalon/3d-portfolio) a
 - The hero defaults to a five-column, three-row keyboard. All 15 keys represent William's skills; clicking a 3D key, choosing its dropdown option, or using its displayed shortcut updates the skill explanation and expertise link.
 - Shortcuts work only inside the focused hero stage and do not intercept form fields or modified key combinations. The native dropdown supplies an accessible alternative to raycast selection. Mobile and reduced-motion views use actual HTML key buttons.
 - Keys depress and return using frame-rate-independent damping. Textures use local canvas legends with no font or texture downloads. The existing silicon scene remains selectable, with its pause, offscreen suspension, and WebGL fallback behavior preserved.
+
+## Keyboard sound
+
+Keycap clicks and focused physical-key shortcuts synthesize a short mechanical click with Web Audio: filtered switch noise, a low body transient, and a quieter return click. Audio initializes only on a deliberate key press; page load, hover, dropdown selection, and enabling sound do not play it. The visible Sound on/off control persists the `wa_keyboard_sound` preference. Muting silences the master gain immediately. Missing audio support, blocked storage, or a rejected audio-context resume leave keyboard interaction functional. Audio nodes disconnect when finished and the context closes when the hero unmounts.
