@@ -1,3 +1,4 @@
+import { CircuitExplorer } from './components/three/CircuitExplorer'
 import { useEffect, useMemo, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { Routes, Route } from 'react-router-dom'
@@ -10,6 +11,7 @@ import { OrganizationExperience } from './components/experience/OrganizationExpe
 import { ProjectList } from './components/projects/ProjectList'
 import { CaseStudy } from './components/projects/CaseStudy'
 import { EngineeringVisual } from './components/three/EngineeringVisual'
+import { FluidShowcase } from './components/three/FluidShowcase'
 import { ContactForm } from './components/contact/ContactForm'
 import { SiteFooter } from './components/layout/SiteFooter'
 import { ProfileSection } from './components/profile/ProfileSection'
@@ -155,6 +157,7 @@ function PortfolioPage() {
           </div>
         </section>
 
+        <CircuitExplorer />
         <CaseStudy />
 
         <section id="work" className="section-pad border-t border-white/[0.1]">
@@ -195,6 +198,7 @@ function PortfolioPage() {
                 <VoltageHeading text="A technical foundation with external signals of trust." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
                 <p className="mt-5 max-w-md text-base leading-7 text-white/[0.62]">William is an ambitious, award-winning Electrical and Electronics Engineering student at ITB, specializing in integrated-circuit design and hardware-software integration. His work bridges VLSI, FPGA, verification, embedded intelligence, and applied AI into solutions that are precise, scalable, and built with teams.</p>
                 <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.48]">From an 8,192-point FFT and a 16-bit peak detector to a programmable GAN and a three-qubit Quantum Fourier Transform tapeout contribution, the thread is consistent: translate difficult technical requirements into working systems.</p>
+                <div className="mt-8"><FluidShowcase title="A connected foundation" initialEffect="trefoil" compact /></div>
               </div>
               <div className="grid gap-3" data-motion-list>
                 {recognitions.map((item) => (
@@ -227,6 +231,7 @@ function PortfolioPage() {
                   <a href={`mailto:${person.email}`} className="text-sm text-white/[0.72] hover:text-white">{person.email}</a>
                   <a href={person.linkedin} target="_blank" rel="noreferrer" className="text-sm text-white/[0.72] hover:text-white">linkedin.com/in/wlmoi</a>
                 </div>
+                <div className="mt-8"><FluidShowcase title="Signals become connections" initialEffect="vortex" compact /></div>
               </div>
               <div className="liquid-glass contact-panel rounded-[2rem] p-5 md:p-8" data-motion-card>
                 <ContactForm />

@@ -59,3 +59,47 @@ An RTL-to-GDSII accelerator built around a 4x4 processing-element array, SRAM bu
 This repository contains the source for my portfolio website and print-friendly resume. The website details, local setup, Supabase configuration, deployment notes, and accessibility decisions live in the [website guide](docs/website.md).
 
 Thanks for stopping by. There is always another layer to learn.
+
+
+## References
+
+### Packages
+
+All direct runtime and development packages used by this repository are listed below. Exact transitive versions are recorded in [package-lock.json](package-lock.json).
+
+| Package | Version | Use |
+| --- | --- | --- |
+| [@react-three/drei](https://www.npmjs.com/package/@react-three/drei) | 10.7.8 | Three.js scene helpers |
+| [@react-three/fiber](https://www.npmjs.com/package/@react-three/fiber) | 9.7.0 | React renderer for Three.js |
+| [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js) | 2.116.0 | Contact storage client |
+| [gsap](https://www.npmjs.com/package/gsap) | 3.15.0 | ScrollTrigger, reveals and particle typography |
+| [lucide-react](https://www.npmjs.com/package/lucide-react) | 1.47.0 | Interface icons |
+| [react](https://www.npmjs.com/package/react) | 19.2.0 | Component UI |
+| [react-dom](https://www.npmjs.com/package/react-dom) | 19.2.0 | DOM rendering |
+| [react-router-dom](https://www.npmjs.com/package/react-router-dom) | 6.30.6 | Page routing |
+| [three](https://www.npmjs.com/package/three) | 0.185.1 | 3D keyboard, circuit atlas and particles |
+| [three-fluid-fx](https://www.npmjs.com/package/three-fluid-fx) | 0.1.0 | Interactive fluid simulation |
+| [zod](https://www.npmjs.com/package/zod) | 4.6.5 | Form validation |
+| [@eslint/js](https://www.npmjs.com/package/@eslint/js) | 9.39.2 | Development: types, linting, styling or build tooling |
+| [@types/react](https://www.npmjs.com/package/@types/react) | 19.0.0 | Development: types, linting, styling or build tooling |
+| [@types/react-dom](https://www.npmjs.com/package/@types/react-dom) | 19.0.0 | Development: types, linting, styling or build tooling |
+| [@types/three](https://www.npmjs.com/package/@types/three) | 0.185.4 | Development: types, linting, styling or build tooling |
+| [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react) | 6.1.1 | Development: types, linting, styling or build tooling |
+| [autoprefixer](https://www.npmjs.com/package/autoprefixer) | 10.6.1 | Development: types, linting, styling or build tooling |
+| [eslint](https://www.npmjs.com/package/eslint) | 9.39.2 | Development: types, linting, styling or build tooling |
+| [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) | 7.0.0 | Development: types, linting, styling or build tooling |
+| [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh) | 0.4.20 | Development: types, linting, styling or build tooling |
+| [postcss](https://www.npmjs.com/package/postcss) | 8.5.28 | Development: types, linting, styling or build tooling |
+| [tailwindcss](https://www.npmjs.com/package/tailwindcss) | 3.4.19 | Development: types, linting, styling or build tooling |
+| [typescript](https://www.npmjs.com/package/typescript) | 5.9.3 | Development: types, linting, styling or build tooling |
+| [typescript-eslint](https://www.npmjs.com/package/typescript-eslint) | 8.70.0 | Development: types, linting, styling or build tooling |
+| [vite](https://www.npmjs.com/package/vite) | 8.3.0 | Development: types, linting, styling or build tooling |
+
+### Visual references and attribution
+
+- [GSAP](https://github.com/greensock/GSAP): animation engine and ScrollTrigger.
+- [three-fluid-fx](https://github.com/artcodev/three-fluid-fx): fluid velocity/density fields drive original lattice, trefoil, vortex and combined particle shaders. [MIT license](public/licenses/three-fluid-fx.txt) and [third-party notices](public/licenses/three-fluid-fx-third-party.txt).
+- [Txemalon/3d-portfolio](https://github.com/Txemalon/3d-portfolio): inspiration for the skills keyboard. This portfolio uses an original procedural keyboard and original synthesized mechanical click.
+- [ladunjexa/reactjs18-3d-portfolio](https://github.com/ladunjexa/reactjs18-3d-portfolio): inspiration for the spatial portfolio presentation.
+- EL5013 circuit atlas: William Anthony's supplied LTspice schematics; original wire coordinates, illustrative component blocks.
+- [IEEE Chipathon 2025 announcement](https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/): linked from the front-page winner badge; Agentic AI theme supplied by William.

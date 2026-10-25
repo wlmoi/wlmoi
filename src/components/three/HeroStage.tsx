@@ -1,4 +1,4 @@
-﻿import { Component, Suspense, lazy, useEffect, useState } from 'react'
+import { Component, Suspense, lazy, useEffect, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { ArrowUpRight, Maximize2, Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
@@ -79,6 +79,7 @@ export function HeroStage() {
     {mode==='keyboard' ? <div className="keyboard-inspector">
       <div className="keyboard-selection"><label htmlFor="keyboard-skill">Explore a skill</label><select id="keyboard-skill" value={selectedId} onChange={event=>selectSkill(event.target.value,false)}>{keyboardSkills.map(skill=><option key={skill.id} value={skill.id}>{skill.name}</option>)}</select></div>
       <div className="keyboard-skill-copy"><p aria-live="polite" aria-atomic="true"><strong className="sr-only">{selected.name}: </strong>{selected.detail}</p><a href={`#capability-${selected.capability}`} onClick={()=>{const detail=document.getElementById(`capability-${selected.capability}`);if(detail instanceof HTMLDetailsElement)detail.open=true}}>Explore expertise <ArrowUpRight size={12} aria-hidden="true" /></a></div>
+      <div className="keyboard-audio"><button type="button" onClick={sound.preview}>Test sound</button><label>Volume <input aria-label="Keyboard volume" type="range" min=".1" max="1" step=".05" value={sound.volume} onChange={event=>sound.setVolume(Number(event.target.value))} /></label></div>
     </div> : <><div className="stage-label stage-label-ai"><i /> Intelligence<span>Python · Edge AI</span></div><div className="stage-label stage-label-rtl"><i /> Silicon<span>RTL · Verification</span></div></>}
     <div className="stage-bottomline"><span><Maximize2 size={12} aria-hidden="true" />{mode==='keyboard' ? canRender && !reducedMotion ? 'Click a key · Drag to orbit' : 'Tap a key to explore' : canRender && !reducedMotion ? 'Drag to explore' : 'Architecture in perspective'}</span>
       <div className="stage-controls">

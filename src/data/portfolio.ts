@@ -408,6 +408,7 @@ export const recognitions: Recognition[] = [
   { title: '1st Place — PERURI Chip Hackathon Minigames 2026', issuer: 'PERURI', year: 'October 2026', detail: 'Minigames award, separate from the main hackathon runner-up result.' },
   { title: 'Most Outstanding Electrical and Electronics Engineering Student 2026', issuer: 'Institut Teknologi Bandung', year: '2026' },
   { title: 'Ganesha Awardee', issuer: 'Institut Teknologi Bandung', year: '2024 & 2025', detail: 'Two-time recipient.' },
+  { title: 'Winner — IEEE Chipathon 2025', issuer: 'IEEE', year: '2025', detail: 'Agentic AI and chip design.' },
   { title: '3rd Place, Team Category · USU International Chess Championship', issuer: 'USU', year: '2024' },
   { title: 'Gold Medal · KTO Mathematics', issuer: 'KTO', year: 'June 2023' },
   { title: 'Silver Medal · KTO Mathematics', issuer: 'KTO', year: 'January 2025' },

@@ -19,6 +19,7 @@
     "react-dom": "19.2.0",
     "react-router-dom": "6.30.6",
     "three": "0.185.1",
+    "three-fluid-fx": "0.1.0",
     "zod": "4.6.5"
   },
   "devDependencies": {
@@ -39,5 +40,10 @@
   },
   "engines": {
     "node": ">=20.19.0"
+  },
+  "overrides": {
+    "three-fluid-fx": {
+      "@types/three": "$@types/three"
+    }
   }
 }

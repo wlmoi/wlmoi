@@ -160,3 +160,14 @@ The supplied [Txemalon/3d-portfolio](https://github.com/Txemalon/3d-portfolio) a
 ## Keyboard sound
 
 Keycap clicks and focused physical-key shortcuts synthesize a short mechanical click with Web Audio: filtered switch noise, a low body transient, and a quieter return click. Audio initializes only on a deliberate key press; page load, hover, dropdown selection, and enabling sound do not play it. The visible Sound on/off control persists the `wa_keyboard_sound` preference. Muting silences the master gain immediately. Missing audio support, blocked storage, or a rejected audio-context resume leave keyboard interaction functional. Audio nodes disconnect when finished and the context closes when the hero unmounts.
+
+
+## Interactive circuit and fluid studies
+
+The hero remains a skills keyboard. Its semantic heading has a GSAP Canvas2D particle layer with pointer response; text remains readable if rendering is unavailable. The layer stops drawing outside the viewport or in a hidden tab and is omitted for reduced motion.
+
+Engineering, GAN, recognition and contact share `FluidShowcase`. Real `three-fluid-fx` velocity/density textures deform original GLSL lattice, trefoil, vortex and combined particles. Effect tabs, flow strength, pulse, pause and GAN narrative stage controls are native HTML. The simulation is lazy loaded, disposed offscreen, and disabled for reduced motion or unsupported float render targets, with SVG fallbacks. Compact scenes lower particle count and simulation resolution. A narrowly scoped package override shares the app's Three.js types with three-fluid-fx. Production license notices are in `public/licenses`.
+
+The circuit atlas contains 15 supplied EL5013 LTspice ASC files and parsed wire, symbol and net-label metadata. Wire coordinates are preserved; raised component blocks are illustrative and do not represent silicon layout or a simulation. ScrollTrigger drives Three.js rotation. Native component buttons provide inspection on mobile and keyboard, and pause/reduced motion retain a stable view. Original ASC files are downloadable.
+
+Mechanical key sound uses an original normalized WAV and a small HTMLAudio voice pool initiated by click or physical key gesture. A WebAudio fallback handles playback rejection. Volume and mute persist locally; Test sound explicitly enables and previews a key. No sound starts on page load or hover.

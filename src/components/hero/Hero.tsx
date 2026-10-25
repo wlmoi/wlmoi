@@ -1,8 +1,9 @@
-﻿import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ArrowDown, ArrowUpRight, Code, BriefcaseBusiness, Trophy } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from '../../lib/gsap'
+import { ParticleTitle } from './ParticleTitle'
 import { HeroStage } from '../three/HeroStage'
 
 export function Hero({ activeId }: { activeId: string }) {
@@ -35,7 +36,7 @@ export function Hero({ activeId }: { activeId: string }) {
           <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>
           <div className="hero-intro-copy">
             <p className="hero-kicker" data-hero-reveal>HARDWARE · SOFTWARE · APPLIED AI</p>
-            <h1 data-hero-reveal>Hi, I’m<br /><span>William<span className="hero-name-dot">.</span></span></h1>
+            <ParticleTitle />
             <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
             <p className="hero-description" data-hero-reveal>Digital design and verification, embedded AI, and the software that connects them. Electrical & Electronics Engineering at ITB, class of 2027.</p>
             <div className="hero-actions" data-hero-reveal>
@@ -43,6 +44,7 @@ export function Hero({ activeId }: { activeId: string }) {
               <a className="hero-secondary-action" href={person.resumeUrl}>View résumé <ArrowUpRight size={14} aria-hidden="true" /></a>
             </div>
             <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI · Chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
           </div>
         </div>
         <div className="hero-scene-column" data-hero-reveal><HeroStage /></div>
