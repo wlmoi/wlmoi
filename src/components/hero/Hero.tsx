@@ -4,6 +4,7 @@ import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from '../../lib/gsap'
 import { ParticleTitle } from './ParticleTitle'
+import { ResumeAction } from './ResumeAction'
 import { HeroStage } from '../three/HeroStage'
 
 export function Hero({ activeId }: { activeId: string }) {
@@ -40,11 +41,11 @@ export function Hero({ activeId }: { activeId: string }) {
             <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
             <p className="hero-description" data-hero-reveal>Junior Edge AI Engineer and Microelectronics Research Assistant at ITB. Manufacturing internship experience at Alcon. I connect digital hardware, embedded intelligence, and practical automation.</p>
             <div className="hero-actions" data-hero-reveal>
-              <a className="hero-primary-action" href="#work">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></a>
-              <a className="hero-secondary-action" href={person.resumeUrl}>View résumé <ArrowUpRight size={14} aria-hidden="true" /></a>
+
+              <ResumeAction />
             </div>
             <div className="hero-awards" aria-label="Selected awards">
-            <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026<small>FPGA and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
             <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
             </div>
           </div>

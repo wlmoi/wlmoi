@@ -119,3 +119,7 @@ The experience section uses original CSS perspective photography with GSAP Scrol
 ### Touch controls
 
 The hero supports WebGL2 on mobile as well as desktop. Use **Rotate 3D** to orbit the keyboard or silicon board, **Done rotating** to restore vertical touch scrolling, and **Reset view** to restore framing. Devices without WebGL retain a draggable CSS perspective fallback. Reduced motion pauses automatic floating while preserving deliberate rotation. Employment metadata uses explicit employment type, location and work arrangement labels.
+
+### Résumé action
+
+The primary résumé link uses an original GSAP magnetic button with corner brackets, a short light sweep, and pointer/focus/touch feedback, inspired by [Ashish's magnetic cursor study](https://codepen.io/ashish1729/pen/LEEwmVm). The effect is local to the button; the system cursor and native `/resume` navigation are preserved. Ambient motion pauses offscreen and in hidden tabs, and reduced-motion preferences disable the GSAP effects.
