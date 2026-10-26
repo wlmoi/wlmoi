@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { ArrowDown, ArrowUpRight, Code, BriefcaseBusiness, Trophy } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
@@ -21,7 +22,7 @@ export function Hero({ activeId }: { activeId: string }) {
   return (
     <section ref={root} id="home" className="hero-home hero-cosmic" aria-label="William Anthony introduction">
       <div className="cosmic-stars" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-one" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-two" aria-hidden="true" />
-      <div className="hero-desktop-nav">
+      {createPortal(<div className="hero-desktop-nav">
         <div className="liquid-glass flex items-center justify-between rounded-full px-5 py-3">
           <a href="#home" className="hero-wordmark" aria-label="William Anthony home"><span>WA<span className="wordmark-dot">.</span></span>William Anthony</a>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
@@ -31,7 +32,7 @@ export function Hero({ activeId }: { activeId: string }) {
             <a href="#contact" className="nav-contact">Let’s talk <ArrowUpRight size={13} aria-hidden="true" /></a>
           </nav>
         </div>
-      </div>
+      </div>, document.getElementById('site-navigation-root') ?? document.body)}
       <div className="hero-cosmic-shell">
         <div className="hero-introduction">
           <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>

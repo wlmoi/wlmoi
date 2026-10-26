@@ -1838,3 +1838,9 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .hero-cosmic .hero-awards .hero-award small{display:block;margin-top:4px;color:#a4c2b8;font-size:10px;line-height:1.5;letter-spacing:.025em}.hero-cosmic .hero-awards .hero-agentic small{color:#b7a9d8}
 @media(max-width:767px){.hero-actions:has(.resume-action){padding:8px;display:block}.resume-action{width:100%;max-width:310px}.resume-action-surface{min-height:68px;padding:13px 15px 13px 20px;gap:13px}.resume-action-label{font-size:16px}.hero-cosmic .hero-awards .hero-award small{font-size:10px}}
 @media(max-width:767px){.resume-action-surface{gap:10px;padding:13px 14px}.resume-action-document{width:18px}.resume-action-arrow{width:36px;height:36px}}
+
+/* Global navigation must escape the isolated hero stacking context. */
+.hero-desktop-nav{z-index:60}
+.hero-desktop-nav>div{background:#0b1121;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:#ffffff26;box-shadow:0 10px 30px #0004}
+.experience-gallery{position:relative;isolation:isolate}
+.experience-gallery-list{position:relative;z-index:0}
