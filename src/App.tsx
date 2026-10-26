@@ -182,11 +182,11 @@ function PortfolioPage() {
 
         <section id="experience" className="section-pad border-t border-white/[0.1]">
           <div className="section-shell">
-            <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+            <div className="experience-section-layout">
               <div data-motion-copy>
                 <p className="eyebrow">04 / Experience timeline</p>
-                <VoltageHeading text="Hands-on work across teaching, research, silicon, and production." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
-                <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.62]">Building dependable systems, helping students become better engineers, and turning production data into practical tools.</p>
+                <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Research, industry &amp; teaching.</h2>
+                <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.62]">From embedded AI and microelectronics research to manufacturing automation and laboratory teaching.</p>
               </div>
               <ExperienceTimeline />
             </div>
