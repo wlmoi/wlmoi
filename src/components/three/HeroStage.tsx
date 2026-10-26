@@ -69,7 +69,7 @@ export function HeroStage() {
 
   return <div ref={ref} className={`hero-stage keyboard-stage ${rotating ? 'is-rotating' : ''} ${stopped ? 'is-still' : ''} ${mode === 'keyboard' ? 'is-keyboard' : 'is-silicon'}`} onKeyDown={handleKey}>
     <div className="stage-corner stage-corner-top" /><div className="stage-corner stage-corner-bottom" />
-    <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>{mode==='keyboard' ? '15 KEYS / ONE ENGINEERING PRACTICE' : 'COMPUTE FABRIC'}</span></div>
+    <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>{mode==='keyboard' ? 'Techstack' : 'COMPUTE FABRIC'}</span></div>
     <div className="stage-mode-switch" role="group" aria-label="Choose 3D scene"><button type="button" aria-pressed={mode==='keyboard'} onClick={()=>{setMode('keyboard');gesture.current.yaw=0;gesture.current.pitch=0}}>Skills keyboard</button><button type="button" aria-pressed={mode==='silicon'} onClick={()=>{setMode('silicon');gesture.current.yaw=0;gesture.current.pitch=0}}>Silicon board</button><button type="button" className="stage-rotate-toggle" aria-pressed={rotating} onClick={()=>setRotating(value=>!value)}>{rotating ? 'Done rotating' : 'Rotate 3D'}</button></div>
     <div className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={mode==='keyboard' ? 0 : undefined} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative three-dimensional silicon compute board'} onPointerDown={event=>{
         gesture.current.moved=false
