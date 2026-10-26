@@ -1844,3 +1844,16 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .hero-desktop-nav>div{background:#0b1121;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:#ffffff26;box-shadow:0 10px 30px #0004}
 .experience-gallery{position:relative;isolation:isolate}
 .experience-gallery-list{position:relative;z-index:0}
+
+/* Solid CSS volumes retain physical depth when WebGL is unavailable. */
+.hero-fallback-orbit,.keyboard-fallback,.keyboard-case,.keyboard-key,.chip-fallback,.chip-board,.chip-package{transform-style:preserve-3d}
+.chip-fallback{overflow:visible}.keyboard-case{--volume-depth:24px;--volume-side:#25557a;--volume-bottom:#163b5d;box-shadow:none}.keyboard-key{--volume-depth:10px;--volume-side:#a5b0bb;--volume-bottom:#8796a7;transform:translateZ(12px);box-shadow:none}.keyboard-key:hover,.keyboard-key:active{transform:translateZ(7px);box-shadow:none}
+.chip-board{--volume-depth:14px;--volume-side:#304562;--volume-bottom:#142035;box-shadow:none}.chip-package{--volume-depth:18px;--volume-side:#445972;--volume-bottom:#1b283c;transform:translateZ(20px);box-shadow:none}.chip-traces{transform:translateZ(1px)}
+.model-volume{position:absolute;inset:0;pointer-events:none;transform-style:preserve-3d}
+.model-volume>i{position:absolute;display:block;margin:0;aspect-ratio:auto;border:0;border-radius:0;background:var(--volume-side);box-shadow:none;backface-visibility:visible}
+.model-volume>.volume-bottom{inset:0;transform:translateZ(calc(-1 * var(--volume-depth)));background:var(--volume-bottom);border-radius:inherit}
+.model-volume>.volume-front{bottom:0;left:0;width:100%;height:var(--volume-depth);transform-origin:bottom;transform:rotateX(90deg)}
+.model-volume>.volume-back{top:0;left:0;width:100%;height:var(--volume-depth);transform-origin:top;transform:rotateX(-90deg)}
+.model-volume>.volume-left{left:0;top:0;width:var(--volume-depth);height:100%;transform-origin:left;transform:rotateY(90deg)}
+.model-volume>.volume-right{right:0;top:0;width:var(--volume-depth);height:100%;transform-origin:right;transform:rotateY(-90deg)}
+.chip-package .model-volume>i{background:var(--volume-side);border:0;box-shadow:none}.chip-package .model-volume>.volume-bottom{background:var(--volume-bottom)}

@@ -118,7 +118,7 @@ The experience section uses original CSS perspective photography with GSAP Scrol
 
 ### Touch controls
 
-The hero supports WebGL2 on mobile as well as desktop. Use **Rotate 3D** to orbit the keyboard or silicon board, **Done rotating** to restore vertical touch scrolling, and **Reset view** to restore framing. Devices without WebGL retain a draggable CSS perspective fallback. Reduced motion pauses automatic floating while preserving deliberate rotation. Employment metadata uses explicit employment type, location and work arrangement labels.
+The hero supports WebGL2 on mobile as well as desktop. Drag the keyboard or silicon board directly to rotate; rotation is always enabled. Scroll outside the model to move the page, and use **Reset view** to restore framing. Devices without WebGL retain a draggable CSS 3D fallback with solid case, keycap, board and package side faces. Rotation angles are bounded to keep the models readable. Reduced motion pauses automatic floating while preserving deliberate rotation. Employment metadata uses explicit employment type, location and work arrangement labels.
 
 ### Résumé action
 
