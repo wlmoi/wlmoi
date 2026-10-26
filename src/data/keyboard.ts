@@ -1,9 +1,9 @@
-﻿export const keyboardSkills = [
+export const keyboardSkills = [
   { id: 'systemverilog', legend: 'SV', name: 'SystemVerilog', color: '#6451a5', shortcut: 'q', capability: 'fpga', detail: 'RTL, assertions, functional coverage, and self-checking verification environments.' },
   { id: 'verilog', legend: 'RTL', name: 'Verilog', color: '#d36b33', shortcut: 'w', capability: 'asic', detail: 'Datapaths, controllers, accelerator architecture, and synthesizable digital logic.' },
   { id: 'vhdl', legend: 'VHDL', name: 'VHDL', color: '#3967b5', shortcut: 'e', capability: 'fpga', detail: 'Synchronous logic, finite-state machines, testbenches, and FPGA teaching projects.' },
   { id: 'fpga', legend: 'FPGA', name: 'FPGA', color: '#087d82', shortcut: 'r', capability: 'fpga', detail: 'PYNQ and Cyclone platforms, hardware integration, and measured neural inference.' },
-  { id: 'dsp', legend: '∿', name: 'Digital signal processing', color: '#b44b87', shortcut: 't', capability: 'dsp', detail: 'FFT, FIR filtering, peak detection, and fixed-point signal-processing pipelines.' },
+  { id: 'tcl', legend: 'TCL', name: 'Tcl', color: '#b44b87', shortcut: 't', capability: 'fpga', detail: 'Tool scripting and automation for FPGA and ASIC design workflows.' },
   { id: 'python', legend: 'Py', name: 'Python', color: '#347cb0', shortcut: 'a', capability: 'software', detail: 'Reference models, regression automation, data analysis, and engineering tools.' },
   { id: 'c', legend: 'C', name: 'C', color: '#4f69aa', shortcut: 's', capability: 'edge-ai', detail: 'Embedded programming, structured problem solving, and microcontroller integration.' },
   { id: 'cpp', legend: 'C++', name: 'C++', color: '#1769a0', shortcut: 'd', capability: 'edge-ai', detail: 'Embedded and systems programming alongside hardware-oriented engineering work.' },
