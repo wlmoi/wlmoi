@@ -60,7 +60,7 @@ export default function HeroScene({ paused, mode, selectedId, pressCount, onSele
       <pointLight position={[-4,2,-2]} intensity={mode === 'keyboard' ? 3 : 14} color="#9872ff" />
       <pointLight position={[4,1,3]} intensity={mode === 'keyboard' ? 3 : 12} color="#53f0d2" />
       {mode === 'keyboard' ? <SkillsKeyboard paused={paused} selectedId={selectedId} pressCount={pressCount} onSelect={onSelect} /> : <ComputeBoard paused={paused} />}
-      <OrbitControls enablePan={false} enableZoom={false} enableDamping autoRotate={false} autoRotateSpeed={.55} minPolarAngle={.45} maxPolarAngle={1.25} minAzimuthAngle={-.75} maxAzimuthAngle={.85} />
+      <OrbitControls enablePan enableZoom minDistance={2} maxDistance={30} enableDamping autoRotate={false} autoRotateSpeed={.55} />
     </Canvas>
   )
 }

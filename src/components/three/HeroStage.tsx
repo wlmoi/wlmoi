@@ -1,11 +1,15 @@
-import { Component, Suspense, lazy, useRef, useState } from 'react'
+import { Component, Suspense, lazy, useEffect, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
-import { ArrowUpRight, Maximize2, Volume2, VolumeX } from 'lucide-react'
+import { ArrowUpRight, Volume2, VolumeX } from 'lucide-react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { useIntersection } from '../../hooks/useIntersection'
 import { useKeyboardSound } from '../../hooks/useKeyboardSound'
 import { keyboardSkills } from '../../data/keyboard'
 import type { HeroSceneMode } from '../../data/keyboard'
+
+function paintFallbackOrbit(element: HTMLDivElement | null, pose: { pitch: number; yaw: number; zoom: number }) {
+  if (element) element.style.transform = `perspective(850px) rotateX(${pose.pitch}deg) rotateY(${pose.yaw}deg) scale(${pose.zoom})`
+}
 
 const HeroScene = lazy(() => import('./HeroScene'))
 
@@ -47,13 +51,31 @@ export function HeroStage() {
   const { ref, visible } = useIntersection<HTMLDivElement>({ threshold: .05 })
   const [viewVersion, setViewVersion] = useState(0)
   const fallbackOrbit = useRef<HTMLDivElement>(null)
-  const gesture = useRef({ x: 0, y: 0, startX: 0, startY: 0, yaw: 0, pitch: 0, moved: false, pointerId: -1 })
+  const viewport = useRef<HTMLDivElement>(null)
+  const pointers = useRef(new Map<number, { x: number; y: number }>())
+  const gesture = useRef({ x: 0, y: 0, startX: 0, startY: 0, yaw: 0, pitch: 0, moved: false, pointerId: -1, zoom: 1, pinchDistance: 0, startZoom: 1 })
   const [canRender, setCanRender] = useState(supportsScene)
   const [mode, setMode] = useState<HeroSceneMode>('keyboard')
   const [selectedId, setSelectedId] = useState('python')
   const [pressCount, setPressCount] = useState(0)
   const sound = useKeyboardSound()
 
+  useEffect(() => {
+    const node = viewport.current
+    if (!node || canRender) return
+    const wheel = (event: WheelEvent) => {
+      event.preventDefault()
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? node.clientHeight : 1)
+      gesture.current.zoom = Math.max(0.4, Math.min(3.5, gesture.current.zoom * Math.exp(-delta * 0.0015)))
+      paintFallbackOrbit(fallbackOrbit.current, gesture.current)
+    }
+    node.addEventListener('wheel', wheel, { passive: false })
+    return () => node.removeEventListener('wheel', wheel)
+  }, [canRender])
+  function resetOrientation() {
+    gesture.current.yaw=0;gesture.current.pitch=0;gesture.current.zoom=1
+    gesture.current.pinchDistance=0;gesture.current.pointerId=-1;pointers.current.clear()
+  }
   const stopped = reducedMotion || !visible
   const selected = keyboardSkills.find(skill=>skill.id===selectedId) ?? keyboardSkills[5]
   const selectSkill = (id: string, withSound = true) => {
@@ -71,24 +93,47 @@ export function HeroStage() {
   return <div ref={ref} className={`hero-stage keyboard-stage is-rotating ${stopped ? 'is-still' : ''} ${mode === 'keyboard' ? 'is-keyboard' : 'is-silicon'}`} onKeyDown={handleKey}>
     <div className="stage-corner stage-corner-top" /><div className="stage-corner stage-corner-bottom" />
     <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>{mode==='keyboard' ? 'Techstack' : 'COMPUTE FABRIC'}</span></div>
-    <div className="stage-mode-switch" role="group" aria-label="Choose 3D scene"><button type="button" aria-pressed={mode==='keyboard'} onClick={()=>{setMode('keyboard');gesture.current.yaw=0;gesture.current.pitch=0}}>Skills keyboard</button><button type="button" aria-pressed={mode==='silicon'} onClick={()=>{setMode('silicon');gesture.current.yaw=0;gesture.current.pitch=0}}>Silicon board</button></div>
-    <div className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={mode==='keyboard' ? 0 : undefined} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative three-dimensional silicon compute board'} onPointerDown={event=>{
+    <div className="stage-mode-switch" role="group" aria-label="Choose 3D scene"><button type="button" aria-pressed={mode==='keyboard'} onClick={()=>{setMode('keyboard');resetOrientation()}}>Skills keyboard</button><button type="button" aria-pressed={mode==='silicon'} onClick={()=>{setMode('silicon');resetOrientation()}}>Silicon board</button></div>
+    <div ref={viewport} className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={mode==='keyboard' ? 0 : undefined} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative three-dimensional silicon compute board'} onPointerDown={event=>{
         gesture.current.moved=false
         if(event.target instanceof HTMLCanvasElement)event.currentTarget.focus({preventScroll:true})
         if(canRender) return
+        pointers.current.set(event.pointerId,{x:event.clientX,y:event.clientY})
+        if(pointers.current.size===2){
+          const [a,b]=[...pointers.current.values()]
+          gesture.current.pinchDistance=Math.hypot(a.x-b.x,a.y-b.y)
+          gesture.current.startZoom=gesture.current.zoom
+          gesture.current.moved=true
+          event.currentTarget.setPointerCapture(event.pointerId)
+          return
+        }
         gesture.current.x=event.clientX;gesture.current.y=event.clientY
         gesture.current.startX=gesture.current.yaw;gesture.current.startY=gesture.current.pitch
         gesture.current.pointerId=event.pointerId
       }}
       onPointerMove={event=>{
-        if(canRender || gesture.current.pointerId!==event.pointerId) return
+        if(canRender || !pointers.current.has(event.pointerId)) return
+        pointers.current.set(event.pointerId,{x:event.clientX,y:event.clientY})
+        if(pointers.current.size>=2){
+          const [a,b]=[...pointers.current.values()]
+          const distance=Math.hypot(a.x-b.x,a.y-b.y)
+          gesture.current.zoom=Math.max(.4,Math.min(3.5,gesture.current.startZoom*distance/Math.max(1,gesture.current.pinchDistance)))
+          gesture.current.moved=true
+          paintFallbackOrbit(fallbackOrbit.current,gesture.current)
+          return
+        }
         const dx=event.clientX-gesture.current.x,dy=event.clientY-gesture.current.y
         if(Math.hypot(dx,dy)>8){gesture.current.moved=true;event.currentTarget.setPointerCapture(event.pointerId)}
-        gesture.current.yaw=Math.max(-40,Math.min(40,gesture.current.startX+dx*.45))
-        gesture.current.pitch=Math.max(-18,Math.min(18,gesture.current.startY-dy*.3))
-        if(fallbackOrbit.current)fallbackOrbit.current.style.transform=`perspective(850px) rotateX(${gesture.current.pitch}deg) rotateY(${gesture.current.yaw}deg)`
+        gesture.current.yaw=gesture.current.startX+dx*.45
+        gesture.current.pitch=gesture.current.startY-dy*.3
+        paintFallbackOrbit(fallbackOrbit.current,gesture.current)
       }}
-      onPointerUp={()=>{gesture.current.pointerId=-1}} onPointerCancel={()=>{gesture.current.pointerId=-1}} onClickCapture={event=>{if(gesture.current.moved){event.preventDefault();event.stopPropagation()}}}>
+      onPointerUp={event=>{
+        pointers.current.delete(event.pointerId)
+        const remaining=[...pointers.current.entries()][0]
+        if(remaining){gesture.current.pointerId=remaining[0];gesture.current.x=remaining[1].x;gesture.current.y=remaining[1].y;gesture.current.startX=gesture.current.yaw;gesture.current.startY=gesture.current.pitch}
+        else gesture.current.pointerId=-1
+      }} onPointerCancel={()=>{pointers.current.clear();gesture.current.pointerId=-1}} onClickCapture={event=>{if(gesture.current.moved){event.preventDefault();event.stopPropagation()}}}>
       {canRender ? <SceneBoundary fallback={fallback} onFailure={()=>setCanRender(false)}><Suspense fallback={fallback}><HeroScene key={`${mode}-${viewVersion}`} paused={stopped} mode={mode} selectedId={selectedId} pressCount={pressCount} onSelect={selectSkill} /></Suspense></SceneBoundary> : <div key={`${mode}-${viewVersion}`} ref={fallbackOrbit} className="hero-fallback-orbit">{fallback}</div>}
     </div>
     {mode==='keyboard' ? <div className="keyboard-inspector">
@@ -96,8 +141,8 @@ export function HeroStage() {
       <div className="keyboard-skill-copy"><p aria-live="polite" aria-atomic="true"><strong className="sr-only">{selected.name}: </strong>{selected.detail}</p><a href={`#capability-${selected.capability}`} onClick={()=>{const detail=document.getElementById(`capability-${selected.capability}`);if(detail instanceof HTMLDetailsElement)detail.open=true}}>Explore expertise <ArrowUpRight size={12} aria-hidden="true" /></a></div>
       <div className="keyboard-audio"><button type="button" onClick={sound.preview}>Test sound</button><label>Volume <input aria-label="Keyboard volume" type="range" min=".1" max="1" step=".05" value={sound.volume} onChange={event=>sound.setVolume(Number(event.target.value))} /></label></div>
     </div> : <><div className="stage-label stage-label-ai"><i /> Intelligence<span>Python and Edge AI</span></div><div className="stage-label stage-label-rtl"><i /> Silicon<span>RTL and verification</span></div></>}
-    <div className="stage-bottomline"><span><Maximize2 size={12} aria-hidden="true" />Drag the model to rotate. Scroll outside the model.</span>
-      <div className="stage-controls"><button type="button" onClick={()=>{setViewVersion(value=>value+1);gesture.current.yaw=0;gesture.current.pitch=0}}>Reset view</button>
+    <div className="stage-bottomline">
+      <div className="stage-controls"><button type="button" onClick={()=>{setViewVersion(value=>value+1);resetOrientation()}}>Reset view</button>
         {mode==='keyboard' ? <button type="button" onClick={sound.toggle} aria-pressed={sound.enabled} aria-label={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'} title={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'}>{sound.enabled ? <Volume2 size={13} aria-hidden="true" /> : <VolumeX size={13} aria-hidden="true" />}<span>Sound {sound.enabled ? 'on' : 'off'}</span></button> : null}
 
       </div>
