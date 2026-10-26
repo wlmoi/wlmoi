@@ -1813,3 +1813,15 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .mobile-navigation-dialog,.mobile-menu-heading{background:#101624;opacity:1}
 .mobile-navigation-dialog::backdrop{background:#080d17;backdrop-filter:none}
 .experience-gallery-toolbar{background:#10141f}
+
+/* Rotation is opt-in on touch so the surrounding page remains scrollable. */
+.hero-fallback-orbit{width:100%;height:100%;transform-style:preserve-3d}
+.hero-stage.is-rotating .hero-stage-canvas,.hero-stage.is-rotating .hero-stage-canvas canvas{touch-action:none!important;cursor:grab}
+.hero-stage.is-rotating .hero-stage-canvas:active{cursor:grabbing}
+.hero-stage:not(.is-rotating) .hero-stage-canvas,.hero-stage:not(.is-rotating) .hero-stage-canvas canvas{touch-action:pan-y!important}
+.stage-mode-switch{gap:6px!important}.stage-mode-switch button{min-height:44px}.stage-controls button{min-height:44px}
+.experience-facts{display:grid;gap:5px;margin-top:12px!important}.experience-facts>div{display:flex;flex-wrap:wrap;gap:0 6px}.experience-facts dt{color:#9ba9bb}.experience-facts dd{color:#c4cdda}
+@media(max-width:767px){.stage-mode-switch button{padding:9px 10px;font-size:10px}.stage-bottomline{flex-wrap:wrap;gap:8px}.stage-bottomline>span{font-size:9px;line-height:1.6}.stage-controls{flex-wrap:wrap;gap:8px}.keyboard-selection select{font-size:16px}.experience-facts{font-size:12px;line-height:1.8}}
+@media(max-width:767px){.keyboard-stage{height:585px}.keyboard-stage.is-keyboard .hero-stage-canvas{bottom:230px}.keyboard-stage.is-silicon .hero-stage-canvas{bottom:100px}.keyboard-inspector{bottom:96px}.keyboard-stage .stage-bottomline{bottom:10px;flex-direction:column;align-items:flex-start;gap:4px}.stage-bottomline>span{font-size:10px;line-height:1.5}.stage-controls{gap:8px}.stage-controls button{font-size:11px;padding:6px 8px}.stage-controls>span{font-size:10px}}
+/* Desktop header stays fixed above content with an opaque reading surface. */
+.hero-cosmic .hero-desktop-nav>div{background:#0b1121;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:#ffffff26;box-shadow:0 10px 30px #0004}

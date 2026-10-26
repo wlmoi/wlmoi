@@ -107,7 +107,11 @@ export function ExperienceTimeline() {
               <p className="experience-gallery-date">{item.dates}</p>
               <h3 id={`experience-title-${item.id}`}>{item.title}</h3>
               <p className="experience-gallery-org">{item.organization}</p>
-              <p className="experience-gallery-context">{[item.employmentType, item.location].filter(Boolean).join(' · ')}</p>
+                            <dl className="experience-gallery-context experience-facts">
+                {item.employmentType ? <div><dt>Employment type:</dt><dd>{item.employmentType}</dd></div> : null}
+                {item.location ? <div><dt>Location:</dt><dd>{item.location.split(' · ')[0]}</dd></div> : null}
+                {item.location?.includes(' · ') ? <div><dt>Work arrangement:</dt><dd>{item.location.split(' · ').slice(1).join(', ')}</dd></div> : null}
+              </dl>
               <p className="experience-gallery-summary">{item.summary}</p>
               {item.bullets?.length ? <details className="experience-responsibilities">
                 <summary>Responsibilities <span>{item.bullets.length}</span></summary>
@@ -118,7 +122,7 @@ export function ExperienceTimeline() {
         ))}
       </div>
       <div className="experience-gallery-end"><span>End of timeline</span><a href="/resume">Full résumé ↗</a></div>
-      <details className="experience-freelance"><summary>Additional freelance engagement <span>Tiny Tapeout · Oct 2026</span></summary><p><strong>RTL Functional Verification Engineer.</strong> {freelance?.summary}</p></details>
+      <details className="experience-freelance"><summary>Additional freelance engagement <span>Tiny Tapeout, October 2026</span></summary><p><strong>RTL Functional Verification Engineer.</strong> {freelance?.summary}</p></details>
     </div>
   )
 }

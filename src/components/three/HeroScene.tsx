@@ -1,10 +1,25 @@
-﻿import { useMemo, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { useEffect, useMemo, useRef } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import { SkillsKeyboard } from './SkillsKeyboard'
 import type { HeroSceneMode } from '../../data/keyboard'
 
+function frameHeroCamera(camera: THREE.Camera, aspect: number) {
+  if (camera instanceof THREE.PerspectiveCamera) {
+    camera.fov = Math.min(52, 36 * Math.max(1, 1.35 / aspect))
+    camera.updateProjectionMatrix()
+  }
+}
+
+function ResponsiveHeroCamera() {
+  const { camera, size, invalidate } = useThree()
+  useEffect(() => {
+    frameHeroCamera(camera, size.width / Math.max(1, size.height))
+    invalidate()
+  }, [camera, size.width, size.height, invalidate])
+  return null
+}
 function ComputeBoard({ paused }: { paused: boolean }) {
   const group = useRef<THREE.Group>(null)
   const cells = useMemo(() => Array.from({ length: 16 }, (_, i) => ({ x: (i % 4 - 1.5) * .36, z: (Math.floor(i / 4) - 1.5) * .36 })), [])
@@ -36,16 +51,16 @@ function ComputeBoard({ paused }: { paused: boolean }) {
   )
 }
 
-export default function HeroScene({ paused, mode, selectedId, pressCount, onSelect }: { paused: boolean; mode: HeroSceneMode; selectedId: string; pressCount: number; onSelect: (id: string) => void }) {
+export default function HeroScene({ paused, rotating, mode, selectedId, pressCount, onSelect }: { paused: boolean; rotating: boolean; mode: HeroSceneMode; selectedId: string; pressCount: number; onSelect: (id: string) => void }) {
   const camera = useMemo(() => ({ position: (mode === 'keyboard' ? [.65,4.8,6.7] : [5.4,5.7,6.9]) as [number,number,number], fov: 36 }),[mode])
   return (
-    <Canvas dpr={[1,1.5]} frameloop={paused ? 'demand' : 'always'} camera={camera} gl={{antialias:true,alpha:true,powerPreference:'low-power'}}>
-      <ambientLight intensity={1.7} />
+    <Canvas dpr={[1,1.25]} frameloop={paused ? 'demand' : 'always'} camera={camera} gl={{antialias:true,alpha:true,powerPreference:'low-power'}}>
+      <ResponsiveHeroCamera /><ambientLight intensity={1.7} />
       <directionalLight position={[3,7,4]} intensity={3} color="#c6e9ff" />
       <pointLight position={[-4,2,-2]} intensity={mode === 'keyboard' ? 3 : 14} color="#9872ff" />
       <pointLight position={[4,1,3]} intensity={mode === 'keyboard' ? 3 : 12} color="#53f0d2" />
       {mode === 'keyboard' ? <SkillsKeyboard paused={paused} selectedId={selectedId} pressCount={pressCount} onSelect={onSelect} /> : <ComputeBoard paused={paused} />}
-      <OrbitControls enablePan={false} enableZoom={false} enableDamping autoRotate={!paused && mode === 'silicon'} autoRotateSpeed={.55} minPolarAngle={.5} maxPolarAngle={1.35} />
+      <OrbitControls enabled={rotating} enablePan={false} enableZoom={false} enableDamping autoRotate={false} autoRotateSpeed={.55} minPolarAngle={.5} maxPolarAngle={1.35} />
     </Canvas>
   )
 }

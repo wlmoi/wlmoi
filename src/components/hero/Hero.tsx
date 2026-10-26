@@ -35,7 +35,7 @@ export function Hero({ activeId }: { activeId: string }) {
         <div className="hero-introduction">
           <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>
           <div className="hero-intro-copy">
-            <p className="hero-kicker" data-hero-reveal>HARDWARE · SOFTWARE · APPLIED AI</p>
+            <p className="hero-kicker" data-hero-reveal>HARDWARE, SOFTWARE & APPLIED AI</p>
             <ParticleTitle />
             <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
             <p className="hero-description" data-hero-reveal>Junior Edge AI Engineer and Microelectronics Research Assistant at ITB. Manufacturing internship experience at Alcon. I connect digital hardware, embedded intelligence, and practical automation.</p>
@@ -45,7 +45,7 @@ export function Hero({ activeId }: { activeId: string }) {
             </div>
             <div className="hero-awards" aria-label="Selected awards">
             <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026</span><ArrowUpRight size={13} aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI · Chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
             </div>
           </div>
         </div>

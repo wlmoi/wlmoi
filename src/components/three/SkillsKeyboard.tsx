@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { RoundedBox, useCursor } from '@react-three/drei'
 import * as THREE from 'three'
@@ -48,7 +48,7 @@ function SkillKey({ skill, index, selected, pressCount, onSelect }: { skill: Key
   const z=(Math.floor(index/5)-1)*.96
   return <group position={[x,0,z]}>
     <RoundedBox args={[.85,.08,.87]} radius={.03} smoothness={2} position={[0,-.06,0]}><meshStandardMaterial color={selected ? '#92ece0' : '#1a4a70'} emissive={selected ? '#35a5a0' : '#000000'} emissiveIntensity={.5} /></RoundedBox>
-    <group ref={key} position={[0,.22,0]} onPointerOver={event=>{event.stopPropagation();setHovered(true)}} onPointerOut={()=>setHovered(false)} onClick={event=>{event.stopPropagation();onSelect(skill.id)}}>
+    <group ref={key} position={[0,.22,0]} onPointerOver={event=>{event.stopPropagation();setHovered(true)}} onPointerOut={()=>setHovered(false)} onClick={event=>{event.stopPropagation();if(event.delta<8)onSelect(skill.id)}}>
       <RoundedBox args={[.82,.5,.84]} radius={.08} smoothness={3}><meshStandardMaterial color={hovered ? '#e1eff9' : '#c9d0d8'} roughness={.42} metalness={.03} /></RoundedBox>
       <RoundedBox args={[.72,.1,.74]} radius={.04} smoothness={3} position={[0,.25,0]}><meshStandardMaterial color={selected ? '#e6fffa' : '#f5f5f0'} roughness={.34} metalness={.02} /></RoundedBox>
       <mesh position={[0,.307,0]} rotation={[-Math.PI/2,0,0]}><planeGeometry args={[.64,.64]} /><meshBasicMaterial map={texture} transparent toneMapped={false} depthWrite={false} polygonOffset polygonOffsetFactor={-1} /></mesh>

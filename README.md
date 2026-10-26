@@ -115,3 +115,7 @@ The original procedural NMOS/PMOS model takes visual inspiration from [planar_In
 ### Experience gallery
 
 The experience section uses original CSS perspective photography with GSAP ScrollTrigger, inspired by [Hunterdii's 3D Scrolling Gallery/Timeline](https://github.com/Hunterdii/3D-Scrolling-Gallery-Timeline). The [pmndrs timeline](https://github.com/pmndrs/timeline) was reviewed as a 3D choreography reference; it is not installed. [GSAP DrawSVGPlugin](https://gsap.com/docs/v3/Plugins/DrawSVGPlugin/), included in the existing GSAP package, draws the scroll-progress line. No additional runtime package is required. Role descriptions appear once, responsibilities expand on demand, and native scrolling and deep links are preserved. Reading view and reduced-motion preferences remove the photographic motion; mobile keeps the cards flat.
+
+### Touch controls
+
+The hero supports WebGL2 on mobile as well as desktop. Use **Rotate 3D** to orbit the keyboard or silicon board, **Done rotating** to restore vertical touch scrolling, and **Reset view** to restore framing. Devices without WebGL retain a draggable CSS perspective fallback. Reduced motion pauses automatic floating while preserving deliberate rotation. Employment metadata uses explicit employment type, location and work arrangement labels.

@@ -1,8 +1,8 @@
-﻿import { ArrowUpRight, Cpu, Mic, Workflow } from 'lucide-react'
+import { ArrowUpRight, Cpu, Mic, Workflow } from 'lucide-react'
 import { experiences } from '../../data/portfolio'
 const features=[
- {id:'edge-ai',eyebrow:'CURRENT / EDGE INTELLIGENCE',title:'Junior Edge AI Engineer',icon:Mic,proof:'Python · TensorFlow · YAMNet',copy:'Audio and visual sensing prototypes, from microphone acquisition to on-device evaluation.'},
- {id:'microelectronics',eyebrow:'CURRENT / DIGITAL HARDWARE',title:'Microelectronics Research',icon:Cpu,proof:'SystemVerilog · RTL · Verification',copy:'Synthesizable signal-processing hardware, pipelined datapaths, and self-checking validation.'},
+ {id:'edge-ai',eyebrow:'CURRENT / EDGE INTELLIGENCE',title:'Junior Edge AI Engineer',icon:Mic,proof:'Python, TensorFlow, YAMNet',copy:'Audio and visual sensing prototypes, from microphone acquisition to on-device evaluation.'},
+ {id:'microelectronics',eyebrow:'CURRENT / DIGITAL HARDWARE',title:'Microelectronics Research',icon:Cpu,proof:'SystemVerilog, RTL, Verification',copy:'Synthesizable signal-processing hardware, pipelined datapaths, and self-checking validation.'},
  {id:'alcon',eyebrow:'INTERNSHIP / MANUFACTURING',title:'Production automation at Alcon',icon:Workflow,proof:'40+ production sheets standardized',copy:'A completed industry internship connecting Power Apps, Power Automate, and operational data.'},
 ]
 export function CareerHighlights(){
