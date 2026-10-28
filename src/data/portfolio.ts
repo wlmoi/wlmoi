@@ -73,7 +73,6 @@ export const languages = [
 export const capabilities: Capability[] = [
   {
     id: 'asic',
-    number: '01',
     title: 'ASIC Architecture & RTL-to-GDSII',
     summary: 'Architecture, RTL implementation, verification, physical implementation, and sign-off thinking.',
     tools: ['Verilog', 'SystemVerilog', 'LibreLane', 'OpenROAD', 'GF180MCU', 'Cadence Virtuoso'],
@@ -81,7 +80,6 @@ export const capabilities: Capability[] = [
   },
   {
     id: 'fpga',
-    number: '02',
     title: 'FPGA Design & Verification',
     summary: 'Synchronous datapaths and control logic developed with simulation-led verification and hardware validation.',
     tools: ['VHDL', 'Quartus', 'ModelSim', 'FPGA', 'ESP32'],
@@ -89,7 +87,6 @@ export const capabilities: Capability[] = [
   },
   {
     id: 'edge-ai',
-    number: '03',
     title: 'Edge AI & Embedded Systems',
     summary: 'On-device intelligence and embedded data paths that connect computation to physical systems.',
     tools: ['Python', 'C', 'C++', 'ESP32', 'Arduino', 'MQTT'],
@@ -97,7 +94,6 @@ export const capabilities: Capability[] = [
   },
   {
     id: 'dsp',
-    number: '04',
     title: 'Digital Signal Processing',
     summary: 'Hardware-oriented signal processing for frequency analysis, peak detection, and coordinate transforms.',
     tools: ['MATLAB', 'Verilog', 'VHDL', 'FFT', 'CORDIC'],
@@ -105,7 +101,6 @@ export const capabilities: Capability[] = [
   },
   {
     id: 'software',
-    number: '05',
     title: 'Software, Data & Automation',
     summary: 'Engineering tools, AI workflows, and production automation that make technical data easier to operate and inspect.',
     tools: ['Python', 'FastAPI', 'Pandas', 'JavaScript', 'SQL', 'Power Apps', 'Power Automate', 'InfluxDB', 'Grafana'],
@@ -159,7 +154,6 @@ export const featuredCaseStudy = {
 export const projects: Project[] = [
   {
     id: 'igor',
-    eyebrow: 'EDGE AI / ROBOTICS',
     title: 'IGOR — Indonesian Gated Onboard Robotics',
     context: '2nd Place — PERURI Chip Hackathon 2026. An AI accelerator that helps a mobile robot adapt while keeping steering corrections bounded.',
     role: 'Chip designer on team iSeeDesignITB, with Karol Yangqian Poetracahya, Brian Albar Hadian, and Bennaya Siagian. Developed and verified the accelerator from RTL through FPGA integration and an IHP 130 nm ASIC flow.',
@@ -182,7 +176,6 @@ export const projects: Project[] = [
   },
   {
     id: 'spi-verification',
-    eyebrow: 'VERIFICATION / AUTOMATION',
     title: 'APB-Controlled SPI Master Verification',
     context: 'A specification-led SystemVerilog verification flow developed for a Tiny Tapeout freelance engagement.',
     role: 'Built a modular testbench with stimulus generation, protocol monitors, an independent reference model, and a self-checking scoreboard.',
@@ -193,7 +186,6 @@ export const projects: Project[] = [
   },
   {
     id: 'fpga-gan',
-    eyebrow: 'FPGA / ACCELERATION',
     title: 'FPGA-Based Programmable GAN',
     context: 'Programmable Wasserstein GAN inference on a PYNQ-Z1 FPGA, connecting generative AI models with a reconfigurable implementation.',
     role: 'Implemented the MLP-based GAN with teammates I Made Medika and Dennis.',
@@ -204,7 +196,6 @@ export const projects: Project[] = [
   },
   {
     id: 'iot-noise',
-    eyebrow: 'EMBEDDED / DATA',
     title: 'Outdoor IoT Noise Monitoring and Calibration',
     context: 'Outdoor acoustic monitoring pipeline for field data collection, visualization, and characterization.',
     role: 'Embedded and data-flow integration across sensing, transport, storage, and monitoring.',
@@ -215,7 +206,6 @@ export const projects: Project[] = [
   },
   {
     id: 'fft',
-    eyebrow: 'DSP / RTL',
     title: '8,192-Point FFT and Peak Detection',
     context: 'High-resolution frequency-domain analysis within partial-discharge detection research.',
     role: 'Research assistant developing MATLAB models and Verilog signal-processing hardware.',
@@ -226,7 +216,6 @@ export const projects: Project[] = [
   },
   {
     id: 'qft',
-    eyebrow: 'OPEN SILICON / QUANTUM',
     title: 'Three-Qubit Quantum Fourier Transform Tapeout Contribution',
     context: 'Team D22: Chipster, IEEE SSCS “Pico” Chipathon 2025. A three-qubit QFT design built with an agentic prompt-to-GDSII workflow.',
     role: 'Contributed digital signal-processing control and digital-track integration with Ade Irman and Rifki Afriadi.',
@@ -237,7 +226,6 @@ export const projects: Project[] = [
   },
   {
     id: 'alcon',
-    eyebrow: 'AUTOMATION / DATA',
     title: 'Production Data Automation at Alcon',
     context: 'Manufacturing data workflow connecting many production sheets to a standardized operational view.',
     role: 'Product consumables intern focused on production-data automation.',
@@ -249,7 +237,6 @@ export const projects: Project[] = [
   },
   {
     id: 'hme-election',
-    eyebrow: 'SOFTWARE / WEB',
     title: 'Mobile-Friendly Election Platform',
     context: 'Private voting website for the HME ITB President 2025/2026 election.',
     role: 'Front-end developer.',
@@ -260,7 +247,7 @@ export const projects: Project[] = [
   },
   // Additional completed projects confirmed by William; UCIe remains in progress.
   {
-    id: 'ucie-verifier', eyebrow: 'SPECIFICATION / VERIFICATION', title: 'UCIe 3.0 Specification Verifier',
+    id: 'ucie-verifier', title: 'UCIe 3.0 Specification Verifier',
     context: 'A focused protocol-verification project investigating link-training behavior and recovery.',
     role: 'Developing a verification plan and a lightweight SystemVerilog environment for a selected subset of specification requirements.',
     stack: ['SystemVerilog', 'SVA', 'Protocol monitors', 'Functional coverage', 'Python'],
@@ -269,7 +256,7 @@ export const projects: Project[] = [
     status: 'ongoing', discipline: 'Design verification',
   },
   {
-    id: 'fir-filter', eyebrow: 'DSP / RTL', title: 'FPGA-Based FIR Digital Filter',
+    id: 'fir-filter', title: 'FPGA-Based FIR Digital Filter',
     context: 'A parameterized digital filter connecting algorithm design with an RTL implementation.',
     role: 'Designed the filtering datapath and compared the RTL behavior with a software reference.',
     stack: ['SystemVerilog', 'FPGA', 'Python / MATLAB', 'Fixed-point DSP'],
@@ -278,7 +265,7 @@ export const projects: Project[] = [
     discipline: 'DSP',
   },
   {
-    id: 'spectrum-analyzer', eyebrow: 'DSP / SIGNAL ANALYSIS', title: 'Real-Time FFT Spectrum Analyzer',
+    id: 'spectrum-analyzer', title: 'Real-Time FFT Spectrum Analyzer',
     context: 'A sampled-signal pipeline for inspecting frequency content.',
     role: 'Connected windowing, FFT processing, and spectrum visualization into a signal-analysis flow.',
     stack: ['FFT', 'Windowing', 'Python / MATLAB', 'Digital signal processing'],
@@ -287,7 +274,7 @@ export const projects: Project[] = [
     discipline: 'DSP',
   },
   {
-    id: 'fixed-point-study', eyebrow: 'DSP / NUMERICAL ANALYSIS', title: 'Fixed-Point vs Floating-Point DSP',
+    id: 'fixed-point-study', title: 'Fixed-Point vs Floating-Point DSP',
     context: 'A numerical study of precision and resource tradeoffs in DSP algorithms.',
     role: 'Compared floating-point and fixed-point implementations and analyzed quantization behavior.',
     stack: ['Python', 'MATLAB', 'Quantization', 'Fixed-point arithmetic'],
@@ -296,7 +283,7 @@ export const projects: Project[] = [
     discipline: 'DSP',
   },
   {
-    id: 'riscv-pipeline', eyebrow: 'COMPUTER ARCHITECTURE / RTL', title: 'Five-Stage Pipelined RISC-V Processor',
+    id: 'riscv-pipeline', title: 'Five-Stage Pipelined RISC-V Processor',
     context: 'A processor implementation spanning instruction execution and pipeline control.',
     role: 'Implemented fetch, decode, execute, memory, and write-back stages with forwarding and hazard handling.',
     stack: ['SystemVerilog', 'RISC-V', 'RTL design', 'Pipeline control'],
@@ -305,7 +292,7 @@ export const projects: Project[] = [
     discipline: 'Hardware & AI',
   },
   {
-    id: 'sensor-analytics', eyebrow: 'DATA / VISUALIZATION', title: 'IoT Sensor Data Analytics Dashboard',
+    id: 'sensor-analytics', title: 'IoT Sensor Data Analytics Dashboard',
     context: 'An analysis workspace for understanding environmental sensor measurements.',
     role: 'Processed time-series sensor data and built views for trends, anomalies, and summary statistics.',
     stack: ['Python', 'Pandas', 'SQL', 'Data visualization'],
@@ -314,7 +301,7 @@ export const projects: Project[] = [
     discipline: 'Data analytics',
   },
   {
-    id: 'rtl-regression', eyebrow: 'SOFTWARE / VERIFICATION', title: 'Automated FPGA / RTL Regression Framework',
+    id: 'rtl-regression', title: 'Automated FPGA / RTL Regression Framework',
     context: 'Python tooling that makes simulation runs and failures easier to inspect.',
     role: 'Automated test discovery, simulation launch, result parsing, and reporting.',
     stack: ['Python', 'RTL simulation', 'CLI', 'Test reporting'],

@@ -27,16 +27,12 @@ export function CaseStudy() {
     return () => triggers.forEach((trigger) => trigger.kill())
   }, [reducedMotion])
 
-  const stage = featuredCaseStudy.stages[active]
-
-
   return (
     <section id="case-study" className="section-pad border-t border-white/[0.1]">
       <div className="section-shell">
         <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="eyebrow">Featured case study</p>
-            <VoltageHeading text={featuredCaseStudy.title} className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
+            <VoltageHeading text={featuredCaseStudy.title} className="text-4xl font-semibold tracking-tight md:text-6xl" />
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/[0.62]">{featuredCaseStudy.intro}</p>
           </div>
           <div className="case-study-kicker fx-negative" data-text="GF180MCU · 180 nm · SIGNED INT8">GF180MCU · 180 nm · SIGNED INT8</div>
@@ -53,8 +49,7 @@ export function CaseStudy() {
               {featuredCaseStudy.stages.map((item, index) => (
                 <article key={item.label} data-case-step className={`case-step relative w-full max-w-xl ${active === index ? 'case-step--active' : ''}`}>
                   <span className="case-step-indicator" aria-hidden="true"><span /></span>
-                  <p className="eyebrow">{String(index + 1).padStart(2, '0')} / {item.label}</p>
-                  <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{item.kicker}</h3>
+                  <h3 className="text-2xl font-semibold md:text-3xl">{item.kicker}</h3>
                   <p className="mt-4 text-sm leading-7 text-white/[0.62] md:text-base">{item.body}</p>
                 </article>
               ))}
@@ -64,10 +59,9 @@ export function CaseStudy() {
           <div className="order-1 lg:order-2">
             <div className="sticky top-28">
               <div className="case-stage-select" role="group" aria-label="GAN architecture stages">
-                {featuredCaseStudy.stages.map((item,index)=><button type="button" key={item.label} aria-pressed={active===index} onClick={()=>setActive(index)}><span>0{index+1}</span>{item.label}</button>)}
+                {featuredCaseStudy.stages.map((item,index)=><button type="button" key={item.label} aria-pressed={active===index} onClick={()=>setActive(index)}>{item.label}</button>)}
               </div>
               <FluidShowcase title="GAN compute fabric" initialEffect="lattice" stage={active} layoutLink />
-              <p className="case-stage-caption">{stage.kicker}</p>
 
               <div className="mt-6 grid grid-cols-2 gap-x-5 gap-y-5 md:grid-cols-4">
                 {featuredCaseStudy.metrics.map(([label, value]) => (

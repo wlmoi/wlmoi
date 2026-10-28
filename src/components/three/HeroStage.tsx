@@ -117,7 +117,6 @@ export function HeroStage() {
 
   return <div ref={ref} className={`hero-stage keyboard-stage is-rotating ${stopped ? 'is-still' : ''} ${mode === 'keyboard' ? 'is-keyboard' : 'is-silicon'}`} onKeyDown={handleKey}>
     <div className="stage-corner stage-corner-top" /><div className="stage-corner stage-corner-bottom" />
-    {mode === 'keyboard' ? <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>Techstack</span></div> : null}
     <div className="stage-mode-switch" role="group" aria-label="Choose 3D scene"><button type="button" aria-pressed={mode==='keyboard'} onClick={()=>{setMode('keyboard');resetOrientation()}}>Skills keyboard</button><button type="button" aria-pressed={mode==='silicon'} onClick={()=>{setMode('silicon');resetOrientation()}}>Silicon board</button></div>
     <div ref={viewport} className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={0} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative 3D silicon board. Hover or click components to change their glow; focus the board and press 1 to 4 to select a highlight.'} onPointerDown={event=>{
         gesture.current.moved=false

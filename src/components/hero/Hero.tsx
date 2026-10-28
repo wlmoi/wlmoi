@@ -37,7 +37,6 @@ export function Hero({ activeId }: { activeId: string }) {
         <div className="hero-introduction">
           <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>
           <div className="hero-intro-copy">
-            <p className="hero-kicker" data-hero-reveal>HARDWARE, SOFTWARE & APPLIED AI</p>
             <ParticleTitle />
             <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
             <p className="hero-description" data-hero-reveal>Junior Edge AI Engineer and Microelectronics Research Assistant at ITB. Manufacturing internship experience at Alcon. I connect digital hardware, embedded intelligence, and practical automation.</p>

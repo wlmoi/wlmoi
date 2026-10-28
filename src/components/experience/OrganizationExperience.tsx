@@ -14,7 +14,6 @@ export function OrganizationExperience() {
       <div className="section-shell">
         <div className="organization-heading">
           <div>
-            <p className="eyebrow">Leadership, communities & service</p>
             <h2>Working with people.<br /><em>Building beyond the lab.</em></h2>
           </div>
           <div>

@@ -128,14 +128,10 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
               <div data-spectrum-copy>
-                <p className="eyebrow">02 / Engineering spectrum</p>
-                <VoltageHeading text="A connected system of engineering capabilities." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
+                <VoltageHeading text="A connected system of engineering capabilities." className="text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
               <div data-motion-copy className="flex flex-col gap-6 lg:items-end">
-                <p className="max-w-2xl text-base leading-7 text-white/[0.62]">I connect digital design and verification with applied AI, software, and automation. Each discipline helps me turn technical requirements into systems that can be tested, measured, and used.</p>
-                <div className="section-status-strip" aria-label="William Anthony academic status">
-                  <span>Bandung</span><span>Institut Teknologi Bandung</span><span>Class of 2027</span>
-                </div>
+                <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Digital hardware and verification anchor my work; embedded AI and automation carry it into practical systems.</p>
               </div>
             </div>
 
@@ -169,10 +165,8 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div data-motion-copy>
-                <p className="eyebrow">02 / Additional selected work</p>
-                <VoltageHeading text="Ideas built. Results measured." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
+                <VoltageHeading text="Ideas built. Results measured." className="text-4xl font-semibold tracking-tight md:text-6xl" />
               </div>
-              <p className="max-w-md text-sm leading-6 text-white/[0.62]">Explore the architecture, my contribution, and the outcome—from robotics and generative AI to production data and web applications.</p>
             </div>
             <div className="mt-14">
               <ProjectList />
@@ -184,9 +178,7 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="experience-section-layout">
               <div data-motion-copy>
-                <p className="eyebrow">04 / Experience timeline</p>
-                <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Research, industry &amp; teaching.</h2>
-                <p className="mt-5 max-w-md text-sm leading-6 text-white/[0.62]">From embedded AI and microelectronics research to manufacturing automation and laboratory teaching.</p>
+                <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">Research, industry &amp; teaching.</h2>
               </div>
               <ExperienceTimeline />
             </div>
@@ -200,10 +192,7 @@ function PortfolioPage() {
           <div className="section-shell">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               <div>
-                <p className="eyebrow">05 / Education & recognition</p>
-                <VoltageHeading text="A technical foundation with external signals of trust." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
-                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.62]">William is an ambitious, award-winning Electrical and Electronics Engineering student at ITB, specializing in integrated-circuit design and hardware-software integration. His work bridges VLSI, FPGA, verification, embedded intelligence, and applied AI into solutions that are precise, scalable, and built with teams.</p>
-                <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.48]">From an 8,192-point FFT and a 16-bit peak detector to a programmable GAN and a three-qubit Quantum Fourier Transform tapeout contribution, the thread is consistent: translate difficult technical requirements into working systems.</p>
+                <VoltageHeading text="Education & recognition" className="text-4xl font-semibold tracking-tight md:text-6xl" />
                 <div className="mt-8"><FluidShowcase title="A connected foundation" initialEffect="trefoil" compact /></div>
               </div>
               <div className="grid gap-3" data-motion-list>
@@ -229,10 +218,8 @@ function PortfolioPage() {
           <div className="section-shell relative">
             <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
               <div data-motion-copy>
-                <p className="eyebrow">05 / Contact</p>
-                <VoltageHeading text="Let’s build systems that hold up under verification." className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl" />
-                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.72]">William brings the curiosity of a researcher, the discipline of a verification engineer, and the team instinct of a mentor. He is open to conversations about ASIC, FPGA, design verification, Edge AI, embedded systems, research collaboration, and engineering internships.</p>
-                <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.5]">Whether the brief begins as a waveform, a production dataset, or a half-formed systems idea, the goal is the same: make it clear, measurable, and ready for the real world.</p>
+                <VoltageHeading text="Let’s build systems that hold up under verification." className="text-4xl font-semibold tracking-tight md:text-6xl" />
+                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.72]">Open to engineering roles, research collaboration, and work in ASIC, FPGA, verification, Edge AI, and embedded systems.</p>
                 <div className="mt-8 grid gap-2">
                   <a href={`mailto:${person.email}`} className="text-sm text-white/[0.72] hover:text-white">{person.email}</a>
                   <a href={person.linkedin} target="_blank" rel="noreferrer" className="text-sm text-white/[0.72] hover:text-white">linkedin.com/in/wlmoi</a>
@@ -256,7 +243,6 @@ function CapabilityAccordion({ capability }: { capability: (typeof capabilities)
   return (
     <details id={`capability-${capability.id}`} data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
       <summary className="flex cursor-pointer list-none items-start gap-5 py-2">
-        <span className="font-mono text-[0.65rem] text-white/[0.32]">{capability.number}</span>
         <span className="flex-1">
           <span className="block text-xl font-semibold tracking-tight md:text-2xl">{capability.title}</span>
           <span className="mt-2 block max-w-xl text-sm leading-6 text-white/[0.53]">{capability.summary}</span>

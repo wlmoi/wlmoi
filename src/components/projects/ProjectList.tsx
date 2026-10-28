@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { ArrowUpRight, ChevronDown, MoveUpRight } from 'lucide-react'
 import { projects } from '../../data/portfolio'
-import { TiltSurface } from '../ui/TiltSurface'
 
 const filters = ['All work', 'Hardware & AI', 'Design verification', 'DSP', 'IoT & embedded', 'Software & automation', 'Data analytics'] as const
 const highlights = [
-  { id: 'igor', title: 'IGOR', subtitle: 'Intelligence with boundaries.', label: '01 / ROBOTICS & EDGE AI', image: '/projects/igor/robot-side.jpeg', alt: 'The IGOR robot prototype at the PERURI Chip Hackathon', tags: ['FPGA', 'Neural inference', 'Verification'] },
-  { id: 'fpga-gan', title: 'Programmable GAN', subtitle: 'Generative models, reconfigured.', label: '02 / FPGA & GENERATIVE AI', image: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William testing an FPGA system on the PYNQ platform', tags: ['PYNQ-Z1', 'SystemVerilog', 'Python'] },
-  { id: 'alcon', title: 'Production intelligence', subtitle: 'From forty sheets to one workflow.', label: '03 / SOFTWARE & AUTOMATION', image: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William presenting his Alcon internship work', tags: ['Power Apps', 'Automation', 'Data'] },
+  { id: 'igor', title: 'IGOR', image: '/projects/igor/robot-side.jpeg', alt: 'The IGOR robot prototype at the PERURI Chip Hackathon', tags: ['FPGA', 'Neural inference', 'Verification'] },
+  { id: 'fpga-gan', title: 'Programmable GAN', image: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William testing an FPGA system on the PYNQ platform', tags: ['PYNQ-Z1', 'SystemVerilog', 'Python'] },
+  { id: 'alcon', title: 'Production intelligence', image: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William presenting his Alcon internship work', tags: ['Power Apps', 'Automation', 'Data'] },
 ]
 
 export function ProjectList() {
@@ -26,10 +25,10 @@ export function ProjectList() {
 
   return (
     <div>
-      <div className="project-highlights">{highlights.map((item) => <TiltSurface key={item.id} className="project-highlight">
-        <button type="button" className="highlight-image" data-zoom-src={item.image} data-zoom-alt={item.alt} aria-label={`Enlarge ${item.title} photo`}><img src={item.image} alt={item.alt} loading="lazy" width="640" height="420" /><span>{item.label}</span></button>
-        <div className="highlight-copy"><h3>{item.title}</h3><p>{item.subtitle}</p><div className="highlight-tags">{item.tags.map(tag => <span key={tag}>#{tag}</span>)}</div><button type="button" onClick={() => exploreProject(item.id)}>Explore project <MoveUpRight size={16} aria-hidden="true" /></button></div>
-      </TiltSurface>)}</div>
+      <div className="project-highlights">{highlights.map((item) => <article key={item.id} className="project-highlight">
+        <button type="button" className="highlight-image" data-zoom-src={item.image} data-zoom-alt={item.alt} aria-label={`Enlarge ${item.title} photo`}><img src={item.image} alt={item.alt} loading="lazy" width="640" height="420" /></button>
+        <div className="highlight-copy"><h3>{item.title}</h3><div className="highlight-tags">{item.tags.map(tag => <span key={tag}>#{tag}</span>)}</div><button type="button" onClick={() => exploreProject(item.id)}>Explore project <MoveUpRight size={16} aria-hidden="true" /></button></div>
+      </article>)}</div>
       <div className="project-filters" role="group" aria-label="Filter projects">
         {filters.map((item) => <button key={item} type="button" aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === 'All work' ? projects.length : projects.filter((project) => (project.discipline ?? 'Hardware & AI') === item).length}</span></button>)}
       </div>
@@ -38,8 +37,7 @@ export function ProjectList() {
           const isOpen = open === project.id
           return (
             <article key={project.id} className={`project-card project-card-interactive ${project.id === 'igor' ? 'project-card-featured' : ''}`}>
-              <button id={`project-toggle-${project.id}`} type="button" className="grid w-full gap-5 text-left md:grid-cols-[130px_1fr_auto] md:items-start" aria-expanded={isOpen} aria-controls={`project-${project.id}`} onClick={() => setOpen(isOpen ? null : project.id)}>
-                <span className="font-mono text-[0.65rem] uppercase leading-5 tracking-[0.12em] text-white/60">{project.eyebrow}</span>
+              <button id={`project-toggle-${project.id}`} type="button" className="grid w-full gap-5 text-left md:grid-cols-[1fr_auto] md:items-start" aria-expanded={isOpen} aria-controls={`project-${project.id}`} onClick={() => setOpen(isOpen ? null : project.id)}>
                 <span>
                   <span className="block text-2xl font-semibold tracking-tight md:text-3xl">{project.title}</span>
                   {project.status === 'ongoing' ? <span className="project-status">In progress</span> : null}

@@ -45,9 +45,7 @@ export function ProfileSection() {
 
         <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:items-start">
           <div>
-            <p className="eyebrow">01 / Profile signal</p>
-            <h2 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight md:text-6xl">A builder with a human interface.</h2>
-            <p className="mt-5 max-w-lg text-base leading-7 text-white/[0.62]">Hardware is the through-line. Teaching, research, data, and software are how I learn to make it useful in the real world.</p>
+            <h2 className="max-w-xl text-4xl font-semibold tracking-tight md:text-6xl">Hardware, research, and systems.</h2>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a href={person.resumeUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-[hsl(var(--background))] transition-transform hover:scale-[1.03]">
@@ -58,11 +56,11 @@ export function ProfileSection() {
               </a>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <h3 className="mt-12 mb-3 text-sm font-semibold">Roles of interest</h3>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {['FPGA Engineer', 'Design Verification Engineer', 'Web Developer', 'Digital Signal Processing Engineer', 'Process Engineer', 'Automation Engineer', 'Analog/Digital IC Design'].map((role) => (
                 <div key={role} className="role-card" data-info-chip>
                   <p>{role}</p>
-                  <span>Target role</span>
                 </div>
               ))}
             </div>
@@ -71,8 +69,7 @@ export function ProfileSection() {
           <div>
             <div className="grid gap-5">
               <div className="liquid-glass rounded-[2rem] p-6">
-                <p className="eyebrow">Education</p>
-                <h3 className="mt-4 text-2xl font-semibold tracking-tight">{education.degree}</h3>
+                <h3 className="text-2xl font-semibold tracking-tight">{education.degree}</h3>
                 <p className="mt-2 text-sm text-white/[0.62]">{education.institution} · {education.location}</p>
                 <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">{education.dates} · GPA {education.gpa}</p>
                 <p className="mt-5 text-sm leading-6 text-white/[0.57]">Focus: {education.focus.join(' · ')}</p>
@@ -88,15 +85,12 @@ export function ProfileSection() {
 
         <div className="mt-16 grid gap-10 border-t border-white/[0.1] pt-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="eyebrow">Credentials & recognition</p>
-            <p className="mt-4 max-w-md text-sm leading-6 text-white/[0.55]">A record of technical learning, academic standing, and the work behind the portfolio.</p>
-            <p className="profile-tagline mt-5 max-w-md">Always learning, building, and connecting ideas from silicon logic to real-world systems.</p>
+            <h3 className="text-xl font-semibold tracking-tight">Credentials & recognition</h3>
           </div>
           <CredentialsList />
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.1] pt-6">
-          <p className="fx-magnetic max-w-3xl" role="img" aria-label="Awarded the Most Outstanding Student in Electronics and Electrical Engineering at the Bandung Institute of Technology for 2026">Awarded the "Most Outstanding Student" in Electronics and Electrical Engineering at the Bandung Institute of Technology for 2026</p>
           <a href={person.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[hsl(var(--accent))]">Connect on LinkedIn <ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
 
@@ -166,10 +160,7 @@ function FullBleedCarousel() {
         ))}
       </div>
       <div className="photo-carousel-overlay">
-        <div>
-          <p className="eyebrow text-white/[0.65]">Field notes / visual index</p>
-          <p className="mt-2 text-sm font-semibold text-white">{photos[activePhoto].label}</p>
-        </div>
+        <p className="text-sm font-semibold text-white">{photos[activePhoto].label}</p>
         <div className="flex items-center gap-3">
           <span className="font-mono text-[0.65rem] text-white/[0.7]">{String(activePhoto + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
           <button type="button" onClick={() => goTo(activePhoto - 1)} className="photo-carousel-button" aria-label="Previous profile photo"><ChevronLeft size={17} aria-hidden="true" /></button>
@@ -179,9 +170,7 @@ function FullBleedCarousel() {
       <article className="outstanding-card" aria-label="William Anthony recognition">
         <img src="/OUTSTANDING.jpg" alt="William Anthony receiving an outstanding student recognition" width="225" height="225" />
         <div className="outstanding-card-copy">
-          <p className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-[hsl(var(--accent))]">Recognition / 2026</p>
-          <p className="mt-1 text-sm font-semibold leading-5">William Anthony, an outstanding engineer in the making.</p>
-          <p className="mt-1 text-[0.68rem] leading-4 text-white/[0.58]">Curious, precise, and always building the next layer.</p>
+          <p className="text-sm font-semibold leading-5">Most Outstanding Student, Electrical & Electronics Engineering · ITB · 2026</p>
         </div>
       </article>
       <div className="photo-carousel-dots" aria-label="Choose a photo">
@@ -194,7 +183,7 @@ function FullBleedCarousel() {
 function InfoList({ title, items }: { title: string; items: readonly string[] }) {
   return (
     <div className="rounded-[1.5rem] border border-white/[0.1] p-5">
-      <p className="eyebrow">{title}</p>
+      <h4 className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.55]">{title}</h4>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.map((item) => <span key={item} data-info-chip className="info-chip">{item}</span>)}
       </div>

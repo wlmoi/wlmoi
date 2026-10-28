@@ -1,6 +1,5 @@
 export type Capability = {
   id: string
-  number: string
   title: string
   summary: string
   tools: string[]
@@ -9,7 +8,6 @@ export type Capability = {
 
 export type Project = {
   id: string
-  eyebrow: string
   title: string
   context: string
   role: string

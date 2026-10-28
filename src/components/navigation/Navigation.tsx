@@ -86,9 +86,8 @@ export function Navigation({ activeId }: { activeId: string }) {
             <button type="button" onClick={closeMenu} aria-label="Close navigation menu" autoFocus><X size={20} aria-hidden="true" /></button>
           </div>
           <nav aria-label="Page sections" className="mobile-menu-links">
-            {links.map(([label, id], index) => (
+            {links.map(([label, id]) => (
               <a key={id} href={`#${id}`} onClick={closeMenu} aria-current={activeId === id ? 'location' : undefined}>
-                <span className="mobile-menu-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 <span>{label}</span><ArrowUpRight size={16} aria-hidden="true" />
               </a>
             ))}
