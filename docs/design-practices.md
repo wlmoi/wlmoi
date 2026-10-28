@@ -10,7 +10,7 @@ The site presents engineering work as something people can explore. Its visual l
 
 ## Visual system
 
-- Use deep navy and indigo surfaces as the base. Lavender carries the expressive accent; mint, teal, and cyan signal hardware, active states, and live visuals.
+- The current dark theme uses deep navy and indigo surfaces, with lavender, mint, teal, and cyan accents. The proposed light theme switches to warm white with orange and red; see [color-system.md](color-system.md).
 - Keep bright color concentrated in interactive states, key details, and 3D lighting. Use softer text colors for supporting copy and fine borders to separate panels without boxing in every element.
 - Use translucent surfaces selectively for navigation and panels. Keep the information itself readable against the background.
 - Build hierarchy with one strong section heading, short supporting text when it adds meaning, and a clear action. Avoid adding an eyebrow, number, subtitle, and caption to every heading by default.
