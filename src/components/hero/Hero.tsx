@@ -44,7 +44,6 @@ export function Hero({ activeId }: { activeId: string }) {
             <div className="hero-actions" data-hero-reveal>
 
               <ResumeAction />
-              <a href="#work" className="hero-secondary-action">Explore selected work <ArrowUpRight size={14} aria-hidden="true" /></a>
             </div>
             <div className="hero-awards" aria-label="Selected awards">
             <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026<small>FPGA and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>

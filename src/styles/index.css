@@ -1859,16 +1859,10 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .chip-package .model-volume>i{background:var(--volume-side);border:0;box-shadow:none}.chip-package .model-volume>.volume-bottom{background:var(--volume-bottom)}
 
 /* Make the first screen easy to scan while keeping the interactive 3D stage prominent. */
-.hero-actions:has(.resume-action) { align-items: center; gap: 16px; }
-.hero-secondary-action { color: #d2dcef; font-size: 13px; font-weight: 550; transition: color 180ms cubic-bezier(.23,1,.32,1), transform 180ms cubic-bezier(.23,1,.32,1); }
-.hero-secondary-action:hover { color: #fff; transform: translateY(-1px); }
-.hero-secondary-action:active { transform: scale(.98); }
 .stage-gesture-hint { color: #a4b5ca; font: 10px/1.5 var(--font-mono); letter-spacing: .015em; }
 @media(max-width:767px) {
   .hero-kicker { font-size: 10px; letter-spacing: .09em; }
   .hero-description { font-size: 14px; line-height: 1.75; }
-  .hero-actions:has(.resume-action) { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-  .hero-secondary-action { min-height: 44px; font-size: 13px; }
   .hero-cosmic .hero-award { font-size: 11px; }
   .hero-cosmic-footer .hero-proof span { font-size: 10px; }
   .keyboard-stage .stage-topline { font-size: 8px; }
