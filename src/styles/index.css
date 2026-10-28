@@ -1404,11 +1404,9 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .chip-board { position: relative; width: 280px; height: 230px; background: #14233a; border: 1px solid #3a516f; box-shadow: 1px 2px #2f4263,2px 4px #2f4263,3px 6px #253653,0 50px 90px #040715; border-radius: 12px; transform: perspective(700px) rotateX(45deg) rotateZ(-30deg); animation: chip-hover 7s ease-in-out infinite; }
 .chip-traces { position: absolute; inset: 10px; border-radius: 8px; border: 1px solid #62ab9c44; background: repeating-linear-gradient(90deg,transparent 0 27px,#5b94893b 28px 29px,transparent 30px 32px),repeating-linear-gradient(0deg,transparent 0 27px,#5b94893b 28px 29px,transparent 30px 32px); }
 .chip-package { position: absolute; inset: 43px 67px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; border: 6px solid #8098ab; background: #11172b; box-shadow: 0 5px 0 #24334c,0 0 0 5px #111b2a; }
-.chip-package > span { font: 6px var(--font-mono); letter-spacing: .1em; color: #c1b1f9; }
 .chip-package > div { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; width: 72px; }
 .chip-package i { aspect-ratio: 1; border: 1px solid #78e8d6; background: #276c68; box-shadow: 0 0 8px #59d6bc33; }
 .chip-package i:nth-child(3n) { background: #7054b0; border-color: #ab89ff; }
-.chip-package small { font: 4px var(--font-mono); color: #7fa99f; }
 .chip-orbit { position: absolute; width: 350px; height: 220px; border: 1px solid #a58bff22; border-radius: 50%; transform: rotate(-25deg); }
 .chip-orbit-two { width: 390px; height: 250px; transform: rotate(-25deg); border-color: #79d7c519; }
 .chip-fallback.is-paused .chip-board { animation-play-state: paused; }
@@ -1858,27 +1856,30 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 .model-volume>.volume-right{right:0;top:0;width:var(--volume-depth);height:100%;transform-origin:right;transform:rotateY(-90deg)}
 .chip-package .model-volume>i{background:var(--volume-side);border:0;box-shadow:none}.chip-package .model-volume>.volume-bottom{background:var(--volume-bottom)}
 
-/* Make the first screen easy to scan while keeping the interactive 3D stage prominent. */
+/* Keep the 3D stage vivid and its mobile controls readable. */
 .stage-gesture-hint { color: #a4b5ca; font: 10px/1.5 var(--font-mono); letter-spacing: .015em; }
-.keyboard-stage.is-silicon .hero-stage-canvas { top: 45px; bottom: 235px; }
-.silicon-inspector { position: absolute; z-index: 3; left: 26px; right: 26px; bottom: 58px; display: grid; gap: 10px; padding: 12px 14px; border: 1px solid #a1c6e235; border-radius: 12px; background: #111d30e8; backdrop-filter: blur(12px); }
-.silicon-module-select { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
-.silicon-module-select button { display: flex; align-items: center; justify-content: center; gap: 7px; min-width: 0; min-height: 36px; padding: 7px 9px; border: 1px solid #ffffff1d; border-radius: 7px; color: #aebbd0; background: #0a1221aa; font-size: 9px; line-height: 1.35; transition: color 180ms ease, border-color 180ms ease, background 180ms ease; }
-.silicon-module-select button span { color: #7385a2; font: 8px var(--font-mono); }
-.silicon-module-select button:hover { border-color: #8bded766; color: #e9fff9; }
-.silicon-module-select button[aria-pressed="true"] { border-color: #79d7c588; color: #e4fff8; background: #2a847a33; box-shadow: inset 0 0 18px #55dcc716; }
-.silicon-module-select button[aria-pressed="true"] span { color: #8ce6d4; }
-.silicon-module-detail { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: start; gap: 6px 14px; }
-.silicon-module-heading > p { color: #82c8bf; font: 8px/1.4 var(--font-mono); letter-spacing: .08em; }
-.silicon-module-heading h3 { margin-top: 3px; color: #f2f4ff; font: 500 15px/1.3 var(--font-body); letter-spacing: -.02em; }
-.silicon-module-description { color: #b4c2d5; font-size: 10px; line-height: 1.6; }
-.silicon-module-stack { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.silicon-module-stack > span { display: inline-flex; align-items: center; min-height: 23px; padding: 4px 7px; border: 1px solid #83cabc32; border-radius: 5px; color: #c5e3de; background: #7bd5c20c; font: 8px/1.3 var(--font-mono); }
-.silicon-module-stack > span:first-child { border-color: transparent; padding-left: 0; color: #7f99ad; background: transparent; }
-.silicon-module-note { grid-column: 1 / -1; color: #7f91a8; font-size: 8px; line-height: 1.4; }
+.keyboard-stage.is-silicon .hero-stage-canvas { top: 45px; bottom: 0; }
+.keyboard-stage.is-silicon .stage-controls { margin-left: auto; }
+.chip-board { cursor: pointer; }
+.chip-memory { position: absolute; z-index: 2; top: 65px; display: grid; gap: 7px; width: 28px; transform: translateZ(5px); }
+.chip-memory-left { left: 17px; }
+.chip-memory-right { right: 17px; }
+.chip-memory i { aspect-ratio: 1; border: 1px solid #8c85b3; border-radius: 3px; background: linear-gradient(145deg,#35486b,#1c2b43); box-shadow: 0 2px 0 #0b1728; }
+.chip-io { position: absolute; z-index: 2; left: 50%; display: flex; gap: 9px; transform: translateX(-50%) translateZ(4px); }
+.chip-io-top { top: 15px; }
+.chip-io-bottom { bottom: 14px; }
+.chip-io i { width: 8px; height: 8px; border: 1px solid #9de2d5; border-radius: 50%; background: #245b60; box-shadow: 0 0 7px #65e8ca55; }
+.chip-hotspots { position: absolute; z-index: 5; inset: 0; pointer-events: none; }
+.chip-hotspot { position: absolute; display: block; padding: 0; border: 1px solid transparent; border-radius: 9px; background: transparent; cursor: pointer; pointer-events: auto; touch-action: manipulation; }
+.chip-hotspot:hover,.chip-hotspot:focus-visible { border-color: #c9fff2a8; outline: 0; box-shadow: inset 0 0 20px #65e8ca35,0 0 15px #65e8ca55; }
+.chip-hotspot-compute { inset: 36px 58px 42px; }
+.chip-hotspot-memory-left,.chip-hotspot-memory-right { top: 59px; bottom: 54px; width: 42px; }
+.chip-hotspot-memory-left { left: 9px; }
+.chip-hotspot-memory-right { right: 9px; }
+.chip-hotspot-control { left: 22%; right: 22%; bottom: 3px; height: 31px; }
 .chip-fallback[data-selected-part="compute"] .chip-package { border-color: #82f0dc; box-shadow: 0 0 0 5px #64dfcc24, 0 0 28px #4be0ca55; }
-.chip-fallback[data-selected-part="memory"] .chip-board { border-color: #b9a5ff; box-shadow: 0 0 0 5px #9b80ff20, 0 0 30px #9472ff4d; }
-.chip-fallback[data-selected-part="control"] .chip-traces { border-color: #ffe08a99; box-shadow: inset 0 0 22px #ffe08a2b; }
+.chip-fallback[data-selected-part="memory"] .chip-memory i { border-color: #d6caff; background: #8068ca; box-shadow: 0 0 12px #a58bff9c; }
+.chip-fallback[data-selected-part="control"] .chip-io i { border-color: #fff0ad; background: #e7bb6c; box-shadow: 0 0 12px #ffe08a; }
 .chip-fallback[data-selected-part="implementation"] .chip-board { border-color: #7dc9ff; box-shadow: 0 0 0 5px #7dc9ff20, 0 0 30px #57b6ff4d; }
 @media(max-width:767px) {
   .hero-kicker { font-size: 10px; letter-spacing: .09em; }
@@ -1891,15 +1892,7 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
   .keyboard-skill-copy a { min-height: 36px; font-size: 11px; }
   .keyboard-audio { font-size: 11px; }
   .stage-gesture-hint { font-size: 10px; }
-  .keyboard-stage.is-silicon { height: 670px; }
-  .keyboard-stage.is-silicon .hero-stage-canvas { top: 80px; bottom: 300px; }
-  .silicon-inspector { left: 8px; right: 8px; bottom: 96px; gap: 8px; padding: 11px; }
-  .silicon-module-select { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-  .silicon-module-select button { justify-content: flex-start; min-height: 38px; padding: 7px 9px; font-size: 10px; }
-  .silicon-module-detail { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .silicon-module-heading h3 { font-size: 14px; }
-  .silicon-module-description { font-size: 11px; line-height: 1.5; }
-  .silicon-module-stack { gap: 5px; }
-  .silicon-module-stack > span { font-size: 8px; }
-  .silicon-module-note { font-size: 8px; }
+  .keyboard-stage.is-silicon .hero-stage-canvas { top: 80px; bottom: 100px; }
+  .keyboard-stage.is-silicon .stage-controls { align-self: flex-end; }
+  .chip-board { width: min(280px, 88vw); }
 }

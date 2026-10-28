@@ -6,7 +6,7 @@ import { useIntersection } from '../../hooks/useIntersection'
 import { useKeyboardSound } from '../../hooks/useKeyboardSound'
 import { keyboardSkills } from '../../data/keyboard'
 import type { HeroSceneMode } from '../../data/keyboard'
-import { siliconBoardModules } from '../../data/heroBoard'
+import { siliconBoardModuleIds } from '../../data/heroBoard'
 import type { SiliconBoardModuleId } from '../../data/heroBoard'
 
 function paintFallbackOrbit(element: HTMLDivElement | null, pose: { pitch: number; yaw: number; zoom: number }) {
@@ -28,10 +28,26 @@ function supportsScene() {
 function VolumeFaces() {
   return <span className="model-volume" aria-hidden="true"><i className="volume-bottom" /><i className="volume-front" /><i className="volume-back" /><i className="volume-left" /><i className="volume-right" /></span>
 }
-function ChipFallback({ paused, selectedPart }: { paused: boolean; selectedPart: SiliconBoardModuleId }) {
-  return <div className={`chip-fallback ${paused ? 'is-paused' : ''}`} data-selected-part={selectedPart} aria-hidden="true">
-    <div className="chip-orbit chip-orbit-one" /><div className="chip-orbit chip-orbit-two" />
-    <div className="chip-board"><VolumeFaces /><div className="chip-traces" /><div className="chip-package"><VolumeFaces /><span>WA / COMPUTE</span><div>{Array.from({length:16},(_,i)=><i key={i} />)}</div><small>HARDWARE × INTELLIGENCE</small></div></div>
+function ChipFallback({ paused, selectedPart, onSelect }: { paused: boolean; selectedPart: SiliconBoardModuleId; onSelect: (id: SiliconBoardModuleId) => void }) {
+  const [hoveredPart, setHoveredPart] = useState<SiliconBoardModuleId | null>(null)
+  const activePart = hoveredPart ?? selectedPart
+  const hotspots = [
+    { id: 'compute', region: 'compute', name: 'compute area' },
+    { id: 'memory', region: 'memory-left', name: 'memory area' },
+    { id: 'memory', region: 'memory-right', name: 'memory area' },
+    { id: 'control', region: 'control', name: 'input and output area' },
+  ] as const
+  return <div className={`chip-fallback ${paused ? 'is-paused' : ''}`} data-selected-part={activePart}>
+    <div className="chip-orbit chip-orbit-one" aria-hidden="true" /><div className="chip-orbit chip-orbit-two" aria-hidden="true" />
+    <div className="chip-board" onPointerEnter={() => setHoveredPart('implementation')} onPointerLeave={() => setHoveredPart(null)} onClick={() => onSelect('implementation')}>
+      <VolumeFaces /><div className="chip-traces" aria-hidden="true" />
+      <div className="chip-memory chip-memory-left" aria-hidden="true"><i /><i /><i /><i /></div><div className="chip-memory chip-memory-right" aria-hidden="true"><i /><i /><i /><i /></div>
+      <div className="chip-io chip-io-top" aria-hidden="true"><i /><i /><i /><i /><i /></div><div className="chip-io chip-io-bottom" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+      <div className="chip-package"><VolumeFaces /><div>{Array.from({length:16},(_,i)=><i key={i} />)}</div></div>
+      <div className="chip-hotspots">
+        {hotspots.map(hotspot => <button key={hotspot.region} type="button" className={`chip-hotspot chip-hotspot-${hotspot.region}`} aria-label={`Highlight ${hotspot.name}`} aria-pressed={selectedPart === hotspot.id} onPointerEnter={() => setHoveredPart(hotspot.id)} onPointerLeave={() => setHoveredPart(current => current === hotspot.id ? 'implementation' : current)} onFocus={() => setHoveredPart(hotspot.id)} onBlur={() => setHoveredPart(null)} onClick={event => { event.stopPropagation(); onSelect(hotspot.id) }} />)}
+      </div>
+    </div>
   </div>
 }
 
@@ -39,23 +55,6 @@ function KeyboardFallback({ selectedId, onSelect, paused }: { selectedId: string
   return <div className={`keyboard-fallback ${paused ? 'is-paused' : ''}`}>
     <div className="keyboard-case" role="group" aria-label="Skills keyboard keys"><VolumeFaces />{keyboardSkills.map(skill=><button type="button" key={skill.id} className="keyboard-key" aria-label={`Explore ${skill.name}`} aria-pressed={selectedId === skill.id} onClick={()=>onSelect(skill.id)} style={{'--key-color':skill.color} as CSSProperties}><VolumeFaces /><strong>{skill.legend}</strong><small>{skill.shortcut.toUpperCase()}</small></button>)}</div>
   </div>
-}
-
-function SiliconInspector({ selectedPart, onSelect }: { selectedPart: SiliconBoardModuleId; onSelect: (id: SiliconBoardModuleId) => void }) {
-  const selectedModule = siliconBoardModules.find(module => module.id === selectedPart) ?? siliconBoardModules[0]
-  return <section className="silicon-inspector" aria-label="Silicon board explorer">
-    <div className="silicon-module-select" role="group" aria-label="Select a board module">
-      {siliconBoardModules.map((module, index) => <button key={module.id} type="button" aria-pressed={selectedPart === module.id} onClick={() => onSelect(module.id)}>
-        <span>0{index + 1}</span>{module.label}
-      </button>)}
-    </div>
-    <div className="silicon-module-detail" aria-live="polite" aria-atomic="true">
-      <div className="silicon-module-heading"><p>{selectedModule.eyebrow}</p><h3>{selectedModule.title}</h3></div>
-      <p className="silicon-module-description">{selectedModule.description}</p>
-      <div className="silicon-module-stack"><span>TECH STACK / KEY SPECS</span>{selectedModule.stack.map(item => <span key={item}>{item}</span>)}</div>
-      <p className="silicon-module-note">Illustrative board model · not a physical floorplan</p>
-    </div>
-  </section>
 }
 
 class SceneBoundary extends Component<{ children: ReactNode; fallback: ReactNode; onFailure: () => void }, { failed: boolean }> {
@@ -103,18 +102,24 @@ export function HeroStage() {
     setPressCount(count=>count+1)
     if (withSound) sound.play(Math.max(0, keyboardSkills.findIndex(skill=>skill.id===id)))
   }
-  const fallback = mode === 'keyboard' ? <KeyboardFallback selectedId={selectedId} onSelect={selectSkill} paused={stopped} /> : <ChipFallback paused={stopped} selectedPart={selectedBoardModule} />
+  const fallback = mode === 'keyboard' ? <KeyboardFallback selectedId={selectedId} onSelect={selectSkill} paused={stopped} /> : <ChipFallback paused={stopped} selectedPart={selectedBoardModule} onSelect={setSelectedBoardModule} />
   const handleKey = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (mode !== 'keyboard' || event.ctrlKey || event.metaKey || event.altKey || event.repeat || event.target instanceof HTMLSelectElement || event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return
+    if (event.ctrlKey || event.metaKey || event.altKey || event.repeat || event.target instanceof HTMLSelectElement || event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return
+    if (mode === 'silicon') {
+      const index = Number(event.key) - 1
+      const moduleId = siliconBoardModuleIds[index]
+      if (moduleId) { event.preventDefault(); setSelectedBoardModule(moduleId) }
+      return
+    }
     const skill = keyboardSkills.find(item=>item.shortcut===event.key.toLowerCase())
     if (skill) { event.preventDefault(); selectSkill(skill.id) }
   }
 
   return <div ref={ref} className={`hero-stage keyboard-stage is-rotating ${stopped ? 'is-still' : ''} ${mode === 'keyboard' ? 'is-keyboard' : 'is-silicon'}`} onKeyDown={handleKey}>
     <div className="stage-corner stage-corner-top" /><div className="stage-corner stage-corner-bottom" />
-    <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>{mode==='keyboard' ? 'Techstack' : 'COMPUTE FABRIC'}</span></div>
+    {mode === 'keyboard' ? <div className="stage-topline"><span><i /> INTERACTIVE / 001</span><span>Techstack</span></div> : null}
     <div className="stage-mode-switch" role="group" aria-label="Choose 3D scene"><button type="button" aria-pressed={mode==='keyboard'} onClick={()=>{setMode('keyboard');resetOrientation()}}>Skills keyboard</button><button type="button" aria-pressed={mode==='silicon'} onClick={()=>{setMode('silicon');resetOrientation()}}>Silicon board</button></div>
-    <div ref={viewport} className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={mode==='keyboard' ? 0 : undefined} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative three-dimensional silicon compute board. Click a module to highlight it or use the module controls.'} onPointerDown={event=>{
+    <div ref={viewport} className="hero-stage-canvas" data-renderer={canRender ? 'webgl' : 'fallback'} tabIndex={0} role="group" aria-label={mode==='keyboard' ? 'Interactive skills keyboard. Click a key or use Q W E R T, A S D F G, Z X C V B while focused.' : 'Illustrative 3D silicon board. Hover or click components to change their glow; focus the board and press 1 to 4 to select a highlight.'} onPointerDown={event=>{
         gesture.current.moved=false
         if(event.target instanceof HTMLCanvasElement)event.currentTarget.focus({preventScroll:true})
         if(canRender) return
@@ -160,9 +165,9 @@ export function HeroStage() {
       <div className="keyboard-selection"><label htmlFor="keyboard-skill">Explore a skill</label><select id="keyboard-skill" value={selectedId} onChange={event=>selectSkill(event.target.value,false)}>{keyboardSkills.map(skill=><option key={skill.id} value={skill.id}>{skill.name}</option>)}</select></div>
       <div className="keyboard-skill-copy"><p aria-live="polite" aria-atomic="true"><strong className="sr-only">{selected.name}: </strong>{selected.detail}</p><a href={`#capability-${selected.capability}`} onClick={()=>{const detail=document.getElementById(`capability-${selected.capability}`);if(detail instanceof HTMLDetailsElement)detail.open=true}}>Explore expertise <ArrowUpRight size={12} aria-hidden="true" /></a></div>
       <div className="keyboard-audio"><button type="button" onClick={sound.preview}>Test sound</button><label>Volume <input aria-label="Keyboard volume" type="range" min=".1" max="1" step=".05" value={sound.volume} onChange={event=>sound.setVolume(Number(event.target.value))} /></label></div>
-    </div> : <SiliconInspector selectedPart={selectedBoardModule} onSelect={setSelectedBoardModule} />}
+    </div> : null}
     <div className="stage-bottomline">
-      <span className="stage-gesture-hint">{mode === 'keyboard' ? 'Drag to rotate · select a key to explore' : canRender ? 'Drag to rotate · click a board module to highlight it' : 'Choose a module to highlight and explore it'}</span>
+      {mode === 'keyboard' ? <span className="stage-gesture-hint">Drag to rotate · select a key to explore</span> : null}
       <div className="stage-controls"><button type="button" onClick={()=>{setViewVersion(value=>value+1);resetOrientation()}}>Reset view</button>
         {mode==='keyboard' ? <button type="button" onClick={sound.toggle} aria-pressed={sound.enabled} aria-label={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'} title={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'}>{sound.enabled ? <Volume2 size={13} aria-hidden="true" /> : <VolumeX size={13} aria-hidden="true" />}<span>Sound {sound.enabled ? 'on' : 'off'}</span></button> : null}
 
