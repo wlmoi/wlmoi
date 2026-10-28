@@ -142,6 +142,7 @@ export function HeroStage() {
       <div className="keyboard-audio"><button type="button" onClick={sound.preview}>Test sound</button><label>Volume <input aria-label="Keyboard volume" type="range" min=".1" max="1" step=".05" value={sound.volume} onChange={event=>sound.setVolume(Number(event.target.value))} /></label></div>
     </div> : <><div className="stage-label stage-label-ai"><i /> Intelligence<span>Python and Edge AI</span></div><div className="stage-label stage-label-rtl"><i /> Silicon<span>RTL and verification</span></div></>}
     <div className="stage-bottomline">
+      <span className="stage-gesture-hint">{mode === 'keyboard' ? 'Drag to rotate · select a key to explore' : 'Drag the board to rotate'}</span>
       <div className="stage-controls"><button type="button" onClick={()=>{setViewVersion(value=>value+1);resetOrientation()}}>Reset view</button>
         {mode==='keyboard' ? <button type="button" onClick={sound.toggle} aria-pressed={sound.enabled} aria-label={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'} title={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'}>{sound.enabled ? <Volume2 size={13} aria-hidden="true" /> : <VolumeX size={13} aria-hidden="true" />}<span>Sound {sound.enabled ? 'on' : 'off'}</span></button> : null}
 
