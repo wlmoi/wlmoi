@@ -56,7 +56,7 @@ An RTL-to-GDSII accelerator built around a 4x4 processing-element array, SRAM bu
 
 ## About this repository
 
-This repository contains the source for my portfolio website and print-friendly resume. The website details, local setup, Supabase configuration, deployment notes, and accessibility decisions live in the [website guide](docs/website.md).
+This repository contains the source for my portfolio website and print-friendly resume. The website details, local setup, Supabase configuration, deployment notes, and accessibility decisions live in the [website guide](docs/website.md). The reusable [design practices](docs/design-practices.md) and [color system](docs/color-system.md) document the portfolio's visual and interaction direction.
 
 Thanks for stopping by. There is always another layer to learn.
 
