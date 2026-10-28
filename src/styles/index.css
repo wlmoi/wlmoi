@@ -1860,6 +1860,26 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 
 /* Make the first screen easy to scan while keeping the interactive 3D stage prominent. */
 .stage-gesture-hint { color: #a4b5ca; font: 10px/1.5 var(--font-mono); letter-spacing: .015em; }
+.keyboard-stage.is-silicon .hero-stage-canvas { top: 45px; bottom: 235px; }
+.silicon-inspector { position: absolute; z-index: 3; left: 26px; right: 26px; bottom: 58px; display: grid; gap: 10px; padding: 12px 14px; border: 1px solid #a1c6e235; border-radius: 12px; background: #111d30e8; backdrop-filter: blur(12px); }
+.silicon-module-select { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.silicon-module-select button { display: flex; align-items: center; justify-content: center; gap: 7px; min-width: 0; min-height: 36px; padding: 7px 9px; border: 1px solid #ffffff1d; border-radius: 7px; color: #aebbd0; background: #0a1221aa; font-size: 9px; line-height: 1.35; transition: color 180ms ease, border-color 180ms ease, background 180ms ease; }
+.silicon-module-select button span { color: #7385a2; font: 8px var(--font-mono); }
+.silicon-module-select button:hover { border-color: #8bded766; color: #e9fff9; }
+.silicon-module-select button[aria-pressed="true"] { border-color: #79d7c588; color: #e4fff8; background: #2a847a33; box-shadow: inset 0 0 18px #55dcc716; }
+.silicon-module-select button[aria-pressed="true"] span { color: #8ce6d4; }
+.silicon-module-detail { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: start; gap: 6px 14px; }
+.silicon-module-heading > p { color: #82c8bf; font: 8px/1.4 var(--font-mono); letter-spacing: .08em; }
+.silicon-module-heading h3 { margin-top: 3px; color: #f2f4ff; font: 500 15px/1.3 var(--font-body); letter-spacing: -.02em; }
+.silicon-module-description { color: #b4c2d5; font-size: 10px; line-height: 1.6; }
+.silicon-module-stack { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.silicon-module-stack > span { display: inline-flex; align-items: center; min-height: 23px; padding: 4px 7px; border: 1px solid #83cabc32; border-radius: 5px; color: #c5e3de; background: #7bd5c20c; font: 8px/1.3 var(--font-mono); }
+.silicon-module-stack > span:first-child { border-color: transparent; padding-left: 0; color: #7f99ad; background: transparent; }
+.silicon-module-note { grid-column: 1 / -1; color: #7f91a8; font-size: 8px; line-height: 1.4; }
+.chip-fallback[data-selected-part="compute"] .chip-package { border-color: #82f0dc; box-shadow: 0 0 0 5px #64dfcc24, 0 0 28px #4be0ca55; }
+.chip-fallback[data-selected-part="memory"] .chip-board { border-color: #b9a5ff; box-shadow: 0 0 0 5px #9b80ff20, 0 0 30px #9472ff4d; }
+.chip-fallback[data-selected-part="control"] .chip-traces { border-color: #ffe08a99; box-shadow: inset 0 0 22px #ffe08a2b; }
+.chip-fallback[data-selected-part="implementation"] .chip-board { border-color: #7dc9ff; box-shadow: 0 0 0 5px #7dc9ff20, 0 0 30px #57b6ff4d; }
 @media(max-width:767px) {
   .hero-kicker { font-size: 10px; letter-spacing: .09em; }
   .hero-description { font-size: 14px; line-height: 1.75; }
@@ -1871,4 +1891,15 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
   .keyboard-skill-copy a { min-height: 36px; font-size: 11px; }
   .keyboard-audio { font-size: 11px; }
   .stage-gesture-hint { font-size: 10px; }
+  .keyboard-stage.is-silicon { height: 670px; }
+  .keyboard-stage.is-silicon .hero-stage-canvas { top: 80px; bottom: 300px; }
+  .silicon-inspector { left: 8px; right: 8px; bottom: 96px; gap: 8px; padding: 11px; }
+  .silicon-module-select { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .silicon-module-select button { justify-content: flex-start; min-height: 38px; padding: 7px 9px; font-size: 10px; }
+  .silicon-module-detail { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .silicon-module-heading h3 { font-size: 14px; }
+  .silicon-module-description { font-size: 11px; line-height: 1.5; }
+  .silicon-module-stack { gap: 5px; }
+  .silicon-module-stack > span { font-size: 8px; }
+  .silicon-module-note { font-size: 8px; }
 }
