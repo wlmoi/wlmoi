@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
-import { StaticChip, webglSupported } from '../three/HeroChip'
+import { webglSupported } from '../three/HeroChip'
 
 const LogoScene = lazy(() => import('./LogoScene'))
 const KEY = 'founding-intro-seen'
@@ -55,10 +55,17 @@ export function LogoIntro() {
         {TRACES.map((d, i) => <path key={`b${i}`} d={d} className="xi-trace" />)}
         {TRACES.map((d, i) => <path key={`p${i}`} d={d} className="xi-pulse" style={{ animationDelay: `${0.1 + i * 0.1}s` }} pathLength={1000} />)}
         <rect x="395" y="195" width="210" height="210" rx="14" className="xi-outline" />
-        <path className="xi-wave" d="M0 520 H180 V490 H260 V520 H340 V490 H400 V520 H480 V490 H520 V520 H620 V490 H700 V520 H800 V490 H860 V520 H1000" />
       </svg>
       <div className="xi-logo" aria-hidden="true">
-        {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <div className="xi-lite-chip"><StaticChip label="" /></div>}
+        {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <svg className="xi-bolts" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="16" className="xi-orb" />
+          <polyline points="100,100 88,78 104,64 90,40 100,10" className="xi-bolt b1" />
+          <polyline points="100,100 124,92 118,70 142,60 160,30" className="xi-bolt b2" />
+          <polyline points="100,100 78,112 92,128 70,146 76,190" className="xi-bolt b3" />
+          <polyline points="100,100 122,118 112,138 134,152 150,186" className="xi-bolt b4" />
+          <polyline points="100,100 70,96 60,80 36,84 8,62" className="xi-bolt b5" />
+          <polyline points="100,100 132,104 144,122 170,120 194,142" className="xi-bolt b6" />
+        </svg>}
       </div>
       <button type="button" className="xi-skip" onClick={() => setPhase('off')} autoFocus>Skip Intro</button>
     </div>
