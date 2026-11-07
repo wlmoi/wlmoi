@@ -111,13 +111,13 @@ export function Exhibition() {
               </div>
 
               {view === '3d' ? (
-                <div className="xe-3d" role="img" aria-label={`Rotating illustrative 3D model for ${project.title}`}>
+                <div className="xe-3d" role="img" aria-label={`Rotating 3D model for ${project.title}`}>
                   {canRender ? (
                     <Suspense fallback={<div className="xe-loading" aria-hidden="true" />}>
                       <ProjectStage3D active={index} paused={!visible} still={reducedMotion} rotatable={!coarse} />
                     </Suspense>
                   ) : <div className="xe-fallback-visual" style={{ backgroundImage: `url(${project.preview})` }} />}
-                  <p className="xe-caption">Illustrative model. {coarse ? 'Swipe to change project.' : 'Drag to rotate.'}</p>
+                  <p className="xe-caption">{coarse ? 'Swipe to change project.' : 'Drag to rotate.'}</p>
                 </div>
               ) : (
                 <figure className="xe-real" key={`${project.id}-${photo}`}>

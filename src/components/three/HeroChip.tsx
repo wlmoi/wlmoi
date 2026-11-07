@@ -72,7 +72,7 @@ export function HeroChip() {
             </button>
           ))}
         </div>
-        <p className="xh-layer-note" aria-live="polite">{exploded ? (active?.detail ?? 'Hover or focus a layer to light it up.') : 'An interactive illustration of semiconductor packaging.'}</p>
+        <p className="xh-layer-note" aria-live="polite">{exploded ? (active?.detail ?? 'Hover or focus a layer to light it up.') : ''}</p>
       </div>
     </div>
   )

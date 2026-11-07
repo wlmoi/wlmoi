@@ -8,6 +8,7 @@ const TURN = 4.1
 function shouldPlay() {
   try {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+    if (new URLSearchParams(window.location.search).get('intro') === 'off') return false
     if (sessionStorage.getItem(KEY)) return false
   } catch { /* storage unavailable, play once */ }
   return true
@@ -54,7 +55,6 @@ export function LogoIntro() {
       <svg className="xi-traces" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         {TRACES.map((d, i) => <path key={`b${i}`} d={d} className="xi-trace" />)}
         {TRACES.map((d, i) => <path key={`p${i}`} d={d} className="xi-pulse" style={{ animationDelay: `${0.1 + i * 0.1}s` }} pathLength={1000} />)}
-        <rect x="395" y="195" width="210" height="210" rx="14" className="xi-outline" />
       </svg>
       <div className="xi-logo" aria-hidden="true">
         {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <svg className="xi-bolts" viewBox="0 0 200 200" aria-hidden="true">

@@ -24,19 +24,18 @@ export function Hero() {
       <div className="xh-hero-grid">
         <div className="xh-hero-copy">
           <h1 data-hero-reveal>I build intelligence <em>into working systems.</em></h1>
-          <p className="xh-lead" data-hero-reveal>I’m William Anthony, an Electrical and Electronics Engineering student at Institut Teknologi Bandung. I enjoy designing chips, exploring intelligent hardware, and turning ideas into systems I can actually build and test.</p>
+          <p className="xh-lead" data-hero-reveal>I'm William Anthony, an Electrical and Electronics Engineering student from Institut Teknologi Bandung. I enjoy chip design, hardware verification, and turning ideas into working systems. Outside engineering, I enjoy going to the gym and meeting new people.</p>
           <div className="xh-actions" data-hero-reveal>
             <a href="#work" className="xh-btn xh-btn-primary">Explore My Work <ArrowDown size={16} aria-hidden="true" /></a>
             <a href={person.resumeUrl} className="xh-btn xh-btn-ghost xh-btn-resume"><FileText size={16} aria-hidden="true" /> View My Résumé</a>
             <a href="#contact" className="xh-link">Let’s Connect <ArrowUpRight size={15} aria-hidden="true" /></a>
           </div>
-          <dl className="xh-proof" data-hero-reveal>
-            <div><dt>EE academic rank</dt><dd>1 of 118</dd></div>
-            <div><dt>GPA at ITB</dt><dd>3.70 of 4.00</dd></div>
-          </dl>
         </div>
         <div className="xh-hero-stage" data-hero-stage>
           <HeroChip />
+          <figure className="xh-photo">
+            <img src="/photos/WilliamAnthonyCasual.jpg" alt="William Anthony standing on a balcony above a hillside farm" width="600" height="800" decoding="async" />
+          </figure>
         </div>
       </div>
     </section>
