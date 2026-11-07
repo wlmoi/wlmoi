@@ -70,8 +70,8 @@ export function ProfileSection() {
             <div className="grid gap-5">
               <div className="liquid-glass rounded-[2rem] p-6">
                 <h3 className="text-2xl font-semibold tracking-tight">{education.degree}</h3>
-                <p className="mt-2 text-sm text-white/[0.62]">{education.institution}, {education.location}</p>
-                <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">{education.dates}, GPA {education.gpa}</p>
+                <p className="mt-2 text-sm text-white/[0.62]">{education.institution}</p>
+                <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">{education.dates}</p>
                 <p className="mt-5 text-sm leading-6 text-white/[0.57]">Focus: {education.focus.join(', ')}</p>
               </div>
 

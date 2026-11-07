@@ -19,6 +19,8 @@ function imageFor(title: string, organization: string) {
   return byOrg[organization] ?? '/photos/SignalSystems.jpeg'
 }
 
+const links: Record<string, string> = { 'circuits-assistant': 'https://www.instagram.com/reel/DfEmYs6xV3H/' }
+
 export function ExperienceCarousel() {
   const [index, setIndex] = useState(0)
   const item = roles[index]
@@ -43,6 +45,7 @@ export function ExperienceCarousel() {
           <h3>{item.title}</h3>
           <p className="xx-org">{item.organization}</p>
           <p>{item.summary}</p>
+          {links[item.id] ? <p><a className="xh-link" href={links[item.id]} target="_blank" rel="noreferrer">See it on Instagram</a></p> : null}
           {item.bullets?.length ? (
             <details className="xe-more"><summary>Responsibilities ({item.bullets.length})</summary><ul>{item.bullets.map((b) => <li key={b}>{b}</li>)}</ul></details>
           ) : null}

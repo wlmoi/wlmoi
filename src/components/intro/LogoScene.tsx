@@ -1,48 +1,14 @@
-import { useMemo, useRef } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-const stops = ['#ff8a5c', '#d24dff', '#4d7bff', '#37e0d0'].map((c) => new THREE.Color(c))
-
-function gradientAt(t: number) {
-  const scaled = Math.min(0.9999, Math.max(0, t)) * (stops.length - 1)
-  const i = Math.floor(scaled)
-  return stops[i].clone().lerp(stops[i + 1], scaled - i)
-}
-
-function useLogoGeometry() {
-  return useMemo(() => {
-    const r = 0.16
-    const pts = [new THREE.Vector2(0, 1.15), new THREE.Vector2(1.1, -0.8), new THREE.Vector2(-1.1, -0.8)]
-    const shape = new THREE.Shape()
-    pts.forEach((p, i) => {
-      const prev = pts[(i + 2) % 3]
-      const next = pts[(i + 1) % 3]
-      const a = p.clone().add(prev.clone().sub(p).normalize().multiplyScalar(r * 2.4))
-      const b = p.clone().add(next.clone().sub(p).normalize().multiplyScalar(r * 2.4))
-      if (i === 0) shape.moveTo(a.x, a.y); else shape.lineTo(a.x, a.y)
-      shape.quadraticCurveTo(p.x, p.y, b.x, b.y)
-    })
-    shape.closePath()
-    const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.34, bevelEnabled: true, bevelThickness: 0.06, bevelSize: 0.05, bevelSegments: 5, curveSegments: 14 })
-    geometry.center()
-    const position = geometry.attributes.position
-    const colors = new Float32Array(position.count * 3)
-    for (let i = 0; i < position.count; i++) {
-      const c = gradientAt((position.getY(i) * -0.5 + position.getX(i) * 0.35 + 0.55) / 1.1)
-      colors.set([c.r, c.g, c.b], i * 3)
-    }
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-    return geometry
-  }, [])
-}
-
 const cool = new THREE.Color('#66d9d2')
 const warm = new THREE.Color('#ff7a3d')
+const PINS = Array.from({ length: 8 }, (_, i) => -1.05 + i * 0.3)
 
-function Logo({ duration, onTurned, light }: { duration: number, onTurned?: () => void, light: React.RefObject<THREE.PointLight | null> }) {
+function Chip({ duration, onTurned, light }: { duration: number, onTurned?: () => void, light: React.RefObject<THREE.PointLight | null> }) {
   const group = useRef<THREE.Group>(null)
-  const geometry = useLogoGeometry()
+  const die = useRef<THREE.Mesh>(null)
   const start = useRef<number | null>(null)
   const done = useRef(false)
   useFrame(({ clock }) => {
@@ -50,19 +16,26 @@ function Logo({ duration, onTurned, light }: { duration: number, onTurned?: () =
     if (start.current === null) start.current = clock.elapsedTime
     const t = Math.min(1, (clock.elapsedTime - start.current) / duration)
     const eased = 1 - Math.pow(1 - t, 3)
-    group.current.rotation.y = -0.6 + eased * Math.PI * 2.3
-    light.current?.color.copy(cool).lerp(warm, Math.min(1, Math.max(0, (t - 0.35) / 0.65)))
-    group.current.rotation.x = Math.sin(t * Math.PI) * 0.12
-    group.current.position.y = Math.sin(t * Math.PI) * 0.06
+    group.current.rotation.y = -0.9 + eased * Math.PI * 1.4
+    group.current.rotation.x = 0.7 - eased * 0.3
+    group.current.scale.setScalar(0.7 + eased * 0.3)
+    light.current?.color.copy(cool).lerp(warm, Math.min(1, Math.max(0, (t - 0.3) / 0.5)))
+    if (die.current) (die.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.3 + Math.min(1, t * 1.6) * 1.6
     if (t >= 1 && !done.current) { done.current = true; onTurned?.() }
   })
-  const material = <meshPhysicalMaterial vertexColors metalness={0.35} roughness={0.22} clearcoat={1} clearcoatRoughness={0.12} />
   return (
     <group ref={group}>
-      <mesh geometry={geometry}>{material}</mesh>
-      <group position={[0, -2.45, 0]} scale={[1, -1, 1]}>
-        <mesh geometry={geometry}><meshBasicMaterial vertexColors transparent opacity={0.14} depthWrite={false} /></mesh>
-      </group>
+      <mesh><boxGeometry args={[2.5, 0.28, 2.5]} /><meshPhysicalMaterial color="#3a475b" metalness={0.3} roughness={0.4} clearcoat={0.8} /></mesh>
+      <mesh ref={die} position={[0, 0.17, 0]}><boxGeometry args={[1.35, 0.08, 1.35]} /><meshStandardMaterial color="#6a3a22" emissive="#ff6b35" emissiveIntensity={0.3} metalness={0.7} roughness={0.3} /></mesh>
+      <mesh position={[0, 0.215, 0]}><boxGeometry args={[0.7, 0.02, 0.7]} /><meshStandardMaterial color="#ffb47e" emissive="#ffb47e" emissiveIntensity={0.9} /></mesh>
+      {PINS.map((p) => (
+        <group key={p}>
+          <mesh position={[p, -0.02, 1.38]}><boxGeometry args={[0.14, 0.05, 0.32]} /><meshStandardMaterial color="#d9b66a" metalness={0.9} roughness={0.25} /></mesh>
+          <mesh position={[p, -0.02, -1.38]}><boxGeometry args={[0.14, 0.05, 0.32]} /><meshStandardMaterial color="#d9b66a" metalness={0.9} roughness={0.25} /></mesh>
+          <mesh position={[1.38, -0.02, p]}><boxGeometry args={[0.32, 0.05, 0.14]} /><meshStandardMaterial color="#d9b66a" metalness={0.9} roughness={0.25} /></mesh>
+          <mesh position={[-1.38, -0.02, p]}><boxGeometry args={[0.32, 0.05, 0.14]} /><meshStandardMaterial color="#d9b66a" metalness={0.9} roughness={0.25} /></mesh>
+        </group>
+      ))}
     </group>
   )
 }
@@ -70,11 +43,11 @@ function Logo({ duration, onTurned, light }: { duration: number, onTurned?: () =
 export default function LogoScene({ duration, onTurned }: { duration: number, onTurned?: () => void }) {
   const light = useRef<THREE.PointLight>(null)
   return (
-    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 5.6], fov: 34 }} gl={{ antialias: true, alpha: true }}>
-      <ambientLight intensity={0.9} />
-      <directionalLight position={[2, 3, 4]} intensity={2.4} />
-      <pointLight ref={light} position={[-3, -1, 2]} intensity={14} color="#66d9d2" />
-      <Logo duration={duration} onTurned={onTurned} light={light} />
+    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 2.6, 5.4], fov: 34 }} gl={{ antialias: true, alpha: true }}>
+      <ambientLight intensity={1.6} />
+      <directionalLight position={[2, 4, 4]} intensity={4} />
+      <pointLight ref={light} position={[-3, 1, 2]} intensity={16} color="#66d9d2" />
+      <Chip duration={duration} onTurned={onTurned} light={light} />
     </Canvas>
   )
 }

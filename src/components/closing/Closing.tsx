@@ -6,7 +6,7 @@ import { ContactForm } from '../contact/ContactForm'
 const featured = [
   { rank: 'Winner', title: 'IEEE Chipathon 2025', note: 'Agentic AI and chip design', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/' },
   { rank: 'Second Place', title: 'PERURI Chip Hackathon 2026', note: 'IGOR, with team iSeeDesignITB', href: 'https://stei.itb.ac.id/tim-iseedesignitb-stei-itb-raih-juara-2-kategori-ic-design-pada-peruri-chip-hackathon-2026/' },
-  { rank: 'Most Outstanding Student 2026', title: 'Electrical and Electronics Engineering', note: 'Institut Teknologi Bandung', href: '' },
+  { rank: 'Most Outstanding Student 2026', title: 'Electrical and Electronics Engineering', note: 'Institut Teknologi Bandung', href: 'https://www.instagram.com/p/DV-lAM1k6qZ/?img_index=6' },
 ]
 const featuredTitles = ['Winner, IEEE Chipathon 2025', '2nd Place, PERURI Chip Hackathon 2026', 'Most Outstanding Electrical and Electronics Engineering Student 2026']
 
@@ -45,7 +45,7 @@ export function Closing() {
             <h2 id="about-title">Curious by nature. Engineer by practice.</h2>
             <p>I enjoy understanding how things work and seeing how far I can take what I build.</p>
             <div className="xc-facts">
-              <span>Graduating July 2027</span><span>GPA 3.70 of 4.00</span>
+              <span>Graduating July 2027</span>
             </div>
             <div className="xc-links">
               <a href={person.resumeUrl} className="xh-btn xh-btn-ghost"><FileText size={15} aria-hidden="true" /> View résumé</a>
