@@ -376,9 +376,7 @@ body.intro-active .xd-dock { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .xi-bolt { opacity: 0.8; stroke-dashoffset: 0; } }
 .xi-intro.is-lite .xi-outline { display: none; }
 
-.xh-photo { position: absolute; z-index: 3; left: 0; bottom: 0.2rem; width: clamp(130px, 13vw, 190px); aspect-ratio: 4 / 5; margin: 0; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255, 180, 126, 0.45); box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.08), 0 18px 40px -14px rgba(255, 107, 53, 0.5), 0 20px 36px -18px rgba(0, 0, 0, 0.8); pointer-events: none; }
+
+.xh-photo { width: clamp(84px, 8vw, 112px); aspect-ratio: 4 / 5; margin: 0; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255, 180, 126, 0.45); box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.08), 0 14px 32px -12px rgba(255, 107, 53, 0.5); }
 .xh-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
-@media (max-width: 900px) { .xh-photo { display: none; } }
 .intro-active .xh-photo { visibility: hidden; }
-@keyframes xh-photo-in { from { opacity: 0; } to { opacity: 1; } }
-.xh-photo { animation: xh-photo-in 0.8s ease 0.1s both; }
