@@ -24,7 +24,7 @@ export function Hero() {
       <div className="xh-hero-grid">
         <div className="xh-hero-copy">
           <h1 data-hero-reveal>I build intelligence <em>into working systems.</em></h1>
-          <p className="xh-lead" data-hero-reveal>I'm William Anthony, an Electrical and Electronics Engineering student from Institut Teknologi Bandung. I enjoy chip design, hardware verification, and turning ideas into working systems. Outside engineering, I enjoy going to the gym and meeting new people.</p>
+          <p className="xh-lead" data-hero-reveal>I'm William Anthony, an Electrical and Electronics Engineering from Institut Teknologi Bandung. I enjoy chip design and hardware verification, especially the challenge of turning ideas into reliable systems. Outside engineering, you'll find me at the gym or meeting new people.</p>
           <div className="xh-actions" data-hero-reveal>
             <a href="#work" className="xh-btn xh-btn-primary">Explore My Work <ArrowDown size={16} aria-hidden="true" /></a>
             <a href={person.resumeUrl} className="xh-btn xh-btn-ghost xh-btn-resume"><FileText size={16} aria-hidden="true" /> View My Résumé</a>
