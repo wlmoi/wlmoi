@@ -254,8 +254,8 @@ body.intro-active .xd-dock { opacity: 0; }
 /* Intro */
 .xi-intro { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 45%, #14202f, #070b12 70%); transition: opacity 0.6s ease, transform 0.6s var(--xn-ease), visibility 0.6s; }
 .xi-intro.is-leaving { opacity: 0; transform: scale(1.06); visibility: hidden; pointer-events: none; }
-.xi-logo { position: relative; width: min(62vmin, 460px); height: min(62vmin, 460px); transition: transform 0.6s var(--xn-ease); }
-.xi-intro.is-leaving .xi-logo { transform: translateX(22vw) scale(0.55); }
+.xi-logo { position: relative; width: min(92vmin, 760px); height: min(92vmin, 760px); transition: transform 0.6s var(--xn-ease); }
+.xi-intro.is-leaving .xi-logo { transform: scale(1.04); }
 .xi-logo-flat { position: absolute; inset: 12%; clip-path: polygon(50% 4%, 96% 90%, 4% 90%); background: linear-gradient(150deg, #ff8a5c, #d24dff 40%, #4d7bff 70%, #37e0d0); animation: xi-spin 1.4s var(--xn-ease) both; }
 @keyframes xi-spin { from { transform: rotateY(-200deg); opacity: 0; } }
 .xi-word { position: absolute; bottom: 24%; margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--xn-faint); animation: xe-fade 0.8s 0.4s both; }
@@ -295,7 +295,7 @@ body.intro-active .xd-dock { opacity: 0; }
   .xd-dock a { padding: 0 0.7rem; }
   .xd-dock a span { display: none; }
   .xd-dock a[aria-current='location'] span { display: inline; }
-  .xi-intro.is-leaving .xi-logo { transform: scale(0.55); }
+  .xi-intro.is-leaving .xi-logo { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .xs-page *, .xi-intro * { animation: none !important; transition-duration: 0.01ms !important; }

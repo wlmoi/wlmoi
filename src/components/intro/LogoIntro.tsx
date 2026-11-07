@@ -3,7 +3,7 @@ import { webglSupported } from '../three/HeroChip'
 
 const LogoScene = lazy(() => import('./LogoScene'))
 const KEY = 'founding-intro-seen'
-const TURN = 3
+const TURN = 4.1
 
 function shouldPlay() {
   try {
@@ -59,7 +59,6 @@ export function LogoIntro() {
       <div className="xi-logo" aria-hidden="true">
         {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <span className="xi-logo-flat" />}
       </div>
-      <p className="xi-word" aria-hidden="true">Chip design</p>
       <button type="button" className="xi-skip" onClick={() => setPhase('off')} autoFocus>Skip Intro</button>
     </div>
   )
