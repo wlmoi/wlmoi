@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
-import { webglSupported } from '../three/HeroChip'
+import { StaticChip, webglSupported } from '../three/HeroChip'
 
 const LogoScene = lazy(() => import('./LogoScene'))
 const KEY = 'founding-intro-seen'
@@ -26,7 +26,8 @@ const TRACES = [
 
 export function LogoIntro() {
   const [phase, setPhase] = useState<'off' | 'play' | 'leave'>(() => (shouldPlay() ? 'play' : 'off'))
-  const [webgl] = useState(webglSupported)
+  const [lite] = useState(() => window.innerWidth < 760 || (navigator.hardwareConcurrency || 8) <= 4)
+  const [webgl] = useState(() => !lite && webglSupported())
 
   useEffect(() => {
     if (phase === 'off') return
@@ -49,7 +50,7 @@ export function LogoIntro() {
 
   if (phase === 'off') return null
   return (
-    <div className={`xi-intro ${phase === 'leave' ? 'is-leaving' : ''}`} role="presentation">
+    <div className={`xi-intro ${lite ? 'is-lite' : ''} ${phase === 'leave' ? 'is-leaving' : ''}`} role="presentation">
       <svg className="xi-traces" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         {TRACES.map((d, i) => <path key={`b${i}`} d={d} className="xi-trace" />)}
         {TRACES.map((d, i) => <path key={`p${i}`} d={d} className="xi-pulse" style={{ animationDelay: `${0.1 + i * 0.1}s` }} pathLength={1000} />)}
@@ -57,7 +58,7 @@ export function LogoIntro() {
         <path className="xi-wave" d="M0 520 H180 V490 H260 V520 H340 V490 H400 V520 H480 V490 H520 V520 H620 V490 H700 V520 H800 V490 H860 V520 H1000" />
       </svg>
       <div className="xi-logo" aria-hidden="true">
-        {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <span className="xi-logo-flat" />}
+        {webgl ? <Suspense fallback={null}><LogoScene duration={TURN} /></Suspense> : <div className="xi-lite-chip"><StaticChip label="" /></div>}
       </div>
       <button type="button" className="xi-skip" onClick={() => setPhase('off')} autoFocus>Skip Intro</button>
     </div>

@@ -354,3 +354,13 @@ body.intro-active .xd-dock { opacity: 0; }
 .xe-metrics { border-color: color-mix(in srgb, var(--xe-accent) 25%, transparent); }
 .xe-switch button[aria-pressed='true'] { background: var(--xe-accent); color: #090e17; }
 .xe-more summary { color: var(--xe-accent); }
+
+/* Lightweight intro for phones and low-power devices */
+.xi-intro { will-change: opacity; }
+.xi-lite-chip { position: absolute; inset: 0; transform-origin: 50% 55%; animation: xi-lite-in 4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.xi-lite-chip .xh-static-chip i { width: min(52%, 280px); }
+@keyframes xi-lite-in { from { transform: scale(0.45) rotate(-14deg); opacity: 0; } 25% { opacity: 1; } to { transform: scale(1) rotate(0); opacity: 1; } }
+.xi-intro.is-lite .xi-pulse { filter: none; stroke-width: 3; }
+.xi-intro.is-lite .xi-wave { display: none; }
+.xi-intro.is-lite::before { animation-duration: 2.4s; }
+@media (max-width: 760px) { .xi-logo { width: 96vmin; height: 96vmin; } .xi-skip { top: max(1rem, env(safe-area-inset-top)); right: 1rem; } }

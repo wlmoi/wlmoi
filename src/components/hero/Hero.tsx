@@ -23,9 +23,6 @@ export function Hero() {
       <div className="xh-stars" aria-hidden="true" />
       <div className="xh-hero-grid">
         <div className="xh-hero-copy">
-          <div className="xh-id" data-hero-reveal>
-            <p className="xh-eyebrow"><span className="xh-name">William Anthony</span><span className="xh-role">Inside the machine</span></p>
-          </div>
           <h1 data-hero-reveal>I build intelligence <em>into working systems.</em></h1>
           <p className="xh-lead" data-hero-reveal>I’m William Anthony, an Electrical and Electronics Engineering student at Institut Teknologi Bandung. I enjoy designing chips, exploring intelligent hardware, and turning ideas into systems I can actually build and test.</p>
           <div className="xh-actions" data-hero-reveal>
