@@ -28,7 +28,7 @@ export function CredentialsList() {
         <article key={`${item.title}-${item.issuer}`} className="credential-card">
           <p className="credential-category">{item.category ?? 'Engineering'}</p>
           <h3>{item.title}</h3>
-          <p className="credential-issuer">{item.issuer}{item.date ? ` · ${item.date}` : ''}</p>
+          <p className="credential-issuer">{item.issuer}{item.date ? `, ${item.date}` : ''}</p>
           {item.credentialId ? <p className="credential-id">ID: {item.credentialId}</p> : null}
           {item.expiry ? <p className="credential-expiry">{item.expiry}</p> : null}
           {item.href?<a className="credential-document" href={item.href} target="_blank" rel="noreferrer">View certificate <ArrowUpRight size={13} aria-hidden="true"/></a>:null}

@@ -1,59 +1,57 @@
 import { useEffect, useRef } from 'react'
-import { createPortal } from 'react-dom'
-import { ArrowDown, ArrowUpRight, Code, BriefcaseBusiness, Trophy } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, FileText } from 'lucide-react'
 import { person } from '../../data/portfolio'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from '../../lib/gsap'
-import { ParticleTitle } from './ParticleTitle'
-import { ResumeAction } from './ResumeAction'
-import { HeroStage } from '../three/HeroStage'
+import { HeroChip } from '../three/HeroChip'
 
-export function Hero({ activeId }: { activeId: string }) {
+export function Hero() {
   const root = useRef<HTMLElement>(null)
   const reducedMotion = useReducedMotion()
   useEffect(() => {
     if (reducedMotion) return
+    const lead = document.body.classList.contains('intro-active') ? 1.45 : 0
     const context = gsap.context(() => {
-      gsap.fromTo('[data-hero-reveal]', {y:28,opacity:0}, {y:0,opacity:1,duration:.8,stagger:.07,ease:'power3.out',delay:.1})
+      gsap.fromTo('[data-hero-reveal]', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power3.out', delay: 0.15 + lead })
+      gsap.fromTo('[data-hero-stage]', { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out', delay: 0.1 + lead })
     }, root)
     return () => context.revert()
   }, [reducedMotion])
 
-  return (
-    <section ref={root} id="home" className="hero-home hero-cosmic" aria-label="William Anthony introduction">
-      <div className="cosmic-stars" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-one" aria-hidden="true" /><div className="cosmic-glow cosmic-glow-two" aria-hidden="true" />
-      {createPortal(<div className="hero-desktop-nav">
-        <div className="liquid-glass flex items-center justify-between rounded-full px-5 py-3">
-          <a href="#home" className="hero-wordmark" aria-label="William Anthony home"><span>WA<span className="wordmark-dot">.</span></span>William Anthony</a>
-          <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
-            {[
-              ['Home','home'],['Profile','profile'],['Expertise','expertise'],['Circuits','schematics'],['Experience','experience'],['Selected Work','work'],['Community','organizations'],['Evidence','evidence'],['Recognition','recognition'],['Contact','contact'],
-            ].map(([label,id])=><a key={id} href={`#${id}`} className={`hero-nav-link text-xs transition-colors ${activeId===id ? 'is-active text-white' : 'text-white/60 hover:text-white'}`}>{label}</a>)}
-            <a href="#contact" className="nav-contact">Let’s talk <ArrowUpRight size={13} aria-hidden="true" /></a>
-          </nav>
-        </div>
-      </div>, document.getElementById('site-navigation-root') ?? document.body)}
-      <div className="hero-cosmic-shell">
-        <div className="hero-introduction">
-          <div className="hero-intro-marker" aria-hidden="true"><i /><span /></div>
-          <div className="hero-intro-copy">
-            <ParticleTitle />
-            <p className="hero-statement" data-hero-reveal>I build intelligence<br /><em>into working systems.</em></p>
-            <p className="hero-description" data-hero-reveal>Junior Edge AI Engineer and Microelectronics Research Assistant at ITB. Manufacturing internship experience at Alcon. I connect digital hardware, embedded intelligence, and practical automation.</p>
-            <div className="hero-actions" data-hero-reveal>
+  const portrait = (
+    <img src="/photos/WilliamAnthonyCasual.jpg" alt="" width={1200} height={1600} decoding="async" />
+  )
 
-              <ResumeAction />
-            </div>
-            <div className="hero-awards" aria-label="Selected awards">
-            <a href="#work" className="hero-award" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>2nd Place — PERURI Chip Hackathon 2026<small>FPGA and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412029754188414976/" target="_blank" rel="noreferrer" className="hero-award hero-agentic" data-hero-reveal><Trophy size={14} aria-hidden="true" /><span>Winner — IEEE Chipathon 2025<small>Agentic AI and chip design</small></span><ArrowUpRight size={13} aria-hidden="true" /></a>
-            </div>
+  return (
+    <section ref={root} id="home" className="xh-hero" aria-label="Introduction">
+      <div className="xh-stars" aria-hidden="true" />
+      <div className="xh-hero-grid">
+        <div className="xh-hero-copy">
+          <div className="xh-id" data-hero-reveal>
+            <figure className="xh-portrait xh-portrait-inline">
+              {portrait}
+              <figcaption className="sr-only">William Anthony</figcaption>
+            </figure>
+            <p className="xh-eyebrow"><span className="xh-name">William Anthony</span><span className="xh-role">Inside the machine</span></p>
           </div>
+          <h1 data-hero-reveal>I build intelligence <em>into working systems.</em></h1>
+          <p className="xh-lead" data-hero-reveal>I’m William Anthony, an Electrical and Electronics Engineering student at Institut Teknologi Bandung. I enjoy designing chips, exploring intelligent hardware, and turning ideas into systems I can actually build and test.</p>
+          <div className="xh-actions" data-hero-reveal>
+            <a href="#work" className="xh-btn xh-btn-primary">Explore My Work <ArrowDown size={16} aria-hidden="true" /></a>
+            <a href={person.resumeUrl} className="xh-btn xh-btn-ghost xh-btn-resume"><FileText size={16} aria-hidden="true" /> View My Résumé</a>
+            <a href="#contact" className="xh-link">Let’s Connect <ArrowUpRight size={15} aria-hidden="true" /></a>
+          </div>
+          <dl className="xh-proof" data-hero-reveal>
+            <div><dt>EE academic rank</dt><dd>1 of 118</dd></div>
+            <div><dt>GPA at ITB</dt><dd>3.70 of 4.00</dd></div>
+          </dl>
         </div>
-        <div className="hero-scene-column" data-hero-reveal><HeroStage /></div>
-        <div className="hero-cosmic-footer">
-          <div className="hero-proof"><span><strong>1 / 118</strong> EE academic rank</span><span><strong>3.70 / 4.00</strong> GPA at ITB</span><span><strong>138.32 µs</strong> IGOR inference</span></div>
-          <div className="hero-footer-links"><a href={person.github} target="_blank" rel="noreferrer"><Code size={15} aria-hidden="true" /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={15} aria-hidden="true" /> LinkedIn</a><a href="#profile" className="hero-scroll-cue" aria-label="Scroll to profile"><span /><ArrowDown size={15} aria-hidden="true" /></a></div>
+        <div className="xh-hero-stage" data-hero-stage>
+          <HeroChip />
+          <figure className="xh-portrait xh-portrait-float" data-hero-reveal>
+            {portrait}
+            <figcaption>William Anthony</figcaption>
+          </figure>
         </div>
       </div>
     </section>

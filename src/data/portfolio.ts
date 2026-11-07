@@ -6,7 +6,7 @@ export const person = {
   location: 'Bandung, Indonesia',
   institution: 'Institut Teknologi Bandung',
   graduation: '2027',
-  gpa: '3.70 / 4.00',
+  gpa: '3.70 of 4.00',
   graduationDate: 'July 2027 (expected)',
   headline: 'Engineering intelligence from RTL to real-world systems.',
   alternateHeadline: 'From silicon logic to intelligent systems.',
@@ -27,45 +27,45 @@ export const education = {
   institution: 'Institut Teknologi Bandung',
   dates: 'July 2023 – July 2027 (expected)',
   location: 'Bandung, Indonesia',
-  gpa: '3.70 / 4.00',
+  gpa: '3.70 of 4.00',
   coursework: ['VLSI System Design', 'VLSI Digital Systems', 'Computer Architecture', 'Digital Systems', 'Digital IC Analysis and Design', 'Analog Mixed-Signal Electronic Design', 'Communication Systems', 'Electronics'],
   focus: ['Design Validation and Verification', 'FPGA and ASIC Architecture', 'Information Technology', 'Software Development', 'Artificial Intelligence and Machine Learning', 'Data Engineering', 'Data Analysis'],
 } as const
 
 export const credentials: Credential[] = [
-  { title: 'Global Interconnected Communication — 86.66, Highest Score, Grade A', issuer: 'SBM ITB (School of Business and Management ITB)', date: 'August 2026', category: 'Communication & leadership' },
-  { title: 'SoC Verification using SystemVerilog', issuer: 'Ramdas Mozhikunnath · Udemy', category: 'Engineering' },
+  { title: 'Global Interconnected Communication, 86.66, Highest Score, Grade A', issuer: 'SBM ITB (School of Business and Management ITB)', date: 'August 2026', category: 'Communication & leadership' },
+  { title: 'SoC Verification using SystemVerilog', issuer: 'Ramdas Mozhikunnath, Udemy', category: 'Engineering' },
   { title: 'IEEE Innovation at Work (PDH)', issuer: 'IEEE', date: 'April 2026', credentialId: '180904172' },
   { title: 'Self Sensing Processor Systems', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '175679272' },
   { title: 'How to Design an LC Oscillator', issuer: 'IEEE Educational Activities', date: 'February 2026', credentialId: '173374336' },
   { title: 'Industrial Instrumentation, Level I', issuer: 'Toyota Indonesia (TMMIN)', category: 'Engineering' },
   { title: 'Winter School: Current Trends in Advanced Electronics', issuer: 'Tomsk State University of Control Systems and Radioelectronics', date: 'March 17-28, 2025', href: '/evidence/winter-school-2025.pdf' },
   { title: 'JavaScript (Intermediate)', issuer: 'HackerRank', date: 'January 2025', credentialId: '1442edef', category: 'Software & data' },
-  { title: 'Quant Insider Market Making Challenge — Participation', issuer: 'Unstop', date: 'January 2026', credentialId: 'ce702129-3cab-4936-ab0a-3c66081b434b', category: 'Competitions' },
-  { title: 'Weekly Coding Challenge 27 — Participation', issuer: 'Unstop', credentialId: 'c0466719-83b3-4191-bfa7-9ad308aad1da', category: 'Competitions' },
-  { title: 'Capture The Flag — CodeFest 2025', issuer: 'Indian Institute of Technology (BHU), Varanasi', category: 'Competitions' },
-  { title: 'Capture The Flag — CodeFest 2025 Participation', issuer: 'Unstop', credentialId: '8fce6db1-831e-4d10-8c6b-e5d49f677ef5', category: 'Competitions' },
+  { title: 'Quant Insider Market Making Challenge, Participation', issuer: 'Unstop', date: 'January 2026', credentialId: 'ce702129-3cab-4936-ab0a-3c66081b434b', category: 'Competitions' },
+  { title: 'Weekly Coding Challenge 27, Participation', issuer: 'Unstop', credentialId: 'c0466719-83b3-4191-bfa7-9ad308aad1da', category: 'Competitions' },
+  { title: 'Capture The Flag, CodeFest 2025', issuer: 'Indian Institute of Technology (BHU), Varanasi', category: 'Competitions' },
+  { title: 'Capture The Flag, CodeFest 2025 Participation', issuer: 'Unstop', credentialId: '8fce6db1-831e-4d10-8c6b-e5d49f677ef5', category: 'Competitions' },
   { title: 'Discrete Mathematics', issuer: 'Wolfram U', date: 'July 2024', credentialId: '01f13a87-2f3a-483f-baad-86310dedf298', category: 'Software & data' },
   { title: 'Level 1 Calculus', issuer: 'Wolfram U', date: 'July 2024', credentialId: '01f13a87-2f3a-483f-baad-86310dedf298', category: 'Software & data' },
   { title: 'Responsive Web Design Developer', issuer: 'freeCodeCamp', date: 'June 2024', category: 'Software & data' },
   { title: 'Problem Solving (Basic)', issuer: 'HackerRank', date: 'June 2024', credentialId: '8a2461507e13', category: 'Software & data' },
   { title: 'Python (Basic)', issuer: 'HackerRank', date: 'June 2024', credentialId: '86a70b7e1386', category: 'Software & data' },
-  { title: 'Coding Competition — Participation', issuer: 'Algobash', category: 'Competitions' },
+  { title: 'Coding Competition, Participation', issuer: 'Algobash', category: 'Competitions' },
   { title: 'Belajar Dasar Pemrograman JavaScript', issuer: 'Dicoding Indonesia', date: 'October 2023', expiry: 'Expires October 2026', credentialId: 'GRX52YY6KX0M', category: 'Software & data' },
-  { title: 'EFSET English Certificate — 81/100, Proficient', issuer: 'EF SET', category: 'Communication & leadership' },
-  { title: 'OPSI English 2023 — Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
+  { title: 'EFSET English Certificate, 81 of 100, Proficient', issuer: 'EF SET', category: 'Communication & leadership' },
+  { title: 'OPSI English 2023, Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
   { title: 'Belajar Dasar Structured Query Language (SQL)', issuer: 'Dicoding Indonesia', date: 'August 2023', expiry: 'Expired August 2026', credentialId: 'GRX5DE6RVX0M', category: 'Software & data' },
   { title: 'Memulai Dasar Pemrograman untuk Menjadi Pengembang Software', issuer: 'Dicoding Indonesia', date: 'August 2023', expiry: 'Expired August 2026', credentialId: 'GRX5DEE8KX0M', category: 'Software & data' },
   { title: 'Belajar Dasar Manajemen Proyek', issuer: 'Dicoding Indonesia', date: 'July 2023', expiry: 'Expired July 2026', credentialId: '1OP80E582XQK', category: 'Communication & leadership' },
   { title: 'Google Ads Display Certification', issuer: 'Google Digital Academy (Skillshop)', date: 'June 2023', expiry: 'Expired June 2024', credentialId: '74785504', category: 'Software & data' },
-  { title: '2nd Place — Sarasehan Temu Karya Nasional Catur', issuer: 'Keluarga Buddhis Indonesia', category: 'Competitions' },
+  { title: '2nd Place, Sarasehan Temu Karya Nasional Catur', issuer: 'Keluarga Buddhis Indonesia', category: 'Competitions' },
   { title: 'Google Analytics Certification', issuer: 'Google Digital Academy (Skillshop)', date: 'May 2023', expiry: 'Expired May 2024', credentialId: '74061995', category: 'Software & data' },
-  { title: 'OPSI Informatics 2023 — Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
-  { title: 'OPSI Mathematics 2023 — Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
+  { title: 'OPSI Informatics 2023, Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
+  { title: 'OPSI Mathematics 2023, Gold Medal, A+', issuer: 'Yapresindo', category: 'Competitions' },
 ]
 
 export const languages = [
-  ['Indonesian', 'Native / bilingual'],
+  ['Indonesian', 'Native and bilingual'],
   ['English', 'Full professional'],
   ['Chinese', 'Elementary'],
 ] as const
@@ -144,7 +144,7 @@ export const featuredCaseStudy = {
     ['Die area', '−24%'],
     ['Estimated power', '−18%'],
     ['SRAM macros', '11 → 9'],
-    ['DRC / LVS / XOR / antenna', '0'],
+    ['DRC, LVS, XOR, and antenna', '0'],
     ['STA corners', '9'],
     ['Clock period', '40 ns'],
     ['Peak throughput', '0.8 GOPS @ 25 MHz'],
@@ -154,22 +154,22 @@ export const featuredCaseStudy = {
 export const projects: Project[] = [
   {
     id: 'igor',
-    title: 'IGOR — Indonesian Gated Onboard Robotics',
-    context: '2nd Place — PERURI Chip Hackathon 2026. An AI accelerator that helps a mobile robot adapt while keeping steering corrections bounded.',
+    title: 'IGOR, Indonesian Gated Onboard Robotics',
+    context: '2nd Place, PERURI Chip Hackathon 2026. An AI accelerator that helps a mobile robot adapt while keeping steering corrections bounded.',
     role: 'Chip designer on team iSeeDesignITB, with Karol Yangqian Poetracahya, Brian Albar Hadian, and Bennaya Siagian. Developed and verified the accelerator from RTL through FPGA integration and an IHP 130 nm ASIC flow.',
     stack: ['Verilog', 'Cyclone V', 'Fixed-point inference', 'Python', 'UART', 'IHP 130 nm'],
     challenge: 'Process 74 sensor and command inputs using an eight-lane neural accelerator, then integrate Jetson, FPGA, STM32, and four-wheel motor control with communication and safety checks.',
-    outcome: 'Deterministic 138.32 µs FPGA inference at 50 MHz; 256 reference vectors with zero output mismatches. The later final presentation reports 98/98 successful physical Jetson–FPGA UART requests. The IHP ASIC is an I/O-engine proof of concept; the neural core remains on FPGA.',
+    outcome: 'Deterministic 138.32 µs FPGA inference at 50 MHz, 256 reference vectors with zero output mismatches. The later final presentation reports 98 of 98 successful physical Jetson–FPGA UART requests. The IHP ASIC is an input and output engine proof of concept, the neural core remains on FPGA.',
     href: 'https://igor-rtl-explorer.vercel.app/',
     resources: [
-      { title: 'Presentation.pptx', href: '/presentations/Presentation.pptx', format: 'PPTX · Download presentation' },
-      { title: 'IGOR — final presentation', href: '/presentations/IGOR-Final-Presentation.pdf', format: 'PDF · 40 slides' },
-      { title: 'IGOR — PowerPoint presentation', href: 'https://drive.google.com/file/d/1Jh77bJqxKFW4QGphayTaAheFd9hZmQhw/view', format: 'PPTX · Google Drive' },
-      { title: 'IGOR — project archive', href: 'https://drive.google.com/drive/folders/1OJZmk0_sK4DnrdGx4UgBH6NT0lN_wUky', format: 'Google Drive · Project files and supporting material' },
+      { title: 'Presentation.pptx', href: '/presentations/Presentation.pptx', format: 'PPTX, Download presentation' },
+      { title: 'IGOR, final presentation', href: '/presentations/IGOR-Final-Presentation.pdf', format: 'PDF, 40 slides' },
+      { title: 'IGOR, PowerPoint presentation', href: 'https://drive.google.com/file/d/1Jh77bJqxKFW4QGphayTaAheFd9hZmQhw/view', format: 'PPTX, Google Drive' },
+      { title: 'IGOR, project archive', href: 'https://drive.google.com/drive/folders/1OJZmk0_sK4DnrdGx4UgBH6NT0lN_wUky', format: 'Google Drive, Project files and supporting material' },
     ],
     images: [
-      { src: '/projects/igor/robot-side.jpeg', alt: 'IGOR mobile robot prototype with mecanum wheels and onboard electronics, side view', caption: 'The prototype · PERURI Chip Hackathon 2026' },
-      { src: '/projects/igor/robot-top.jpeg', alt: 'Top view of the IGOR robot showing the FPGA board, onboard wiring, and sensors', caption: 'Onboard integration · FPGA, sensing, and control' },
+      { src: '/projects/igor/robot-side.jpeg', alt: 'IGOR mobile robot prototype with mecanum wheels and onboard electronics, side view', caption: 'The prototype, PERURI Chip Hackathon 2026' },
+      { src: '/projects/igor/robot-top.jpeg', alt: 'Top view of the IGOR robot showing the FPGA board, onboard wiring, and sensors', caption: 'Onboard integration, FPGA, sensing, and control' },
     ],
     discipline: 'Hardware & AI',
     metrics: [['Inference', '138.32 µs'], ['Reference vectors', '256'], ['Mismatches', '0']],
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     context: 'A specification-led SystemVerilog verification flow developed for a Tiny Tapeout freelance engagement.',
     role: 'Built a modular testbench with stimulus generation, protocol monitors, an independent reference model, and a self-checking scoreboard.',
     stack: ['SystemVerilog', 'SVA', 'Functional coverage', 'Python', 'APB', 'SPI'],
-    challenge: 'Trace requirements to tests covering register access, CPOL/CPHA modes, bit ordering, resets, and back-to-back transfers; diagnose assertion failures and scoreboard mismatches.',
+    challenge: 'Trace requirements to tests covering register access, CPOL and CPHA modes, bit ordering, resets, and back-to-back transfers, diagnose assertion failures and scoreboard mismatches.',
     outcome: 'Automated simulation regressions and consolidated results, coverage observations, identified issues, and remaining gaps into a final verification report.',
     discipline: 'Design verification',
   },
@@ -220,7 +220,7 @@ export const projects: Project[] = [
     context: 'Team D22: Chipster, IEEE SSCS “Pico” Chipathon 2025. A three-qubit QFT design built with an agentic prompt-to-GDSII workflow.',
     role: 'Contributed digital signal-processing control and digital-track integration with Ade Irman and Rifki Afriadi.',
     stack: ['FastAPI', 'Pydantic', 'PyTorch', 'LangChain', 'ChromaDB', 'OpenLane 2'],
-    challenge: 'Connect RTL generation and simulation with iterative physical-design feedback for timing, antenna violations, footprint, and I/O constraints.',
+    challenge: 'Connect RTL generation and simulation with iterative physical-design feedback for timing, antenna violations, footprint, and input and output constraints.',
     outcome: 'Contributed to the completed GF180 tapeout and a workflow spanning reference retrieval, RTL generation, validation, and physical implementation.',
     discipline: 'Software & automation',
   },
@@ -238,28 +238,28 @@ export const projects: Project[] = [
   {
     id: 'hme-election',
     title: 'Mobile-Friendly Election Platform',
-    context: 'Private voting website for the HME ITB President 2025/2026 election.',
+    context: 'Private voting website for the HME ITB President 2025 to 2026 election.',
     role: 'Front-end developer.',
     stack: ['Web development', 'MEAN framework', 'Mobile UI'],
     challenge: 'Deliver a usable private voting experience across mobile and desktop contexts.',
     outcome: 'Developed the mobile-friendly private election website for HME ITB.',
     discipline: 'Software & automation',
   },
-  // Additional completed projects confirmed by William; UCIe remains in progress.
+  // Additional completed projects confirmed by William, UCIe remains in progress.
   {
     id: 'ucie-verifier', title: 'UCIe 3.0 Specification Verifier',
     context: 'A focused protocol-verification project investigating link-training behavior and recovery.',
     role: 'Developing a verification plan and a lightweight SystemVerilog environment for a selected subset of specification requirements.',
     stack: ['SystemVerilog', 'SVA', 'Protocol monitors', 'Functional coverage', 'Python'],
-    challenge: 'Model timing variation, exercise deskew training, inject failures, and check the expected recovery sequence with traceable pass/fail reporting.',
-    outcome: 'In progress: specification analysis and verification planning. Scope is selected protocol behavior; a complete PHY and commercial VIP are outside this project.',
+    challenge: 'Model timing variation, exercise deskew training, inject failures, and check the expected recovery sequence with traceable pass or fail reporting.',
+    outcome: 'In progress: specification analysis and verification planning. Scope is selected protocol behavior, a complete PHY and commercial VIP are outside this project.',
     status: 'ongoing', discipline: 'Design verification',
   },
   {
     id: 'fir-filter', title: 'FPGA-Based FIR Digital Filter',
     context: 'A parameterized digital filter connecting algorithm design with an RTL implementation.',
     role: 'Designed the filtering datapath and compared the RTL behavior with a software reference.',
-    stack: ['SystemVerilog', 'FPGA', 'Python / MATLAB', 'Fixed-point DSP'],
+    stack: ['SystemVerilog', 'FPGA', 'Python and MATLAB', 'Fixed-point DSP'],
     challenge: 'Preserve the intended frequency response while handling finite precision and a synchronous multiply–accumulate datapath.',
     outcome: 'Implemented a parameterized FIR filter with software-versus-RTL comparison and frequency-response analysis.',
     discipline: 'DSP',
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     id: 'spectrum-analyzer', title: 'Real-Time FFT Spectrum Analyzer',
     context: 'A sampled-signal pipeline for inspecting frequency content.',
     role: 'Connected windowing, FFT processing, and spectrum visualization into a signal-analysis flow.',
-    stack: ['FFT', 'Windowing', 'Python / MATLAB', 'Digital signal processing'],
+    stack: ['FFT', 'Windowing', 'Python and MATLAB', 'Digital signal processing'],
     challenge: 'Coordinate sampling, spectral resolution, and data presentation so the frequency output is interpretable.',
     outcome: 'Implemented a pipeline for windowed FFT analysis and frequency-spectrum display.',
     discipline: 'DSP',
@@ -301,12 +301,12 @@ export const projects: Project[] = [
     discipline: 'Data analytics',
   },
   {
-    id: 'rtl-regression', title: 'Automated FPGA / RTL Regression Framework',
+    id: 'rtl-regression', title: 'Automated FPGA and RTL Regression Framework',
     context: 'Python tooling that makes simulation runs and failures easier to inspect.',
     role: 'Automated test discovery, simulation launch, result parsing, and reporting.',
     stack: ['Python', 'RTL simulation', 'CLI', 'Test reporting'],
     challenge: 'Keep repeated simulation runs consistent and make failures traceable to their test and logs.',
-    outcome: 'Built a command-line regression workflow that tracks pass/fail results and generates test reports.',
+    outcome: 'Built a command-line regression workflow that tracks pass or fail results and generates test reports.',
     discipline: 'Software & automation',
   },
 ]
@@ -323,7 +323,7 @@ export const experiences: Experience[] = [
     "bullets": [
       "Develop microphone-based sensing pipelines with INMP441, I2S, ESP32-S3, USB CDC, and Raspberry Pi.",
       "Integrate YAMNet and TensorFlow models for environmental sound classification and evaluate model behavior using recorded WAV datasets and synthetic signals.",
-      "Design modular, testable components for acquisition, preprocessing, inference, and analysis; validate behavior across the end-to-end sensing pipeline.",
+      "Design modular, testable components for acquisition, preprocessing, inference, and analysis, validate behavior across the end-to-end sensing pipeline.",
       "Evaluate deployment latency, memory use, model caching, and real-time performance on embedded platforms."
     ]
   },
@@ -367,7 +367,7 @@ export const experiences: Experience[] = [
     "bullets": [
       "Translate learning outcomes into project requirements, functional and performance specifications, circuit constraints, instrumentation needs, deliverables, and assessment criteria.",
       "Train assistants in consistent technical instruction, laboratory equipment operation, circuit evaluation, fault diagnosis, and structured troubleshooting.",
-      "Oversee 10+ analog-electronics areas, including feedback, active filters, oscillators, waveform generators, buck/boost converters, current mirrors, differential and multistage amplifiers, and cascode circuits.",
+      "Oversee 10+ analog-electronics areas, including feedback, active filters, oscillators, waveform generators, buck and boost converters, current mirrors, differential and multistage amplifiers, and cascode circuits.",
       "Guide project delivery from theoretical analysis and simulation through hardware implementation, measurement, validation, and technical reporting."
     ]
   },
@@ -380,7 +380,7 @@ export const experiences: Experience[] = [
     "employmentType": "Part-time",
     "summary": "Mentor 60+ students in circuit theory, LTspice simulation, oscilloscope operation, filter analysis, op-amp implementation, and practical debugging.",
     "bullets": [
-      "Selected as the youngest and only third-year assistant on a 17-member team; voted Favorite Assistant for technical guidance and teaching impact.",
+      "Selected as the youngest and only third-year assistant on a 17-member team, voted Favorite Assistant for technical guidance and teaching impact.",
       "Help students compare theoretical, simulated, and measured results, diagnose circuit faults, and validate hardware behavior."
     ]
   },
@@ -420,7 +420,7 @@ export const experiences: Experience[] = [
     "summary": "Instructed 50+ students in VHDL, RTL methodology, finite-state machines, signal assignment, process blocks, and entity-architecture structure.",
     "bullets": [
       "Trained students to build ModelSim testbenches, inspect waveforms and state transitions, and debug timing and logic errors.",
-      "Supervised CORDIC and 64-point FFT projects in VHDL; guided synthesis, pin assignment, compilation, and Cyclone IV deployment in Intel Quartus Prime Standard 24.1.",
+      "Supervised CORDIC and 64-point FFT projects in VHDL, guided synthesis, pin assignment, compilation, and Cyclone IV deployment in Intel Quartus Prime Standard 24.1.",
       "Evaluated coursework and laboratory reports for correctness, timing analysis, logic synthesis, and resource utilization."
     ]
   },
@@ -454,20 +454,20 @@ export const experiences: Experience[] = [
     "employmentType": "Freelance",
     "summary": "Completed a focused APB-controlled SPI Master verification engagement using SystemVerilog, SVA, functional coverage, and Python regressions.",
     "bullets": [
-      "Built stimulus, monitors, an independent reference model, and a self-checking scoreboard; documented regression results, coverage observations, issues, and remaining gaps."
+      "Built stimulus, monitors, an independent reference model, and a self-checking scoreboard, documented regression results, coverage observations, issues, and remaining gaps."
     ]
   }
 ]
 
 export const recognitions: Recognition[] = [
-  { title: '2nd Place — PERURI Chip Hackathon 2026', issuer: 'PERURI', year: 'October 2026', detail: 'Team iSeeDesignITB · IGOR: Indonesian Gated Onboard Robotics. Chip design, AI acceleration, and robotics integration.' },
-  { title: '1st Place — PERURI Chip Hackathon Minigames 2026', issuer: 'PERURI', year: 'October 2026', detail: 'Minigames award, separate from the main hackathon runner-up result.' },
+  { title: '2nd Place, PERURI Chip Hackathon 2026', issuer: 'PERURI', year: 'October 2026', detail: 'Team iSeeDesignITB, IGOR: Indonesian Gated Onboard Robotics. Chip design, AI acceleration, and robotics integration.' },
+  { title: '1st Place, PERURI Chip Hackathon Minigames 2026', issuer: 'PERURI', year: 'October 2026', detail: 'Minigames award, separate from the main hackathon runner-up result.' },
   { title: 'Most Outstanding Electrical and Electronics Engineering Student 2026', issuer: 'Institut Teknologi Bandung', year: '2026' },
   { title: 'Ganesha Awardee', issuer: 'Institut Teknologi Bandung', year: '2024 & 2025', detail: 'Two-time recipient.' },
-  { title: 'Winner — IEEE Chipathon 2025', issuer: 'IEEE', year: '2025', detail: 'Agentic AI and chip design.' },
-  { title: '3rd Place, Team Category · USU International Chess Championship', issuer: 'USU', year: '2024' },
-  { title: 'Gold Medal · KTO Mathematics', issuer: 'KTO', year: 'June 2023' },
-  { title: 'Silver Medal · KTO Mathematics', issuer: 'KTO', year: 'January 2025' },
+  { title: 'Winner, IEEE Chipathon 2025', issuer: 'IEEE', year: '2025', detail: 'Agentic AI and chip design.' },
+  { title: '3rd Place, Team Category, USU International Chess Championship', issuer: 'USU', year: '2024' },
+  { title: 'Gold Medal, KTO Mathematics', issuer: 'KTO', year: 'June 2023' },
+  { title: 'Silver Medal, KTO Mathematics', issuer: 'KTO', year: 'January 2025' },
 ]
 
 export const skillGroups = {
@@ -480,7 +480,7 @@ export const organizationGroups = [
   {
     name: 'Keluarga Mahasiswa Buddhis Dhammanano ITB', category: 'Teaching & community',
     roles: [
-      { title: 'Spiritual Division Officer', dates: 'Jul 2024 – Apr 2025', context: 'Contract · Bandung · On-site' },
+      { title: 'Spiritual Division Officer', dates: 'Jul 2024 – Apr 2025', context: 'Contract, Bandung, On-site' },
       { title: 'Physics Tutor', dates: 'Jan 2025', context: 'Remote', detail: 'Physics tutoring and teaching.' },
       { title: 'Staff of Teaching Method Division', dates: 'Jul 2024 – Nov 2024', context: 'Student organization' },
       { title: 'Physics Tutor', dates: 'Oct 2024', context: 'Student organization', detail: 'Physics tutoring.' },
@@ -488,29 +488,29 @@ export const organizationGroups = [
   },
   {
     name: 'Himpunan Mahasiswa Elektroteknik (HME) ITB', category: 'Development',
-    roles: [{ title: 'Web Developer', dates: 'Nov 2024 – Feb 2025', context: 'Freelance · On-site', detail: 'Developed a mobile-friendly private voting website for the HME President 2025/2026 election using the MEAN framework.' }],
+    roles: [{ title: 'Web Developer', dates: 'Nov 2024 – Feb 2025', context: 'Freelance, On-site', detail: 'Developed a mobile-friendly private voting website for the HME President 2025 to 2026 election using the MEAN framework.' }],
   },
   {
     name: 'Persatuan Catur Mahasiswa ITB', category: 'Leadership & events',
     roles: [
-      { title: 'Staff of Inventory Division', dates: 'May 2024 – Jan 2025', context: 'Contract · Bandung · Hybrid', detail: 'Inventory responsibilities within the student chess organization.' },
-      { title: 'Event Organizer', dates: 'Aug 2024 – Sep 2024', context: 'Freelance · Jatinangor · On-site' },
+      { title: 'Staff of Inventory Division', dates: 'May 2024 – Jan 2025', context: 'Contract, Bandung, Hybrid', detail: 'Inventory responsibilities within the student chess organization.' },
+      { title: 'Event Organizer', dates: 'Aug 2024 – Sep 2024', context: 'Freelance, Jatinangor, On-site' },
     ],
   },
   {
     name: 'UKMR ITB', category: 'Leadership & events',
-    roles: [{ title: 'Medkom', dates: 'Mar 2024 – Jan 2025', context: 'Apprenticeship · West Java' }],
+    roles: [{ title: 'Medkom', dates: 'Mar 2024 – Jan 2025', context: 'Apprenticeship, West Java' }],
   },
   {
     name: 'OSKM ITB 2024', category: 'Development',
-    roles: [{ title: 'Front-End Developer', dates: 'Jul 2024 – Sep 2024', context: 'Freelance · ITB · Hybrid' }],
+    roles: [{ title: 'Front-End Developer', dates: 'Jul 2024 – Sep 2024', context: 'Freelance, ITB, Hybrid' }],
   },
   {
     name: 'Perhimpunan Pelajar Sains Nasional', category: 'Teaching & community',
     roles: [
-      { title: 'Teaching Officer', dates: 'Jul 2024 – Aug 2024', context: 'Contract · Hybrid', detail: 'Teaching, mathematics, and communication.' },
-      { title: 'Local Coordinator', dates: 'Oct 2023 – Jan 2024', context: 'Contract · Bandung · Hybrid', detail: 'Bandung–Jatinangor coordination for PPSN Mengajar.' },
-      { title: 'Graphic Designer', dates: 'Oct 2023 – Nov 2023', context: 'Contract · Indonesia · Remote' },
+      { title: 'Teaching Officer', dates: 'Jul 2024 – Aug 2024', context: 'Contract, Hybrid', detail: 'Teaching, mathematics, and communication.' },
+      { title: 'Local Coordinator', dates: 'Oct 2023 – Jan 2024', context: 'Contract, Bandung, Hybrid', detail: 'Bandung–Jatinangor coordination for PPSN Mengajar.' },
+      { title: 'Graphic Designer', dates: 'Oct 2023 – Nov 2023', context: 'Contract, Indonesia, Remote' },
     ],
   },
   {
@@ -519,22 +519,22 @@ export const organizationGroups = [
   },
   {
     name: 'STEI ITB', category: 'Academic foundation',
-    roles: [{ title: 'Engineering TPB Student', dates: 'Aug 2023 – Jun 2024', context: 'Full-time study · Jatinangor · On-site', detail: 'First-year engineering studies, including mathematics, engineering physics, and computing.' }],
+    roles: [{ title: 'Engineering TPB Student', dates: 'Aug 2023 – Jun 2024', context: 'Full-time study, Jatinangor, On-site', detail: 'First-year engineering studies, including mathematics, engineering physics, and computing.' }],
   },
   {
     name: 'ITB JTR 2024', category: 'Leadership & events',
-    roles: [{ title: 'Admissions Representative', dates: 'Jan 2024 – Feb 2024', context: 'Contract · Batam · On-site', detail: 'Campus promotion and team coordination.' }],
+    roles: [{ title: 'Admissions Representative', dates: 'Jan 2024 – Feb 2024', context: 'Contract, Batam, On-site', detail: 'Campus promotion and team coordination.' }],
   },
   {
     name: 'Investment Festival', category: 'Leadership & events',
-    roles: [{ title: 'Student Ambassador', dates: 'Jun 2023 – Oct 2023', context: 'Contract · Indonesia · Hybrid', evidence: 'https://drive.google.com/file/d/1u5WlwLGdKXAfdiNvvLEMBUW_K4c1jQLW/view?usp=sharing' }],
+    roles: [{ title: 'Student Ambassador', dates: 'Jun 2023 – Oct 2023', context: 'Contract, Indonesia, Hybrid', evidence: 'https://drive.google.com/file/d/1u5WlwLGdKXAfdiNvvLEMBUW_K4c1jQLW/view?usp=sharing' }],
   },
   {
     name: 'PMVBB', category: 'Teaching & community',
-    roles: [{ title: 'Volunteer Teacher', dates: 'Oct 2018 – Oct 2023', context: 'Social services', detail: 'Taught elementary through high-school students through storytelling, discussion, and group activities; supported weekly Buddhist rituals and social-service events.' }],
+    roles: [{ title: 'Volunteer Teacher', dates: 'Oct 2018 – Oct 2023', context: 'Social services', detail: 'Taught elementary through high-school students through storytelling, discussion, and group activities, supported weekly Buddhist rituals and social-service events.' }],
   },
   {
     name: 'Sekber PMVBI Provinsi Kepulauan Riau', category: 'Teaching & community',
     roles: [{ title: 'Personal Assistant', dates: 'Jan 2022 – Feb 2022', context: 'Social services', detail: 'Supported scheduling, meetings, documents, and coordination for community activities.' }],
   },
-] satisfies Array<{ name: string; category: string; roles: Array<{title: string; dates: string; context: string; detail?: string; evidence?: string}> }>
+] satisfies Array<{ name: string, category: string, roles: Array<{title: string, dates: string, context: string, detail?: string, evidence?: string}> }>

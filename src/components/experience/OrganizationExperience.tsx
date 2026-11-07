@@ -19,7 +19,7 @@ export function OrganizationExperience() {
           <div>
             <p className="organization-intro">Development, teaching, student organizations, and community service. The people and responsibilities that shaped how I work.</p>
             <a href={`${person.linkedin}details/experience/`} target="_blank" rel="noreferrer" className="organization-source">Experience on LinkedIn <ArrowUpRight size={15} aria-hidden="true" /></a>
-            <p className="organization-total">{roleCount} roles & activities · {organizationGroups.length} organizations</p>
+            <p className="organization-total">{roleCount} roles & activities, {organizationGroups.length} organizations</p>
           </div>
         </div>
         <div className="project-filters" role="group" aria-label="Filter organization experience">

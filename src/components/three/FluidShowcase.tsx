@@ -86,7 +86,7 @@ export function FluidShowcase({title,initialEffect='combined',compact=false,stag
       <div className="fluid-halo" aria-hidden="true" />
       {active ? <FluidBoundary fallback={fallback} onFailure={fail}><Suspense fallback={fallback}><FluidScene effect={effect} paused={stopped} strength={strength} pulse={pulse} stage={stage} compact={compact||narrow} onReady={markReady} onFailure={fail} /></Suspense></FluidBoundary>:fallback}
       {(effect==='lattice'||effect==='combined')?<div className="fluid-ports" aria-hidden="true"><span>Serial host</span><span>SRAM</span><span>Controller</span></div>:null}
-      {canPulse ? <div className="fluid-viewport-hint" aria-hidden="true">Move to bend · Tap to pulse</div> : null}
+      {canPulse ? <div className="fluid-viewport-hint" aria-hidden="true">Move to bend, Tap to pulse</div> : null}
     </div>
     <figcaption className="fluid-description" aria-live="polite">{description}</figcaption>
     <div className="fluid-controls">

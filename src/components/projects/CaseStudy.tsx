@@ -35,12 +35,12 @@ export function CaseStudy() {
             <VoltageHeading text={featuredCaseStudy.title} className="text-4xl font-semibold tracking-tight md:text-6xl" />
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/[0.62]">{featuredCaseStudy.intro}</p>
           </div>
-          <div className="case-study-kicker fx-negative" data-text="GF180MCU · 180 nm · SIGNED INT8">GF180MCU · 180 nm · SIGNED INT8</div>
+          <div className="case-study-kicker fx-negative" data-text="GF180MCU, 180 nm, SIGNED INT8">GF180MCU, 180 nm, SIGNED INT8</div>
         </div>
 
         <div className="case-study-resources project-resources">
-          <a href="/presentations/APSIPA-2026-GAN-Accelerator.pptx" download><span>GAN accelerator — complete presentation<small>PPTX · 38 slides · 4.3 MB</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
-          <a href={person.paperUrl} target="_blank" rel="noreferrer"><span>Read the research paper<small>PDF · Architecture, results, and verification</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a href="/presentations/APSIPA-2026-GAN-Accelerator.pptx" download><span>GAN accelerator, complete presentation<small>PPTX, 38 slides, 4.3 MB</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a href={person.paperUrl} target="_blank" rel="noreferrer"><span>Read the research paper<small>PDF, Architecture, results, and verification</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
 
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">

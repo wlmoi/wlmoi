@@ -1,77 +1,25 @@
-import { EvidenceLibrary } from './components/profile/EvidenceLibrary'
-import { CareerHighlights } from './components/experience/CareerHighlights'
-import { CircuitExplorer } from './components/three/CircuitExplorer'
-import { useEffect, useMemo, useState } from 'react'
-import type { CSSProperties } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Hero } from './components/hero/Hero'
-import { Navigation } from './components/navigation/Navigation'
+import { Dock } from './components/navigation/Dock'
 import { ScrollProgress } from './components/navigation/ScrollProgress'
-import { FocusCards } from './components/profile/FocusCards'
-import { ExperienceTimeline } from './components/experience/ExperienceTimeline'
-import { OrganizationExperience } from './components/experience/OrganizationExperience'
-import { ProjectList } from './components/projects/ProjectList'
-import { CaseStudy } from './components/projects/CaseStudy'
-import { EngineeringVisual } from './components/three/EngineeringVisual'
-import { FluidShowcase } from './components/three/FluidShowcase'
-import { ContactForm } from './components/contact/ContactForm'
+import { Exhibition } from './components/exhibition/Exhibition'
+import { Background } from './components/background/Background'
+import { Closing } from './components/closing/Closing'
+import { LogoIntro } from './components/intro/LogoIntro'
 import { SiteFooter } from './components/layout/SiteFooter'
-import { ProfileSection } from './components/profile/ProfileSection'
-import { capabilities, person, recognitions, skillGroups } from './data/portfolio'
+import { person } from './data/portfolio'
 import { ResumePage } from './pages/ResumePage'
-import { gsap } from './lib/gsap'
 import { ImageLightbox } from './components/ui/ImageLightbox'
 
-const sections = ['home', 'profile', 'expertise', 'schematics', 'case-study', 'experience', 'organizations', 'evidence', 'work', 'recognition', 'contact']
-
 function PortfolioPage() {
-  const [activeId, setActiveId] = useState('home')
-
-  useEffect(()=>{const hash=window.location.hash.slice(1);if(!hash)return;const frame=requestAnimationFrame(()=>{try{document.getElementById(decodeURIComponent(hash))?.scrollIntoView({behavior:'instant',block:'start'})}catch{/* Ignore malformed anchor URLs. */}});return()=>cancelAnimationFrame(frame)},[])
-
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      if (visible) setActiveId(visible.target.id)
-    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 })
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    const frame = requestAnimationFrame(() => {
+      try { document.getElementById(decodeURIComponent(hash))?.scrollIntoView({ behavior: 'instant', block: 'start' }) } catch { /* Ignore malformed anchor URLs. */ }
     })
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const motion = gsap.matchMedia()
-    const cleanups: Array<() => void> = []
-    const context = gsap.context(() => {
-      motion.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.utils.toArray<HTMLElement>('[data-spectrum-copy], [data-skill-group], [data-capability-row], [data-motion-copy], [data-motion-list], [data-motion-card]').forEach((element) => {
-        gsap.fromTo(element, { opacity: 0, y: 24 }, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: element, start: 'top 86%', once: true },
-        })
-      })
-
-      gsap.utils.toArray<HTMLElement>('[data-skill-chip], [data-info-chip]').forEach((chip) => {
-        const lift = () => gsap.to(chip, { y: -5, scale: 1.04, color: '#ffffff', duration: 0.25, ease: 'power2.out' })
-        const settle = () => gsap.to(chip, { y: 0, scale: 1, color: 'rgba(255,255,255,0.52)', duration: 0.35, ease: 'power2.out' })
-        chip.addEventListener('mouseenter', lift)
-        chip.addEventListener('mouseleave', settle)
-        cleanups.push(() => {
-          chip.removeEventListener('mouseenter', lift)
-          chip.removeEventListener('mouseleave', settle)
-        })
-      })
-      return () => cleanups.splice(0).forEach((cleanup) => cleanup())
-      })
-    })
-    return () => { motion.revert(); context.revert() }
+    return () => cancelAnimationFrame(frame)
   }, [])
 
   useEffect(() => {
@@ -113,162 +61,21 @@ function PortfolioPage() {
     }
   }, [])
 
-  const capabilitySummary = useMemo(() => capabilities.map((item) => `${item.title} · ${item.summary}`), [])
-
   return (
-    <div className="min-h-screen bg-[hsl(var(--background))] text-white">
+    <div className="xs-page">
+      <LogoIntro />
       <ScrollProgress />
-      <Navigation activeId={activeId} />
+      <Dock />
       <main id="main-content">
-        <Hero activeId={activeId} />
-        <CareerHighlights />
-        <ProfileSection />
-
-        <section id="expertise" className="section-pad border-t border-white/[0.1]">
-          <div className="section-shell">
-            <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <div data-spectrum-copy>
-                <VoltageHeading text="A connected system of engineering capabilities." className="text-4xl font-semibold tracking-tight md:text-6xl" />
-              </div>
-              <div data-motion-copy className="flex flex-col gap-6 lg:items-end">
-                <p className="max-w-2xl text-base leading-7 text-white/[0.62]">Digital hardware and verification anchor my work; embedded AI and automation carry it into practical systems.</p>
-              </div>
-            </div>
-
-            <FocusCards />
-
-            <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-              <div className="grid gap-2">
-                {capabilities.map((capability) => (
-                  <CapabilityAccordion key={capability.id} capability={capability} />
-                ))}
-              </div>
-              <EngineeringVisual />
-            </div>
-
-            <div className="mt-14 grid gap-8 border-t border-white/[0.1] pt-8 md:grid-cols-4">
-              {Object.entries(skillGroups).map(([group, skills]) => (
-                <div key={group} data-skill-group>
-                  <p className="eyebrow">{group}</p>
-                  <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-sm leading-6 text-white/[0.52]">{skills.map((skill) => <a key={skill} data-skill-chip href={`https://www.google.com/search?client=opera&q=${encodeURIComponent(skill)}&sourceid=opera&ie=UTF-8&oe=UTF-8`} target="_blank" rel="noreferrer" className="skill-chip inline-block cursor-pointer transition-colors">{skill}</a>)}</p>
-                </div>
-              ))}
-            </div>
-            <div className="sr-only">{capabilitySummary.join(' ')}</div>
-          </div>
-        </section>
-
-        <CircuitExplorer />
-        <CaseStudy />
-
-        <section id="work" className="section-pad border-t border-white/[0.1]">
-          <div className="section-shell">
-            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-              <div data-motion-copy>
-                <VoltageHeading text="Ideas built. Results measured." className="text-4xl font-semibold tracking-tight md:text-6xl" />
-              </div>
-            </div>
-            <div className="mt-14">
-              <ProjectList />
-            </div>
-          </div>
-        </section>
-
-        <section id="experience" className="section-pad border-t border-white/[0.1]">
-          <div className="section-shell">
-            <div className="experience-section-layout">
-              <div data-motion-copy>
-                <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">Research, industry &amp; teaching.</h2>
-              </div>
-              <ExperienceTimeline />
-            </div>
-          </div>
-        </section>
-
-        <OrganizationExperience />
-        <EvidenceLibrary />
-
-        <section id="recognition" className="section-pad border-t border-white/[0.1]">
-          <div className="section-shell">
-            <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-              <div>
-                <VoltageHeading text="Education & recognition" className="text-4xl font-semibold tracking-tight md:text-6xl" />
-                <div className="mt-8"><FluidShowcase title="A connected foundation" initialEffect="trefoil" compact /></div>
-              </div>
-              <div className="grid gap-3" data-motion-list>
-                {recognitions.map((item) => (
-                  <details key={`${item.title}-${item.year}`} className="group rounded-2xl border border-white/[0.1] bg-white/[0.015] px-5 py-4">
-                    <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold">
-                      <span>{item.title}</span>
-                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.38]">{item.year}</span>
-                    </summary>
-                    <div className="pb-2 pt-4 text-sm leading-6 text-white/[0.55]">
-                      {item.issuer ? <p>{item.issuer}</p> : null}
-                      {item.detail ? <p className="mt-1">{item.detail}</p> : null}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="contact-cosmic section-pad border-t border-white/[0.1]">
-          <div className="contact-orbit" aria-hidden="true" />
-          <div className="section-shell relative">
-            <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-              <div data-motion-copy>
-                <VoltageHeading text="Let’s build systems that hold up under verification." className="text-4xl font-semibold tracking-tight md:text-6xl" />
-                <p className="mt-5 max-w-md text-base leading-7 text-white/[0.72]">Open to engineering roles, research collaboration, and work in ASIC, FPGA, verification, Edge AI, and embedded systems.</p>
-                <div className="mt-8 grid gap-2">
-                  <a href={`mailto:${person.email}`} className="text-sm text-white/[0.72] hover:text-white">{person.email}</a>
-                  <a href={person.linkedin} target="_blank" rel="noreferrer" className="text-sm text-white/[0.72] hover:text-white">linkedin.com/in/wlmoi</a>
-                </div>
-                <div className="mt-8"><FluidShowcase title="Signals become connections" initialEffect="vortex" compact /></div>
-              </div>
-              <div className="liquid-glass contact-panel rounded-[2rem] p-5 md:p-8" data-motion-card>
-                <ContactForm />
-              </div>
-            </div>
-          </div>
-        </section>
+        <Hero />
+        <Exhibition />
+        <Background />
+        <Closing />
       </main>
       <SiteFooter />
       <ImageLightbox />
     </div>
   )
-}
-
-function CapabilityAccordion({ capability }: { capability: (typeof capabilities)[number] }) {
-  return (
-    <details id={`capability-${capability.id}`} data-capability-row className="group border-t border-white/[0.1] py-4 last:border-b" open={capability.id === 'asic'}>
-      <summary className="flex cursor-pointer list-none items-start gap-5 py-2">
-        <span className="flex-1">
-          <span className="block text-xl font-semibold tracking-tight md:text-2xl">{capability.title}</span>
-          <span className="mt-2 block max-w-xl text-sm leading-6 text-white/[0.53]">{capability.summary}</span>
-        </span>
-        <span className="pt-1 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-white/[0.32] group-open:text-[hsl(var(--accent))]">Inspect</span>
-      </summary>
-      <div className="ml-10 grid gap-6 pb-3 pt-4 md:grid-cols-2">
-        <div>
-          <PendulumLabel text="Tools" />
-          <div className="mt-3 flex flex-wrap gap-2">{capability.tools.map((tool) => <span key={tool} data-info-chip className="info-chip">{tool}</span>)}</div>
-        </div>
-        <div>
-          <PendulumLabel text="Methods" />
-          <div className="mt-3 flex flex-wrap gap-2">{capability.methods.map((method) => <span key={method} data-info-chip className="info-chip">{method}</span>)}</div>
-        </div>
-      </div>
-    </details>
-  )
-}
-
-function PendulumLabel({ text }: { text: string }) {
-  return <p className="fx-pendulum eyebrow" role="img" aria-label={text}>{[...text].map((letter, index) => <b key={`${letter}-${index}`} aria-hidden="true" style={{ '--i': index } as CSSProperties}>{letter}</b>)}</p>
-}
-
-function VoltageHeading({ text, className }: { text: string; className: string }) {
-  return <h2 className={`fx-voltage ${className}`} data-text={text}>{text}</h2>
 }
 
 export default function App() {

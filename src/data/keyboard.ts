@@ -4,7 +4,7 @@ export const keyboardSkills = [
   { id: 'vhdl', legend: 'VHDL', name: 'VHDL', color: '#3967b5', shortcut: 'e', capability: 'fpga', detail: 'Synchronous logic, finite-state machines, testbenches, and FPGA teaching projects.' },
   { id: 'fpga', legend: 'FPGA', name: 'FPGA', color: '#087d82', shortcut: 'r', capability: 'fpga', detail: 'PYNQ and Cyclone platforms, hardware integration, and measured neural inference.' },
   { id: 'tcl', legend: 'TCL', name: 'Tcl', color: '#b44b87', shortcut: 't', capability: 'fpga', detail: 'Tool scripting and automation for FPGA and ASIC design workflows.' },
-  { id: 'python', legend: 'Py', name: 'Python', color: '#347cb0', shortcut: 'a', capability: 'software', detail: 'Reference models, regression automation, data analysis, and engineering tools.' },
+  { id: 'python', legend: 'Py', name: 'Python', color: '#347cb0', shortcut: 'a', capability: 'software', detail: 'Reference models and engineering tools.' },
   { id: 'c', legend: 'C', name: 'C', color: '#4f69aa', shortcut: 's', capability: 'edge-ai', detail: 'Embedded programming, structured problem solving, and microcontroller integration.' },
   { id: 'cpp', legend: 'C++', name: 'C++', color: '#1769a0', shortcut: 'd', capability: 'edge-ai', detail: 'Embedded and systems programming alongside hardware-oriented engineering work.' },
   { id: 'tensorflow', legend: 'TF', name: 'TensorFlow', color: '#d37524', shortcut: 'f', capability: 'edge-ai', detail: 'On-device model integration, audio classification, and edge AI prototypes.' },

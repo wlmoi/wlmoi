@@ -1292,7 +1292,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 /* A spatial engineering portfolio, inspired by the supplied 3D reference. */
 :root { --background: 230 45% 6%; --background-elevated: 231 35% 11%; }
 .reading-progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 100; pointer-events: none; }
-.reading-progress > div { height: 100%; background: linear-gradient(90deg,#9b80ff,#67e9d7); transform: scaleX(0); transform-origin: left; }
+.reading-progress > div { height: 100%; background: linear-gradient(90deg,#ff6b35,#ffb47e); transform: scaleX(0); transform-origin: left; }
 .hero-cosmic { position: relative; isolation: isolate; overflow: hidden; background: #080d1b; }
 .hero-cosmic::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,#080d1be6,transparent 80%),radial-gradient(ellipse at 80% 40%,#23335144,transparent 60%); }
 .cosmic-stars { position: absolute; inset: 0; opacity: .55; pointer-events: none; background-image: radial-gradient(1px 1px at 13% 19%,#d9d8ff 70%,transparent),radial-gradient(1px 1px at 75% 40%,#a7eee3 70%,transparent),radial-gradient(1px 1px at 40% 70%,#e1e5ff 70%,transparent); background-size: 157px 211px,233px 179px,307px 269px; }
@@ -1311,7 +1311,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .hero-intro-marker > span { width: 2px; height: 265px; background: linear-gradient(#a58bff88,transparent); }
 .hero-intro-copy { min-width: 0; }
 .hero-cosmic h1 { margin-top: 0; font: 500 clamp(58px,6.7vw,96px)/.99 var(--font-body); letter-spacing: -.065em; }
-.hero-cosmic h1 > span { display: inline-block; color: #b7a2ff; }
+.hero-cosmic h1 > span { display: inline-block; color: #ff6b35; }
 .hero-name-dot { color: #7ee7d6; }
 .hero-statement { margin-top: 25px; font-size: clamp(20px,2.2vw,30px); line-height: 1.45; letter-spacing: -.025em; color: #eff1fc; }
 .hero-statement em { color: #b3bfce; font-family: var(--font-display); font-size: 1.2em; }
@@ -1460,8 +1460,8 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .hero-stage-canvas:focus-visible { outline: 1px solid #9acde755; outline-offset: -6px; border-radius: 14px; }
 .keyboard-inspector { position: absolute; z-index: 3; bottom: 58px; left: 26px; right: 26px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 18px; border: 1px solid #a1c6e22b; border-radius: 12px; padding: 16px; background: #111d30cf; backdrop-filter: blur(12px); }
 .keyboard-selection { min-width: 0; }
-.keyboard-selection label { display: block; font: 7px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: #89a4bb; }
-.keyboard-selection select { display: block; width: 100%; margin-top: 9px; min-height: 30px; border: 0; background: transparent; color: #e7f2fc; font-size: 13px; color-scheme: dark; cursor: pointer; }
+.keyboard-selection label { display: block; font: 700 13px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: #89a4bb; }
+.keyboard-selection select { display: block; width: 100%; margin-top: 9px; min-height: 40px; border: 0; background: transparent; color: #fff; font-size: 20px; font-weight: 600; color-scheme: dark; cursor: pointer; }
 .keyboard-selection select option { background: #132035; color: white; }
 .keyboard-skill-copy p { font-size: 9px; line-height: 1.8; color: #a6b8ce; }
 .keyboard-skill-copy a { display: inline-flex; align-items: center; gap: 7px; min-height: 30px; margin-top: 3px; color: #a6dcdf; font-size: 9px; }
@@ -1476,7 +1476,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 @media (max-width: 1023px) {
   .keyboard-stage { height: 510px; }
   .keyboard-inspector { left: 15px; right: 15px; gap: 10px; padding: 12px; }
-  .keyboard-selection select { font-size: 11px; }
+  .keyboard-selection select { font-size: 16px; }
   .keyboard-skill-copy p { font-size: 8px; }
 }
 @media (max-width: 767px) {
@@ -1488,8 +1488,8 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
   .keyboard-key { height: 48px; min-height: 44px; border-radius: 6px; }
   .keyboard-key strong { font-size: 16px; }
   .keyboard-inspector { left: 8px; right: 8px; bottom: 53px; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); padding: 12px; }
-  .keyboard-selection label { font-size: 6px; }
-  .keyboard-selection select { font-size: 10px; min-height: 36px; }
+  .keyboard-selection label { font-size: 11px; }
+  .keyboard-selection select { font-size: 16px; min-height: 36px; }
   .keyboard-skill-copy p, .keyboard-skill-copy a { font-size: 8px; }
   .keyboard-stage .stage-bottomline { left: 17px; right: 17px; font-size: 7px; }
 }
@@ -1558,7 +1558,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 /* Particle typography and circuit atlas */
 .hero-cosmic h1.particle-title{position:relative;max-width:100%;width:450px}
 .hero-cosmic h1>.particle-title-copy{font:inherit;letter-spacing:inherit;text-align:left;color:#edf7ff;display:block}
-.particle-title-copy>span{color:#b7a2ff}
+.particle-title-copy>span{color:#ff6b35}
 .particle-title canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .particle-title[data-particles=ready]>.particle-title-copy{opacity:.8}
 .hero-cosmic .hero-agentic{margin-top:9px;border-color:#a18af54d;background:#9476e90b}
@@ -1568,7 +1568,7 @@ button[aria-expanded="true"] .project-toggle { transform: rotate(180deg); backgr
 .keyboard-audio{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #ffffff15;padding-top:9px;font-size:10px;color:#b9c9dd}
 .keyboard-audio button{border:1px solid #a99cc955;border-radius:5px;padding:5px 10px;color:#dfd5ff}
 .keyboard-audio label{display:flex;align-items:center;gap:8px}
-.keyboard-audio input{width:90px;accent-color:#b7a2ff}
+.keyboard-audio input{width:90px;accent-color:#ff6b35}
 .circuit-intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:20px 0 35px;align-items:end}
 .circuit-intro h2{font-size:clamp(32px,4vw,58px);line-height:1.1;letter-spacing:-.04em}
 .circuit-intro p{font-size:14px;line-height:1.8;color:#9ca6b6;max-width:480px}
@@ -1687,7 +1687,7 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
 @media(max-width:1100px){.planar-main{grid-template-columns:minmax(0,1fr) 275px}.planar-inspector{padding:24px 20px}.planar-viewport{height:450px}.planar-topline>span{display:none}}
 @media(max-width:767px){.planar-topline{padding:22px 18px}.planar-topline h3{font-size:20px}.planar-main{grid-template-columns:1fr}.planar-camera-controls{padding:17px 16px 0}.planar-camera-controls button{min-height:42px}.planar-viewport{height:340px}.planar-layer-controls{padding:4px 16px 22px}.planar-inspector{border-left:0;border-top:1px solid #ffffff15;padding:24px 20px}.planar-input-buttons button{min-height:60px}.planar-part-info{min-height:200px}.planar-part-picker{padding:18px 16px;gap:7px}.planar-part-picker button{padding:8px 10px;font-size:9px}.planar-footnote{padding:0 18px 18px;flex-direction:column;align-items:flex-start;gap:5px}.planar-gesture-hint{font-size:7px}}
 .planar-reference-links{display:flex;flex-wrap:wrap;gap:10px 24px;border-top:1px solid #ffffff10;padding:12px 25px 15px;color:#738ba3;font-size:9px}.planar-reference-links a{min-height:32px;display:inline-flex;align-items:center}.planar-reference-links a:hover{color:#b6d6df}
-.circuit-detail-tools{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 22px 18px;color:#849bb4;font-size:10px}.circuit-detail-tools label{display:flex;align-items:center;gap:12px}.circuit-detail-tools input{width:120px;accent-color:#b7a2ff}.circuit-detail-tools output{font:9px var(--font-mono)}.circuit-detail-tools>span{display:flex;align-items:center;gap:6px;font-size:9px}.circuit-detail-tools i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-left:5px}.circuit-mosfet-inspector{display:flex;justify-content:space-between;align-items:center;gap:25px;margin:18px 22px 0;padding:17px;border:1px solid #9badca30;border-radius:9px;background:#18304444}.circuit-mosfet-inspector span{font:10px var(--font-mono);color:#b9d7ee}.circuit-mosfet-inspector p{color:#8da4bb;font-size:11px;line-height:1.8;margin-top:8px;max-width:580px}.circuit-mosfet-inspector a{flex-shrink:0;font-size:10px;color:#a8e7d6;min-height:44px;display:flex;align-items:center}.circuit-viewport{overflow:hidden}@media(max-width:767px){.circuit-detail-tools{align-items:flex-start;flex-direction:column;gap:12px;padding:0 16px 18px}.circuit-mosfet-inspector{align-items:flex-start;flex-direction:column;gap:12px;margin:16px 16px 0;padding:15px}}
+.circuit-detail-tools{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 22px 18px;color:#849bb4;font-size:10px}.circuit-detail-tools label{display:flex;align-items:center;gap:12px}.circuit-detail-tools input{width:120px;accent-color:#ff6b35}.circuit-detail-tools output{font:9px var(--font-mono)}.circuit-detail-tools>span{display:flex;align-items:center;gap:6px;font-size:9px}.circuit-detail-tools i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-left:5px}.circuit-mosfet-inspector{display:flex;justify-content:space-between;align-items:center;gap:25px;margin:18px 22px 0;padding:17px;border:1px solid #9badca30;border-radius:9px;background:#18304444}.circuit-mosfet-inspector span{font:10px var(--font-mono);color:#b9d7ee}.circuit-mosfet-inspector p{color:#8da4bb;font-size:11px;line-height:1.8;margin-top:8px;max-width:580px}.circuit-mosfet-inspector a{flex-shrink:0;font-size:10px;color:#a8e7d6;min-height:44px;display:flex;align-items:center}.circuit-viewport{overflow:hidden}@media(max-width:767px){.circuit-detail-tools{align-items:flex-start;flex-direction:column;gap:12px;padding:0 16px 18px}.circuit-mosfet-inspector{align-items:flex-start;flex-direction:column;gap:12px;margin:16px 16px 0;padding:15px}}
 #schematic-library+.planar-inverter{margin-top:38px;margin-bottom:0}
 
 /* Experience: scroll-driven photographic depth, with a flat reading surface. */
@@ -1813,7 +1813,7 @@ button.highlight-image{display:block;width:100%;text-align:left;cursor:zoom-in}
   .hero-description { font-size: 14px; line-height: 1.75; }
   .hero-cosmic .hero-award { font-size: 11px; }
   .hero-cosmic-footer .hero-proof span { font-size: 10px; }
-  .keyboard-selection label { font-size: 9px; }
+  .keyboard-selection label { font-size: 12px; }
   .keyboard-skill-copy p { font-size: 12px; line-height: 1.55; }
   .keyboard-skill-copy a { min-height: 36px; font-size: 11px; }
   .keyboard-audio { font-size: 11px; }

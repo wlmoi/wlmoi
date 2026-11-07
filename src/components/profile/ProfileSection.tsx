@@ -5,36 +5,36 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { CredentialsList } from './CredentialsList'
 
 const photos = [
-  { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics / field work', width: 1280, height: 960 },
-  { src: '/photos/RunningWithMrNanaSutisnaPHD.jpeg', alt: 'William Anthony with Mr Nana Sutisna, PhD', label: 'Field study / collaboration', width: 900, height: 1600 },
-  { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga / Bandung', width: 400, height: 400 },
+  { type: 'video' as const, src: '/photos/ElectronicsVideo.mp4', alt: 'William Anthony electronics field video', label: 'Electronics, field work', width: 1280, height: 960 },
+  { src: '/photos/RunningWithMrNanaSutisnaPHD.jpeg', alt: 'William Anthony with Mr Nana Sutisna, PhD', label: 'Field study, collaboration', width: 900, height: 1600 },
+  { src: '/photos/Foto%20DiBraga.jpeg', alt: 'William Anthony at Braga, Bandung', label: 'Braga, Bandung', width: 400, height: 400 },
   { src: '/photos/WilliamAnthonyCasual.jpg', alt: 'William Anthony outdoors', label: 'Field notes', width: 1200, height: 1600 },
-  { src: '/photos/Foto-Foto%20untuk%20dishare.jpeg', alt: 'William Anthony teaching and serving with a community', label: 'Teaching / service', width: 1000, height: 1250 },
+  { src: '/photos/Foto-Foto%20untuk%20dishare.jpeg', alt: 'William Anthony teaching and serving with a community', label: 'Teaching, service', width: 1000, height: 1250 },
   { src: '/photos/ANUGERAHCITRAGANESHA_William_Achievement.png', alt: 'William Anthony receiving an academic achievement award', label: 'Achievement', width: 881, height: 885 },
   { src: '/photos/ASISTENPRAKTIKUM.jpeg', alt: 'William Anthony during laboratory instruction', label: 'Laboratory instruction', width: 1254, height: 836 },
-  { src: '/photos/Foto%20DiBraga%20Blurred.png', alt: 'William Anthony at Braga, Bandung', label: 'Braga / portrait study', width: 1152, height: 2048 },
+  { src: '/photos/Foto%20DiBraga%20Blurred.png', alt: 'William Anthony at Braga, Bandung', label: 'Braga, portrait study', width: 1152, height: 2048 },
   { src: '/photos/GANESHAAWARD2024.jpeg', alt: 'William Anthony at the Ganesha Award ceremony', label: 'Ganesha Award', width: 1080, height: 1078 },
   { src: '/photos/ISPACS2025.jpeg', alt: 'William Anthony at ISPACS 2025', label: 'ISPACS 2025', width: 720, height: 1280 },
   { src: '/photos/ITB86.jpeg', alt: 'William Anthony at an Institut Teknologi Bandung activity', label: 'ITB community', width: 1280, height: 960 },
   { src: '/photos/KADERBELANEGARA.jpeg', alt: 'William Anthony at a civic leadership activity', label: 'Civic leadership', width: 1280, height: 960 },
   { src: '/photos/MENEMBAK.JPG', alt: 'William Anthony at a field activity', label: 'Field activity', width: 2592, height: 1728 },
   { src: '/photos/MENWAITB.jpeg', alt: 'William Anthony with the ITB community', label: 'ITB community', width: 1280, height: 960 },
-  { src: '/photos/PEMATERI_ITB_JTR2024.jpeg', alt: 'William Anthony presenting at ITB JTR 2024', label: 'Presenter / 2024', width: 800, height: 599 },
+  { src: '/photos/PEMATERI_ITB_JTR2024.jpeg', alt: 'William Anthony presenting at ITB JTR 2024', label: 'Presenter, 2024', width: 800, height: 599 },
   { src: '/photos/PENGABDIANKEAGAMAAN.jpeg', alt: 'William Anthony during a community service activity', label: 'Community service', width: 1280, height: 720 },
-  { src: '/photos/PPSNMENGAJAR2023_KETUA.jpeg', alt: 'William Anthony teaching during PPSN 2023', label: 'Teaching / 2023', width: 960, height: 1280 },
-  { src: '/photos/PPSNMENGAJAR2023_PANIT.jpeg', alt: 'William Anthony supporting PPSN 2023', label: 'PPSN / 2023', width: 1280, height: 720 },
-  { src: '/photos/PPSNMENGAJAR2024.jpeg', alt: 'William Anthony teaching during PPSN 2024', label: 'Teaching / 2024', width: 1600, height: 1200 },
+  { src: '/photos/PPSNMENGAJAR2023_KETUA.jpeg', alt: 'William Anthony teaching during PPSN 2023', label: 'Teaching, 2023', width: 960, height: 1280 },
+  { src: '/photos/PPSNMENGAJAR2023_PANIT.jpeg', alt: 'William Anthony supporting PPSN 2023', label: 'PPSN, 2023', width: 1280, height: 720 },
+  { src: '/photos/PPSNMENGAJAR2024.jpeg', alt: 'William Anthony teaching during PPSN 2024', label: 'Teaching, 2024', width: 1600, height: 1200 },
   { src: '/photos/SOTONG.jpeg', alt: 'William Anthony at a student activity', label: 'Student life', width: 960, height: 1280 },
-  { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon / final presentation', width: 1280, height: 720 },
-  { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon / internship epilogue', width: 1280, height: 720 },
-  { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon / diversity and inclusion', width: 1600, height: 900 },
-  { src: '/photos/SignalSystems.jpeg', alt: 'William Anthony during the Signal and Systems course', label: 'ITB / Signal and Systems', width: 1280, height: 720 },
-  { src: '/proof-of-work/PPSNMENGAJAR.jpeg', alt: 'William Anthony teaching during PPSN', label: 'PPSN / teaching', width: 1280, height: 720 },
-  { src: '/photos/CalledForAnugerahCitraGanesha2025ITB.jpeg', alt: 'William Anthony called for the Citra Ganesha Award at ITB', label: 'Citra Ganesha / 2025', width: 900, height: 1600 },
-  { src: '/photos/MakingDSPKitsforPracticum.jpeg', alt: 'William Anthony making DSP kits for practicum', label: 'DSP kits / practicum', width: 900, height: 1600 },
-  { src: '/photos/OceanographyClass_Electro.jpeg', alt: 'William Anthony during an oceanography electronics class', label: 'Oceanography / electronics', width: 900, height: 1600 },
-  { src: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William Anthony testing FPGA hardware on PYNQ', label: 'PYNQ / FPGA testing', width: 900, height: 1600 },
-  { src: '/photos/STEI_Lab.jpeg', alt: 'William Anthony in the STEI laboratory', label: 'STEI / laboratory', width: 1280, height: 720 },
+  { src: '/photos/AlconFinalInternshipPresentation.jpeg', alt: 'William Anthony presenting during the Alcon internship', label: 'Alcon, final presentation', width: 1280, height: 720 },
+  { src: '/photos/AlconInternshipEpilog.jpeg', alt: 'William Anthony during the Alcon internship epilogue', label: 'Alcon, internship epilogue', width: 1280, height: 720 },
+  { src: '/photos/DiversityandInclusionDayinAlcon.jpeg', alt: 'William Anthony at Alcon Diversity and Inclusion Day', label: 'Alcon, diversity and inclusion', width: 1600, height: 900 },
+  { src: '/photos/SignalSystems.jpeg', alt: 'William Anthony during the Signal and Systems course', label: 'ITB, Signal and Systems', width: 1280, height: 720 },
+  { src: '/proof-of-work/PPSNMENGAJAR.jpeg', alt: 'William Anthony teaching during PPSN', label: 'PPSN, teaching', width: 1280, height: 720 },
+  { src: '/photos/CalledForAnugerahCitraGanesha2025ITB.jpeg', alt: 'William Anthony called for the Citra Ganesha Award at ITB', label: 'Citra Ganesha, 2025', width: 900, height: 1600 },
+  { src: '/photos/MakingDSPKitsforPracticum.jpeg', alt: 'William Anthony making DSP kits for practicum', label: 'DSP kits, practicum', width: 900, height: 1600 },
+  { src: '/photos/OceanographyClass_Electro.jpeg', alt: 'William Anthony during an oceanography electronics class', label: 'Oceanography, electronics', width: 900, height: 1600 },
+  { src: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William Anthony testing FPGA hardware on PYNQ', label: 'PYNQ, FPGA testing', width: 900, height: 1600 },
+  { src: '/photos/STEI_Lab.jpeg', alt: 'William Anthony in the STEI laboratory', label: 'STEI, laboratory', width: 1280, height: 720 },
 ]
 
 export function ProfileSection() {
@@ -58,7 +58,7 @@ export function ProfileSection() {
 
             <h3 className="mt-12 mb-3 text-sm font-semibold">Roles of interest</h3>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {['FPGA Engineer', 'Design Verification Engineer', 'Web Developer', 'Digital Signal Processing Engineer', 'Process Engineer', 'Automation Engineer', 'Analog/Digital IC Design'].map((role) => (
+              {['FPGA Engineer', 'Design Verification Engineer', 'Web Developer', 'Digital Signal Processing Engineer', 'Process Engineer', 'Automation Engineer', 'Analog and Digital IC Design'].map((role) => (
                 <div key={role} className="role-card" data-info-chip>
                   <p>{role}</p>
                 </div>
@@ -70,14 +70,14 @@ export function ProfileSection() {
             <div className="grid gap-5">
               <div className="liquid-glass rounded-[2rem] p-6">
                 <h3 className="text-2xl font-semibold tracking-tight">{education.degree}</h3>
-                <p className="mt-2 text-sm text-white/[0.62]">{education.institution} · {education.location}</p>
-                <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">{education.dates} · GPA {education.gpa}</p>
-                <p className="mt-5 text-sm leading-6 text-white/[0.57]">Focus: {education.focus.join(' · ')}</p>
+                <p className="mt-2 text-sm text-white/[0.62]">{education.institution}, {education.location}</p>
+                <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/[0.42]">{education.dates}, GPA {education.gpa}</p>
+                <p className="mt-5 text-sm leading-6 text-white/[0.57]">Focus: {education.focus.join(', ')}</p>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <InfoList title="Coursework" items={education.coursework} />
-                <InfoList title="Languages" items={languages.map(([name, level]) => `${name} · ${level}`)} />
+                <InfoList title="Languages" items={languages.map(([name, level]) => `${name}, ${level}`)} />
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@ function FullBleedCarousel() {
       <div className="photo-carousel-overlay">
         <p className="text-sm font-semibold text-white">{photos[activePhoto].label}</p>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[0.65rem] text-white/[0.7]">{String(activePhoto + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
+          <span className="font-mono text-[0.65rem] text-white/[0.7]">{String(activePhoto + 1).padStart(2, '0')} of {String(photos.length).padStart(2, '0')}</span>
           <button type="button" onClick={() => goTo(activePhoto - 1)} className="photo-carousel-button" aria-label="Previous profile photo"><ChevronLeft size={17} aria-hidden="true" /></button>
           <button type="button" onClick={() => goTo(activePhoto + 1)} className="photo-carousel-button" aria-label="Next profile photo"><ChevronRight size={17} aria-hidden="true" /></button>
         </div>
@@ -170,7 +170,7 @@ function FullBleedCarousel() {
       <article className="outstanding-card" aria-label="William Anthony recognition">
         <img src="/OUTSTANDING.jpg" alt="William Anthony receiving an outstanding student recognition" width="225" height="225" />
         <div className="outstanding-card-copy">
-          <p className="text-sm font-semibold leading-5">Most Outstanding Student, Electrical & Electronics Engineering · ITB · 2026</p>
+          <p className="text-sm font-semibold leading-5">Most Outstanding Student, Electrical & Electronics Engineering, ITB, 2026</p>
         </div>
       </article>
       <div className="photo-carousel-dots" aria-label="Choose a photo">

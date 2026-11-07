@@ -161,12 +161,12 @@ export function HeroStage() {
       {canRender ? <SceneBoundary fallback={fallback} onFailure={()=>setCanRender(false)}><Suspense fallback={fallback}><HeroScene key={`${mode}-${viewVersion}`} paused={stopped} mode={mode} selectedId={selectedId} pressCount={pressCount} onSelect={selectSkill} selectedBoardModule={selectedBoardModule} onBoardModuleSelect={setSelectedBoardModule} /></Suspense></SceneBoundary> : <div key={`${mode}-${viewVersion}`} ref={fallbackOrbit} className="hero-fallback-orbit">{fallback}</div>}
     </div>
     {mode==='keyboard' ? <div className="keyboard-inspector">
-      <div className="keyboard-selection"><label htmlFor="keyboard-skill">Explore a skill</label><select id="keyboard-skill" value={selectedId} onChange={event=>selectSkill(event.target.value,false)}>{keyboardSkills.map(skill=><option key={skill.id} value={skill.id}>{skill.name}</option>)}</select></div>
+      <div className="keyboard-selection"><label htmlFor="keyboard-skill">Tech stack</label><select id="keyboard-skill" value={selectedId} onChange={event=>selectSkill(event.target.value,false)}>{keyboardSkills.map(skill=><option key={skill.id} value={skill.id}>{skill.name}</option>)}</select></div>
       <div className="keyboard-skill-copy"><p aria-live="polite" aria-atomic="true"><strong className="sr-only">{selected.name}: </strong>{selected.detail}</p><a href={`#capability-${selected.capability}`} onClick={()=>{const detail=document.getElementById(`capability-${selected.capability}`);if(detail instanceof HTMLDetailsElement)detail.open=true}}>Explore expertise <ArrowUpRight size={12} aria-hidden="true" /></a></div>
       <div className="keyboard-audio"><button type="button" onClick={sound.preview}>Test sound</button><label>Volume <input aria-label="Keyboard volume" type="range" min=".1" max="1" step=".05" value={sound.volume} onChange={event=>sound.setVolume(Number(event.target.value))} /></label></div>
     </div> : null}
     <div className="stage-bottomline">
-      {mode === 'keyboard' ? <span className="stage-gesture-hint">Drag to rotate · select a key to explore</span> : null}
+      {mode === 'keyboard' ? <span className="stage-gesture-hint">Drag to rotate, select a key to explore</span> : null}
       <div className="stage-controls"><button type="button" onClick={()=>{setViewVersion(value=>value+1);resetOrientation()}}>Reset view</button>
         {mode==='keyboard' ? <button type="button" onClick={sound.toggle} aria-pressed={sound.enabled} aria-label={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'} title={sound.enabled ? 'Mute keyboard sound' : 'Enable keyboard sound'}>{sound.enabled ? <Volume2 size={13} aria-hidden="true" /> : <VolumeX size={13} aria-hidden="true" />}<span>Sound {sound.enabled ? 'on' : 'off'}</span></button> : null}
 

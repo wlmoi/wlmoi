@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    environment:
+      HOME: /app/.home
+      __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: ".fly.dev,localhost"
+    volumes:
+      - .:/app
+    command: ["sh", "-c", "npm install && npm run dev -- --host 0.0.0.0 --port 5173"]
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5173').then(r=>process.exit(r.status<500?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s

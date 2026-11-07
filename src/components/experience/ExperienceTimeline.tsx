@@ -98,8 +98,8 @@ export function ExperienceTimeline() {
         {roles.map((item, index) => (
           <article id={`experience-${item.id}`} key={item.id} tabIndex={-1} className="experience-gallery-item" aria-labelledby={`experience-title-${item.id}`} data-active={activeIndex === index}>
             <div className="experience-gallery-image-stage">
-              <button type="button" className="experience-gallery-photo" data-zoom-src={getExperienceImage(item.title, item.organization)} data-zoom-alt={`${item.title} — supporting photo`} aria-label={`Enlarge ${item.title} photo`}>
-                <img src={getExperienceImage(item.title, item.organization)} alt={`${item.title} — supporting photo`} loading="lazy" decoding="async" width="680" height="510" />
+              <button type="button" className="experience-gallery-photo" data-zoom-src={getExperienceImage(item.title, item.organization)} data-zoom-alt={`${item.title}, supporting photo`} aria-label={`Enlarge ${item.title} photo`}>
+                <img src={getExperienceImage(item.title, item.organization)} alt={`${item.title}, supporting photo`} loading="lazy" decoding="async" width="680" height="510" />
                 <span className="experience-photo-caption"><span>{String(index + 1).padStart(2, '0')} / {item.organization === 'Alcon' ? 'Industry' : item.title.includes('Assistant') || item.title.includes('Coordinator') ? 'Research & teaching' : 'Engineering'}</span><Expand size={16} aria-hidden="true" /></span>
               </button>
             </div>
@@ -109,8 +109,8 @@ export function ExperienceTimeline() {
               <p className="experience-gallery-org">{item.organization}</p>
                             <dl className="experience-gallery-context experience-facts">
                 {item.employmentType ? <div><dt>Employment type:</dt><dd>{item.employmentType}</dd></div> : null}
-                {item.location ? <div><dt>Location:</dt><dd>{item.location.split(' · ')[0]}</dd></div> : null}
-                {item.location?.includes(' · ') ? <div><dt>Work arrangement:</dt><dd>{item.location.split(' · ').slice(1).join(', ')}</dd></div> : null}
+                {item.location ? <div><dt>Location:</dt><dd>{item.location.split('\u00b7')[0]}</dd></div> : null}
+                {item.location?.includes('\u00b7') ? <div><dt>Work arrangement:</dt><dd>{item.location.split('\u00b7').slice(1).join(', ')}</dd></div> : null}
               </dl>
               <p className="experience-gallery-summary">{item.summary}</p>
               {item.bullets?.length ? <details className="experience-responsibilities">

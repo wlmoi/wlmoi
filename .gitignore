@@ -4,4 +4,4 @@ dist/
 .env.*
 !.env.example
 .vercel/
-*.log
+*.logdocker-compose.override.yml
