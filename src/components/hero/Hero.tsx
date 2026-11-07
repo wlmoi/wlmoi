@@ -18,20 +18,12 @@ export function Hero() {
     return () => context.revert()
   }, [reducedMotion])
 
-  const portrait = (
-    <img src="/photos/WilliamAnthonyCasual.jpg" alt="" width={1200} height={1600} decoding="async" />
-  )
-
   return (
     <section ref={root} id="home" className="xh-hero" aria-label="Introduction">
       <div className="xh-stars" aria-hidden="true" />
       <div className="xh-hero-grid">
         <div className="xh-hero-copy">
           <div className="xh-id" data-hero-reveal>
-            <figure className="xh-portrait xh-portrait-inline">
-              {portrait}
-              <figcaption className="sr-only">William Anthony</figcaption>
-            </figure>
             <p className="xh-eyebrow"><span className="xh-name">William Anthony</span><span className="xh-role">Inside the machine</span></p>
           </div>
           <h1 data-hero-reveal>I build intelligence <em>into working systems.</em></h1>
@@ -48,10 +40,6 @@ export function Hero() {
         </div>
         <div className="xh-hero-stage" data-hero-stage>
           <HeroChip />
-          <figure className="xh-portrait xh-portrait-float" data-hero-reveal>
-            {portrait}
-            <figcaption>William Anthony</figcaption>
-          </figure>
         </div>
       </div>
     </section>
