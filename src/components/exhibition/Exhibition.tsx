@@ -195,6 +195,7 @@ export function Exhibition() {
         </div>
 
         <div className="xe-more-projects">
+          <a href="/projects/b200/replay.html" className="mb-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[hsl(var(--accent))]">Open Computer Vision replay <ArrowUpRight size={16} aria-hidden="true" /></a>
           <button type="button" aria-expanded={moreOpen} aria-controls="xe-all" onClick={() => setMoreOpen((value) => !value)}>
             {moreOpen ? 'Hide the full project list' : `Browse all ${hiddenCount} projects`} <ChevronDown size={15} aria-hidden="true" />
           </button>

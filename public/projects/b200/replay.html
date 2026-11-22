@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B200 Traffic Monitoring | William Anthony</title>
+<style>
+:root{color-scheme:dark;background:#0c1420;color:#edf4fc;font:16px/1.5 system-ui,sans-serif}*{box-sizing:border-box}
+body{margin:0}main{max-width:1060px;padding:clamp(16px,4vw,44px);margin:auto}h1{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:.22em 0;letter-spacing:-.05em}h2{margin:.65rem 0;font-size:1.3rem}p{margin:.5rem 0 1rem;color:#b7c6d7}a{color:#82efce}video{display:block;width:100%;border-radius:12px;background:#080d15}
+.panel{background:#142032;border:1px solid #30415a;padding:clamp(12px,2vw,22px);border-radius:16px;margin:18px 0}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.metrics{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:18px 0}.metric{padding:12px;border:1px solid #30415a;border-radius:10px}.metric strong{display:block;font-size:1.65rem;color:#fff}button{border:1px solid #456079;color:#e6f6ff;background:#20354d;border-radius:8px;padding:.5rem .85rem;font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #82efce;outline-offset:3px}.tag{font-size:.83rem;text-transform:uppercase;letter-spacing:.1em;color:#82efce}
+</style></head><body><main>
+<a href="/#work" target="_top">Back to William’s portfolio</a>
+<p class="tag">Computer Vision</p><h1>B200 Traffic Monitoring</h1><p>Developed by William Anthony</p>
+<div class="metrics" aria-label="Clip review totals"><div class="metric"><strong>1,440</strong>Analyzed frames</div><div class="metric"><strong>1,418</strong>Frames with vehicle tracks</div><div class="metric"><strong>172</strong>Distinct tracker IDs</div></div>
+<section class="panel" aria-labelledby="recording"><h2 id="recording">Three-minute detection replay</h2>
+<video controls playsinline preload="metadata" src="./annotated.mp4"></video>
+<div class="row" style="margin-top:12px"><button type="button" id="minute">Jump to 01:00</button><a href="https://www.youtube.com/watch?v=esF3NYmIg5g" target="_blank" rel="noopener">Original recording</a></div>
+<p>At 01:00, check the two moving scooters and the parked purple scooter. The boxes show saved YOLO11n and ByteTrack outputs at 8 analyzed frames per second. Tracker IDs do not measure traffic volume or accuracy.</p>
+</section>
+<section class="panel" aria-labelledby="model"><h2 id="model">Model and training data</h2><p>YOLO11n uses convolutional layers to learn visual patterns. Its detection head predicts the class and position of each vehicle box. ByteTrack associates boxes across video frames. The checkpoint was pretrained on MS COCO. This street clip was used for review.</p>
+<div class="row"><a href="https://github.com/wlmoi/NoiseMonitoring/tree/streamlit-b200/B200/Traffic-CV/dashboard" target="_blank" rel="noopener">Streamlit source on GitHub</a><a href="https://docs.ultralytics.com/models/yolo11" target="_blank" rel="noopener">YOLO11</a><a href="https://arxiv.org/abs/1405.0312" target="_blank" rel="noopener">MS COCO</a><a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/315_ECCV_2022_paper.php" target="_blank" rel="noopener">ByteTrack</a></div></section>
+</main><script>const video=document.querySelector('video');document.querySelector('#minute').addEventListener('click',()=>{if(video.readyState){video.currentTime=60;}else{video.addEventListener('loadedmetadata',()=>video.currentTime=60,{once:true});}});</script></body></html>

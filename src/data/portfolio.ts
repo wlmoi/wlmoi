@@ -203,7 +203,7 @@ export const projects: Project[] = [
     challenge: 'Keep a clear link between each vehicle box, its video timestamp, and the track ID so results can be checked against the footage.',
     outcome: 'Reviewed a three-minute street clip and exposed the recorded boxes and IDs for verification, with separate inference for uploaded photos.',
     discipline: 'Computer Vision',
-    previewUrl: 'https://bytes-warm-identifies-trees.trycloudflare.com/',
+    previewUrl: '/projects/b200/replay.html',
   },
   {
     id: 'iot-noise',
