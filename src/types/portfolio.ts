@@ -16,7 +16,8 @@ export type Project = {
   outcome: string
   status?: 'ongoing' | 'selected'
   href?: string
-  discipline?: 'Hardware & AI' | 'Software & automation' | 'Design verification' | 'DSP' | 'IoT & embedded' | 'Data analytics'
+  previewUrl?: string
+  discipline?: 'Computer Vision' | 'Hardware & AI' | 'Software & automation' | 'Design verification' | 'DSP' | 'IoT & embedded' | 'Data analytics'
   metrics?: [string, string][]
   resources?: { title: string; href: string; format: string }[]
   images?: { src: string; alt: string; caption: string }[]

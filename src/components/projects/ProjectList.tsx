@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowUpRight, ChevronDown, MoveUpRight } from 'lucide-react'
 import { projects } from '../../data/portfolio'
 
-const filters = ['All work', 'Hardware & AI', 'Design verification', 'DSP', 'IoT & embedded', 'Software & automation', 'Data analytics'] as const
+const filters = ['All work', 'Computer Vision', 'Hardware & AI', 'Design verification', 'DSP', 'IoT & embedded', 'Software & automation', 'Data analytics'] as const
 const highlights = [
   { id: 'igor', title: 'IGOR', image: '/projects/igor/robot-side.jpeg', alt: 'The IGOR robot prototype at the PERURI Chip Hackathon', tags: ['FPGA', 'Neural inference', 'Verification'] },
   { id: 'fpga-gan', title: 'Programmable GAN', image: '/photos/PYNQ-FPGATESTING-FPGAENGINEER.jpeg', alt: 'William testing an FPGA system on the PYNQ platform', tags: ['PYNQ-Z1', 'SystemVerilog', 'Python'] },
@@ -11,6 +11,7 @@ const highlights = [
 
 export function ProjectList() {
   const [open, setOpen] = useState<string | null>('igor')
+  const [preview, setPreview] = useState<string | null>(null)
   const [filter, setFilter] = useState<(typeof filters)[number]>('All work')
   const visible = projects.filter((project) => filter === 'All work' || (project.discipline ?? 'Hardware & AI') === filter)
   const exploreProject = (id: string) => {
@@ -56,6 +57,16 @@ export function ProjectList() {
                     <div><p className="eyebrow">Result</p><p className="mt-2 text-sm leading-7 text-white/70">{project.outcome}</p>{project.status === 'ongoing' ? <span className="project-status">In progress</span> : null}</div>
                   </div>
                   {project.href ? <a href={project.href} target="_blank" rel="noreferrer" className="mt-7 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[hsl(var(--accent))]">Explore project <ArrowUpRight size={16} aria-hidden="true" /></a> : null}
+                  {project.previewUrl && isOpen ? <div className="mt-7">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <button type="button" className="info-chip min-h-11" aria-expanded={preview === project.id} aria-controls={`preview-${project.id}`} onClick={() => setPreview(preview === project.id ? null : project.id)}>{preview === project.id ? 'Hide dashboard' : 'Show dashboard here'}</button>
+                      <a href={project.previewUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[hsl(var(--accent))]">Open Streamlit dashboard <ArrowUpRight size={16} aria-hidden="true" /></a>
+                    </div>
+                    <p className="mt-2 text-sm text-white/65">The dashboard preview is available while its temporary host is running.</p>
+                    <div id={`preview-${project.id}`} hidden={preview !== project.id}>
+                      {preview === project.id ? <iframe src={project.previewUrl} title={`${project.title} dashboard`} allow="camera" className="mt-4 h-[min(78vh,850px)] min-h-[440px] w-full rounded-xl border border-white/15 bg-slate-950" /> : null}
+                    </div>
+                  </div> : null}
                   {project.resources ? <div className="project-resources">{project.resources.map((resource) => <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer"><span>{resource.title}<small>{resource.format}</small></span><ArrowUpRight size={18} aria-hidden="true" /></a>)}</div> : null}
                 </div>
               </div>

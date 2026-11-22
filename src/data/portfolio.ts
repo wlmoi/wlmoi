@@ -195,6 +195,17 @@ export const projects: Project[] = [
     discipline: 'Hardware & AI',
   },
   {
+    id: 'b200-traffic',
+    title: 'B200 Traffic Monitoring',
+    context: 'Computer vision dashboard for detecting and tracking vehicles in Indonesian street footage.',
+    role: 'Integrated vehicle inference, tracking, video review, and a Streamlit dashboard for inspecting the results.',
+    stack: ['Python', 'YOLO11n', 'ByteTrack', 'OpenCV', 'Streamlit'],
+    challenge: 'Keep a clear link between each vehicle box, its video timestamp, and the track ID so results can be checked against the footage.',
+    outcome: 'Reviewed a three-minute street clip and exposed the recorded boxes and IDs for verification, with separate inference for uploaded photos.',
+    discipline: 'Computer Vision',
+    previewUrl: 'https://bytes-warm-identifies-trees.trycloudflare.com/',
+  },
+  {
     id: 'iot-noise',
     title: 'Outdoor IoT Noise Monitoring and Calibration',
     context: 'Outdoor acoustic monitoring pipeline for field data collection, visualization, and characterization.',
