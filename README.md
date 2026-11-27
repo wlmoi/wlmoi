@@ -20,6 +20,14 @@ I work across **ASIC design, FPGA, RTL verification, Edge AI, embedded systems, 
 
 An RTL-to-GDSII accelerator built around a 4x4 processing-element array, SRAM buffers, and post-route bit-exact verification. The project is a practical study in hardware architecture, implementation, and proof.
 
+### [GARDA Chip Explorer](https://garda-chip-explorer.vercel.app/)
+
+Explore the GARDA chip project and its design through an interactive presentation.
+
+### [IGOR ? Indonesian Gated Onboard Robotics](https://igor-rtl-explorer.vercel.app/)
+
+An FPGA neural accelerator for a mobile robot, developed by team iSeeDesignITB for the PERURI Chip Hackathon 2026. Explore the RTL and project details through the linked IGOR explorer.
+
 ### Other areas I enjoy
 
 `Digital design` `Computer architecture` `Verification` `Embedded systems` `Edge AI` `Signal processing` `Developer tools`
