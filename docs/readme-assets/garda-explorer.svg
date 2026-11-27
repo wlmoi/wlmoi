@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="64" viewBox="0 0 300 64" role="img" aria-labelledby="title desc">
+<title id="title">GARDA Chip Explorer</title><desc id="desc">Open the GARDA project explorer.</desc>
+<rect x="1" y="1" width="298" height="62" rx="12" fill="#101b2e" stroke="#5eead4"/>
+<g stroke="#5eead4" stroke-width="1.5" fill="none"><rect x="19" y="19" width="26" height="26" rx="4"/><path d="M25 19v-5m13 5v-5m-13 31v5m13-5v5m-19-25h-5m5 13h-5m31-13h5m-5 13h5"/><path d="M271 25h10v10m0-10-13 13"/></g>
+<text x="63" y="29" fill="#f8fafc" font-family="Arial,sans-serif" font-size="18" font-weight="700">GARDA</text>
+<text x="63" y="46" fill="#5eead4" font-family="Arial,sans-serif" font-size="10" letter-spacing="1.5">CHIP EXPLORER</text></svg>
