@@ -1,6 +1,6 @@
 <p align="center"><a href="https://wlmoi.vercel.app/github-contributions.html"><img src="docs/readme-assets/william-banner.svg" alt="William Anthony contribution city: real GitHub activity in 3D. Click to rotate, zoom, and inspect daily contributions." width="100%" /></a></p>
 
-<p align="center"><a href="https://wlmoi.vercel.app/github-contributions.html">Explore my contribution city in 3D</a> / <a href="https://github.com/wlmoi?tab=overview">GitHub activity</a></p>
+<p align="center"><a href="https://wlmoi.vercel.app/github-contributions.html">Explore my contribution city in 3D</a> | <a href="https://github.com/wlmoi?tab=overview">GitHub activity</a></p>
 
 # Hi, I'm William 👋
 
@@ -11,6 +11,8 @@ I work across **ASIC design, FPGA, RTL verification, Edge AI, embedded systems, 
 > Always learning. Code, create, connect.
 
 ![Python](docs/readme-assets/aza-ali/assets/python.svg) ![TypeScript](docs/readme-assets/aza-ali/assets/typescript.svg) ![Next.js](docs/readme-assets/aza-ali/assets/nextjs.svg) ![Claude Anthropic](docs/readme-assets/claude-anthropic.svg) ![CLI](docs/readme-assets/aza-ali/assets/cli.svg) ![Firebase](docs/readme-assets/aza-ali/assets/firebase.svg) ![Supabase](docs/readme-assets/aza-ali/assets/supabase.svg) ![Google Cloud](docs/readme-assets/aza-ali/assets/google-cloud.svg) ![iOS](docs/readme-assets/aza-ali/assets/ios.svg) ![macOS](docs/readme-assets/aza-ali/assets/macos.svg) ![Chrome](docs/readme-assets/aza-ali/assets/chrome.svg)
+
+![CODEX](docs/readme-assets/codex.svg) ![Meta](docs/readme-assets/meta.svg) ![Antigravity](docs/readme-assets/antigravity.svg)
 
 ## Now
 
@@ -42,7 +44,7 @@ An FPGA neural accelerator for a mobile robot, developed by team iSeeDesignITB f
 
 ## Find me
 
-[![LinkedIn](docs/readme-assets/aza-ali/assets/linkedin.svg)](https://www.linkedin.com/in/wlmoi/) [![Instagram](docs/readme-assets/aza-ali/assets/instagram.svg)](https://www.instagram.com/wlmoi/)  /  [Portfolio](https://wlmoi.vercel.app/)  /  [GitHub](https://github.com/wlmoi)
+[![LinkedIn](docs/readme-assets/aza-ali/assets/linkedin.svg)](https://www.linkedin.com/in/wlmoi/) [![Instagram](docs/readme-assets/aza-ali/assets/instagram.svg)](https://www.instagram.com/wlmoi/)  |  [Portfolio](https://wlmoi.vercel.app/)  |  [GitHub](https://github.com/wlmoi)
 
 ## Tools in this portfolio
 
@@ -99,6 +101,8 @@ All direct runtime and development packages used by this repository are listed b
 | [vite](https://www.npmjs.com/package/vite) | 8.3.0 | Development: types, linting, styling or build tooling |
 
 ### Visual references and attribution
+
+- CODEX, Meta, and Antigravity logos use SVG artwork from [Lobe Icons](https://github.com/lobehub/lobe-icons), distributed under its [MIT license](docs/readme-assets/lobe-icons/LICENSE).
 
 - [GSAP](https://github.com/greensock/GSAP): animation engine and ScrollTrigger.
 - [three-fluid-fx](https://github.com/artcodev/three-fluid-fx): fluid velocity/density fields drive original lattice, trefoil, vortex and combined particle shaders. [MIT license](public/licenses/three-fluid-fx.txt) and [third-party notices](public/licenses/three-fluid-fx-third-party.txt).
