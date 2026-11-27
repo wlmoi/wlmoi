@@ -1,4 +1,6 @@
-# William Anthony
+<p align="center"><img src="docs/readme-assets/william-banner.svg" alt="William Anthony - building at the intersection of hardware and intelligence" width="100%" /></p>
+
+# Hi, I'm William 👋
 
 ### Electrical & Electronics Engineering student building intelligent hardware systems
 
@@ -24,35 +26,20 @@ An RTL-to-GDSII accelerator built around a 4x4 processing-element array, SRAM bu
 
 ## Find me
 
-- [Portfolio](https://wlmoi.vercel.app/)
-- [LinkedIn](https://www.linkedin.com/in/wlmoi/)
-- [Instagram](https://www.instagram.com/wlmoi/)
-- [GitHub](https://github.com/wlmoi)
+[![LinkedIn](docs/readme-assets/aza-ali/assets/linkedin.svg)](https://www.linkedin.com/in/wlmoi/) [![Instagram](docs/readme-assets/aza-ali/assets/instagram.svg)](https://www.instagram.com/wlmoi/) · [Portfolio](https://wlmoi.vercel.app/) · [GitHub](https://github.com/wlmoi)
 
-## GitHub stats
+## Tools in this portfolio
 
-<p align="left">
-  <a href="https://github.com/wlmoi">
-    <img height="165" src="https://github-readme-stats.vercel.app/api?username=wlmoi&show_icons=true&hide_border=true&rank_icon=github&theme=transparent" alt="William's GitHub statistics" />
-  </a>
-  <a href="https://github.com/wlmoi">
-    <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&layout=compact&hide_border=true&theme=transparent" alt="William's most used languages" />
-  </a>
-</p>
+![TypeScript](docs/readme-assets/aza-ali/assets/typescript.svg) ![Supabase](docs/readme-assets/aza-ali/assets/supabase.svg)
+
+## GitHub activity
 
 <p align="left">
-  <a href="https://git.io/streak-stats">
-    <img src="https://streak-stats.demolab.com/?user=wlmoi&hide_border=true&theme=transparent" alt="William's GitHub contribution streak" />
-  </a>
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=wlmoi&amp;show_icons=true&amp;hide_border=true&amp;theme=transparent" alt="William's GitHub statistics" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&amp;layout=compact&amp;hide_border=true&amp;theme=transparent" alt="William's most used languages" />
 </p>
 
-
-
-##  _Stats_
-[![My GitHub Streak](https://streak-stats.demolab.com/?user=wlmoi&theme=dracula)](https://git.io/streak-stats)
-![My GitHub stats](https://github-readme-stats.vercel.app/api?username=wlmoi&layout=compact&theme=dracula) <!--Add Indonesian version-->
-[![GitHub Streak](https://streak-stats.demolab.com?user=wlmoi&theme=material-palenight&border_radius=5&locale=id&date_format=j%20M%5B%20Y%5D&card_width=250&card_height=100)](https://git.io/streak-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wlmoi&layout=compact&theme=dracula)](https://github.com/wlmoi)
+<img src="https://streak-stats.demolab.com/?user=wlmoi&amp;hide_border=true&amp;theme=transparent" alt="William's GitHub contribution streak" />
 
 ## About this repository
 
@@ -123,3 +110,112 @@ The hero supports WebGL2 on mobile as well as desktop. Drag the keyboard or sili
 ### Résumé action
 
 The primary résumé link uses an original GSAP magnetic button with corner brackets, a short light sweep, and pointer/focus/touch feedback, inspired by [Ashish's magnetic cursor study](https://codepen.io/ashish1729/pen/LEEwmVm). The effect is local to the button; the system cursor and native `/resume` navigation are preserved. Ambient motion pauses offscreen and in hidden tabs, and reduced-motion preferences disable the GSAP effects.
+
+<details>
+<summary>SVG reference gallery</summary>
+
+The following original SVGs are from the supplied Aza Ali README reference. Project names, branding, and the original banner belong to their respective creator and are shown here as design references, not as my work.
+
+### Original banner
+
+![Reference: banner](docs/readme-assets/aza-ali/banner.svg)
+
+### Assets
+
+![Reference: chrome](docs/readme-assets/aza-ali/assets/chrome.svg)
+
+![Reference: claude](docs/readme-assets/aza-ali/assets/claude.svg)
+
+![Reference: cli](docs/readme-assets/aza-ali/assets/cli.svg)
+
+![Reference: firebase](docs/readme-assets/aza-ali/assets/firebase.svg)
+
+![Reference: google-cloud](docs/readme-assets/aza-ali/assets/google-cloud.svg)
+
+![Reference: instagram](docs/readme-assets/aza-ali/assets/instagram.svg)
+
+![Reference: ios](docs/readme-assets/aza-ali/assets/ios.svg)
+
+![Reference: linkedin](docs/readme-assets/aza-ali/assets/linkedin.svg)
+
+![Reference: lucide-bot](docs/readme-assets/aza-ali/assets/lucide-bot.svg)
+
+![Reference: lucide-map-pin](docs/readme-assets/aza-ali/assets/lucide-map-pin.svg)
+
+![Reference: macos](docs/readme-assets/aza-ali/assets/macos.svg)
+
+![Reference: mourtaza-com](docs/readme-assets/aza-ali/assets/mourtaza-com.svg)
+
+![Reference: nextjs](docs/readme-assets/aza-ali/assets/nextjs.svg)
+
+![Reference: python](docs/readme-assets/aza-ali/assets/python.svg)
+
+![Reference: supabase](docs/readme-assets/aza-ali/assets/supabase.svg)
+
+![Reference: threads](docs/readme-assets/aza-ali/assets/threads.svg)
+
+![Reference: typescript](docs/readme-assets/aza-ali/assets/typescript.svg)
+
+![Reference: x](docs/readme-assets/aza-ali/assets/x.svg)
+
+### Text
+
+![Reference: ai-product-management-icon](docs/readme-assets/aza-ali/text/ai-product-management-icon.svg)
+
+![Reference: ai-product-management](docs/readme-assets/aza-ali/text/ai-product-management.svg)
+
+![Reference: credit-rating-estimator-icon](docs/readme-assets/aza-ali/text/credit-rating-estimator-icon.svg)
+
+![Reference: credit-rating-estimator](docs/readme-assets/aza-ali/text/credit-rating-estimator.svg)
+
+![Reference: crisp-github-readme-links](docs/readme-assets/aza-ali/text/crisp-github-readme-links.svg)
+
+![Reference: link-icon-gradient](docs/readme-assets/aza-ali/text/link-icon-gradient.svg)
+
+![Reference: listval-icon](docs/readme-assets/aza-ali/text/listval-icon.svg)
+
+![Reference: listval](docs/readme-assets/aza-ali/text/listval.svg)
+
+![Reference: local-speech-to-text-icon](docs/readme-assets/aza-ali/text/local-speech-to-text-icon.svg)
+
+![Reference: local-speech-to-text](docs/readme-assets/aza-ali/text/local-speech-to-text.svg)
+
+![Reference: orbit-icon](docs/readme-assets/aza-ali/text/orbit-icon.svg)
+
+![Reference: orbit](docs/readme-assets/aza-ali/text/orbit.svg)
+
+![Reference: quickhelp-icon](docs/readme-assets/aza-ali/text/quickhelp-icon.svg)
+
+![Reference: quickhelp](docs/readme-assets/aza-ali/text/quickhelp.svg)
+
+![Reference: refundadvisor-icon](docs/readme-assets/aza-ali/text/refundadvisor-icon.svg)
+
+![Reference: refundadvisor](docs/readme-assets/aza-ali/text/refundadvisor.svg)
+
+![Reference: retina-icon](docs/readme-assets/aza-ali/text/retina-icon.svg)
+
+![Reference: retina](docs/readme-assets/aza-ali/text/retina.svg)
+
+![Reference: soya-icon](docs/readme-assets/aza-ali/text/soya-icon.svg)
+
+![Reference: soya](docs/readme-assets/aza-ali/text/soya.svg)
+
+![Reference: swapviewer-icon](docs/readme-assets/aza-ali/text/swapviewer-icon.svg)
+
+![Reference: swapviewer](docs/readme-assets/aza-ali/text/swapviewer.svg)
+
+![Reference: techfleets-icon](docs/readme-assets/aza-ali/text/techfleets-icon.svg)
+
+![Reference: techfleets](docs/readme-assets/aza-ali/text/techfleets.svg)
+
+![Reference: turbowebfetch-icon](docs/readme-assets/aza-ali/text/turbowebfetch-icon.svg)
+
+![Reference: turbowebfetch](docs/readme-assets/aza-ali/text/turbowebfetch.svg)
+
+![Reference: upvote-on-product-hunt](docs/readme-assets/aza-ali/text/upvote-on-product-hunt.svg)
+
+![Reference: webdownloader-icon](docs/readme-assets/aza-ali/text/webdownloader-icon.svg)
+
+![Reference: webdownloader](docs/readme-assets/aza-ali/text/webdownloader.svg)
+
+</details>
