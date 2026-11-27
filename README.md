@@ -8,6 +8,8 @@ I work across **ASIC design, FPGA, RTL verification, Edge AI, embedded systems, 
 
 > Always learning. Code, create, connect.
 
+![Python](docs/readme-assets/aza-ali/assets/python.svg) ![TypeScript](docs/readme-assets/aza-ali/assets/typescript.svg) ![Next.js](docs/readme-assets/aza-ali/assets/nextjs.svg) ![Claude Anthropic](docs/readme-assets/claude-anthropic.svg) ![CLI](docs/readme-assets/aza-ali/assets/cli.svg) ![Firebase](docs/readme-assets/aza-ali/assets/firebase.svg) ![Supabase](docs/readme-assets/aza-ali/assets/supabase.svg) ![Google Cloud](docs/readme-assets/aza-ali/assets/google-cloud.svg) ![iOS](docs/readme-assets/aza-ali/assets/ios.svg) ![macOS](docs/readme-assets/aza-ali/assets/macos.svg) ![Chrome](docs/readme-assets/aza-ali/assets/chrome.svg)
+
 ## Now
 
 - Studying Electrical and Electronics Engineering at Institut Teknologi Bandung
@@ -38,7 +40,7 @@ An FPGA neural accelerator for a mobile robot, developed by team iSeeDesignITB f
 
 ## Find me
 
-[![LinkedIn](docs/readme-assets/aza-ali/assets/linkedin.svg)](https://www.linkedin.com/in/wlmoi/) [![Instagram](docs/readme-assets/aza-ali/assets/instagram.svg)](https://www.instagram.com/wlmoi/) · [Portfolio](https://wlmoi.vercel.app/) · [GitHub](https://github.com/wlmoi)
+[![LinkedIn](docs/readme-assets/aza-ali/assets/linkedin.svg)](https://www.linkedin.com/in/wlmoi/) [![Instagram](docs/readme-assets/aza-ali/assets/instagram.svg)](https://www.instagram.com/wlmoi/)  /  [Portfolio](https://wlmoi.vercel.app/)  /  [GitHub](https://github.com/wlmoi)
 
 ## Tools in this portfolio
 
