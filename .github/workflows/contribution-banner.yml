@@ -1,0 +1,32 @@
+name: Refresh contribution banner
+on:
+  schedule:
+    - cron: '23 23 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/generate_contribution_banner.py
+      - .github/workflows/contribution-banner.yml
+permissions:
+  contents: write
+concurrency:
+  group: contribution-banner
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render actual contribution data
+        run: python3 scripts/generate_contribution_banner.py
+      - name: Commit updated banner
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/readme-assets/william-banner.svg public/contributions.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Refresh GitHub contribution city'
+          git pull --rebase origin main
+          git push origin HEAD:main

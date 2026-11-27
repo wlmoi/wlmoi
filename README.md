@@ -1,4 +1,6 @@
-<p align="center"><img src="docs/readme-assets/william-banner.svg" alt="William Anthony - building at the intersection of hardware and intelligence" width="100%" /></p>
+<p align="center"><a href="https://wlmoi.vercel.app/github-contributions.html"><img src="docs/readme-assets/william-banner.svg" alt="William Anthony contribution city: real GitHub activity in 3D. Click to rotate, zoom, and inspect daily contributions." width="100%" /></a></p>
+
+<p align="center"><a href="https://wlmoi.vercel.app/github-contributions.html">Explore my contribution city in 3D</a> / <a href="https://github.com/wlmoi?tab=overview">GitHub activity</a></p>
 
 # Hi, I'm William 👋
 
